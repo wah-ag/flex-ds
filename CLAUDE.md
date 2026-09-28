@@ -97,4 +97,11 @@ component after it.
 - Install required font and load properly from Google Font CDN
 
 ## Icon
-- Install and import material symbols from https://lucide.dev/icons/
+- Icons come from Lucide (https://lucide.dev/icons/) and nowhere else. Install
+  the Lucide package for the component framework (e.g. `lucide-react`) and
+  import each icon by name. Never paste SVG markup into a component, and never
+  mix in another icon set.
+- Size icons with the `size-icon-*` tokens and colour them through
+  `currentColor`, so they follow the semantic text colour of their parent.
+- If a design needs an icon Lucide does not have, report it rather than
+  drawing or importing one.
