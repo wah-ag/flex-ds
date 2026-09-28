@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:tokens": "node build-tokens.js"
+    "build:tokens": "node build-tokens.js",
+    "check:tokens": "node scripts/check-tokens.js"
   },
   "keywords": [],
   "author": "",
