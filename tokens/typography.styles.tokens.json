@@ -1,0 +1,253 @@
+{
+  "headline-xl": {
+    "$type": "typography",
+    "$description": "Hero / page display heading. Tokens: font-size/headline/xl, line-height/headline/xl, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-sora}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{font-size-headline-xl}",
+      "lineHeight": "{line-height-headline-xl}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "headline-lg": {
+    "$type": "typography",
+    "$description": "Page title (H1). Tokens: font-size/headline/lg, line-height/headline/lg, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-sora}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{font-size-headline-lg}",
+      "lineHeight": "{line-height-headline-lg}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "headline-md": {
+    "$type": "typography",
+    "$description": "Section heading (H2). Tokens: font-size/headline/md, line-height/headline/md, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-sora}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{font-size-headline-md}",
+      "lineHeight": "{line-height-headline-md}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "headline-sm": {
+    "$type": "typography",
+    "$description": "Sub-section heading (H3). Tokens: font-size/headline/sm, line-height/headline/sm, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-sora}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{font-size-headline-sm}",
+      "lineHeight": "{line-height-headline-sm}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "title-lg": {
+    "$type": "typography",
+    "$description": "Card / dialog title. Tokens: font-size/title/lg, line-height/title/lg, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-sora}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{font-size-title-lg}",
+      "lineHeight": "{line-height-title-lg}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "title-md": {
+    "$type": "typography",
+    "$description": "List &amp; panel titles. Tokens: font-size/title/md, line-height/title/md, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-sora}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{font-size-title-md}",
+      "lineHeight": "{line-height-title-md}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "title-sm": {
+    "$type": "typography",
+    "$description": "Small component titles. Tokens: font-size/title/sm, line-height/title/sm, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-sora}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{font-size-title-sm}",
+      "lineHeight": "{line-height-title-sm}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "title-xs": {
+    "$type": "typography",
+    "$description": "Overlines, dense table headers. Tokens: font-size/title/xs, line-height/title/xs, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-sora}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{font-size-title-xs}",
+      "lineHeight": "{line-height-title-xs}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "body-lg": {
+    "$type": "typography",
+    "$description": "Lead paragraphs, long-form reading. Tokens: font-size/body/lg, line-height/body/lg, typography/font-family/dm-sans, typography/font-weight/regular-400. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-dm-sans}",
+      "fontWeight": "Regular",
+      "fontSize": "{font-size-body-lg}",
+      "lineHeight": "{line-height-body-lg}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "body-md": {
+    "$type": "typography",
+    "$description": "Default body copy. Tokens: font-size/body/md, line-height/body/md, typography/font-family/dm-sans, typography/font-weight/regular-400. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-dm-sans}",
+      "fontWeight": "Regular",
+      "fontSize": "{font-size-body-md}",
+      "lineHeight": "{line-height-body-md}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "body-sm": {
+    "$type": "typography",
+    "$description": "Captions, helper &amp; meta text. Tokens: font-size/body/sm, line-height/body/sm, typography/font-family/dm-sans, typography/font-weight/regular-400. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-dm-sans}",
+      "fontWeight": "Regular",
+      "fontSize": "{font-size-body-sm}",
+      "lineHeight": "{line-height-body-sm}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "body-md-underlined": {
+    "$type": "typography",
+    "$description": "Inline links (md). Tokens: font-size/body/md-underlined, line-height/body/md-underlined, typography/font-family/dm-sans, typography/font-weight/regular-400. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-dm-sans}",
+      "fontWeight": "Regular",
+      "fontSize": "{font-size-body-md-underlined}",
+      "lineHeight": "{line-height-body-md-underlined}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "body-sm-underlined": {
+    "$type": "typography",
+    "$description": "Inline links (sm). Tokens: font-size/body/sm-underlined, line-height/body/sm-underlined, typography/font-family/dm-sans, typography/font-weight/regular-400. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-dm-sans}",
+      "fontWeight": "Regular",
+      "fontSize": "{font-size-body-sm-underlined}",
+      "lineHeight": "{line-height-body-sm-underlined}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "body-cta": {
+    "$type": "typography",
+    "$description": "used for call to action button text",
+    "$value": {
+      "fontFamily": "{typography-font-family-dm-sans}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{font-size-body-md}",
+      "lineHeight": "{line-height-body-md}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "body-lg-bold": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-font-family-dm-sans}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{font-size-body-lg}",
+      "lineHeight": "{line-height-body-lg}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "label-lg": {
+    "$type": "typography",
+    "$description": "Large buttons, tabs. Tokens: font-size/label/lg, line-height/label/lg, typography/font-family/dm-sans, typography/font-weight/medium-500. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-dm-sans}",
+      "fontWeight": "Medium",
+      "fontSize": "{font-size-label-lg}",
+      "lineHeight": "{line-height-label-lg}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "label-md": {
+    "$type": "typography",
+    "$description": "Buttons, inputs, chips. Tokens: font-size/label/md, line-height/label/md, typography/font-family/dm-sans, typography/font-weight/medium-500. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-dm-sans}",
+      "fontWeight": "Medium",
+      "fontSize": "{font-size-label-md}",
+      "lineHeight": "{line-height-label-md}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "label-sm": {
+    "$type": "typography",
+    "$description": "Badges, tags, tiny UI. Tokens: font-size/label/sm, line-height/label/sm, typography/font-family/dm-sans, typography/font-weight/medium-500. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-dm-sans}",
+      "fontWeight": "Medium",
+      "fontSize": "{font-size-label-sm}",
+      "lineHeight": "{line-height-label-sm}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  }
+}

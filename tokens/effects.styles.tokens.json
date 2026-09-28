@@ -1,0 +1,62 @@
+{
+  "elevation-level-1": {
+    "$type": "shadow",
+    "$description": "Level 1 · Low — cards, tiles, list items resting on the surface.",
+    "$value": [
+      {
+        "color": "{shadow-level-1-key}",
+        "offsetX": "{elevation-offset-x}",
+        "offsetY": "{elevation-level-1-key-offset-y}",
+        "blur": "{elevation-level-1-key-blur}",
+        "spread": "{elevation-spread}"
+      },
+      {
+        "color": "{shadow-level-1-ambient}",
+        "offsetX": "{elevation-offset-x}",
+        "offsetY": "{elevation-level-1-ambient-offset-y}",
+        "blur": "{elevation-level-1-ambient-blur}",
+        "spread": "{elevation-spread}"
+      }
+    ]
+  },
+  "elevation-level-2": {
+    "$type": "shadow",
+    "$description": "Level 2 · Mid — dropdowns, popovers, tooltips, sticky headers, hovered cards.",
+    "$value": [
+      {
+        "color": "{shadow-level-2-key}",
+        "offsetX": "{elevation-offset-x}",
+        "offsetY": "{elevation-level-2-key-offset-y}",
+        "blur": "{elevation-level-2-key-blur}",
+        "spread": "{elevation-spread}"
+      },
+      {
+        "color": "{shadow-level-2-ambient}",
+        "offsetX": "{elevation-offset-x}",
+        "offsetY": "{elevation-level-2-ambient-offset-y}",
+        "blur": "{elevation-level-2-ambient-blur}",
+        "spread": "{elevation-spread}"
+      }
+    ]
+  },
+  "elevation-level-3": {
+    "$type": "shadow",
+    "$description": "Level 3 · High — modals, dialogs, drawers, toasts.",
+    "$value": [
+      {
+        "color": "{shadow-level-3-key}",
+        "offsetX": "{elevation-offset-x}",
+        "offsetY": "{elevation-level-3-key-offset-y}",
+        "blur": "{elevation-level-3-key-blur}",
+        "spread": "{elevation-spread}"
+      },
+      {
+        "color": "{shadow-level-3-ambient}",
+        "offsetX": "{elevation-offset-x}",
+        "offsetY": "{elevation-level-3-ambient-offset-y}",
+        "blur": "{elevation-level-3-ambient-blur}",
+        "spread": "{elevation-spread}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,382 @@
+{
+  "font-size-headline-sm": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "font-size-headline-md": {
+    "$type": "dimension",
+    "$value": "{scale-11}"
+  },
+  "font-size-headline-lg": {
+    "$type": "dimension",
+    "$value": "{scale-12}"
+  },
+  "font-size-headline-xl": {
+    "$type": "dimension",
+    "$value": "{scale-13}"
+  },
+  "font-size-title-xs": {
+    "$type": "dimension",
+    "$value": "{scale-6}"
+  },
+  "font-size-title-sm": {
+    "$type": "dimension",
+    "$value": "{scale-7}"
+  },
+  "font-size-title-md": {
+    "$type": "dimension",
+    "$value": "{scale-8}"
+  },
+  "font-size-title-lg": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "font-size-body-sm": {
+    "$type": "dimension",
+    "$value": "{scale-6}"
+  },
+  "font-size-body-md": {
+    "$type": "dimension",
+    "$value": "{scale-7}"
+  },
+  "font-size-body-lg": {
+    "$type": "dimension",
+    "$value": "{scale-8}"
+  },
+  "font-size-body-sm-underlined": {
+    "$type": "dimension",
+    "$value": "{scale-6}"
+  },
+  "font-size-body-md-underlined": {
+    "$type": "dimension",
+    "$value": "{scale-7}"
+  },
+  "font-size-label-sm": {
+    "$type": "dimension",
+    "$value": "{scale-5}"
+  },
+  "font-size-label-md": {
+    "$type": "dimension",
+    "$value": "{scale-6}"
+  },
+  "font-size-label-lg": {
+    "$type": "dimension",
+    "$value": "{scale-7}"
+  },
+  "spacing-padding-xxs": {
+    "$type": "dimension",
+    "$value": "{scale-1}"
+  },
+  "spacing-padding-xs": {
+    "$type": "dimension",
+    "$value": "{scale-2}"
+  },
+  "spacing-padding-sm": {
+    "$type": "dimension",
+    "$value": "{scale-4}"
+  },
+  "spacing-padding-md": {
+    "$type": "dimension",
+    "$value": "{scale-6}"
+  },
+  "spacing-padding-lg": {
+    "$type": "dimension",
+    "$value": "{scale-8}"
+  },
+  "spacing-padding-xl": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "spacing-margin-sm": {
+    "$type": "dimension",
+    "$value": "{scale-8}"
+  },
+  "spacing-margin-md": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "spacing-margin-lg": {
+    "$type": "dimension",
+    "$value": "{scale-11}"
+  },
+  "spacing-gap-xs": {
+    "$type": "dimension",
+    "$value": "{scale-2}"
+  },
+  "spacing-gap-sm": {
+    "$type": "dimension",
+    "$value": "{scale-4}"
+  },
+  "spacing-gap-md": {
+    "$type": "dimension",
+    "$value": "{scale-6}"
+  },
+  "spacing-gap-lg": {
+    "$type": "dimension",
+    "$value": "{scale-6}"
+  },
+  "spacing-gap-xl": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "spacing-gap-2xl": {
+    "$type": "dimension",
+    "$value": "{scale-12}"
+  },
+  "line-height-headline-sm": {
+    "$type": "dimension",
+    "$value": "{scale-12}"
+  },
+  "line-height-headline-md": {
+    "$type": "dimension",
+    "$value": "{scale-13}"
+  },
+  "line-height-headline-lg": {
+    "$type": "dimension",
+    "$value": "{scale-13}"
+  },
+  "line-height-headline-xl": {
+    "$type": "dimension",
+    "$value": "{scale-15}"
+  },
+  "line-height-title-sm": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "line-height-body-sm": {
+    "$type": "dimension",
+    "$value": "{scale-8}"
+  },
+  "line-height-label-sm": {
+    "$type": "dimension",
+    "$value": "{scale-8}"
+  },
+  "line-height-label-md": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "line-height-body-md": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "line-height-body-lg": {
+    "$type": "dimension",
+    "$value": "{scale-11}"
+  },
+  "line-height-body-sm-underlined": {
+    "$type": "dimension",
+    "$value": "{scale-8}"
+  },
+  "line-height-body-md-underlined": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "line-height-title-md": {
+    "$type": "dimension",
+    "$value": "{scale-11}"
+  },
+  "line-height-title-lg": {
+    "$type": "dimension",
+    "$value": "{scale-12}"
+  },
+  "size-avatar-xs": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "size-avatar-sm": {
+    "$type": "dimension",
+    "$value": "{scale-11}"
+  },
+  "size-avatar-md": {
+    "$type": "dimension",
+    "$value": "{scale-13}"
+  },
+  "size-avatar-lg": {
+    "$type": "dimension",
+    "$value": "{scale-15}"
+  },
+  "size-avatar-xl": {
+    "$type": "dimension",
+    "$value": "{scale-19}"
+  },
+  "size-avatar-2xl": {
+    "$type": "dimension",
+    "$value": "{scale-16}"
+  },
+  "size-control-sm": {
+    "$type": "dimension",
+    "$value": "{scale-12}"
+  },
+  "size-control-md": {
+    "$type": "dimension",
+    "$value": "{scale-14}"
+  },
+  "size-control-lg": {
+    "$type": "dimension",
+    "$value": "{scale-16}"
+  },
+  "size-control-xl": {
+    "$type": "dimension",
+    "$value": "{scale-19}"
+  },
+  "size-row-sm": {
+    "$type": "dimension",
+    "$value": "{scale-15}"
+  },
+  "size-icon-xs": {
+    "$type": "dimension",
+    "$value": "{scale-6}"
+  },
+  "size-icon-sm": {
+    "$type": "dimension",
+    "$value": "{scale-8}"
+  },
+  "size-icon-md": {
+    "$type": "dimension",
+    "$value": "{scale-11}"
+  },
+  "size-icon-lg": {
+    "$type": "dimension",
+    "$value": "{scale-12}"
+  },
+  "size-icon-xl": {
+    "$type": "dimension",
+    "$value": "{scale-13}"
+  },
+  "size-icon-xxl": {
+    "$type": "dimension",
+    "$value": "{scale-14}"
+  },
+  "size-row-md": {
+    "$type": "dimension",
+    "$value": "{scale-17}"
+  },
+  "size-row-lg": {
+    "$type": "dimension",
+    "$value": "{scale-19}"
+  },
+  "line-height-title-xs": {
+    "$type": "dimension",
+    "$value": "{scale-8}"
+  },
+  "line-height-label-lg": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "elevation-level-1-key-offset-y": {
+    "$type": "dimension",
+    "$value": "{scale-thin}"
+  },
+  "elevation-level-1-key-blur": {
+    "$type": "dimension",
+    "$value": "{scale-1}"
+  },
+  "elevation-level-1-ambient-offset-y": {
+    "$type": "dimension",
+    "$value": "{scale-1}"
+  },
+  "elevation-level-1-ambient-blur": {
+    "$type": "dimension",
+    "$value": "{scale-4}"
+  },
+  "elevation-level-2-key-offset-y": {
+    "$type": "dimension",
+    "$value": "{scale-1}"
+  },
+  "elevation-level-2-key-blur": {
+    "$type": "dimension",
+    "$value": "{scale-2}"
+  },
+  "elevation-level-2-ambient-offset-y": {
+    "$type": "dimension",
+    "$value": "{scale-4}"
+  },
+  "elevation-level-2-ambient-blur": {
+    "$type": "dimension",
+    "$value": "{scale-8}"
+  },
+  "elevation-level-3-key-offset-y": {
+    "$type": "dimension",
+    "$value": "{scale-2}"
+  },
+  "elevation-level-3-key-blur": {
+    "$type": "dimension",
+    "$value": "{scale-4}"
+  },
+  "elevation-level-3-ambient-offset-y": {
+    "$type": "dimension",
+    "$value": "{scale-8}"
+  },
+  "elevation-level-3-ambient-blur": {
+    "$type": "dimension",
+    "$value": "{scale-12}"
+  },
+  "elevation-offset-x": {
+    "$type": "dimension",
+    "$value": "{scale-none}"
+  },
+  "elevation-spread": {
+    "$type": "dimension",
+    "$value": "{scale-none}"
+  },
+  "border-width-divider": {
+    "$type": "dimension",
+    "$value": "{border-width-md}",
+    "$description": "Row and section dividers"
+  },
+  "border-width-default": {
+    "$type": "dimension",
+    "$value": "{border-width-lg}",
+    "$description": "Inputs, cards, outlined buttons"
+  },
+  "border-width-selected": {
+    "$type": "dimension",
+    "$value": "{border-width-xl}",
+    "$description": "Selected card/tab, checked state"
+  },
+  "border-width-icon": {
+    "$type": "dimension",
+    "$value": "{border-width-xl}",
+    "$description": "Selected card/tab, checked state"
+  },
+  "border-width-focus": {
+    "$type": "dimension",
+    "$value": "{border-width-xl}",
+    "$description": "Keyboard focus ring"
+  },
+  "border-radius-control-2xs": {
+    "$type": "dimension",
+    "$value": "{border-radius-2xs}",
+    "$description": "Checkboxes, small chips, table-cell highlights"
+  },
+  "border-radius-control-xs": {
+    "$type": "dimension",
+    "$value": "{border-radius-xs}",
+    "$description": "Buttons, inputs, selects"
+  },
+  "border-radius-control-sm": {
+    "$type": "dimension",
+    "$value": "{border-radius-xs}",
+    "$description": "Buttons, inputs, selects"
+  },
+  "border-radius-rounded": {
+    "$type": "dimension",
+    "$value": "{border-radius-pill}",
+    "$description": "Menus, popovers, tooltips"
+  },
+  "border-radius-card": {
+    "$type": "dimension",
+    "$value": "{border-radius-md}",
+    "$description": "Cards, panels, list groups"
+  },
+  "border-radius-container": {
+    "$type": "dimension",
+    "$value": "{border-radius-xl}",
+    "$description": "Bottom sheets, large panels, banners"
+  },
+  "border-radius-modal": {
+    "$type": "dimension",
+    "$value": "{border-radius-xl}",
+    "$description": "Modals, dialogs"
+  }
+}
