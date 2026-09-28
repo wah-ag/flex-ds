@@ -58,6 +58,7 @@ The mobile scale ships only to iOS and Android; there is no mobile CSS file.
 | --- | --- |
 | `npm install` | Installs dependencies. |
 | `npm run build:tokens` | Rebuilds `build/` from `tokens/`. Run it after every token export. |
+| `npm run check:tokens` | Reports mode gaps and opaque `a`-suffixed tokens. Read-only; exits 1 on a problem. |
 | `git switch -c <branch>` | Starts work on a new branch. Never work on `main`. |
 | `gh pr create` | Opens a pull request. A human reviews and merges it. |
 
@@ -70,7 +71,7 @@ accidentally edit.
 | --- | --- | --- | --- |
 | Engineer | Read, Glob, Grep, Edit, Write, Bash | Build and fix components, stories and build scripts. | Edit `tokens/` or `build/`. Verify or approve its own work. |
 | QA | Read, Glob, Grep, Bash | Run the build and Storybook, test every variant and state, report what it finds. | Edit any file. Fix what it finds. |
-| `token-runner` | Bash, Read | Branch, run `npm run build:tokens`, summarise the token diff in designer language, open a PR. | Edit any file, token or otherwise. |
+| `token-runner` | Bash, Read | Put the export on `tokens-update`, run `build:tokens` and `check:tokens`, summarise the token diff in designer language, push `tokens-update` and open or update its PR. | Edit any file, token or otherwise. Push to any branch but `tokens-update`. |
 | Human | Everything | Approve and merge pull requests. | — |
 
 ### Blocked for every agent
