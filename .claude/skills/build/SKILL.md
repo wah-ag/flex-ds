@@ -14,17 +14,18 @@ Before anything, confirm the stack exists:
 
 - a component framework and Storybook in `package.json`;
 - `lucide-<framework>` installed;
-- the platform entry points `CLAUDE.md` names (`build/css/index.css`,
-  `index-mobile.css`, `index-back-office.css`);
-- `stories/lib/tokens.js`;
+- every CSS file `CLAUDE.md` tells components to load, as it names them
+  today, is present in `build/css/` after `npm run build:tokens`;
+- `stories/lib/tokens.js`, or `CLAUDE.md` says it is written with the first
+  story;
 - the `staging` branch on `origin`.
 
-**Check:** each one exists. As of 2026-09-29 none of them does. `npm run
-build:tokens` writes `tokens.css`, `tokens-dark.css` and
-`tokens-back-office.css`, not the entry points `CLAUDE.md` names. Adding a
-framework or dependency needs a human (`tools.md`), and picking a CSS file to
-import instead of the named entry point is a decision, not a build step. If
-anything is missing, report it and stop.
+**Check:** each one exists. Read the names from `CLAUDE.md` in this run,
+never from this skill or from memory. Which CSS files components load is
+being settled (pipeline spec, open item 17). Adding a framework or dependency
+needs a human (`tools.md`), and picking a CSS file other than the one
+`CLAUDE.md` names is a decision, not a build step. If anything is missing,
+report it and stop.
 
 ## Stage 1 — Read the design, write down the matrix
 

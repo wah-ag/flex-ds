@@ -89,8 +89,9 @@ The order matters, because every write recomputes the status and starts the
 next agent.
 
 1. Create or update every case's row, with the case columns, Composed In,
-   Expected Results, Attachment and Suggestion for Improvement filled in.
-   Leave Testing Results blank on new rows.
+   Expected Results and Attachment filled in. Fill Suggestion for
+   Improvement only on a case that fails, and clear it on a retest that now
+   passes. Leave Testing Results blank on new rows.
 2. Then write Testing Results for all rows in as few calls as the API allows
    (10 records per call), `Passed` before `Failed`.
 3. Size and State take existing options only. `pressed`, `destructive` and
