@@ -7,7 +7,21 @@ condition that hands work to the next actor.
 Sources: the FigJam board *Flex Design System Evidence Loop*, the Flex-DS
 Airtable base, and decisions made with the design-system owner. The rules
 every agent follows are in `CLAUDE.md` and `tools.md`. Every registry column
-and its owner is in `.claude/skills/registry/SKILL.md`.
+and its owner is in `.claude/skills/registry/SKILL.md`. Each agent's
+boundaries are in its file under `.claude/agents/`: `developer.md`, `qa.md`,
+`devops.md`, `pm.md` and `token-runner.md`.
+
+Where the board and the registry contract disagreed, the owner ruled on
+2026-09-29:
+
+- PM is in scope as a read-only auditor. Its output is a report file, not
+  Asana tickets.
+- The board's "Production testing" table is a board error. No such table
+  exists.
+- Completed starts nobody by status. QA's re-test of Completed components is
+  started by the token-sync cron, not by the board's Completed → QA arrow.
+- Every agent's trigger uses the `Development` formula's definitions, not the
+  board's wording of the conditions.
 
 Anything not yet decided is listed under [Open items](#open-items). It has
 not been filled in anywhere else in this document.
@@ -17,8 +31,8 @@ not been filled in anywhere else in this document.
 | In scope | Skipped for now |
 | --- | --- |
 | Client brief → design → build → staging test → fix loop → production Storybook | Documentation and release (Astro site, Release Review, Release Verdict, the Released status) |
-| Token sync from Figma, and re-testing what it affects | PM agent, its schedule, and Asana tickets |
-| | DS Feedback and One-Off Components tables |
+| Token sync from Figma, and re-testing what it affects | Asana tickets |
+| PM: a scheduled, read-only audit of the registry | DS Feedback and One-Off Components tables |
 
 ## Tools
 
@@ -30,6 +44,7 @@ not been filled in anywhere else in this document.
 | Vercel (Free) | Hosts the staging and production Storybook. |
 | Airtable (Free) | The registry. Its automations start the next agent. |
 | GitHub Actions | The scheduled check for merged token syncs. |
+| A cron (location open) | The PM sweep. |
 
 ## The crew
 
@@ -41,6 +56,7 @@ not been filled in anywhere else in this document.
 | Developer | Agent | To-do, To be fixed | QA |
 | QA | Agent | Ready for Testing, Fixed, Fixing; the token re-test schedule | Developer or DevOps |
 | DevOps | Agent | To be deployed **and** Synchronization % = 100% | Nobody — Completed is the end |
+| PM | Agent | The sweep schedule | Nobody — it reports to owners through its report file |
 | You (approver) | Human | A pull request waiting for you | DevOps, or `main` directly |
 
 ## How work moves
@@ -73,6 +89,19 @@ fires on the new status and starts the agent it points to.
 
 To be deployed alone is not enough to start DevOps. The formula shows it as
 soon as one result exists, so the automation also waits for every row to pass.
+
+Two starts come from a schedule rather than a status: the token-sync cron
+starts QA for affected Completed components, and the sweep cron starts PM.
+
+Every registry write recomputes the status, and a status change can start the
+next agent at once. So each agent writes in a fixed order, and the write that
+hands off comes last:
+
+- The Developer writes Composes before Staging Storybook. On a fix, it writes
+  the new Staging Storybook link before marking any row `Fixed (To re-test)`.
+- QA creates every row in the matrix with Testing Results blank, then writes
+  the results in as few calls as the API allows, Passed before Failed.
+- DevOps writes GitHub Commits and Commit before Production Storybook.
 
 ## Branches and merges
 
@@ -180,6 +209,9 @@ The engineer role in `CLAUDE.md` and `tools.md`.
 
   A retest overwrites the same row. States the State column cannot record
   (`pressed`, `destructive`, `default`) go in Variants.
+- **Retest scope:** on Fixing, the rows marked `Fixed (To re-test)`. On
+  Fixed, the full matrix, because a fix can break a case that passed.
+- **Hard gate:** no Staging Storybook link, no test. QA waits.
 - **A row passes only if all three hold:**
   - the Storybook property values match the Figma property values;
   - the visual is pixel-identical to Figma;
@@ -213,10 +245,15 @@ The engineer role in `CLAUDE.md` and `tools.md`.
   - after the merge: Production Storybook, Commit, and a GitHub Commits row
     per commit.
 - **Does, in order:**
-  1. Opens the pull request.
-  2. Waits and polls until you approve it.
-  3. Merges it. Vercel deploys production.
-  4. Writes Production Storybook.
+  1. Verifies its gate from the registry: every Staging Testing row of every
+     component in the pull request reads `Passed`. It does not rely on
+     Synchronization % alone.
+  2. Opens the pull request.
+  3. Waits until you approve it. How that approval is recorded is not yet
+     defined (see open items). Until it is, DevOps stops here.
+  4. Merges it with a merge commit. Vercel deploys production.
+  5. Opens the production story and sees it render.
+  6. Writes GitHub Commits and Commit, then Production Storybook last.
 - **Refuses to:**
   - merge without your approval;
   - merge while any row for any component in the pull request is not Passed;
@@ -227,6 +264,28 @@ The engineer role in `CLAUDE.md` and `tools.md`.
   Completed. DevOps is started only after every row has passed, so there is no
   failure case. Nobody is started after Completed while documentation is out
   of scope.
+
+### PM — agent
+
+- **Started by:** the sweep schedule. Never by a status, and never by a
+  message.
+- **Reads:** every row of Components, Staging Testing and GitHub Commits;
+  every link in them, opened rather than counted; `src/components/`; its own
+  previous report.
+- **Writes:** `reports/registry-sweep.md`, overwritten each sweep. Nothing in
+  the registry: the contract gives PM no column.
+- **Report sections, in order:** what changed since the last sweep; status
+  counts with the rows behind them; what each owner is waiting on;
+  contradictions (a status that does not follow from its evidence, a
+  Synchronization % that does not match the Passed rows, unlinked rows,
+  repo/registry mismatches, values in Unassigned columns); dead links.
+- **Refuses to:**
+  - write any registry cell, even to correct an obvious error;
+  - fix, commit, push, open a pull request or merge;
+  - start another agent or tell one to act;
+  - report a link as good without opening it, or a count without its rows.
+- **Hands off when:** never. A status starts agents; the report tells each
+  owner what the evidence says.
 
 ### You — human approver
 
@@ -239,9 +298,10 @@ The engineer role in `CLAUDE.md` and `tools.md`.
 
 Not decided yet. Nothing in this document assumes an answer.
 
-1. **Where agents run** when an Airtable automation fires. No preference
-   given. The options were GitHub Actions, a Vercel function, or your
-   computer.
+1. **Where agents run** when an Airtable automation fires, and where the PM
+   sweep cron runs. No preference given. The options were GitHub Actions, a
+   Vercel function, or your computer. This also decides whether PM's report
+   file is kept anywhere, since PM does not commit it.
 2. **Staging Passed Count** may count every row, not just Passed ones. If it
    does, Synchronization % reaches 100% early and DevOps starts before QA has
    finished. Check the field's settings in Airtable.
@@ -266,7 +326,20 @@ Not decided yet. Nothing in this document assumes an answer.
    - GitHub Actions' 6-hour job limit, if DevOps waits for approval there.
 10. **Pixel-identical visual checks** may fail on font and anti-aliasing
     differences between Figma and the browser.
-11. **Registry descriptions that disagree with the base.** Six are listed in
-    the registry skill's Flags section.
+11. **Registry descriptions that disagree with the base or the contract.**
+    Seven are listed in the registry skill's Flags section.
 12. **`staging` does not exist yet.** Neither the branch nor its Vercel
     deployment has been created.
+13. **How DevOps detects your approval.** GitHub does not let the shared
+    account approve its own pull request, so there is no review DevOps can
+    read. Anything the account can write (a comment, a label) DevOps could
+    also have written. Until a signal is chosen, DevOps opens the pull
+    request and stops.
+14. **Automations firing mid-write.** The Airtable API writes at most 10 rows
+    per call. On a large matrix, QA's writes pass through intermediate
+    statuses. A retest can briefly read Fixing and start QA again. A delay
+    or de-duplication in the automation would close this.
+15. **Agent tool names are tied to this account's connectors.** The agent
+    files name the Airtable, Figma and Vercel tools by connector ID, and the
+    browser tools of the Claude desktop app. A reconnected connector, or
+    agents running elsewhere, breaks them.
