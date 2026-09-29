@@ -45,11 +45,17 @@ const CREDENTIALS = [
 ];
 
 // 2. Private identifiers.
+// Airtable IDs are a prefix plus 14 random mixed-case alphanumerics. A camelCase
+// word of the same length (`applyRegistration`) matches the shape, so a hit must
+// also look random: a digit, or at least three capitals. A real ID fails both
+// only about 0.05% of the time.
+const looksRandom = (hit) => /\d/.test(hit.slice(3)) || (hit.slice(3).match(/[A-Z]/g) ?? []).length >= 3;
+
 function privateIdentifiers() {
   const ids = [
-    ['Airtable base ID', /\bapp[A-Za-z0-9]{14}\b/g],
-    ['Airtable table ID', /\btbl[A-Za-z0-9]{14}\b/g],
-    ['Airtable field ID', /\bfld[A-Za-z0-9]{14}\b/g],
+    ['Airtable base ID', /\bapp[A-Za-z0-9]{14}\b/g, looksRandom],
+    ['Airtable table ID', /\btbl[A-Za-z0-9]{14}\b/g, looksRandom],
+    ['Airtable field ID', /\bfld[A-Za-z0-9]{14}\b/g, looksRandom],
     ['Windows home path', /[A-Za-z]:\\\\?Users\\\\?[^\\"'\s]+/g],
     ['macOS home path', /\/Users\/[A-Za-z0-9._-]+\//g],
     ['Linux home path', /\/home\/[A-Za-z0-9._-]+\//g],
@@ -67,9 +73,19 @@ function privateIdentifiers() {
 }
 
 // 3. Environment leakage.
+// process.env reads that are allowed in a bundle, by name only. Each is a
+// guarded runtime lookup inside a bundled library, not a value the build put
+// there. Add a name only with its source and a human's review.
+const BENIGN_PROCESS_ENV = [
+  'NODE_ENV',          // replaced at build time by every bundler
+  'NODE_DEBUG',        // semver's debug switch (internal/debug.js), bundled by Storybook
+  'DEBUG_PRINT_LIMIT', // Testing Library's prettyDOM length, bundled by Storybook
+];
+
 function envPatterns() {
   const pats = [
-    ['process.env reference in client code', /process\.env\.(?!NODE_ENV\b)[A-Z_][A-Z0-9_]*/g],
+    ['process.env reference in client code',
+      new RegExp(`process\\.env\\.(?!(?:${BENIGN_PROCESS_ENV.join('|')})\\b)[A-Z_][A-Z0-9_]*`, 'g')],
     ['import.meta.env reference in client code', /import\.meta\.env\.(?!MODE\b|DEV\b|PROD\b|SSR\b|BASE_URL\b|STORYBOOK\b)[A-Z_][A-Z0-9_]*/g],
   ];
   for (const f of fs.existsSync('.') ? fs.readdirSync('.') : []) {
@@ -93,9 +109,9 @@ function* walk(dir) {
 
 function scanText(where, text, groups) {
   for (const [check, patterns] of groups) {
-    for (const [label, re] of patterns) {
+    for (const [label, re, keep = () => true] of patterns) {
       re.lastIndex = 0;
-      const hits = new Set(text.match(re) ?? []);
+      const hits = new Set((text.match(re) ?? []).filter(keep));
       for (const h of hits) add(check, where, `${label} (${h.slice(0, 12)}…)`);
     }
   }
