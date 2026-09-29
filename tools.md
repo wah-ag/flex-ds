@@ -16,7 +16,7 @@ the tools each agent role is allowed to hold. The rules for using them live in
 | Storybook 10 (`@storybook/react-vite`) | Documents every component, variant and state. Config in `.storybook/`; the preview loads all three `build/css/*.css` files and has Theme (on-light / on-dark) and Scale (web / back-office) toolbar switches that set `data-theme` / `data-scale` on `<html>`. Stories read `build/css/*.css`. Telemetry is off. | In use |
 | Lucide (`lucide-react`) | The only icon set. Import icons by name from `lucide-react`. | In use |
 | Google Fonts | Loads Sora and DM Sans, the typefaces the typography tokens name, from the Google Fonts CDN via `.storybook/preview-head.html`. | In use |
-| Git + GitHub CLI (`gh`) | Branches, commits and pull requests. Repo: `wah-ag/flex-ds`. | In use |
+| Git + GitHub CLI (`gh`) | Branches, commits and pull requests. Repo: `wah-ag/flex-ds`. Branches: `main` (production), `staging` (component branches merge here first), `component/<name>`. | In use |
 | Airtable | The registry: base `Flex-DS`. Records the evidence for each component; the `Development` formula derives its status from that evidence. | In use |
 | Vercel | Hosts the staging and production Storybook. | Planned |
 

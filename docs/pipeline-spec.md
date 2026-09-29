@@ -333,8 +333,8 @@ Not decided yet. Nothing in this document assumes an answer.
     differences between Figma and the browser.
 11. **Registry descriptions that disagree with the base or the contract.**
     Seven are listed in the registry skill's Flags section.
-12. **`staging` does not exist yet.** Neither the branch nor its Vercel
-    deployment has been created.
+12. **`staging` has no Vercel deployment yet.** The branch was created from
+    `main` on 2026-09-29; its Vercel deployment has not been set up.
 13. **How DevOps detects your approval.** GitHub does not let the shared
     account approve its own pull request, so there is no review DevOps can
     read. Anything the account can write (a comment, a label) DevOps could
