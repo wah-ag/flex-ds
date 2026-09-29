@@ -65,6 +65,13 @@ Each environment's visibility was decided by the owner on 2026-09-29:
 A staging URL that answers anonymously is a finding, and so is a production
 URL behind a login.
 
+Staging is `https://flex-ds-git-staging-design-rules-the-world.vercel.app`;
+production is `https://flex-ds-sigma.vercel.app`. Vercel's Standard
+Protection also covers one-off deployment URLs (`flex-<hash>-….vercel.app`),
+including production ones, so a production story link on such a URL fails
+`--expect public`. Build the Production Storybook link on the production
+domain.
+
 ## Flags
 
 - `--skip-audit`: offline only. The run prints `SKIPPED npm audit`, and a

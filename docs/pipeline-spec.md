@@ -333,8 +333,10 @@ Not decided yet. Nothing in this document assumes an answer.
     differences between Figma and the browser.
 11. **Registry descriptions that disagree with the base or the contract.**
     Seven are listed in the registry skill's Flags section.
-12. **`staging` has no Vercel deployment yet.** The branch was created from
-    `main` on 2026-09-29; its Vercel deployment has not been set up.
+12. **Resolved (2026-09-29): `staging` deploys on Vercel.** Project
+    `flex-ds` deploys `staging` to
+    `flex-ds-git-staging-design-rules-the-world.vercel.app` and `main` to
+    `flex-ds-sigma.vercel.app`.
 13. **How DevOps detects your approval.** GitHub does not let the shared
     account approve its own pull request, so there is no review DevOps can
     read. Anything the account can write (a comment, a label) DevOps could
@@ -353,10 +355,11 @@ Not decided yet. Nothing in this document assumes an answer.
     live security gate enforces both. Staging's protection also blocks the
     agents that must open it: the Developer (before writing Staging
     Storybook), QA (every test), DevOps (its staging check) and PM (its link
-    sweep). Neither the protection nor a way for agents to authenticate
-    through it (for example Vercel's protection bypass for automation) is
-    set up. Until both are, staging is either unprotected, so the gate fails,
-    or unreachable, so nobody can test.
+    sweep). The protection is set up (Vercel Authentication, Standard
+    Protection, 2026-09-29), and the live gate passes on staging. A way for
+    agents to authenticate through it (for example Vercel's protection
+    bypass for automation) is not set up, so staging is unreachable to them
+    and nobody can test yet.
 17. **The stack `CLAUDE.md` describes does not exist yet.** There is no
     component framework, no Storybook, no `src/`, and no
     `stories/lib/tokens.js`. `CLAUDE.md` names the entry points
