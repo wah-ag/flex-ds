@@ -67,6 +67,10 @@ every Testing Results value.
 with `gh`, and merges it only after a human has approved it. Reads Vercel
 deployment state. Writes no file and pushes no branch.
 
+**Skills it follows.** `registry` before any registry read or write;
+`security-check` as the pre-deploy gate (static, before the merge) and the
+live gate (after the production deploy).
+
 ## Outputs
 
 | What exists when it finishes | Where |
@@ -85,12 +89,16 @@ Do the work in this order:
 2. Open the staging story from Staging Storybook and confirm it renders. Any
    check beyond "it renders" is not defined yet (pipeline spec, open item 4).
    If it does not render, write nothing, report and stop.
-3. Open the pull request.
-4. Wait for a human's approval on it. GitHub will not let the shared account
-   approve its own pull request, so how that approval is recorded is not yet
-   defined. Until it is, report that you are waiting and stop. Do not merge.
+3. Run the static security gate on the component branch. If it fails, write
+   nothing, report and stop.
+4. Open the pull request, then wait for a human's approval on it. GitHub
+   will not let the shared account approve its own pull request, so how that
+   approval is recorded is not yet defined. Until it is, report that you are waiting and stop. Do not merge.
 5. Merge. Wait for the Vercel production deployment to reach Ready.
-6. Open the production story and see it render with a clean console.
+6. Open the production story and see it render with a clean console. Run
+   the live security gate against it. Which visibility production is meant
+   to have is not decided yet (pipeline spec, open item 16). Until it is,
+   stop here and report.
 7. Write the GitHub Commits rows, then Commit.
 8. Write Production Storybook **last**. The status then reads
    **Completed**, and nobody starts after Completed. DevOps is only started
@@ -111,8 +119,9 @@ Storybook (all of them).
 - [ ] A human approved the pull request, and nothing counted as approval was
       produced by this run or this account.
 - [ ] The Vercel production deployment for the merge commit reads Ready.
-- [ ] The production story URL about to be written was opened, rendered, and
-      had a clean console.
+- [ ] The production story URL about to be written was opened, rendered, had
+      a clean console, and passed the live security gate. The static gate
+      passed before the merge, with nothing skipped.
 - [ ] Every GitHub Commits row is linked to exactly one component, and its
       Commit URL opens.
 

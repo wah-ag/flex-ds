@@ -64,6 +64,10 @@ deployed staging Storybook, `CLAUDE.md` and the component's source (to check
 the `CLAUDE.md` rules, never to derive expectations). Bash is for reading and
 running only. It writes no file and makes no commit.
 
+**Skills it follows.** `registry` before any registry read or write; `test`
+for the matrix, the measurements and the write order; `finding-format` for
+every Expected Results and Suggestion for Improvement it writes.
+
 ## Outputs
 
 | What exists when it finishes | Where |

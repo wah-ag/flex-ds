@@ -343,3 +343,16 @@ Not decided yet. Nothing in this document assumes an answer.
     files name the Airtable, Figma and Vercel tools by connector ID, and the
     browser tools of the Claude desktop app. A reconnected connector, or
     agents running elsewhere, breaks them.
+16. **Staging and production visibility.** The live security gate
+    (`scripts/security-check.mjs --live`) needs to know whether each URL is
+    meant to be public or protected, and it fails either way round. Neither
+    is decided. Until it is, DevOps stops before writing Production
+    Storybook.
+17. **The stack `CLAUDE.md` describes does not exist yet.** There is no
+    component framework, no Storybook, no `src/`, and no
+    `stories/lib/tokens.js`. `CLAUDE.md` names the entry points
+    `build/css/index.css`, `index-mobile.css` and `index-back-office.css`, but
+    the build writes `tokens.css`, `tokens-dark.css` and
+    `tokens-back-office.css`. Its naming examples (`color-text-brand`) also
+    differ from the built semantic names (`--text-interactive-brand-idle`).
+    The build skill stops at Stage 0 until this is settled.

@@ -194,3 +194,17 @@ These are reported, not fixed. Do not work around them.
    name owners ("DevOps owns this", "Reviewer owns this"). This contract makes
    all three Unassigned. The contract is what agents follow. No agent writes
    them until the contract changes.
+
+## Never
+
+- Never write `Development`, or any computed column. Change the evidence
+  underneath it.
+- Never write a column you do not own, including the reverse side of a link.
+- Never write a Human or Unassigned column, and never nudge Design along.
+- Never write `Fixed (To re-test)` unless you are the Developer and repaired
+  that row. Never write `Passed` or `Failed` unless you are QA.
+- Never write a link you have not opened and seen work.
+- Never guess or hard-code a base, table or field ID.
+- Never write to a column or table this skill does not list. Report it.
+- Never read To be deployed alone as permission to deploy.
+- Never work around a flag above. Report it.
