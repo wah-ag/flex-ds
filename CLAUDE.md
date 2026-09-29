@@ -4,9 +4,12 @@ Flex DS is a design system. Design tokens are exported from Figma, built with
 Style Dictionary (`npm run build:tokens`), and consumed by components in
 `src/components/`, which are documented in Storybook.
 
-Not set up yet: the component framework, Storybook, Lucide, `src/` and the
-`staging` branch. `tools.md` marks them Planned. Until a human adds them, an
-agent that needs one reports it and stops. It does not install one itself.
+Components are React. Storybook 10 (`@storybook/react-vite`) documents them,
+and icons come from `lucide-react`.
+
+Not set up yet: the `staging` branch and Vercel. `tools.md` marks them
+Planned. Until a human adds them, an agent that needs one reports it and
+stops. It does not set one up itself.
 
 ## The system
 
@@ -25,8 +28,8 @@ agent that needs one reports it and stops. It does not install one itself.
 - Modes come from Figma. Semantic colour has `on-light` and `on-dark`; the type
   scale has `web`, `mobile` and `back-office`. A token that exists in one mode
   and not another is a design gap — report it rather than filling it in.
-- Re-run `npm run build:tokens` after any change to `tokens/`. When Storybook
-  is added, its scripts must run it first.
+- Re-run `npm run build:tokens` after any change to `tokens/`. The Storybook
+  scripts (`npm run storybook`, `npm run build-storybook`) run it first.
 
 ## Naming
 
