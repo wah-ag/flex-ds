@@ -52,12 +52,18 @@ attack, and a gate that claims to is not trustworthy.
 | --- | --- | --- | --- |
 | Developer | Before merging `component/<name>` into `staging`, after building Storybook | `node scripts/security-check.mjs storybook-static build` | Do not merge. Fix the source, never the output, then run it again. |
 | DevOps | Before merging the pull request into `main` | same | Do not merge. Report it; do not fix it. The Developer owns the fix. |
-| DevOps | After the production deploy, before writing Production Storybook | `--live <production story URL> --expect <visibility>` | Do not write Production Storybook. Report it. |
+| Developer | After the staging deploy, before writing Staging Storybook | `--live <staging story URL> --expect protected` | Do not write Staging Storybook. Report it. |
+| DevOps | After the production deploy, before writing Production Storybook | `--live <production story URL> --expect public` | Do not write Production Storybook. Report it. |
 
-Which visibility each environment is meant to have (staging and production,
-public or protected) is not decided yet. It is open item 16 in
-`docs/pipeline-spec.md`. Until it is, DevOps cannot run the live gate and
-stops before writing Production Storybook.
+Each environment's visibility was decided by the owner on 2026-09-29:
+
+| Environment | Branch | Meant to be |
+| --- | --- | --- |
+| Staging Storybook | `staging` | **Protected**: an anonymous request is refused. |
+| Production Storybook | `main` | **Public**: anyone can open it, and it carries nothing private. |
+
+A staging URL that answers anonymously is a finding, and so is a production
+URL behind a login.
 
 ## Flags
 

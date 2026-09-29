@@ -61,7 +61,8 @@ extracts. Commits and pushes `component/<name>` (kebab-case, e.g.
 
 **Skills it follows.** `registry` before any registry read or write; `build`
 for the stages of a build or a repair; `finding-format` to read a Failed row;
-`security-check` before merging into `staging`.
+`security-check` before merging into `staging` (static), and on the deployed
+staging story before writing its link (live, `--expect protected`).
 
 ## Outputs
 
@@ -107,7 +108,8 @@ write.
       console, and `node scripts/security-check.mjs storybook-static build`
       passes with nothing skipped.
 - [ ] You opened the deployed staging story at the exact URL you are about to
-      write, saw it render, and its console was clean.
+      write, saw it render, and its console was clean. The live security gate
+      passed on that URL with `--expect protected`.
 - [ ] Fix only: each row you are marking `Fixed (To re-test)` has its
       Suggestion for Improvement addressed in a commit that is on `staging`.
       Every Failed row you did not fix is still `Failed` and named in the

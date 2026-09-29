@@ -212,6 +212,11 @@ The engineer role in `CLAUDE.md` and `tools.md`.
 - **Retest scope:** on Fixing, the rows marked `Fixed (To re-test)`. On
   Fixed, the full matrix, because a fix can break a case that passed.
 - **Hard gate:** no Staging Storybook link, no test. QA waits.
+
+Staging Storybook is **protected** and production Storybook is **public**.
+The live security gate checks both: the Developer runs it on the staging
+story with `--expect protected`, and DevOps on the production story with
+`--expect public`.
 - **A row passes only if all three hold:**
   - the Storybook property values match the Figma property values;
   - the visual is pixel-identical to Figma;
@@ -343,11 +348,15 @@ Not decided yet. Nothing in this document assumes an answer.
     files name the Airtable, Figma and Vercel tools by connector ID, and the
     browser tools of the Claude desktop app. A reconnected connector, or
     agents running elsewhere, breaks them.
-16. **Staging and production visibility.** The live security gate
-    (`scripts/security-check.mjs --live`) needs to know whether each URL is
-    meant to be public or protected, and it fails either way round. Neither
-    is decided. Until it is, DevOps stops before writing Production
-    Storybook.
+16. **How agents reach the protected staging Storybook.** The owner decided
+    (2026-09-29) that staging is protected and production is public, and the
+    live security gate enforces both. Staging's protection also blocks the
+    agents that must open it: the Developer (before writing Staging
+    Storybook), QA (every test), DevOps (its staging check) and PM (its link
+    sweep). Neither the protection nor a way for agents to authenticate
+    through it (for example Vercel's protection bypass for automation) is
+    set up. Until both are, staging is either unprotected, so the gate fails,
+    or unreachable, so nobody can test.
 17. **The stack `CLAUDE.md` describes does not exist yet.** There is no
     component framework, no Storybook, no `src/`, and no
     `stories/lib/tokens.js`. `CLAUDE.md` names the entry points
