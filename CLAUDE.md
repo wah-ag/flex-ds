@@ -69,14 +69,22 @@ component after it.
 
 ## Roles
 
-- The engineer builds and fixes. It never verifies its own work.
+- The engineer (the Developer) builds and fixes. It never verifies its own
+  work.
 - QA tests and reports. It never repairs.
+- DevOps deploys to Vercel and writes the production Storybook link.
 - A human approves. No agent approves its own work, ever.
 - `token-runner` owns the Figma sync — branch, build, summarise the diff in
   designer language, then stop for review or open a PR. It holds Bash and Read
   only, deliberately: it can never edit a token.
-- **No agent merges to main, and no agent pushes to main.** Agents open pull
-  requests; a human merges them.
+- **No agent pushes to main.** Agents open pull requests. Exactly two merges
+  are delegated to agents; a human merges everything else, including every
+  token sync:
+  - The Developer merges its own component branch into `staging`.
+  - DevOps merges a component branch into `main`: one pull request per
+    component, plus any component it composes that is not yet on `main`. It
+    merges only after a human has approved that pull request, and only once
+    QA has passed every Staging Testing row for every component in it.
 
 ## Common failures to avoid
 
