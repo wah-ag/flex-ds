@@ -16,8 +16,24 @@ Static mode, `node scripts/security-check.mjs [dir ...]` (default dirs:
 | # | Check | How |
 | --- | --- | --- |
 | 1 | Credentials in build output | Provider-specific patterns, not entropy: Airtable PAT, GitHub classic and fine-grained tokens, Figma PAT, Anthropic, OpenAI, AWS access key ID, Google API key, Slack, Stripe live, npm, PEM private key blocks. |
-| 2 | Private identifiers | Airtable base, table and field IDs of any shape; this repo's own IDs from `.claude/registry.local.json`; the git author email; Windows, macOS and Linux home paths. |
-| 3 | Environment leakage into client JS | `process.env.*` (except `NODE_ENV`) and non-public `import.meta.env.*` left in a bundle; the literal value of every variable in a local `.env*` file (except `.env.example`). |
+| 2 | Private identifiers | Airtable base, table and field IDs of any shape that looks random (a digit, or at least three capitals, in the 14 characters after `app`/`tbl`/`fld`); this repo's own IDs from `.claude/registry.local.json`; the git author email; Windows, macOS and Linux home paths. |
+| 3 | Environment leakage into client JS | `process.env.*` and non-public `import.meta.env.*` left in a bundle, except the names in `BENIGN_PROCESS_ENV` (see below); the literal value of every variable in a local `.env*` file (except `.env.example`). |
+
+### Reviewed exceptions
+
+Each was approved by the owner on 2026-09-29 in a pull request of its own,
+after it produced a false positive on the Storybook build. Nothing else is
+exempt, and no file or directory is skipped.
+
+| Exception | Why |
+| --- | --- |
+| Airtable ID must look random | `applyRegistration`, in Storybook's manager runtime, is `app` + 14 letters. Real IDs are random mixed case, so they almost always have a digit or three capitals. |
+| `process.env.NODE_ENV` | Replaced at build time by every bundler. |
+| `process.env.NODE_DEBUG` | semver's debug switch (`internal/debug.js`), a guarded runtime read bundled by Storybook. It holds no value. |
+| `process.env.DEBUG_PRINT_LIMIT` | Testing Library's `prettyDOM` length, a guarded runtime read bundled by Storybook. It holds no value. |
+
+A new exception needs the same: its source, why it cannot carry a secret, and
+a human's review in its own pull request.
 | 4 | Dependency advisories | `npm audit`; any high or critical advisory fails. If audit cannot run, that is a failure, not a pass. |
 | 5 | Dirty working tree | `git status --porcelain` must be empty: what ships must be what is committed. |
 
@@ -41,6 +57,8 @@ attack, and a gate that claims to is not trustworthy.
 - Secrets with no provider-specific shape: Vercel tokens, passwords, generic
   random keys. It does not use entropy, by design.
 - Secrets that are encoded, split, or built at runtime.
+- An Airtable ID with no digit and fewer than three capitals, about 0.05% of
+  real IDs.
 - Git history. It reads the working tree and the output, not past commits.
 - Vulnerabilities in the code itself: XSS, injection, unsafe `dangerouslySetInnerHTML`.
 - Supply-chain risk beyond what `npm audit` knows about.
@@ -99,12 +117,23 @@ Verified 2026-09-29 on a scratch fixture:
 - Live: a 200 page passes as `public` and fails as `protected`; a 401 page
   passes as `protected` and fails as `public`; no `--expect` exits 2.
 
+Re-verified 2026-09-29 after the reviewed exceptions were added:
+
+- All 12 credential types, fake Airtable app/tbl/fld IDs (including one with
+  no digit and three capitals), `process.env.SECRET_KEY`,
+  `process.env.NODE_DEBUGGER` and `import.meta.env.VITE_SECRET`: 19 of 19
+  caught.
+- `applyRegistration`, `tblFormatterNote` and guarded reads of `NODE_DEBUG`,
+  `DEBUG_PRINT_LIMIT` and `NODE_ENV`: passed.
+- The real Storybook build (`storybook-static build`): passed.
+
 ## Never
 
 - Never mark a gate passed when a check was skipped or could not run.
 - Never fix a finding in the build output. Fix the source and rebuild.
 - Never add an allowlist entry, weaken a pattern, or pass `--allow-dirty` to
-  get a green run.
+  get a green run. An exception goes through "Reviewed exceptions" above, in
+  its own pull request, or not at all.
 - Never paste a found credential into a report, a registry cell or a
   message. The script prints only its first 12 characters; quote no more.
 - Never guess `--expect`.
