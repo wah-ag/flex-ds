@@ -4,6 +4,10 @@ Flex DS is a design system. Design tokens are exported from Figma, built with
 Style Dictionary (`npm run build:tokens`), and consumed by components in
 `src/components/`, which are documented in Storybook.
 
+Not set up yet: the component framework, Storybook, Lucide, `src/` and the
+`staging` branch. `tools.md` marks them Planned. Until a human adds them, an
+agent that needs one reports it and stops. It does not install one itself.
+
 ## The system
 
 - Tokens are the only source of visual values. Every colour, space, radius,
@@ -16,20 +20,29 @@ Style Dictionary (`npm run build:tokens`), and consumed by components in
 - Three layers, consumed in one direction: core primitives → semantic roles →
   composite styles (typography, elevation). Components use semantic tokens
   only. A component referencing `--color-blue-500` is wrong; it should
-  reference `--color-text-brand` or `--color-background-interactive-*`.
+  reference `--text-interactive-brand-idle` or
+  `--background-interactive-brand-*`.
 - Modes come from Figma. Semantic colour has `on-light` and `on-dark`; the type
   scale has `web`, `mobile` and `back-office`. A token that exists in one mode
   and not another is a design gap — report it rather than filling it in.
-- Re-run `npm run build:tokens` after any change to `tokens/`. Both Storybook
-  scripts do this for you.
+- Re-run `npm run build:tokens` after any change to `tokens/`. When Storybook
+  is added, its scripts must run it first.
 
 ## Naming
 
 - Token names come from Figma. Do not rename in the pipeline.
-- Token names read category, then property, then role:
-  `color-text-brand`, `spacing-padding-md`, `border-radius-sm`, `size-icon-lg`.
-- Semantic colour reads `color-<surface>-<role>-<variant>`:
-  `color-text-disabled-primary`, `color-border-brand-secondary`.
+- Core and scale token names read category, then property, then role:
+  `color-navy-500`, `spacing-padding-md`, `border-radius-sm`, `size-icon-lg`.
+- Semantic colour has no `color-` prefix. It reads
+  `<surface>-<group>-<role>-<state>`: `text-interactive-brand-idle`,
+  `background-interactive-danger-press`, `border-interactive-secondary-focus`.
+  - Surface: `background`, `text`, `icon`, `border`.
+  - Group: `neutral`, `interactive`, `accent`.
+  - State: `idle`, `hover`, `press`, `focus`, `disable`. Some roles have no
+    states (`text-interactive-danger`), and neutral roles name a weight
+    instead (`text-neutral-primary`, `border-neutral-disable`).
+- Take a token's name from `build/css/`, never from memory or from an example
+  in this file.
 - Mode is a file, never a suffix. There is no `-dark` or `-mobile` in a token
   name; the same name resolves differently per mode.
 - An `a` suffix means the token carries an alpha channel. If it exports opaque,
@@ -57,15 +70,21 @@ component after it.
   are composed from smaller components. When part of a component is (or could
   be) used elsewhere, extract it into its own subcomponent in
   `src/components/`, then import it back into the parent.
-- Consume a platform entry point (`build/css/index.css`,
-  `index-mobile.css`, `index-back-office.css`), never an individual token file.
+- Consume the built CSS, never the JSON in `tokens/`. Load
+  `build/css/tokens.css` (core, on-light colour, web scale, typography,
+  effects) and `build/css/tokens-dark.css` (dark overrides under
+  `[data-theme="dark"]`). For back office, also load
+  `build/css/tokens-back-office.css` (overrides under
+  `[data-scale="back-office"]`). There is no mobile CSS: the mobile scale
+  ships only to iOS and Android.
 - Dark mode is `[data-theme="dark"]` on an ancestor. Never branch on theme in
   JavaScript, and never read a token value to decide something — let the
   cascade resolve it.
 - Stories derive their content from the build output, never from a hand-kept
   list of token names. A list typed into a story is wrong the day a token is
-  added, and nobody notices. `stories/lib/tokens.js` parses `build/css/*.css`
-  for exactly this reason.
+  added, and nobody notices. Stories parse `build/css/*.css` instead. The
+  parser belongs in `stories/lib/tokens.js`, which is written together with
+  the first story.
 
 ## Roles
 
@@ -73,6 +92,8 @@ component after it.
   work.
 - QA tests and reports. It never repairs.
 - DevOps deploys to Vercel and writes the production Storybook link.
+- PM audits the registry on a schedule and writes only its report. It never
+  writes the registry.
 - A human approves. No agent approves its own work, ever.
 - `token-runner` owns the Figma sync — branch, build, summarise the diff in
   designer language, then stop for review or open a PR. It holds Bash and Read
@@ -102,7 +123,9 @@ component after it.
   changed".
 
 ## Typography
-- Install required font and load properly from Google Font CDN
+- Load the families the typography tokens name, Sora and DM Sans
+  (`--typography-font-family-*`), from the Google Fonts CDN. Do not
+  self-host them or install a font package.
 
 ## Icon
 - Icons come from Lucide (https://lucide.dev/icons/) and nowhere else. Install
