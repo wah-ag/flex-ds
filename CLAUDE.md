@@ -8,10 +8,12 @@ Components are React. Storybook 10 (`@storybook/react-vite`) documents them,
 and icons come from `lucide-react`.
 
 The `staging` branch exists; component branches merge into it before `main`.
+Vercel project `flex-ds` builds both: `staging` is protected, `main` is public.
 
-Not set up yet: Vercel, so there is no staging or production Storybook URL.
-`tools.md` marks it Planned. Until a human adds it, an agent that needs it
-reports it and stops. It does not set it up itself.
+Not set up yet: a way for agents to get through staging's protection (see
+`docs/pipeline-spec.md`, open item 16). Until a human sets one up, an agent
+that needs to open the staging Storybook reports it and stops. It does not
+set one up itself, and it does not turn the protection off.
 
 ## The system
 

@@ -18,7 +18,7 @@ the tools each agent role is allowed to hold. The rules for using them live in
 | Google Fonts | Loads Sora and DM Sans, the typefaces the typography tokens name, from the Google Fonts CDN via `.storybook/preview-head.html`. | In use |
 | Git + GitHub CLI (`gh`) | Branches, commits and pull requests. Repo: `wah-ag/flex-ds`. Branches: `main` (production), `staging` (component branches merge here first), `component/<name>`. | In use |
 | Airtable | The registry: base `Flex-DS`. Records the evidence for each component; the `Development` formula derives its status from that evidence. | In use |
-| Vercel | Hosts the staging and production Storybook. | Planned |
+| Vercel | Hosts the staging and production Storybook. Project `flex-ds` in team `design-rules-the-world` (Hobby), built with `npm run build-storybook` into `storybook-static`. Every push to `staging` or `main` deploys. Staging: `https://flex-ds-git-staging-design-rules-the-world.vercel.app`, protected by Vercel Authentication (Standard Protection). Production: `https://flex-ds-sigma.vercel.app`, public. Standard Protection also protects the one-off deployment URLs (`flex-<hash>-….vercel.app`), so a Production Storybook link must use the production domain. | In use |
 
 Don't add a tool or dependency that isn't on this list without a human
 agreeing to it first. If the existing stack already solves the problem, use it.
@@ -64,7 +64,7 @@ The mobile scale ships only to iOS and Android; there is no mobile CSS file.
 | `npm run build:tokens` | Rebuilds `build/` from `tokens/`. Run it after every token export. |
 | `npm run check:tokens` | Reports mode gaps and opaque `a`-suffixed tokens. Read-only; exits 1 on a problem. |
 | `npm run storybook` | Rebuilds tokens, then runs Storybook on http://localhost:6006. |
-| `npm run build-storybook` | Rebuilds tokens, then builds the static Storybook into `storybook-static/` (gitignored). This is what Vercel will build. |
+| `npm run build-storybook` | Rebuilds tokens, then builds the static Storybook into `storybook-static/` (gitignored). This is what Vercel builds. |
 | `node scripts/security-check.mjs [dir ...]` | The security gate: credentials, private IDs and env leakage in build output, npm audit, dirty tree. `--live <url> --expect public\|protected` checks a deployment. No dependencies; exits 1 on a finding. See the `security-check` skill. |
 | `git switch -c <branch>` | Starts work on a new branch. Never work on `main`. |
 | `gh pr create` | Opens a pull request. A human reviews and merges it, except the two merges `CLAUDE.md` delegates. |
