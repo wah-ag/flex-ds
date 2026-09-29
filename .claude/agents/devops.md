@@ -96,9 +96,8 @@ Do the work in this order:
    approval is recorded is not yet defined. Until it is, report that you are waiting and stop. Do not merge.
 5. Merge. Wait for the Vercel production deployment to reach Ready.
 6. Open the production story and see it render with a clean console. Run
-   the live security gate against it. Which visibility production is meant
-   to have is not decided yet (pipeline spec, open item 16). Until it is,
-   stop here and report.
+   the live security gate against it with `--expect public`. If it fails,
+   write nothing, report and stop.
 7. Write the GitHub Commits rows, then Commit.
 8. Write Production Storybook **last**. The status then reads
    **Completed**, and nobody starts after Completed. DevOps is only started

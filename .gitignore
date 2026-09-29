@@ -2,7 +2,7 @@
 node_modules/
 
 # Generated token output (rebuild with `npm run build:tokens`)
-build/
+/build/
 
 # Logs
 npm-debug.log*
