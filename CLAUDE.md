@@ -7,9 +7,11 @@ Style Dictionary (`npm run build:tokens`), and consumed by components in
 Components are React. Storybook 10 (`@storybook/react-vite`) documents them,
 and icons come from `lucide-react`.
 
-Not set up yet: the `staging` branch and Vercel. `tools.md` marks them
-Planned. Until a human adds them, an agent that needs one reports it and
-stops. It does not set one up itself.
+The `staging` branch exists; component branches merge into it before `main`.
+
+Not set up yet: Vercel, so there is no staging or production Storybook URL.
+`tools.md` marks it Planned. Until a human adds it, an agent that needs it
+reports it and stops. It does not set it up itself.
 
 ## The system
 
