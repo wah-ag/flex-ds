@@ -39,7 +39,7 @@ Each item names the column to report and its owner.
 | `Development` differs from the recomputed status | The evidence column that explains it | Its owner |
 | Synchronization % differs from the share of rows reading `Passed` (registry flag 5) | Staging Passed Count | Nobody (computed). Addressed to you, as a base-configuration finding. |
 | A Staging Testing row with Composed In empty | Composed In | QA |
-| A row with blank Testing Results on a component past Ready for Testing | Testing Results | QA |
+| A row with blank Testing Results on a component past Ready for Testing, still blank when you re-read that component's rows at the end of the sweep | Testing Results | QA |
 | To be deployed or Completed, but Composes lists a component not Completed | Composes / the composed component's evidence | Developer / owner of that evidence |
 | Commit set with no GitHub Commits row, or Production Storybook set with no Commit | Commit / GitHub Commits | DevOps |
 | A GitHub Commits row linked to no component | GitHub Commits (on Components) | DevOps |
@@ -48,6 +48,10 @@ Each item names the column to report and its owner.
 | Development past To-do while Design is not `Done` | Design | Designer |
 | A value in Astro Link, Release Review or Release Verdict | That column | Unassigned — addressed to you |
 | A column in the base that the registry skill does not list | That column | Addressed to you |
+
+QA leaves Testing Results blank on new rows while it writes a round (`test`
+skill, step 8). A blank seen once may be a write in progress. It is a finding
+only if it is still blank on the re-read.
 
 When you find a contradiction this table does not cover, report it, then
 propose adding a row here in the report's closing lines.

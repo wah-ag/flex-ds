@@ -11,7 +11,7 @@ description: Exporting flex-ds tokens from Figma and rebuilding them — what is
 | --- | --- | --- |
 | `tokens/*.tokens.json`, `tokens/manifest.json` | The Figma plugin export | Never. Not by Edit, `sed`, a redirect, or a script. A patch here is destroyed by the next export. |
 | `build/css`, `build/ios`, `build/android` | `npm run build:tokens` (`build-tokens.js`, Style Dictionary 5) | Never. It is gitignored and rebuilt from `tokens/`. |
-| `build-tokens.js`, `scripts/check-tokens.js` | The Developer, through a pull request | Only as code, never to hide a token problem. |
+| `build-tokens.js`, `scripts/check-tokens.js` | A pull request a human reviews, outside the component loop. Not the developer agent during a build or repair round: its Access is `src/components/` only. | Only as code, never to hide a token problem. |
 
 A missing or wrong token is fixed in Figma and re-exported. It is never added
 to a generated file.
