@@ -11,9 +11,11 @@ the tools each agent role is allowed to hold. The rules for using them live in
 | Figma (variables + styles) | Source of truth for every token and mode. Exports JSON into `tokens/`. | In use |
 | Node.js + npm | Runs the build scripts. The project is an ES module (`"type": "module"`). | In use |
 | Style Dictionary 5 | Turns `tokens/` into platform output in `build/`, via `build-tokens.js`. | In use |
-| Storybook | Documents every component, variant and state. Stories read `build/css/*.css`. | Planned |
-| Lucide | The only icon set. Import icons by name from the Lucide package (e.g. `lucide-react`). | Planned |
-| Google Fonts | Loads the typefaces used by the typography tokens, from the Google Fonts CDN. | Planned |
+| React 19 | The component framework. Components are `.jsx` in `src/components/`. | In use |
+| Vite 8 + `@vitejs/plugin-react` | Bundles Storybook. `vite.config.js` adds the React plugin (JSX and hot reload). | In use |
+| Storybook 10 (`@storybook/react-vite`) | Documents every component, variant and state. Config in `.storybook/`; the preview loads all three `build/css/*.css` files and has Theme (on-light / on-dark) and Scale (web / back-office) toolbar switches that set `data-theme` / `data-scale` on `<html>`. Stories read `build/css/*.css`. Telemetry is off. | In use |
+| Lucide (`lucide-react`) | The only icon set. Import icons by name from `lucide-react`. | In use |
+| Google Fonts | Loads Sora and DM Sans, the typefaces the typography tokens name, from the Google Fonts CDN via `.storybook/preview-head.html`. | In use |
 | Git + GitHub CLI (`gh`) | Branches, commits and pull requests. Repo: `wah-ag/flex-ds`. | In use |
 | Airtable | The registry: base `Flex-DS`. Records the evidence for each component; the `Development` formula derives its status from that evidence. | In use |
 | Vercel | Hosts the staging and production Storybook. | Planned |
@@ -61,6 +63,8 @@ The mobile scale ships only to iOS and Android; there is no mobile CSS file.
 | `npm install` | Installs dependencies. |
 | `npm run build:tokens` | Rebuilds `build/` from `tokens/`. Run it after every token export. |
 | `npm run check:tokens` | Reports mode gaps and opaque `a`-suffixed tokens. Read-only; exits 1 on a problem. |
+| `npm run storybook` | Rebuilds tokens, then runs Storybook on http://localhost:6006. |
+| `npm run build-storybook` | Rebuilds tokens, then builds the static Storybook into `storybook-static/` (gitignored). This is what Vercel will build. |
 | `node scripts/security-check.mjs [dir ...]` | The security gate: credentials, private IDs and env leakage in build output, npm audit, dirty tree. `--live <url> --expect public\|protected` checks a deployment. No dependencies; exits 1 on a finding. See the `security-check` skill. |
 | `git switch -c <branch>` | Starts work on a new branch. Never work on `main`. |
 | `gh pr create` | Opens a pull request. A human reviews and merges it, except the two merges `CLAUDE.md` delegates. |

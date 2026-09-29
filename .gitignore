@@ -33,3 +33,6 @@ desktop.ini
 # Misc
 .cache/
 coverage/
+
+# Storybook static build
+storybook-static/

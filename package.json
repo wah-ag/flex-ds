@@ -2,17 +2,26 @@
   "name": "flex-ds",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build:tokens": "node build-tokens.js",
-    "check:tokens": "node scripts/check-tokens.js"
+    "check:tokens": "node scripts/check-tokens.js",
+    "storybook": "npm run build:tokens && storybook dev -p 6006",
+    "build-storybook": "npm run build:tokens && storybook build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "style-dictionary": "^5.5.5"
+    "@storybook/react-vite": "^10.6.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "storybook": "^10.6.0",
+    "style-dictionary": "^5.5.5",
+    "vite": "^8.3.1"
+  },
+  "dependencies": {
+    "lucide-react": "^1.48.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   }
 }
