@@ -40,6 +40,9 @@ in the contract or the base, and is not audited.
 previous report. Its only write is `reports/registry-sweep.md`, overwritten
 on each sweep. It makes no commit.
 
+**Skills it follows.** `registry` for the owners, the formula and the known
+flags; `sweep` for the audit procedure and the report's structure.
+
 ## Outputs
 
 | What exists when it finishes | Where |
@@ -52,23 +55,8 @@ on each sweep. It makes no commit.
 | Section 5: dead links, each with the URL, the column and its owner | Report |
 | Hand-off: none. Status starts agents; the report only tells owners what the evidence says | — |
 
-Contradictions it hunts, at minimum:
-
-- `Development` differs from what the formula's precedence gives for the
-  row's own evidence.
-- Synchronization % differs from the share of the component's rows that
-  actually read `Passed` (registry flag 5).
-- A Staging Testing row with Composed In empty, or with a blank Testing
-  Results on a component past Ready for Testing.
-- A component reading To be deployed or Completed that composes a component
-  not reading Completed.
-- Commit set with no GitHub Commits row, a GitHub Commits row linked to
-  nothing, or Production Storybook set with no Commit.
-- A folder in `src/components/` with no registry row, or a row past To-do
-  with no folder.
-- A value in an Unassigned column (Astro Link, Release Review, Release
-  Verdict).
-- Development past To-do while Design is not `Done`.
+The contradictions it hunts, and the owner each is addressed to, are in the
+`sweep` skill's checklist.
 
 ## Self-check
 

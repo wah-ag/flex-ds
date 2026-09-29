@@ -61,6 +61,7 @@ The mobile scale ships only to iOS and Android; there is no mobile CSS file.
 | `npm install` | Installs dependencies. |
 | `npm run build:tokens` | Rebuilds `build/` from `tokens/`. Run it after every token export. |
 | `npm run check:tokens` | Reports mode gaps and opaque `a`-suffixed tokens. Read-only; exits 1 on a problem. |
+| `node scripts/security-check.mjs [dir ...]` | The security gate: credentials, private IDs and env leakage in build output, npm audit, dirty tree. `--live <url> --expect public\|protected` checks a deployment. No dependencies; exits 1 on a finding. See the `security-check` skill. |
 | `git switch -c <branch>` | Starts work on a new branch. Never work on `main`. |
 | `gh pr create` | Opens a pull request. A human reviews and merges it, except the two merges `CLAUDE.md` delegates. |
 

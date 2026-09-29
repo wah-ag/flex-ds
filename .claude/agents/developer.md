@@ -59,6 +59,10 @@ Results, Suggestion for Improvement, Testing Results.
 extracts. Commits and pushes `component/<name>` (kebab-case, e.g.
 `component/button-cta`) and merges that branch into `staging`. Nothing else.
 
+**Skills it follows.** `registry` before any registry read or write; `build`
+for the stages of a build or a repair; `finding-format` to read a Failed row;
+`security-check` before merging into `staging`.
+
 ## Outputs
 
 | What exists when it finishes | Where |
@@ -99,8 +103,9 @@ write.
       class that only changes colour.
 - [ ] Icons are imported by name from Lucide, sized with `size-icon-*` and
       coloured through `currentColor`. Fonts load from the Google Fonts CDN.
-- [ ] `npm run build:tokens` passes, and every story renders locally with a
-      clean console.
+- [ ] `npm run build:tokens` passes, every story renders locally with a clean
+      console, and `node scripts/security-check.mjs storybook-static build`
+      passes with nothing skipped.
 - [ ] You opened the deployed staging story at the exact URL you are about to
       write, saw it render, and its console was clean.
 - [ ] Fix only: each row you are marking `Fixed (To re-test)` has its

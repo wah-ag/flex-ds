@@ -31,6 +31,10 @@ generated output and is gitignored — never stage it.
 
 ## Context you can rely on
 
+- The `tokens` skill (`.claude/skills/tokens/SKILL.md`) holds what is
+  generated, the collections and modes, how to tell a real gap from a naming
+  mistake, and how to verify a rebuild. Read it before step 2.
+
 - `npm run build:tokens` runs `node build-tokens.js`, reading `tokens/*.json`
   and writing `build/{css,android,ios}/`. `build/` is gitignored, so the build
   is a **validation gate**: it proves the export resolves. Only `tokens/` is
