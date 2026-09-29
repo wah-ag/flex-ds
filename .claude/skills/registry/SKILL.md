@@ -27,7 +27,10 @@ of the registry — report it rather than writing to it.
 - **Human** columns are written by a person. No agent writes them, and no
   agent nudges them along.
 - **Unassigned** columns belong to work that is out of scope for now
-  (documentation, release review, PM, feedback intake). No agent writes them.
+  (documentation, release review, feedback intake). No agent writes them.
+- **PM owns no column.** It reads Components, Staging Testing and GitHub
+  Commits in full and writes nothing in the registry. Its only output is its
+  report file.
 - Writing one side of a linked-record pair also changes the other side. The
   owner of the pair writes from the side marked as theirs; the reverse side is
   listed as computed.
@@ -147,7 +150,23 @@ changes.
 | Fixing | QA (retest) |
 | To be fixed | Developer (fix) |
 | To be deployed **and** Synchronization % = 100% | DevOps |
-| Completed | Nobody for now (documentation is out of scope) |
+| Completed | Nobody (documentation is out of scope) |
+
+Two agents are started by a schedule, not by a status:
+
+- **QA (token re-test).** After a token sync is merged, a cron starts QA for
+  the affected Completed components. No status change wakes QA for a
+  Completed component.
+- **PM.** A cron starts the sweep. No status wakes PM.
+
+Agents read these statuses exactly as the formula defines them. Where the
+FigJam board words a condition differently (for example "All = Passed" for
+To be deployed, or "all" and "few" re-test rows for Fixed and Fixing), the
+formula wins.
+
+There is no Production Testing table. The FigJam board shows "Production
+testing records". That is a board error, and no agent reads or writes such a
+table.
 
 ## Flags — where a description and the base disagree
 
@@ -171,3 +190,7 @@ These are reported, not fixed. Do not work around them.
 6. The API does not expose rollup aggregation functions, so the aggregation
    of Staging Testing Results Summary and Staging Passed Tests could not be
    checked against their descriptions.
+7. **Astro Link, Release Review, Release Verdict** — the field descriptions
+   name owners ("DevOps owns this", "Reviewer owns this"). This contract makes
+   all three Unassigned. The contract is what agents follow. No agent writes
+   them until the contract changes.
