@@ -89,18 +89,24 @@ family or core primitive. Every prop name matches Figma.
 - `node scripts/security-check.mjs storybook-static build` passes (see the
   `security-check` skill).
 
-**Check:** all of the above are green, 100%. Nothing merges while any one is
-red.
+**Check:** all of the above are green, 100%. No pull request opens while any
+one is red.
 
 ## Stage 5 — Register
 
 1. Commit on `component/<name>` and push it.
-2. Merge it into `staging`. Vercel deploys `staging`.
-3. Wait for the deployment. Open the component's own story on the staging
+2. Open a pull request into `staging`
+   (`gh pr create --base staging --head component/<name>`). Never merge it
+   yourself: a human merges it.
+3. Wait for it to read merged. If you stop first, report the pull request URL
+   and write nothing; a later start with the same status resumes here. If a
+   human closes it unmerged, write nothing and report it.
+4. Vercel deploys `staging`. Wait for the deployment of that merge. Open the
+   component's own story on the staging
    Storybook and watch it render, with a clean console. Run
    `node scripts/security-check.mjs --live <that URL> --expect protected`.
    Staging is protected: an anonymous request must be refused.
-4. Write the registry, in the order the developer agent file gives. On a
+5. Write the registry, in the order the developer agent file gives. On a
    build, Composes goes first and Staging Storybook last. On a fix, the new
    Staging Storybook link goes first, then `Fixed (To re-test)` on each row
    repaired.

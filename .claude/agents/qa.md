@@ -148,9 +148,9 @@ write results.
   the status by themselves.
 - Never write `Development`.
 - Never write a GitHub Commits row. That table is DevOps's.
-- Never merge anything, or tell anyone to deploy. The Developer merges into
-  `staging`, DevOps merges an approved pull request into `main`, and a status
-  starts DevOps, not you.
+- Never merge anything, or tell anyone to deploy. A human merges the
+  Developer's pull request into `staging`, DevOps merges an approved
+  `staging` → `main` pull request, and a status starts DevOps, not you.
 - Never report only failures. Passes are rows too.
 - Never delete a failing row, skip a case to shrink the matrix, or write one
   row per component instead of one per case.

@@ -16,7 +16,7 @@ the tools each agent role is allowed to hold. The rules for using them live in
 | Storybook 10 (`@storybook/react-vite`) | Documents every component, variant and state. Config in `.storybook/`; the preview loads all three `build/css/*.css` files and has Theme (on-light / on-dark) and Scale (web / back-office) toolbar switches that set `data-theme` / `data-scale` on `<html>`. Stories read `build/css/*.css`. Telemetry is off. | In use |
 | Lucide (`lucide-react`) | The only icon set. Import icons by name from `lucide-react`. | In use |
 | Google Fonts | Loads Sora and DM Sans, the typefaces the typography tokens name, from the Google Fonts CDN via `.storybook/preview-head.html`. | In use |
-| Git + GitHub CLI (`gh`) | Branches, commits and pull requests. Repo: `wah-ag/flex-ds`. Branches: `main` (production), `staging` (component branches merge here first), `component/<name>`. | In use |
+| Git + GitHub CLI (`gh`) | Branches, commits and pull requests. Repo: `wah-ag/flex-ds`. Branches: `main` (production; receives only `staging`), `staging` (component branches reach it by pull request, merged by a human), `component/<name>`. | In use |
 | Airtable | The registry: base `Flex-DS`. Records the evidence for each component; the `Development` formula derives its status from that evidence. | In use |
 | Vercel | Hosts the staging and production Storybook. Project `flex-ds` in team `design-rules-the-world` (Hobby), built with `npm run build-storybook` into `storybook-static`. Every push to `staging` or `main` deploys. Staging: `https://flex-ds-git-staging-design-rules-the-world.vercel.app`, protected by Vercel Authentication (Standard Protection). Production: `https://flex-ds-sigma.vercel.app`, public. Standard Protection also protects the one-off deployment URLs (`flex-<hash>-….vercel.app`), so a Production Storybook link must use the production domain. | In use |
 
@@ -67,7 +67,7 @@ The mobile scale ships only to iOS and Android; there is no mobile CSS file.
 | `npm run build-storybook` | Rebuilds tokens, then builds the static Storybook into `storybook-static/` (gitignored). This is what Vercel builds. |
 | `node scripts/security-check.mjs [dir ...]` | The security gate: credentials, private IDs and env leakage in build output, npm audit, dirty tree. `--live <url> --expect public\|protected` checks a deployment. No dependencies; exits 1 on a finding. See the `security-check` skill. |
 | `git switch -c <branch>` | Starts work on a new branch. Never work on `main`. |
-| `gh pr create` | Opens a pull request. A human reviews and merges it, except the two merges `CLAUDE.md` delegates. |
+| `gh pr create` | Opens a pull request. A human reviews and merges it, except the one merge `CLAUDE.md` delegates (DevOps, `staging` → `main`). |
 
 ## Agent roles and their tools
 
@@ -84,10 +84,11 @@ accidentally edit.
 ### Blocked for every agent
 
 - `git push` to `main`.
+- `git push` to `staging`.
 - Merging any pull request (`gh pr merge`, merging in the GitHub UI), except
-  the two merges `CLAUDE.md` delegates: the Developer merging its own
-  component branch into `staging`, and DevOps merging a human-approved
-  component branch into `main`.
+  the one merge `CLAUDE.md` delegates: DevOps merging a human-approved
+  `staging` → `main` pull request. The Developer's pull request into
+  `staging` is merged by a human.
 - Writing to `tokens/` or `build/` by any route: Edit, Write, `sed`, shell
   redirects, or a script.
 - Installing a new dependency without a human agreeing to it.

@@ -57,7 +57,7 @@ not been filled in anywhere else in this document.
 | QA | Agent | Ready for Testing, Fixed, Fixing; the token re-test schedule | Developer or DevOps |
 | DevOps | Agent | To be deployed **and** Synchronization % = 100% | Nobody — Completed is the end |
 | PM | Agent | The sweep schedule | Nobody — it reports to owners through its report file |
-| You (approver) | Human | A pull request waiting for you | DevOps, or `main` directly |
+| You (approver) | Human | A pull request waiting for you | The Developer (after you merge into `staging`), DevOps (after you approve `staging` → `main`) |
 
 ## How work moves
 
@@ -105,13 +105,20 @@ hands off comes last:
 
 ## Branches and merges
 
+Changed by the owner on 2026-09-30: component branches no longer go to
+`main`, and the Developer no longer merges.
+
 - Every component has its own branch, named `component/<name>` (for example
-  `component/button-cta`).
-- The Developer merges its component branch into the shared `staging` branch.
-  Vercel deploys `staging` automatically.
-- DevOps opens one pull request per component from its component branch to
-  `main`, including any component it composes that is not on `main` yet. You
-  approve it; DevOps merges it.
+  `component/button-cta`), branched from `staging`.
+- The Developer opens a pull request from its component branch into the
+  shared `staging` branch and stops there. You merge it. Vercel deploys
+  `staging` automatically, and only then does the Developer write the staging
+  Storybook link.
+- `main` receives only `staging`. DevOps opens one pull request, `staging` →
+  `main`, and only once every component on `staging` that is not yet on
+  `main` has passed every QA row. One untested or failing component holds
+  back the rest. You approve it; DevOps merges it. DevOps is the only agent
+  that merges into `main`.
 - token-runner works only on `tokens-update`. You merge its pull requests.
 - No agent pushes to `main`. `main` is protected: pull requests only, no force
   push, no deletion, enforced for admins too.
@@ -171,7 +178,8 @@ The engineer role in `CLAUDE.md` and `tools.md`.
     Suggestion for Improvement;
   - `CLAUDE.md` and the registry skill.
 - **Writes:**
-  - code on `component/<name>`, merged into `staging`;
+  - code on `component/<name>`, and a pull request from it into `staging`
+    that you merge;
   - Staging Storybook: the component's own story, replaced with a new link
     after each fix;
   - Composes: the components this one imports;
@@ -181,10 +189,13 @@ The engineer role in `CLAUDE.md` and `tools.md`.
   - edit `tokens/` or `build/`;
   - write `Passed` or `Failed`;
   - write the status;
-  - merge anything except its own branch into `staging`;
+  - merge anything, including its own pull request into `staging`;
+  - write Staging Storybook before you have merged its pull request;
   - touch `main`;
   - verify its own work.
 - **Hands off when:**
+  - **Pull request open:** to you, to merge into `staging`. The registry is
+    unchanged until you do.
   - **Build:** Staging Storybook is set. The status becomes Ready for Testing,
     which starts QA.
   - **Fix:** it marks a fixed row `Fixed (To re-test)`. The status becomes
@@ -241,19 +252,21 @@ story with `--expect protected`, and DevOps on the production story with
 
 - **Started by:** To be deployed **and** Synchronization % = 100%.
 - **Reads:**
-  - the component's row, including Composes, to find composed components not
-    yet on `main`;
-  - its Staging Testing results;
-  - its staging Storybook link, which it checks before deploying.
+  - every component on `staging` not yet on `main`: rows with Staging
+    Storybook set and Production Storybook blank, plus every component folder
+    `staging` changes relative to `main`;
+  - their Staging Testing results;
+  - their staging Storybook links, which it checks before deploying.
 - **Writes:**
-  - a pull request from `component/<name>` to `main`;
-  - after the merge: Production Storybook, Commit, and a GitHub Commits row
-    per commit.
+  - one pull request from `staging` to `main`;
+  - after the merge, for each shipped component: Production Storybook,
+    Commit, and a GitHub Commits row per commit.
 - **Does, in order:**
   1. Verifies its gate from the registry: every Staging Testing row of every
-     component in the pull request reads `Passed`. It does not rely on
-     Synchronization % alone.
-  2. Opens the pull request.
+     component on `staging` not yet on `main` reads `Passed`. It does not
+     rely on Synchronization % alone. If any component is not there yet, it
+     reports which and stops; the last component to pass starts it again.
+  2. Opens the `staging` → `main` pull request.
   3. Waits until you approve it. How that approval is recorded is not yet
      defined (see open items). Until it is, DevOps stops here.
   4. Merges it with a merge commit. Vercel deploys production.
@@ -261,7 +274,10 @@ story with `--expect protected`, and DevOps on the production story with
   6. Writes GitHub Commits and Commit, then Production Storybook last.
 - **Refuses to:**
   - merge without your approval;
-  - merge while any row for any component in the pull request is not Passed;
+  - merge while any row for any component on `staging` not yet on `main` is
+    not Passed;
+  - open a pull request into `main` from any branch but `staging`;
+  - merge into `staging`;
   - push to `main`;
   - edit component code;
   - write test results or the status.
@@ -294,7 +310,8 @@ story with `--expect protected`, and DevOps on the production story with
 
 ### You — human approver
 
-- **Approve:** DevOps's pull requests to `main`.
+- **Merge:** the Developer's pull requests into `staging`.
+- **Approve:** DevOps's `staging` → `main` pull requests.
 - **Merge:** token-runner's pull requests, and every other pull request not
   delegated to an agent.
 - **Start:** token-runner, when the Designer says tokens changed.
@@ -372,3 +389,21 @@ Not decided yet. Nothing in this document assumes an answer.
     `tokens-back-office.css`. Its naming examples (`color-text-brand`) also
     differ from the built semantic names (`--text-interactive-brand-idle`).
     The build skill stops at Stage 0 until this is settled.
+18. **Keeping `staging` in step with `main`.** Token syncs and process or doc
+    pull requests still merge into `main` directly, so `staging` falls behind
+    it. QA then tests components against old tokens, and `staging` → `main`
+    pull requests can conflict. Nobody is assigned to merge `main` back into
+    `staging` after such a merge.
+19. **`staging` is protected by instructions only.** Nothing in GitHub stops
+    a direct push or a self-merge into `staging`. Branch protection on
+    `staging` (pull requests required, no force push) would enforce the
+    human merge the way `main` is protected.
+20. **One stuck component holds back every release.** DevOps ships only when
+    all of `staging` has passed, so a component waiting on a design answer
+    blocks the others. There is no way yet to take a component off
+    `staging`.
+21. **The Developer waiting on your merge.** It waits for its pull request
+    into `staging` to merge. If it stops first, it resumes only when started
+    again with the same status, and no automation fires then, because a merge
+    does not change the status. Someone must start it again, or the wait must
+    last until you merge.
