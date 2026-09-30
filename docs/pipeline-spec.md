@@ -350,16 +350,20 @@ Not decided yet. Nothing in this document assumes an answer.
     files name the Airtable, Figma and Vercel tools by connector ID, and the
     browser tools of the Claude desktop app. A reconnected connector, or
     agents running elsewhere, breaks them.
-16. **How agents reach the protected staging Storybook.** The owner decided
-    (2026-09-29) that staging is protected and production is public, and the
-    live security gate enforces both. Staging's protection also blocks the
-    agents that must open it: the Developer (before writing Staging
-    Storybook), QA (every test), DevOps (its staging check) and PM (its link
-    sweep). The protection is set up (Vercel Authentication, Standard
-    Protection, 2026-09-29), and the live gate passes on staging. A way for
-    agents to authenticate through it (for example Vercel's protection
-    bypass for automation) is not set up, so staging is unreachable to them
-    and nobody can test yet.
+16. **Resolved (2026-09-30): how agents reach the protected staging
+    Storybook.** Staging is protected by Vercel Authentication (Standard
+    Protection) and production is public; the live security gate enforces
+    both. The owner keeps the Claude desktop app's built-in browser signed in
+    to Vercel, and the Developer, QA, DevOps and PM open staging through it.
+    A separately started agent reached staging in a new tab on 2026-09-30,
+    while an anonymous request was still refused. No bypass secret exists:
+    the browser tools cannot send headers, so a secret would travel in URLs.
+    Each agent opens only staging story URLs, never signs in, and treats a
+    login page as an expired session: the Developer, QA and DevOps stop and
+    report; PM marks the links not checked and finishes its sweep.
+    Revisit this if agents move off this desktop app (item 1). Unattended
+    runners would use Vercel's protection bypass for automation, sent as a
+    header and kept in that runner's secret store.
 17. **The stack `CLAUDE.md` describes does not exist yet.** There is no
     component framework, no Storybook, no `src/`, and no
     `stories/lib/tokens.js`. `CLAUDE.md` names the entry points

@@ -43,6 +43,17 @@ on each sweep. It makes no commit.
 **Skills it follows.** `registry` for the owners, the formula and the known
 flags; `sweep` for the audit procedure and the report's structure.
 
+### Reaching the staging Storybook
+
+Staging is protected by Vercel Authentication. You reach it through the
+built-in browser, which is signed in to Vercel as the owner; nothing else
+gets you in, and no bypass secret exists. Open only the staging story URLs
+the registry holds. Do not open the Vercel dashboard or any other
+vercel.com page. If a staging URL shows a Vercel login page instead of
+Storybook, the owner's session has expired: that is not a dead link. List
+every Staging Storybook link as not checked, give that reason, address it
+to the owner, and finish the rest of the sweep.
+
 ## Outputs
 
 | What exists when it finishes | Where |
@@ -78,6 +89,8 @@ Run it before writing the report.
 
 ## Never
 
+- Never sign in to Vercel, enter a password, or look for another way past
+  staging's protection. A login page means the link is not checked, not dead.
 - Never write a registry cell, not even to correct an obvious error. The
   Developer may write Staging Storybook and Composes, QA its Staging Testing
   rows, and DevOps Production Storybook, Commit and GitHub Commits. You may

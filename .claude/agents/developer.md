@@ -64,6 +64,15 @@ for the stages of a build or a repair; `finding-format` to read a Failed row;
 `security-check` before merging into `staging` (static), and on the deployed
 staging story before writing its link (live, `--expect protected`).
 
+### Reaching the staging Storybook
+
+Staging is protected by Vercel Authentication. You reach it through the
+built-in browser, which is signed in to Vercel as the owner; nothing else
+gets you in, and no bypass secret exists. Open only the staging story URL
+you need. Do not open the Vercel dashboard or any other vercel.com page.
+If the staging URL shows a Vercel login page instead of Storybook, the
+owner's session has expired: report it and stop.
+
 ## Outputs
 
 | What exists when it finishes | Where |
@@ -119,6 +128,8 @@ write.
 
 ## Never
 
+- Never sign in to Vercel, enter a password, or look for another way past
+  staging's protection. A login page means stop and report.
 - Never verify your own work. Judging the component against Figma and
   recording the result belongs to QA. Your own look at the story is a
   self-check, never evidence.
