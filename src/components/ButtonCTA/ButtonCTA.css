@@ -1,0 +1,135 @@
+/* ButtonCTA — Figma node 16:438. Semantic tokens only. */
+
+.button-cta {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-gap-xs);
+  margin: 0;
+  border: none;
+  border-radius: var(--border-radius-control-xs);
+  font: var(--body-cta);
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button-cta:disabled {
+  cursor: not-allowed;
+}
+
+.button-cta__icon {
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+/* Sizes */
+
+.button-cta--lg {
+  height: var(--size-control-lg);
+  padding: var(--spacing-padding-md);
+}
+
+.button-cta--md {
+  height: var(--size-control-md);
+  padding: var(--spacing-padding-sm) var(--spacing-padding-md);
+}
+
+.button-cta--sm {
+  height: var(--size-control-sm);
+  padding: var(--spacing-padding-xs) var(--spacing-padding-md);
+}
+
+.button-cta--lg .button-cta__icon,
+.button-cta--md .button-cta__icon {
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+}
+
+.button-cta--sm .button-cta__icon {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+}
+
+/* Primary */
+
+.button-cta--primary[data-tone='brand'] {
+  background: var(--background-interactive-brand-idle);
+  color: var(--text-neutral-inverse);
+}
+
+.button-cta--primary[data-tone='brand']:is(:hover, [data-state='hover']) {
+  background: var(--background-interactive-brand-hover);
+}
+
+.button-cta--primary[data-tone='brand']:is(:active, [data-state='press']) {
+  background: var(--background-interactive-brand-press);
+}
+
+.button-cta--primary[data-tone='danger'] {
+  background: var(--background-interactive-danger-idle);
+  color: var(--text-neutral-inverse);
+}
+
+.button-cta--primary[data-tone='disabled'] {
+  background: var(--background-interactive-brand-disable);
+  color: var(--text-neutral-disable-inverse);
+}
+
+/* Secondary */
+
+.button-cta--secondary {
+  background: none;
+  border: var(--border-width-default) solid;
+}
+
+.button-cta--secondary[data-tone='brand'] {
+  border-color: var(--border-interactive-brand-idle);
+  color: var(--text-interactive-brand-idle);
+}
+
+.button-cta--secondary[data-tone='brand']:is(:hover, [data-state='hover']) {
+  border-color: var(--border-interactive-brand-hover);
+  color: var(--text-interactive-brand-hover);
+}
+
+.button-cta--secondary[data-tone='brand']:is(:active, [data-state='press']) {
+  border-color: var(--border-interactive-brand-press);
+  color: var(--text-interactive-brand-press);
+}
+
+.button-cta--secondary[data-tone='danger'] {
+  border-color: var(--border-interactive-danger);
+  color: var(--text-interactive-danger);
+}
+
+.button-cta--secondary[data-tone='disabled'] {
+  border-color: var(--border-neutral-disable);
+  color: var(--text-neutral-disable);
+}
+
+/* Focus: a ring outside the button, so focusing never shifts layout. */
+
+.button-cta:focus-visible {
+  outline: none;
+}
+
+.button-cta:focus-visible::after,
+.button-cta[data-state='focus']::after {
+  content: '';
+  position: absolute;
+  inset: calc(-1 * (var(--spacing-padding-xxs) + var(--border-width-focus)));
+  border: var(--border-width-focus) solid var(--border-interactive-brand-focus);
+  border-radius: var(--border-radius-control-xs);
+  pointer-events: none;
+}
+
+/* The ring is placed from the padding box, so step over the outline border. */
+.button-cta--secondary:focus-visible::after,
+.button-cta--secondary[data-state='focus']::after {
+  inset: calc(
+    -1 * (var(--spacing-padding-xxs) + var(--border-width-focus) + var(--border-width-default))
+  );
+}
