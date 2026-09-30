@@ -152,6 +152,12 @@ changes.
 | To be deployed **and** Synchronization % = 100% | DevOps |
 | Completed | Nobody (documentation is out of scope) |
 
+DevOps ships `staging` as a whole, never one component. Waking for one
+component, it opens the `staging` → `main` pull request only if every
+component on `staging` that is not yet on `main` has all its rows `Passed`.
+Otherwise it reports which components are still waiting and stops; the wake
+of the last component to pass ships them all.
+
 Two agents are started by a schedule, not by a status:
 
 - **QA (token re-test).** After a token sync is merged, a cron starts QA for

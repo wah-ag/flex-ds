@@ -1,6 +1,6 @@
 ---
 name: security-check
-description: The flex-ds security gate — scripts/security-check.mjs, no dependencies. Static mode scans build output for credentials, private identifiers and environment leakage, runs npm audit and refuses a dirty tree; live mode checks a deployed URL is public or protected as intended. Used by the Developer before merging into staging and by DevOps before merging to main and after the production deploy.
+description: The flex-ds security gate — scripts/security-check.mjs, no dependencies. Static mode scans build output for credentials, private identifiers and environment leakage, runs npm audit and refuses a dirty tree; live mode checks a deployed URL is public or protected as intended. Used by the Developer before opening its pull request into staging and by DevOps before merging staging to main and after the production deploy.
 ---
 
 # security-check
@@ -68,8 +68,8 @@ attack, and a gate that claims to is not trustworthy.
 
 | Who | When | Command | On a failure |
 | --- | --- | --- | --- |
-| Developer | Before merging `component/<name>` into `staging`, after building Storybook | `node scripts/security-check.mjs storybook-static build` | Do not merge. Fix the source, never the output, then run it again. |
-| DevOps | Before merging the pull request into `main` | same | Do not merge. Report it; do not fix it. The Developer owns the fix. |
+| Developer | Before opening the pull request from `component/<name>` into `staging`, after building Storybook | `node scripts/security-check.mjs storybook-static build` | Do not open the pull request. Fix the source, never the output, then run it again. |
+| DevOps | On `origin/staging`, before opening and again before merging the `staging` → `main` pull request | same | Do not open or merge. Report it; do not fix it. The Developer owns the fix. |
 | Developer | After the staging deploy, before writing Staging Storybook | `--live <staging story URL> --expect protected` | Do not write Staging Storybook. Report it. |
 | DevOps | After the production deploy, before writing Production Storybook | `--live <production story URL> --expect public` | Do not write Production Storybook. Report it. |
 

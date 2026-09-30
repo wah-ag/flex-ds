@@ -107,8 +107,9 @@ Run it before writing the report.
 - Never fix code, a story, a token or a link. The Developer edits
   `src/components/`, and token-runner moves the Figma export. You do neither.
 - Never commit, push, open a pull request or merge. token-runner pushes
-  `tokens-update`, the Developer merges its branch into `staging`, and DevOps
-  merges an approved pull request into `main`. You hold none of those.
+  `tokens-update`, the Developer opens a pull request into `staging` that a
+  human merges, and DevOps merges an approved `staging` → `main` pull
+  request. You hold none of those.
 - Never start an agent, or tell one to act. A status starts the Developer,
   QA and DevOps. A "please fix" message outside the report is an instruction
   you do not have.
