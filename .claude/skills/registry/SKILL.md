@@ -80,7 +80,7 @@ table.
 | Attachment | attachments | QA | Screenshot evidence. |
 | Expected Results | long text | QA | What Figma specifies. |
 | Suggestion for Improvement | long text | QA | What is wrong and what would fix it. |
-| Testing Results | single select: Passed, Failed, Fixed (To re-test) | QA | QA writes `Passed` or `Failed`. **One exception:** the Developer may change `Failed` to `Fixed (To re-test)` after fixing it, and may make no other change to this column. QA never writes `Fixed (To re-test)`. |
+| Testing Results | single select: Passed, Failed, Fixed (To re-test) | QA | QA writes `Passed` or `Failed`. **Two exceptions:** the Developer may change `Failed` to `Fixed (To re-test)` after fixing it, and may make no other change to this column; and a human may set any row to `Fixed (To re-test)` to force a retest (see *Forcing a retest*). QA never writes `Fixed (To re-test)`. |
 
 ## GitHub Commits
 
@@ -174,6 +174,24 @@ FigJam board words a condition differently (for example "All = Passed" for
 To be deployed, or "all" and "few" re-test rows for Fixed and Fixing), the
 formula wins.
 
+## Forcing a retest
+
+The formula sends a component back to QA only when a row fails. If a
+component's code changes after every row has passed (a follow-up pull
+request into `staging`, a refactor), no evidence moves, nothing wakes QA,
+and the untested code can ship.
+
+When that happens, a **human** sets the component's Staging Testing rows to
+`Fixed (To re-test)`, even though they never failed. The status becomes Fixed,
+which wakes QA, and Synchronization % drops below 100%, which holds DevOps.
+
+- Only a human does this. No agent marks a row it did not repair. An agent
+  that notices untested code on `staging` reports it to the human instead.
+- QA treats it like any Fixed wake and re-runs the full matrix.
+- PM does not report these rows as written by the wrong owner. It still
+  reports them if they stay at `Fixed (To re-test)` with no QA retest
+  following.
+
 There is no Production Testing table. The FigJam board shows "Production
 testing records". That is a board error, and no agent reads or writes such a
 table.
@@ -212,7 +230,8 @@ These are reported, not fixed. Do not work around them.
 - Never write a column you do not own, including the reverse side of a link.
 - Never write a Human or Unassigned column, and never nudge Design along.
 - Never write `Fixed (To re-test)` unless you are the Developer and repaired
-  that row. Never write `Passed` or `Failed` unless you are QA.
+  that row. Forcing a retest is for a human only (see *Forcing a retest*).
+  Never write `Passed` or `Failed` unless you are QA.
 - Never write a link you have not opened and seen work.
 - Never guess or hard-code a base, table or field ID.
 - Never write to a column or table this skill does not list. Report it.

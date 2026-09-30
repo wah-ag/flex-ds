@@ -50,7 +50,7 @@ Staging Testing:
 | Attachment | attachments | QA | Screenshot evidence. |
 | Expected Results | long text | QA | What Figma specifies. |
 | Suggestion for Improvement | long text | QA | What is wrong and what would fix it. |
-| Testing Results | single select: Passed, Failed, Fixed (To re-test) | QA | QA writes `Passed` or `Failed`. **One exception:** the Developer may change `Failed` to `Fixed (To re-test)` after fixing it, and may make no other change to this column. QA never writes `Fixed (To re-test)`. |
+| Testing Results | single select: Passed, Failed, Fixed (To re-test) | QA | QA writes `Passed` or `Failed`. **Two exceptions:** the Developer may change `Failed` to `Fixed (To re-test)` after fixing it, and may make no other change to this column; and a human may set any row to `Fixed (To re-test)` to force a retest (see the registry skill, *Forcing a retest*). QA never writes `Fixed (To re-test)`. |
 
 It writes no other registry column, and no column at all in Components or
 GitHub Commits.
