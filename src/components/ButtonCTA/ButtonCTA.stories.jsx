@@ -4,7 +4,7 @@ import { ButtonCTA } from './ButtonCTA';
 
 const FIGMA = 'https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress';
 
-// Each cell's own Figma variant node, keyed `type/size/state`.
+// Each cell's own Figma variant node, keyed `category/size/state`.
 const NODES = {
   'primary/lg/idle': '16-442', 'primary/md/idle': '16-401', 'primary/sm/idle': '16-426',
   'primary/lg/hover': '16-423', 'primary/md/hover': '16-413', 'primary/sm/hover': '16-412',
@@ -35,14 +35,14 @@ export default {
     },
   },
   argTypes: {
-    type: { control: 'inline-radio', options: ['primary', 'secondary'] },
+    category: { control: 'inline-radio', options: ['primary', 'secondary'] },
     size: { control: 'inline-radio', options: ['lg', 'md', 'sm'] },
     state: { control: 'select', options: ['idle', 'hover', 'press', 'focus', 'disable', 'error'] },
     swapIcon: { control: 'select', options: Object.keys(ICONS), mapping: ICONS },
-    htmlType: { control: 'inline-radio', options: ['button', 'submit', 'reset'] },
+    type: { control: 'inline-radio', options: ['button', 'submit', 'reset'] },
   },
   args: {
-    type: 'primary',
+    category: 'primary',
     size: 'lg',
     state: 'idle',
     buttonLabel: 'Component',
@@ -52,11 +52,11 @@ export default {
   },
 };
 
-const cell = (type, size, state) => {
-  const node = NODES[`${type}/${size}/${state}`];
+const cell = (category, size, state) => {
+  const node = NODES[`${category}/${size}/${state}`];
   return {
-    name: `${type} / ${size} / ${state}`,
-    args: { type, size, state },
+    name: `${category} / ${size} / ${state}`,
+    args: { category, size, state },
     parameters: {
       design: { type: 'figma', url: `${FIGMA}?node-id=${node}` },
       docs: { description: { story: `Figma node [${node}](${FIGMA}?node-id=${node}).` } },

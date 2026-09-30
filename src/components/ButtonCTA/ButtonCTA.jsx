@@ -9,14 +9,14 @@ import './ButtonCTA.css';
 const TONE = { disable: 'disabled', error: 'danger' };
 
 export function ButtonCTA({
-  type = 'primary',
+  category = 'primary',
   size = 'lg',
   state = 'idle',
   buttonLabel = 'Component',
   leadingIcon = true,
   trailingIcon = true,
   swapIcon: SwapIcon = Circle,
-  htmlType = 'button',
+  type = 'button',
   className,
   ...rest
 }) {
@@ -25,8 +25,8 @@ export function ButtonCTA({
   return (
     <button
       {...rest}
-      type={htmlType}
-      className={['button-cta', `button-cta--${type}`, `button-cta--${size}`, className]
+      type={type}
+      className={['button-cta', `button-cta--${category}`, `button-cta--${size}`, className]
         .filter(Boolean)
         .join(' ')}
       data-state={state}
