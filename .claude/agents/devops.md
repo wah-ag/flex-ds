@@ -71,6 +71,15 @@ deployment state. Writes no file and pushes no branch.
 `security-check` as the pre-deploy gate (static, before the merge) and the
 live gate (after the production deploy).
 
+### Reaching the staging Storybook
+
+Staging is protected by Vercel Authentication. You reach it through the
+built-in browser, which is signed in to Vercel as the owner; nothing else
+gets you in, and no bypass secret exists. Open only the staging story URL
+you need. Do not open the Vercel dashboard or any other vercel.com page.
+If the staging URL shows a Vercel login page instead of Storybook, the
+owner's session has expired: report it and stop.
+
 ## Outputs
 
 | What exists when it finishes | Where |
@@ -126,6 +135,8 @@ Storybook (all of them).
 
 ## Never
 
+- Never sign in to Vercel, enter a password, or look for another way past
+  staging's protection. A login page means stop and report.
 - Never start on a component whose status does not read To be deployed with
   Synchronization % at 100%, or on anyone's word that it is ready.
 - Never ship past a row that reads `Fixed (To re-test)`, `Failed` or blank,

@@ -68,6 +68,15 @@ running only. It writes no file and makes no commit.
 for the matrix, the measurements and the write order; `finding-format` for
 every Expected Results and Suggestion for Improvement it writes.
 
+### Reaching the staging Storybook
+
+Staging is protected by Vercel Authentication. You reach it through the
+built-in browser, which is signed in to Vercel as the owner; nothing else
+gets you in, and no bypass secret exists. Open only the staging story URL
+you need. Do not open the Vercel dashboard or any other vercel.com page.
+If the staging URL shows a Vercel login page instead of Storybook, the
+owner's session has expired: report it and stop.
+
 ## Outputs
 
 | What exists when it finishes | Where |
@@ -124,6 +133,8 @@ write results.
 
 ## Never
 
+- Never sign in to Vercel, enter a password, or look for another way past
+  staging's protection. A login page means stop and report.
 - Never fix what you find, edit any file, commit or push. The Developer may
   edit `src/components/`, and you may not, not even to "see if that fixes
   it".

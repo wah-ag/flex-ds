@@ -10,10 +10,10 @@ and icons come from `lucide-react`.
 The `staging` branch exists; component branches merge into it before `main`.
 Vercel project `flex-ds` builds both: `staging` is protected, `main` is public.
 
-Not set up yet: a way for agents to get through staging's protection (see
-`docs/pipeline-spec.md`, open item 16). Until a human sets one up, an agent
-that needs to open the staging Storybook reports it and stops. It does not
-set one up itself, and it does not turn the protection off.
+Agents reach the protected staging Storybook through the built-in browser,
+which the owner keeps signed in to Vercel. No bypass secret exists. An agent
+that meets a Vercel login page reports it and stops. It never signs in, never
+looks for another way past the protection, and never turns it off.
 
 ## The system
 
