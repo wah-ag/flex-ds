@@ -127,7 +127,10 @@ Changed by the owner on 2026-09-30: component branches no longer go to
   push, no deletion, enforced for admins too.
 - The agents use your GitHub account. GitHub does not let you approve your own
   pull request, so `main` requires no approvals. Your approval before DevOps
-  merges is enforced by DevOps's instructions, not by GitHub.
+  merges is enforced by DevOps's instructions, not by GitHub. You give it in
+  chat ("approved #25"). The main session relays your words to DevOps with
+  the head commit they cover, and DevOps merges. You do not press merge on
+  GitHub (decided 2026-09-30).
 
 ## The actors
 
@@ -274,8 +277,9 @@ story with `--expect protected`, and DevOps on the production story with
      rely on Synchronization % alone. If any component is not there yet, it
      reports which and stops; the last component to pass starts it again.
   2. Opens the `staging` → `main` pull request.
-  3. Waits until you approve it. How that approval is recorded is not yet
-     defined (see open items). Until it is, DevOps stops here.
+  3. Reports the PR and its head commit, and stops. You approve in chat; the
+     main session relays your words, the PR number and that head to DevOps.
+     If the head moved, the approval is void and DevOps starts again.
   4. Merges it with a merge commit. Vercel deploys production.
   5. Opens the production story and sees it render.
   6. Writes Commit, then Production Storybook last.
@@ -396,11 +400,13 @@ Not decided yet. Nothing in this document assumes an answer.
     `flex-ds` deploys `staging` to
     `flex-ds-git-staging-design-rules-the-world.vercel.app` and `main` to
     `flex-ds-sigma.vercel.app`.
-13. **How DevOps detects your approval.** GitHub does not let the shared
-    account approve its own pull request, so there is no review DevOps can
-    read. Anything the account can write (a comment, a label) DevOps could
-    also have written. Until a signal is chosen, DevOps opens the pull
-    request and stops.
+13. **How DevOps detects your approval.** *Resolved 2026-09-30.* GitHub does
+    not let the shared account approve its own pull request, and anything the
+    account can write (a comment, a label, a merge) DevOps could also have
+    written. You approve in chat; the main session relays your exact words,
+    the PR number and the head commit, and only that relay counts. Still
+    open: it relies on the main session relaying faithfully. A second
+    GitHub account that reviews would make it provable.
 14. **Automations firing mid-write.** The Airtable API writes at most 10 rows
     per call. On a large matrix, QA's writes pass through intermediate
     statuses. A retest can briefly read Fixing and start QA again. A delay
