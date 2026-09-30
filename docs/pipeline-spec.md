@@ -9,7 +9,7 @@ Airtable base, and decisions made with the design-system owner. The rules
 every agent follows are in `CLAUDE.md` and `tools.md`. Every registry column
 and its owner is in `.claude/skills/registry/SKILL.md`. Each agent's
 boundaries are in its file under `.claude/agents/`: `developer.md`, `qa.md`,
-`devops.md`, `pm.md` and `token-runner.md`.
+`devops.md`, `pm.md`, `token-runner.md` and `changelog.md`.
 
 Where the board and the registry contract disagreed, the owner ruled on
 2026-09-29:
@@ -57,6 +57,7 @@ not been filled in anywhere else in this document.
 | QA | Agent | Ready for Testing, Fixed, Fixing; the token re-test schedule | Developer or DevOps |
 | DevOps | Agent | To be deployed **and** Synchronization % = 100% | Nobody — Completed is the end |
 | PM | Agent | The sweep schedule | Nobody — it reports to owners through its report file |
+| changelog | Agent | You, after the Designer says a design changed; the token-sync schedule | Nobody — it writes Figma's Change Log |
 | You (approver) | Human | A pull request waiting for you | The Developer (after you merge into `staging`), DevOps (after you approve `staging` → `main`) |
 
 ## How work moves
@@ -90,8 +91,9 @@ fires on the new status and starts the agent it points to.
 To be deployed alone is not enough to start DevOps. The formula shows it as
 soon as one result exists, so the automation also waits for every row to pass.
 
-Two starts come from a schedule rather than a status: the token-sync cron
-starts QA for affected Completed components, and the sweep cron starts PM.
+Starts that come from a schedule rather than a status: the token-sync cron
+starts QA for affected Completed components and the changelog agent, and the
+sweep cron starts PM.
 
 Every registry write recomputes the status, and a status change can start the
 next agent at once. So each agent writes in a fixed order, and the write that
@@ -313,13 +315,48 @@ story with `--expect protected`, and DevOps on the production story with
 - **Hands off when:** never. A status starts agents; the report tells each
   owner what the evidence says.
 
+### changelog — agent
+
+Added by the owner on 2026-09-30.
+
+- **Started by:**
+  - **Design change:** you, when the Designer says a component's design
+    changed in Figma. It writes once the code that follows the change is
+    merged into `staging`, or at once if the change needs no code.
+  - **Token change:** the token-sync schedule (or you), after a
+    `tokens-update` pull request merges into `main`.
+- **Reads:** the merged pull request; the component's Figma node; `tokens/`
+  at the merge and at its parent, through `scripts/component-tokens.mjs`,
+  which follows every alias, so a core change reaches every component that
+  uses it.
+- **Writes:** one new entry at the top of the `Change Log` frame on each
+  affected component's Figma page. It clones the newest entry, so the new
+  one keeps the Designer's format: date, version, summary, title, and one
+  row per change (`Changed` tag, old → new chips, and a note naming the
+  variants, the modes and the pull request). Nothing in the registry or the
+  repo.
+- **Refuses to:**
+  - edit an existing entry, a component, a variable, a style, or anything
+    outside the Change Log's `Entries` frame;
+  - create a Change Log frame (a page without one is reported to the
+    Designer);
+  - log a change that has not merged, or a code-only fix;
+  - commit, push, or touch the registry.
+- **Hands off when:** never. The entry is the record.
+
+The ButtonCTA log was backfilled on 2026-09-30 with one entry: the Figma
+variant property `type` renamed to `category` (#20). The only token sync so
+far (2026-09-28) came before ButtonCTA was built, and the focus-ring and
+inset-shadow commits were code-only.
+
 ### You — human approver
 
 - **Merge:** the Developer's pull requests into `staging`.
 - **Approve:** DevOps's `staging` → `main` pull requests.
 - **Merge:** token-runner's pull requests, and every other pull request not
   delegated to an agent.
-- **Start:** token-runner, when the Designer says tokens changed.
+- **Start:** token-runner, when the Designer says tokens changed; the
+  changelog agent, when the Designer says a design changed.
 
 ## Open items
 
@@ -412,3 +449,15 @@ Not decided yet. Nothing in this document assumes an answer.
     again with the same status, and no automation fires then, because a merge
     does not change the status. Someone must start it again, or the wait must
     last until you merge.
+22. **The changelog agent's Figma limit is an instruction.** `use_figma` can
+    write anything in the file: components, variables, other entries. Only
+    its instructions keep it inside the Change Log's `Entries` frame.
+23. **Tag vocabulary.** The Designer's Change Log has one tag, `Changed`.
+    Added and removed tokens or properties have no designed tag, so the agent
+    tags them `Changed` and says which in the note.
+24. **A design change is logged only if the Designer reports it.** Nothing
+    detects a Figma edit, so a change the Designer does not mention goes
+    unlogged.
+25. **Item 5, in part.** `scripts/component-tokens.mjs` now maps a token
+    change to the components that use it. QA's token re-test does not use it
+    yet.

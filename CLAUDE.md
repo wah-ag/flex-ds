@@ -106,6 +106,11 @@ component after it.
 - `token-runner` owns the Figma sync — branch, build, summarise the diff in
   designer language, then stop for review or open a PR. It holds Bash and Read
   only, deliberately: it can never edit a token.
+- `changelog` keeps each component's Change Log in Figma. After a design
+  change or a token sync merges, it adds one entry to the `Change Log` frame
+  on the component's page, in the Designer's format, and touches nothing else
+  in Figma. No other agent writes Change Log entries; the Developer and
+  token-runner stay read-only in Figma.
 - **No agent pushes to `main` or `staging`.** Agents open pull requests.
   Exactly one merge is delegated to an agent; a human merges everything else,
   including every token sync:
