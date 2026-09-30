@@ -13,7 +13,7 @@
   },
   "background-neutral-disable": {
     "$type": "color",
-    "$value": "{color-grey-800}"
+    "$value": "{color-grey-700}"
   },
   "background-interactive-brand-idle": {
     "$type": "color",
@@ -143,13 +143,13 @@
     "$type": "color",
     "$value": "{color-red-200}"
   },
-  "text-neutral-base": {
-    "$type": "color",
-    "$value": "{color-grey-10}"
-  },
   "text-interactive-brand-idle": {
     "$type": "color",
     "$value": "{color-navy-600}"
+  },
+  "text-neutral-base": {
+    "$type": "color",
+    "$value": "{color-grey-10}"
   },
   "text-interactive-brand-hover": {
     "$type": "color",

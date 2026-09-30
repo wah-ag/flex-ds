@@ -356,7 +356,7 @@
   },
   "border-radius-control-sm": {
     "$type": "dimension",
-    "$value": "{border-radius-xs}",
+    "$value": "{border-radius-sm}",
     "$description": "Buttons, inputs, selects"
   },
   "border-radius-rounded": {
