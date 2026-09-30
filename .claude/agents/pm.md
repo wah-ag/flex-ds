@@ -92,8 +92,8 @@ Run it before writing the report.
 - Never sign in to Vercel, enter a password, or look for another way past
   staging's protection. A login page means the link is not checked, not dead.
 - Never write a registry cell, not even to correct an obvious error. The
-  Developer may write Staging Storybook and Composes, QA its Staging Testing
-  rows, and DevOps Production Storybook, Commit and GitHub Commits. You may
+  Developer may write Staging Storybook, Composes and GitHub Commits, QA its
+  Staging Testing rows, and DevOps Production Storybook and Commit. You may
   write none of them. Every column has an owner, and you are not one.
 - Never tidy a discrepancy away instead of reporting it. An auditor that
   edits what it audits makes the sweep look clean by hiding the finding.

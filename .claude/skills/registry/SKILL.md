@@ -51,8 +51,8 @@ One row per component.
 | Composed Into | link → Components | Computed | Reverse of Composes. |
 | [Staging] Test Records | link → Staging Testing | Computed | Reverse of Staging Testing → Composed In. |
 | Production Storybook | URL | DevOps | The component's own story on the production Storybook. |
-| Commit | URL | DevOps | The commit that shipped the component to `main`. |
-| GitHub Commits | link → GitHub Commits | DevOps | The commit records for this component. |
+| Commit | URL | DevOps | The `staging` → `main` merge commit that shipped the component. |
+| GitHub Commits | link → GitHub Commits | Developer | The commit records for this component, linked when its pull request into `staging` is merged. |
 | Astro Link | URL | Unassigned | Documentation site link. Out of scope. |
 | Release Review | URL | Unassigned | Release-review report. Out of scope. |
 | Release Verdict | single select: Cleared, Blocked | Unassigned | Release-review verdict. Out of scope. |
@@ -84,18 +84,22 @@ table.
 
 ## GitHub Commits
 
-One row per commit that ships a component. DevOps owns this table.
+One row per commit on `component/<name>` that a merged pull request into
+`staging` carried and that touches the component's folder. The pull
+request's merge commit gets no row. The Developer owns this table and writes
+it after a human merges its pull request (changed by the owner on
+2026-09-30; DevOps owned it before).
 
 | Column | Type | Owner |
 | --- | --- | --- |
-| Commit Hash | text (primary) | DevOps |
-| Message | text | DevOps |
-| Author | text | DevOps |
-| Date Committed | date and time (UTC) | DevOps |
+| Commit Hash | text (primary) | Developer |
+| Message | text | Developer |
+| Author | text | Developer |
+| Date Committed | date and time (UTC) | Developer |
 | Link to Components | link → Components (single) | Computed (reverse of Components → GitHub Commits) |
-| Files Changed | long text | DevOps |
-| Commit URL | URL | DevOps |
-| Commit Type | single select: Feature, Bugfix, Documentation, Chore, Refactor, Other | DevOps |
+| Files Changed | long text | Developer |
+| Commit URL | URL | Developer |
+| Commit Type | single select: Feature, Bugfix, Documentation, Chore, Refactor, Other | Developer |
 
 ## DS Feedback
 

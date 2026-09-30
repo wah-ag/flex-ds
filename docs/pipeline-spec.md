@@ -97,11 +97,12 @@ Every registry write recomputes the status, and a status change can start the
 next agent at once. So each agent writes in a fixed order, and the write that
 hands off comes last:
 
-- The Developer writes Composes before Staging Storybook. On a fix, it writes
-  the new Staging Storybook link before marking any row `Fixed (To re-test)`.
+- The Developer writes Composes and its GitHub Commits rows before Staging
+  Storybook. On a fix, it writes the GitHub Commits rows and the new Staging
+  Storybook link before marking any row `Fixed (To re-test)`.
 - QA creates every row in the matrix with Testing Results blank, then writes
   the results in as few calls as the API allows, Passed before Failed.
-- DevOps writes GitHub Commits and Commit before Production Storybook.
+- DevOps writes Commit before Production Storybook.
 
 ## Branches and merges
 
@@ -183,6 +184,10 @@ The engineer role in `CLAUDE.md` and `tools.md`.
   - Staging Storybook: the component's own story, replaced with a new link
     after each fix;
   - Composes: the components this one imports;
+  - GitHub Commits (changed by the owner on 2026-09-30; DevOps's before):
+    after you merge its pull request into `staging`, one row per commit the
+    pull request carried that touches the component's folder, linked to the
+    component. No row for the merge commit;
   - on a fix, Testing Results from `Failed` to `Fixed (To re-test)` for each
     row it fixed. That change is the only one it may make to that column.
 - **Refuses to:**
@@ -259,8 +264,8 @@ story with `--expect protected`, and DevOps on the production story with
   - their staging Storybook links, which it checks before deploying.
 - **Writes:**
   - one pull request from `staging` to `main`;
-  - after the merge, for each shipped component: Production Storybook,
-    Commit, and a GitHub Commits row per commit.
+  - after the merge, for each shipped component: Production Storybook and
+    Commit (the merge commit). It no longer writes GitHub Commits.
 - **Does, in order:**
   1. Verifies its gate from the registry: every Staging Testing row of every
      component on `staging` not yet on `main` reads `Passed`. It does not
@@ -271,7 +276,7 @@ story with `--expect protected`, and DevOps on the production story with
      defined (see open items). Until it is, DevOps stops here.
   4. Merges it with a merge commit. Vercel deploys production.
   5. Opens the production story and sees it render.
-  6. Writes GitHub Commits and Commit, then Production Storybook last.
+  6. Writes Commit, then Production Storybook last.
 - **Refuses to:**
   - merge without your approval;
   - merge while any row for any component on `staging` not yet on `main` is

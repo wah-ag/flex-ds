@@ -107,9 +107,10 @@ one is red.
    `node scripts/security-check.mjs --live <that URL> --expect protected`.
    Staging is protected: an anonymous request must be refused.
 5. Write the registry, in the order the developer agent file gives. On a
-   build, Composes goes first and Staging Storybook last. On a fix, the new
-   Staging Storybook link goes first, then `Fixed (To re-test)` on each row
-   repaired.
+   build, Composes goes first, then a GitHub Commits row for each commit
+   the merged pull request carried, then Staging Storybook last. On a fix,
+   the GitHub Commits rows go first, then the new Staging Storybook link,
+   then `Fixed (To re-test)` on each row repaired.
 
 **Check:** the URL written is the one you opened, it points at the
 component's own story (not the Storybook root, not localhost), and it
