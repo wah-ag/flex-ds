@@ -65,6 +65,7 @@ The mobile scale ships only to iOS and Android; there is no mobile CSS file.
 | `npm run check:tokens` | Reports mode gaps and opaque `a`-suffixed tokens. Read-only; exits 1 on a problem. |
 | `npm run storybook` | Rebuilds tokens, then runs Storybook on http://localhost:6006. |
 | `npm run build-storybook` | Rebuilds tokens, then builds the static Storybook into `storybook-static/` (gitignored). This is what Vercel builds. |
+| `node scripts/component-tokens.mjs <Component> [--from <ref> [--to <ref>]]` | Lists the tokens a component uses, followed through every alias in every mode. With `--from`, prints only the used tokens whose resolved value changed between two refs of `tokens/`, per mode, old → new. Read-only. |
 | `node scripts/security-check.mjs [dir ...]` | The security gate: credentials, private IDs and env leakage in build output, npm audit, dirty tree. `--live <url> --expect public\|protected` checks a deployment. No dependencies; exits 1 on a finding. See the `security-check` skill. |
 | `git switch -c <branch>` | Starts work on a new branch. Never work on `main`. |
 | `gh pr create` | Opens a pull request. A human reviews and merges it, except the one merge `CLAUDE.md` delegates (DevOps, `staging` → `main`). |
@@ -79,6 +80,7 @@ accidentally edit.
 | Engineer | Read, Glob, Grep, Edit, Write, Bash | Build and fix components, stories and build scripts. | Edit `tokens/` or `build/`. Verify or approve its own work. |
 | QA | Read, Glob, Grep, Bash | Run the build and Storybook, test every variant and state, report what it finds. | Edit any file. Fix what it finds. |
 | `token-runner` | Bash, Read | Put the export on `tokens-update`, run `build:tokens` and `check:tokens`, summarise the token diff in designer language, push `tokens-update` and open or update its PR. | Edit any file, token or otherwise. Push to any branch but `tokens-update`. |
+| `changelog` | Read, Glob, Grep, Bash, Figma (read, and `use_figma`) | Add an entry to the Change Log frame on a component's Figma page after a design or token change merges. | Edit any file, component, variable, style or existing entry. Touch the registry. Commit or push. |
 | Human | Everything | Approve and merge pull requests. | — |
 
 ### Blocked for every agent
