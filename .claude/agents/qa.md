@@ -142,12 +142,12 @@ write results.
   may make to Testing Results. Never mark your own finding resolved.
 - Never turn a `Fixed (To re-test)` row into `Passed` or `Failed` without
   retesting it on the current staging link.
-- Never write a Components column. The Developer writes Staging Storybook and
-  Composes, DevOps writes Production Storybook, Commit and GitHub Commits, and
+- Never write a Components column. The Developer writes Staging Storybook,
+  Composes and GitHub Commits, DevOps writes Production Storybook and Commit, and
   the Designer writes Components, Category, Figma and Design. Your rows move
   the status by themselves.
 - Never write `Development`.
-- Never write a GitHub Commits row. That table is DevOps's.
+- Never write a GitHub Commits row. That table is the Developer's.
 - Never merge anything, or tell anyone to deploy. A human merges the
   Developer's pull request into `staging`, DevOps merges an approved
   `staging` → `main` pull request, and a status starts DevOps, not you.

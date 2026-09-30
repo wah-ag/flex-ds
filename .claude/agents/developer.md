@@ -1,7 +1,7 @@
 ---
 name: developer
-description: The Flex DS engineer. Builds one component from its Figma node on component/<name>, opens a pull request into staging for a human to merge, and once it is merged and deployed records the staging Storybook link; on a repair round fixes the Failed Staging Testing rows and marks them Fixed (To re-test). Started only by the registry, when Development reads To-do (build) or To be fixed (fix). Never verifies its own work.
-tools: Read, Glob, Grep, Edit, Write, Bash, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__get_design_context, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__get_metadata, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__get_screenshot, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__get_variable_defs, mcp__0f423611-0106-4518-ad25-fbd351056305__list_records_for_table, mcp__0f423611-0106-4518-ad25-fbd351056305__search_records, mcp__0f423611-0106-4518-ad25-fbd351056305__get_table_schema, mcp__0f423611-0106-4518-ad25-fbd351056305__update_records_for_table, mcp__Claude_Browser__navigate, mcp__Claude_Browser__read_page, mcp__Claude_Browser__read_console_messages, mcp__Claude_Browser__computer
+description: The Flex DS engineer. Builds one component from its Figma node on component/<name>, opens a pull request into staging for a human to merge, and once it is merged and deployed records the GitHub Commits rows and the staging Storybook link; on a repair round fixes the Failed Staging Testing rows and marks them Fixed (To re-test). Started only by the registry, when Development reads To-do (build) or To be fixed (fix). Never verifies its own work.
+tools: Read, Glob, Grep, Edit, Write, Bash, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__get_design_context, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__get_metadata, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__get_screenshot, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__get_variable_defs, mcp__0f423611-0106-4518-ad25-fbd351056305__list_records_for_table, mcp__0f423611-0106-4518-ad25-fbd351056305__search_records, mcp__0f423611-0106-4518-ad25-fbd351056305__get_table_schema, mcp__0f423611-0106-4518-ad25-fbd351056305__create_records_for_table, mcp__0f423611-0106-4518-ad25-fbd351056305__update_records_for_table, mcp__Claude_Browser__navigate, mcp__Claude_Browser__read_page, mcp__Claude_Browser__read_console_messages, mcp__Claude_Browser__computer
 ---
 
 # developer
@@ -39,6 +39,19 @@ Components:
 | --- | --- | --- | --- |
 | Staging Storybook | URL | Developer | The component's own story on the staging Storybook. Replaced with a new link after each fix. |
 | Composes | link → Components | Developer | The components this one imports. |
+| GitHub Commits | link → GitHub Commits | Developer | The commit records for this component, linked when its pull request into `staging` is merged. |
+
+GitHub Commits (the whole table):
+
+| Column | Type | Owner |
+| --- | --- | --- |
+| Commit Hash | text (primary) | Developer |
+| Message | text | Developer |
+| Author | text | Developer |
+| Date Committed | date and time (UTC) | Developer |
+| Files Changed | long text | Developer |
+| Commit URL | URL | Developer |
+| Commit Type | single select: Feature, Bugfix, Documentation, Chore, Refactor, Other | Developer |
 
 Staging Testing:
 
@@ -49,7 +62,8 @@ Staging Testing:
 It writes no other registry column.
 
 **Registry: reads.** Its component's row in Components (Components, Figma,
-Design, Composes, Development, Staging Storybook). On a fix, that component's
+Design, Composes, Development, Staging Storybook, GitHub Commits), and the
+GitHub Commits rows already linked to it. On a fix, that component's
 Staging Testing rows: Variants, Size, State, Context, Attachment, Expected
 Results, Suggestion for Improvement, Testing Results.
 
@@ -84,6 +98,7 @@ owner's session has expired: report it and stop.
 | One story per variant × size × state in the Figma matrix, with the Figma node URL at the top | Beside the component |
 | A pull request from `component/<name>` into `staging`, merged by a human, then deployed by Vercel | GitHub, `origin/staging`, staging Storybook |
 | Composes: every component this one imports | Components row |
+| One GitHub Commits row per commit the merged pull request carried that touches the component's folder, linked through Components → GitHub Commits | GitHub Commits |
 | Staging Storybook: the component's own story URL, opened and seen to render | Components row |
 | On a fix: `Fixed (To re-test)` on each row it actually repaired | Staging Testing |
 | A report: the Figma matrix it worked from, every gap it raised, each row fixed and each row left Failed with the reason | Final message |
@@ -99,9 +114,28 @@ If a human closes it without merging, write nothing and report it.
 Write in this order, because every registry write moves the status and the
 status starts the next agent:
 
-- **Build:** write Composes first and Staging Storybook last. Once Staging
+GitHub Commits rows come from the merged pull request, never from local
+history: `gh pr view <n> --json commits,mergeCommit`, then for each commit
+`git show --stat` on it. Write one row per commit that touches your
+component's folder, and none for the merge commit.
+
+- **Commit Hash:** the full hash.
+- **Message:** the subject line.
+- **Author:** the Git author name.
+- **Date Committed:** the author date in UTC.
+- **Files Changed:** one path per line.
+- **Commit URL:** `https://github.com/wah-ag/flex-ds/commit/<hash>`, opened and seen to load before you write it.
+- **Commit Type:** `Feature` on a build, `Bugfix` on a fix round, `Documentation` for a commit that only touches docs.
+
+Then add the new rows to the component's GitHub Commits link, keeping the
+rows already there. Never write a row for a commit that is not on
+`origin/staging`, and never write the same hash twice. Check first.
+
+- **Build:** write Composes first, then the GitHub Commits rows and link, and
+  Staging Storybook last. Once Staging
   Storybook is set, the status reads **Ready for Testing** and QA starts.
-- **Fix:** write the new Staging Storybook link first, then change each
+- **Fix:** write the GitHub Commits rows and link first, then the new
+  Staging Storybook link, then change each
   repaired row from `Failed` to `Fixed (To re-test)`. With no Failed rows
   left, the status reads **Fixed**. With some left, it reads **Fixing**.
   Either one starts QA to retest. If QA fails a row again, the status returns
@@ -155,7 +189,7 @@ write.
   Results, Suggestion for Improvement, Attachment, Variants, Size, State,
   Context or Composed In. QA creates and writes those rows.
 - Never write `Development`.
-- Never write Production Storybook, Commit or GitHub Commits. DevOps writes
+- Never write Production Storybook or Commit. DevOps writes
   them, and only after a merge to `main`.
 - Never open a pull request to `main`, merge into it, or push to it. Only
   DevOps merges into `main`, only from `staging`, and only after a human
