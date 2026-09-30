@@ -1,20 +1,24 @@
-# ButtonCTA — prop names for review
+# ButtonCTA — prop names
 
-ButtonCTA's props use the Figma component property names as written in
-camelCase, as agreed with the owner on 2026-09-30: `type`, `size`, `state`,
-`buttonLabel`, `leadingIcon`, `trailingIcon`, `swapIcon`.
+ButtonCTA's props are the Figma component properties of node 16:438, in
+camelCase, as agreed with the owner on 2026-09-30.
 
-## Conflict: `type`
+| Figma property | Prop |
+| --- | --- |
+| `category` (variant: `primary`, `secondary`) | `category` |
+| `size` (variant: `lg`, `md`, `sm`) | `size` |
+| `state` (variant: `idle`, `hover`, `press`, `focus`, `disable`, `error`) | `state` |
+| `button label` (text) | `buttonLabel` |
+| `leading icon` (boolean) | `leadingIcon` |
+| `trailing icon` (boolean) | `trailingIcon` |
+| `swap icon` (instance swap) | `swapIcon` |
 
-Figma's `type` (`primary` | `secondary`) has the same name as the HTML
-`<button>` attribute `type` (`button` | `submit` | `reset`). The Figma property
-keeps the name `type`. The HTML attribute is exposed under a new name.
+## Not from Figma: `type`
 
-| Figma property | Prop | Conflicts with | Suggested name for the other side | Status |
-| --- | --- | --- | --- | --- |
-| `type` | `type` (unchanged) | HTML `<button type>` | `htmlType`, default `button` | For review |
+`type` is the HTML `<button type>` attribute (`button` | `submit` | `reset`),
+passed straight to the element. It defaults to `button`, not the HTML default
+`submit`, so a ButtonCTA inside a form never submits it unless asked to.
 
-Alternatives, if `htmlType` is not wanted: `buttonType`, `nativeType`.
-
-The default is `button`, not the HTML default `submit`, so a ButtonCTA inside a
-form never submits it unless asked to.
+Earlier the Figma variant property was named `type`, which clashed with this
+attribute, and the attribute was exposed as `htmlType`. Figma now names it
+`category`, so there is no clash and `htmlType` is gone.
