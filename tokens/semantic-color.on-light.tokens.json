@@ -15,6 +15,10 @@
     "$type": "color",
     "$value": "{color-grey-100}"
   },
+  "background-neutral-inverse": {
+    "$type": "color",
+    "$value": "{color-grey-900}"
+  },
   "background-interactive-brand-idle": {
     "$type": "color",
     "$value": "{color-navy-500}"
