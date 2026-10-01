@@ -179,6 +179,14 @@
     "$type": "dimension",
     "$value": "{scale-11}"
   },
+  "size-dots-sm": {
+    "$type": "dimension",
+    "$value": "{scale-2}"
+  },
+  "size-dots-md": {
+    "$type": "dimension",
+    "$value": "{scale-3}"
+  },
   "size-avatar-xs": {
     "$type": "dimension",
     "$value": "{scale-8}"
@@ -251,10 +259,6 @@
     "$type": "dimension",
     "$value": "{scale-13}"
   },
-  "size-row-lg": {
-    "$type": "dimension",
-    "$value": "{scale-15}"
-  },
   "line-height-title-xs": {
     "$type": "dimension",
     "$value": "{scale-7}"
@@ -282,6 +286,13 @@
   "elevation-level-2-key-offset-y": {
     "$type": "dimension",
     "$value": "{scale-1}"
+  },
+  "size-number": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
   },
   "elevation-level-2-key-blur": {
     "$type": "dimension",
@@ -326,7 +337,7 @@
   },
   "border-width-default": {
     "$type": "dimension",
-    "$value": "{border-width-lg}",
+    "$value": "{border-width-md}",
     "$description": "Inputs, cards, outlined buttons"
   },
   "border-width-selected": {
@@ -336,8 +347,8 @@
   },
   "border-width-icon": {
     "$type": "dimension",
-    "$value": "{border-width-lg}",
-    "$description": "Selected card/tab, checked state"
+    "$value": "{border-width-md}",
+    "$description": "Icon stroke width"
   },
   "border-width-focus": {
     "$type": "dimension",
@@ -356,7 +367,7 @@
   },
   "border-radius-control-sm": {
     "$type": "dimension",
-    "$value": "{border-radius-xs}",
+    "$value": "{border-radius-sm}",
     "$description": "Buttons, inputs, selects"
   },
   "border-radius-rounded": {

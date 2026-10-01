@@ -51,8 +51,8 @@ One row per component.
 | Composed Into | link → Components | Computed | Reverse of Composes. |
 | [Staging] Test Records | link → Staging Testing | Computed | Reverse of Staging Testing → Composed In. |
 | Production Storybook | URL | DevOps | The component's own story on the production Storybook. |
-| Commit | URL | DevOps | The commit that shipped the component to `main`. |
-| GitHub Commits | link → GitHub Commits | DevOps | The commit records for this component. |
+| Commit | URL | DevOps | The `staging` → `main` merge commit that shipped the component. |
+| GitHub Commits | link → GitHub Commits | Developer | The commit records for this component, linked when its pull request into `staging` is merged. |
 | Astro Link | URL | Unassigned | Documentation site link. Out of scope. |
 | Release Review | URL | Unassigned | Release-review report. Out of scope. |
 | Release Verdict | single select: Cleared, Blocked | Unassigned | Release-review verdict. Out of scope. |
@@ -80,22 +80,26 @@ table.
 | Attachment | attachments | QA | Screenshot evidence. |
 | Expected Results | long text | QA | What Figma specifies. |
 | Suggestion for Improvement | long text | QA | What is wrong and what would fix it. |
-| Testing Results | single select: Passed, Failed, Fixed (To re-test) | QA | QA writes `Passed` or `Failed`. **One exception:** the Developer may change `Failed` to `Fixed (To re-test)` after fixing it, and may make no other change to this column. QA never writes `Fixed (To re-test)`. |
+| Testing Results | single select: Passed, Failed, Fixed (To re-test) | QA | QA writes `Passed` or `Failed`. **Two exceptions:** the Developer may change `Failed` to `Fixed (To re-test)` after fixing it, and may make no other change to this column; and a human may set any row to `Fixed (To re-test)` to force a retest (see *Forcing a retest*). QA never writes `Fixed (To re-test)`. |
 
 ## GitHub Commits
 
-One row per commit that ships a component. DevOps owns this table.
+One row per commit on `component/<name>` that a merged pull request into
+`staging` carried and that touches the component's folder. The pull
+request's merge commit gets no row. The Developer owns this table and writes
+it after a human merges its pull request (changed by the owner on
+2026-09-30; DevOps owned it before).
 
 | Column | Type | Owner |
 | --- | --- | --- |
-| Commit Hash | text (primary) | DevOps |
-| Message | text | DevOps |
-| Author | text | DevOps |
-| Date Committed | date and time (UTC) | DevOps |
+| Commit Hash | text (primary) | Developer |
+| Message | text | Developer |
+| Author | text | Developer |
+| Date Committed | date and time (UTC) | Developer |
 | Link to Components | link → Components (single) | Computed (reverse of Components → GitHub Commits) |
-| Files Changed | long text | DevOps |
-| Commit URL | URL | DevOps |
-| Commit Type | single select: Feature, Bugfix, Documentation, Chore, Refactor, Other | DevOps |
+| Files Changed | long text | Developer |
+| Commit URL | URL | Developer |
+| Commit Type | single select: Feature, Bugfix, Documentation, Chore, Refactor, Other | Developer |
 
 ## DS Feedback
 
@@ -152,6 +156,12 @@ changes.
 | To be deployed **and** Synchronization % = 100% | DevOps |
 | Completed | Nobody (documentation is out of scope) |
 
+DevOps ships `staging` as a whole, never one component. Waking for one
+component, it opens the `staging` → `main` pull request only if every
+component on `staging` that is not yet on `main` has all its rows `Passed`.
+Otherwise it reports which components are still waiting and stops; the wake
+of the last component to pass ships them all.
+
 Two agents are started by a schedule, not by a status:
 
 - **QA (token re-test).** After a token sync is merged, a cron starts QA for
@@ -163,6 +173,24 @@ Agents read these statuses exactly as the formula defines them. Where the
 FigJam board words a condition differently (for example "All = Passed" for
 To be deployed, or "all" and "few" re-test rows for Fixed and Fixing), the
 formula wins.
+
+## Forcing a retest
+
+The formula sends a component back to QA only when a row fails. If a
+component's code changes after every row has passed (a follow-up pull
+request into `staging`, a refactor), no evidence moves, nothing wakes QA,
+and the untested code can ship.
+
+When that happens, a **human** sets the component's Staging Testing rows to
+`Fixed (To re-test)`, even though they never failed. The status becomes Fixed,
+which wakes QA, and Synchronization % drops below 100%, which holds DevOps.
+
+- Only a human does this. No agent marks a row it did not repair. An agent
+  that notices untested code on `staging` reports it to the human instead.
+- QA treats it like any Fixed wake and re-runs the full matrix.
+- PM does not report these rows as written by the wrong owner. It still
+  reports them if they stay at `Fixed (To re-test)` with no QA retest
+  following.
 
 There is no Production Testing table. The FigJam board shows "Production
 testing records". That is a board error, and no agent reads or writes such a
@@ -202,7 +230,8 @@ These are reported, not fixed. Do not work around them.
 - Never write a column you do not own, including the reverse side of a link.
 - Never write a Human or Unassigned column, and never nudge Design along.
 - Never write `Fixed (To re-test)` unless you are the Developer and repaired
-  that row. Never write `Passed` or `Failed` unless you are QA.
+  that row. Forcing a retest is for a human only (see *Forcing a retest*).
+  Never write `Passed` or `Failed` unless you are QA.
 - Never write a link you have not opened and seen work.
 - Never guess or hard-code a base, table or field ID.
 - Never write to a column or table this skill does not list. Report it.

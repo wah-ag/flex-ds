@@ -41,8 +41,9 @@ Each item names the column to report and its owner.
 | A Staging Testing row with Composed In empty | Composed In | QA |
 | A row with blank Testing Results on a component past Ready for Testing, still blank when you re-read that component's rows at the end of the sweep | Testing Results | QA |
 | To be deployed or Completed, but Composes lists a component not Completed | Composes / the composed component's evidence | Developer / owner of that evidence |
-| Commit set with no GitHub Commits row, or Production Storybook set with no Commit | Commit / GitHub Commits | DevOps |
-| A GitHub Commits row linked to no component | GitHub Commits (on Components) | DevOps |
+| Production Storybook set with no Commit | Commit | DevOps |
+| Staging Storybook set with no GitHub Commits row, or a commit touching the component's folder on `staging` with no row | GitHub Commits | Developer |
+| A GitHub Commits row linked to no component | GitHub Commits (on Components) | Developer |
 | A folder in `src/components/` with no row | — | Designer (rows are created with the Figma link) |
 | A row past To-do with no folder in `src/components/` | Staging Storybook | Developer |
 | Development past To-do while Design is not `Done` | Design | Designer |

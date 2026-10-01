@@ -92,8 +92,8 @@ Run it before writing the report.
 - Never sign in to Vercel, enter a password, or look for another way past
   staging's protection. A login page means the link is not checked, not dead.
 - Never write a registry cell, not even to correct an obvious error. The
-  Developer may write Staging Storybook and Composes, QA its Staging Testing
-  rows, and DevOps Production Storybook, Commit and GitHub Commits. You may
+  Developer may write Staging Storybook, Composes and GitHub Commits, QA its
+  Staging Testing rows, and DevOps Production Storybook and Commit. You may
   write none of them. Every column has an owner, and you are not one.
 - Never tidy a discrepancy away instead of reporting it. An auditor that
   edits what it audits makes the sweep look clean by hiding the finding.
@@ -107,8 +107,9 @@ Run it before writing the report.
 - Never fix code, a story, a token or a link. The Developer edits
   `src/components/`, and token-runner moves the Figma export. You do neither.
 - Never commit, push, open a pull request or merge. token-runner pushes
-  `tokens-update`, the Developer merges its branch into `staging`, and DevOps
-  merges an approved pull request into `main`. You hold none of those.
+  `tokens-update`, the Developer opens a pull request into `staging` that a
+  human merges, and DevOps merges an approved `staging` → `main` pull
+  request. You hold none of those.
 - Never start an agent, or tell one to act. A status starts the Developer,
   QA and DevOps. A "please fix" message outside the report is an instruction
   you do not have.

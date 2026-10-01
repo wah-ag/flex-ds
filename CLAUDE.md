@@ -7,7 +7,8 @@ Style Dictionary (`npm run build:tokens`), and consumed by components in
 Components are React. Storybook 10 (`@storybook/react-vite`) documents them,
 and icons come from `lucide-react`.
 
-The `staging` branch exists; component branches merge into it before `main`.
+The `staging` branch exists. Component branches reach it by pull request, and
+`main` receives only `staging`.
 Vercel project `flex-ds` builds both: `staging` is protected, `main` is public.
 
 Agents reach the protected staging Storybook through the built-in browser,
@@ -105,14 +106,22 @@ component after it.
 - `token-runner` owns the Figma sync — branch, build, summarise the diff in
   designer language, then stop for review or open a PR. It holds Bash and Read
   only, deliberately: it can never edit a token.
-- **No agent pushes to main.** Agents open pull requests. Exactly two merges
-  are delegated to agents; a human merges everything else, including every
-  token sync:
-  - The Developer merges its own component branch into `staging`.
-  - DevOps merges a component branch into `main`: one pull request per
-    component, plus any component it composes that is not yet on `main`. It
-    merges only after a human has approved that pull request, and only once
-    QA has passed every Staging Testing row for every component in it.
+- `changelog` keeps each component's Change Log in Figma. After a design
+  change or a token sync merges, it adds one entry to the `Change Log` frame
+  on the component's page, in the Designer's format, and touches nothing else
+  in Figma. No other agent writes Change Log entries; the Developer and
+  token-runner stay read-only in Figma.
+- **No agent pushes to `main` or `staging`.** Agents open pull requests.
+  Exactly one merge is delegated to an agent; a human merges everything else,
+  including every token sync:
+  - The Developer opens a pull request from its component branch into
+    `staging` and never merges it. A human merges it. Only then does the
+    Developer write the staging Storybook link.
+  - Only DevOps merges into `main`, and only from `staging`: one pull request,
+    `staging` → `main`. It opens it only once QA has passed every Staging
+    Testing row of every component on `staging` that is not yet on `main`,
+    and merges only after a human has approved it. No component branch goes
+    to `main` directly.
 
 ## Common failures to avoid
 

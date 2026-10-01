@@ -50,7 +50,7 @@ Staging Testing:
 | Attachment | attachments | QA | Screenshot evidence. |
 | Expected Results | long text | QA | What Figma specifies. |
 | Suggestion for Improvement | long text | QA | What is wrong and what would fix it. |
-| Testing Results | single select: Passed, Failed, Fixed (To re-test) | QA | QA writes `Passed` or `Failed`. **One exception:** the Developer may change `Failed` to `Fixed (To re-test)` after fixing it, and may make no other change to this column. QA never writes `Fixed (To re-test)`. |
+| Testing Results | single select: Passed, Failed, Fixed (To re-test) | QA | QA writes `Passed` or `Failed`. **Two exceptions:** the Developer may change `Failed` to `Fixed (To re-test)` after fixing it, and may make no other change to this column; and a human may set any row to `Fixed (To re-test)` to force a retest (see the registry skill, *Forcing a retest*). QA never writes `Fixed (To re-test)`. |
 
 It writes no other registry column, and no column at all in Components or
 GitHub Commits.
@@ -88,8 +88,11 @@ owner's session has expired: report it and stop.
 | A report: the full matrix with passes and failures, and anything it could not test and why | Final message |
 
 A row passes only if all three hold: the Storybook property values match the
-Figma property values; the visual is pixel-identical to Figma; and the
-`CLAUDE.md` rules hold (tokens only, every state present, Lucide icons).
+Figma property values; the visual matches Figma; and the `CLAUDE.md` rules
+hold (tokens only, every state present, Lucide icons). Once the property
+values match, a difference confined to the anti-aliased edge pixels of text
+and icon strokes is rasterisation and passes (owner's ruling, 2026-10-01).
+Name it in Context. The test skill's *Pass bar* defines it.
 
 Retest scope: on **Fixing**, retest the rows marked `Fixed (To re-test)`. On
 **Fixed**, re-run the full matrix, because a fix can break a case that
@@ -142,15 +145,15 @@ write results.
   may make to Testing Results. Never mark your own finding resolved.
 - Never turn a `Fixed (To re-test)` row into `Passed` or `Failed` without
   retesting it on the current staging link.
-- Never write a Components column. The Developer writes Staging Storybook and
-  Composes, DevOps writes Production Storybook, Commit and GitHub Commits, and
+- Never write a Components column. The Developer writes Staging Storybook,
+  Composes and GitHub Commits, DevOps writes Production Storybook and Commit, and
   the Designer writes Components, Category, Figma and Design. Your rows move
   the status by themselves.
 - Never write `Development`.
-- Never write a GitHub Commits row. That table is DevOps's.
-- Never merge anything, or tell anyone to deploy. The Developer merges into
-  `staging`, DevOps merges an approved pull request into `main`, and a status
-  starts DevOps, not you.
+- Never write a GitHub Commits row. That table is the Developer's.
+- Never merge anything, or tell anyone to deploy. A human merges the
+  Developer's pull request into `staging`, DevOps merges an approved
+  `staging` → `main` pull request, and a status starts DevOps, not you.
 - Never report only failures. Passes are rows too.
 - Never delete a failing row, skip a case to shrink the matrix, or write one
   row per component instead of one per case.
@@ -165,8 +168,10 @@ write results.
   in.
 - Never write a raw value where a token or prop should be named. "The colour
   looks off" is not a finding.
-- Never pass a row on "close enough". Pixel-identical is the bar. If the
-  difference is font rasterisation, fail the row and say so.
+- Never pass a row on "close enough". The only difference that passes is
+  rasterisation: edge pixels alone, at the same scale, with fonts measured
+  as loaded and every property value matching. A solid pixel, glyph,
+  weight or whole-pixel shift that differs fails.
 - Never invent a Size or State option. `pressed`, `destructive` and `default`
   go in Variants.
 - Never write results while any row in the matrix is still missing, or write

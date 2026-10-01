@@ -9,7 +9,7 @@ Airtable base, and decisions made with the design-system owner. The rules
 every agent follows are in `CLAUDE.md` and `tools.md`. Every registry column
 and its owner is in `.claude/skills/registry/SKILL.md`. Each agent's
 boundaries are in its file under `.claude/agents/`: `developer.md`, `qa.md`,
-`devops.md`, `pm.md` and `token-runner.md`.
+`devops.md`, `pm.md`, `token-runner.md` and `changelog.md`.
 
 Where the board and the registry contract disagreed, the owner ruled on
 2026-09-29:
@@ -57,7 +57,8 @@ not been filled in anywhere else in this document.
 | QA | Agent | Ready for Testing, Fixed, Fixing; the token re-test schedule | Developer or DevOps |
 | DevOps | Agent | To be deployed **and** Synchronization % = 100% | Nobody — Completed is the end |
 | PM | Agent | The sweep schedule | Nobody — it reports to owners through its report file |
-| You (approver) | Human | A pull request waiting for you | DevOps, or `main` directly |
+| changelog | Agent | You, after the Designer says a design changed; the token-sync schedule | Nobody — it writes Figma's Change Log |
+| You (approver) | Human | A pull request waiting for you | The Developer (after you merge into `staging`), DevOps (after you approve `staging` → `main`) |
 
 ## How work moves
 
@@ -90,34 +91,46 @@ fires on the new status and starts the agent it points to.
 To be deployed alone is not enough to start DevOps. The formula shows it as
 soon as one result exists, so the automation also waits for every row to pass.
 
-Two starts come from a schedule rather than a status: the token-sync cron
-starts QA for affected Completed components, and the sweep cron starts PM.
+Starts that come from a schedule rather than a status: the token-sync cron
+starts QA for affected Completed components and the changelog agent, and the
+sweep cron starts PM.
 
 Every registry write recomputes the status, and a status change can start the
 next agent at once. So each agent writes in a fixed order, and the write that
 hands off comes last:
 
-- The Developer writes Composes before Staging Storybook. On a fix, it writes
-  the new Staging Storybook link before marking any row `Fixed (To re-test)`.
+- The Developer writes Composes and its GitHub Commits rows before Staging
+  Storybook. On a fix, it writes the GitHub Commits rows and the new Staging
+  Storybook link before marking any row `Fixed (To re-test)`.
 - QA creates every row in the matrix with Testing Results blank, then writes
   the results in as few calls as the API allows, Passed before Failed.
-- DevOps writes GitHub Commits and Commit before Production Storybook.
+- DevOps writes Commit before Production Storybook.
 
 ## Branches and merges
 
+Changed by the owner on 2026-09-30: component branches no longer go to
+`main`, and the Developer no longer merges.
+
 - Every component has its own branch, named `component/<name>` (for example
-  `component/button-cta`).
-- The Developer merges its component branch into the shared `staging` branch.
-  Vercel deploys `staging` automatically.
-- DevOps opens one pull request per component from its component branch to
-  `main`, including any component it composes that is not on `main` yet. You
-  approve it; DevOps merges it.
+  `component/button-cta`), branched from `staging`.
+- The Developer opens a pull request from its component branch into the
+  shared `staging` branch and stops there. You merge it. Vercel deploys
+  `staging` automatically, and only then does the Developer write the staging
+  Storybook link.
+- `main` receives only `staging`. DevOps opens one pull request, `staging` →
+  `main`, and only once every component on `staging` that is not yet on
+  `main` has passed every QA row. One untested or failing component holds
+  back the rest. You approve it; DevOps merges it. DevOps is the only agent
+  that merges into `main`.
 - token-runner works only on `tokens-update`. You merge its pull requests.
 - No agent pushes to `main`. `main` is protected: pull requests only, no force
   push, no deletion, enforced for admins too.
 - The agents use your GitHub account. GitHub does not let you approve your own
   pull request, so `main` requires no approvals. Your approval before DevOps
-  merges is enforced by DevOps's instructions, not by GitHub.
+  merges is enforced by DevOps's instructions, not by GitHub. You give it in
+  chat ("approved #25"). The main session relays your words to DevOps with
+  the head commit they cover, and DevOps merges. You do not press merge on
+  GitHub (decided 2026-09-30).
 
 ## The actors
 
@@ -171,20 +184,28 @@ The engineer role in `CLAUDE.md` and `tools.md`.
     Suggestion for Improvement;
   - `CLAUDE.md` and the registry skill.
 - **Writes:**
-  - code on `component/<name>`, merged into `staging`;
+  - code on `component/<name>`, and a pull request from it into `staging`
+    that you merge;
   - Staging Storybook: the component's own story, replaced with a new link
     after each fix;
   - Composes: the components this one imports;
+  - GitHub Commits (changed by the owner on 2026-09-30; DevOps's before):
+    after you merge its pull request into `staging`, one row per commit the
+    pull request carried that touches the component's folder, linked to the
+    component. No row for the merge commit;
   - on a fix, Testing Results from `Failed` to `Fixed (To re-test)` for each
     row it fixed. That change is the only one it may make to that column.
 - **Refuses to:**
   - edit `tokens/` or `build/`;
   - write `Passed` or `Failed`;
   - write the status;
-  - merge anything except its own branch into `staging`;
+  - merge anything, including its own pull request into `staging`;
+  - write Staging Storybook before you have merged its pull request;
   - touch `main`;
   - verify its own work.
 - **Hands off when:**
+  - **Pull request open:** to you, to merge into `staging`. The registry is
+    unchanged until you do.
   - **Build:** Staging Storybook is set. The status becomes Ready for Testing,
     which starts QA.
   - **Fix:** it marks a fixed row `Fixed (To re-test)`. The status becomes
@@ -219,9 +240,22 @@ story with `--expect protected`, and DevOps on the production story with
 `--expect public`.
 - **A row passes only if all three hold:**
   - the Storybook property values match the Figma property values;
-  - the visual is pixel-identical to Figma;
+  - the visual matches Figma: the same shapes, glyphs, colours, sizes and
+    positions, compared at the same scale with the fonts measured as loaded;
   - the `CLAUDE.md` rules hold: tokens only, every state present, Lucide
     icons.
+
+  **Rasterisation is not a finding** (owner's ruling, 2026-10-01). Chrome
+  and Figma anti-alias the same outline differently, and no change to a
+  component can close that. Once the property values match token for token,
+  a difference confined to edge pixels passes. Edge pixels are the ones a
+  glyph or icon stroke only partly covers. QA names it in Context, with the
+  largest per-pixel difference it measured. The visual still fails if any
+  of these hold:
+  - a pixel that is solid in one render differs in the other, either inside
+    a shape or in the background;
+  - a glyph, icon or weight differs;
+  - an edge moves by a whole pixel or more.
 - **Refuses to:**
   - fix anything;
   - edit any file;
@@ -241,27 +275,33 @@ story with `--expect protected`, and DevOps on the production story with
 
 - **Started by:** To be deployed **and** Synchronization % = 100%.
 - **Reads:**
-  - the component's row, including Composes, to find composed components not
-    yet on `main`;
-  - its Staging Testing results;
-  - its staging Storybook link, which it checks before deploying.
+  - every component on `staging` not yet on `main`: rows with Staging
+    Storybook set and Production Storybook blank, plus every component folder
+    `staging` changes relative to `main`;
+  - their Staging Testing results;
+  - their staging Storybook links, which it checks before deploying.
 - **Writes:**
-  - a pull request from `component/<name>` to `main`;
-  - after the merge: Production Storybook, Commit, and a GitHub Commits row
-    per commit.
+  - one pull request from `staging` to `main`;
+  - after the merge, for each shipped component: Production Storybook and
+    Commit (the merge commit). It no longer writes GitHub Commits.
 - **Does, in order:**
   1. Verifies its gate from the registry: every Staging Testing row of every
-     component in the pull request reads `Passed`. It does not rely on
-     Synchronization % alone.
-  2. Opens the pull request.
-  3. Waits until you approve it. How that approval is recorded is not yet
-     defined (see open items). Until it is, DevOps stops here.
+     component on `staging` not yet on `main` reads `Passed`. It does not
+     rely on Synchronization % alone. If any component is not there yet, it
+     reports which and stops; the last component to pass starts it again.
+  2. Opens the `staging` → `main` pull request.
+  3. Reports the PR and its head commit, and stops. You approve in chat; the
+     main session relays your words, the PR number and that head to DevOps.
+     If the head moved, the approval is void and DevOps starts again.
   4. Merges it with a merge commit. Vercel deploys production.
   5. Opens the production story and sees it render.
-  6. Writes GitHub Commits and Commit, then Production Storybook last.
+  6. Writes Commit, then Production Storybook last.
 - **Refuses to:**
   - merge without your approval;
-  - merge while any row for any component in the pull request is not Passed;
+  - merge while any row for any component on `staging` not yet on `main` is
+    not Passed;
+  - open a pull request into `main` from any branch but `staging`;
+  - merge into `staging`;
   - push to `main`;
   - edit component code;
   - write test results or the status.
@@ -292,12 +332,48 @@ story with `--expect protected`, and DevOps on the production story with
 - **Hands off when:** never. A status starts agents; the report tells each
   owner what the evidence says.
 
+### changelog — agent
+
+Added by the owner on 2026-09-30.
+
+- **Started by:**
+  - **Design change:** you, when the Designer says a component's design
+    changed in Figma. It writes once the code that follows the change is
+    merged into `staging`, or at once if the change needs no code.
+  - **Token change:** the token-sync schedule (or you), after a
+    `tokens-update` pull request merges into `main`.
+- **Reads:** the merged pull request; the component's Figma node; `tokens/`
+  at the merge and at its parent, through `scripts/component-tokens.mjs`,
+  which follows every alias, so a core change reaches every component that
+  uses it.
+- **Writes:** one new entry at the top of the `Change Log` frame on each
+  affected component's Figma page. It clones the newest entry, so the new
+  one keeps the Designer's format: date, version, summary, title, and one
+  row per change (`Changed` tag, old → new chips, and a note naming the
+  variants, the modes and the pull request). Nothing in the registry or the
+  repo.
+- **Refuses to:**
+  - edit an existing entry, a component, a variable, a style, or anything
+    outside the Change Log's `Entries` frame;
+  - create a Change Log frame (a page without one is reported to the
+    Designer);
+  - log a change that has not merged, or a code-only fix;
+  - commit, push, or touch the registry.
+- **Hands off when:** never. The entry is the record.
+
+The ButtonCTA log was backfilled on 2026-09-30 with one entry: the Figma
+variant property `type` renamed to `category` (#20). The only token sync so
+far (2026-09-28) came before ButtonCTA was built, and the focus-ring and
+inset-shadow commits were code-only.
+
 ### You — human approver
 
-- **Approve:** DevOps's pull requests to `main`.
+- **Merge:** the Developer's pull requests into `staging`.
+- **Approve:** DevOps's `staging` → `main` pull requests.
 - **Merge:** token-runner's pull requests, and every other pull request not
   delegated to an agent.
-- **Start:** token-runner, when the Designer says tokens changed.
+- **Start:** token-runner, when the Designer says tokens changed; the
+  changelog agent, when the Designer says a design changed.
 
 ## Open items
 
@@ -329,19 +405,26 @@ Not decided yet. Nothing in this document assumes an answer.
    - Vercel Hobby's non-commercial terms;
    - Claude credentials for agents that run unattended;
    - GitHub Actions' 6-hour job limit, if DevOps waits for approval there.
-10. **Pixel-identical visual checks** may fail on font and anti-aliasing
-    differences between Figma and the browser.
+10. **Pixel-identical visual checks.** *Resolved 2026-10-01.* The bar failed
+    every component with text, because Figma and Chrome never rasterise text
+    and icon edges identically. ShotAction failed two rounds on that alone,
+    and the Developer had nothing to repair. The owner relaxed the bar:
+    differences confined to anti-aliased edges pass once every property
+    value matches (see QA's pass bar). ButtonCTA and IconButton passed
+    before this ruling without a per-pixel check.
 11. **Registry descriptions that disagree with the base or the contract.**
     Seven are listed in the registry skill's Flags section.
 12. **Resolved (2026-09-29): `staging` deploys on Vercel.** Project
     `flex-ds` deploys `staging` to
     `flex-ds-git-staging-design-rules-the-world.vercel.app` and `main` to
     `flex-ds-sigma.vercel.app`.
-13. **How DevOps detects your approval.** GitHub does not let the shared
-    account approve its own pull request, so there is no review DevOps can
-    read. Anything the account can write (a comment, a label) DevOps could
-    also have written. Until a signal is chosen, DevOps opens the pull
-    request and stops.
+13. **How DevOps detects your approval.** *Resolved 2026-09-30.* GitHub does
+    not let the shared account approve its own pull request, and anything the
+    account can write (a comment, a label, a merge) DevOps could also have
+    written. You approve in chat; the main session relays your exact words,
+    the PR number and the head commit, and only that relay counts. Still
+    open: it relies on the main session relaying faithfully. A second
+    GitHub account that reviews would make it provable.
 14. **Automations firing mid-write.** The Airtable API writes at most 10 rows
     per call. On a large matrix, QA's writes pass through intermediate
     statuses. A retest can briefly read Fixing and start QA again. A delay
@@ -372,3 +455,33 @@ Not decided yet. Nothing in this document assumes an answer.
     `tokens-back-office.css`. Its naming examples (`color-text-brand`) also
     differ from the built semantic names (`--text-interactive-brand-idle`).
     The build skill stops at Stage 0 until this is settled.
+18. **Keeping `staging` in step with `main`.** Token syncs and process or doc
+    pull requests still merge into `main` directly, so `staging` falls behind
+    it. QA then tests components against old tokens, and `staging` → `main`
+    pull requests can conflict. Nobody is assigned to merge `main` back into
+    `staging` after such a merge.
+19. **`staging` is protected by instructions only.** Nothing in GitHub stops
+    a direct push or a self-merge into `staging`. Branch protection on
+    `staging` (pull requests required, no force push) would enforce the
+    human merge the way `main` is protected.
+20. **One stuck component holds back every release.** DevOps ships only when
+    all of `staging` has passed, so a component waiting on a design answer
+    blocks the others. There is no way yet to take a component off
+    `staging`.
+21. **The Developer waiting on your merge.** It waits for its pull request
+    into `staging` to merge. If it stops first, it resumes only when started
+    again with the same status, and no automation fires then, because a merge
+    does not change the status. Someone must start it again, or the wait must
+    last until you merge.
+22. **The changelog agent's Figma limit is an instruction.** `use_figma` can
+    write anything in the file: components, variables, other entries. Only
+    its instructions keep it inside the Change Log's `Entries` frame.
+23. **Tag vocabulary.** The Designer's Change Log has one tag, `Changed`.
+    Added and removed tokens or properties have no designed tag, so the agent
+    tags them `Changed` and says which in the note.
+24. **A design change is logged only if the Designer reports it.** Nothing
+    detects a Figma edit, so a change the Designer does not mention goes
+    unlogged.
+25. **Item 5, in part.** `scripts/component-tokens.mjs` now maps a token
+    change to the components that use it. QA's token re-test does not use it
+    yet.
