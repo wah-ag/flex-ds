@@ -240,9 +240,22 @@ story with `--expect protected`, and DevOps on the production story with
 `--expect public`.
 - **A row passes only if all three hold:**
   - the Storybook property values match the Figma property values;
-  - the visual is pixel-identical to Figma;
+  - the visual matches Figma: the same shapes, glyphs, colours, sizes and
+    positions, compared at the same scale with the fonts measured as loaded;
   - the `CLAUDE.md` rules hold: tokens only, every state present, Lucide
     icons.
+
+  **Rasterisation is not a finding** (owner's ruling, 2026-10-01). Chrome
+  and Figma anti-alias the same outline differently, and no change to a
+  component can close that. Once the property values match token for token,
+  a difference confined to edge pixels passes. Edge pixels are the ones a
+  glyph or icon stroke only partly covers. QA names it in Context, with the
+  largest per-pixel difference it measured. The visual still fails if any
+  of these hold:
+  - a pixel that is solid in one render differs in the other, either inside
+    a shape or in the background;
+  - a glyph, icon or weight differs;
+  - an edge moves by a whole pixel or more.
 - **Refuses to:**
   - fix anything;
   - edit any file;
@@ -392,8 +405,13 @@ Not decided yet. Nothing in this document assumes an answer.
    - Vercel Hobby's non-commercial terms;
    - Claude credentials for agents that run unattended;
    - GitHub Actions' 6-hour job limit, if DevOps waits for approval there.
-10. **Pixel-identical visual checks** may fail on font and anti-aliasing
-    differences between Figma and the browser.
+10. **Pixel-identical visual checks.** *Resolved 2026-10-01.* The bar failed
+    every component with text, because Figma and Chrome never rasterise text
+    and icon edges identically. ShotAction failed two rounds on that alone,
+    and the Developer had nothing to repair. The owner relaxed the bar:
+    differences confined to anti-aliased edges pass once every property
+    value matches (see QA's pass bar). ButtonCTA and IconButton passed
+    before this ruling without a per-pixel check.
 11. **Registry descriptions that disagree with the base or the contract.**
     Seven are listed in the registry skill's Flags section.
 12. **Resolved (2026-09-29): `staging` deploys on Vercel.** Project

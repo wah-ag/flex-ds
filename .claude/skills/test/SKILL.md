@@ -63,13 +63,30 @@ ancestor. A light expectation compared with a dark render is not a finding.
 A case passes only if all three hold:
 
 1. the Storybook property values match the Figma property values;
-2. the visual is pixel-identical to Figma;
+2. the visual matches Figma: the same shapes, glyphs, colours, sizes and
+   positions;
 3. the `CLAUDE.md` rules hold.
 
-Anything else is `Failed`, with a finding in the `finding-format` shape. If
-the only difference is font rasterisation, it still fails, with that named.
-Pipeline spec open item 10 is where that bar gets revisited; you do not
-revisit it here.
+Anything else is `Failed`, with a finding in the `finding-format` shape.
+
+**Rasterisation is not a finding** (owner's ruling, 2026-10-01; pipeline
+spec open item 10). Chrome and Figma anti-alias the same outline
+differently. Once 1 holds token for token, a difference confined to edge
+pixels passes. Edge pixels are the ones a glyph or icon stroke only partly
+covers. To claim it:
+
+- Compare at the same scale. If the page's device-pixel ratio is not
+  Figma's, re-render the case at Figma's scale with the page's own computed
+  styles.
+- Confirm the fonts loaded (step 3) first. A fallback font is not a
+  rasterisation difference.
+- Check that every solid pixel matches: shape interiors and the background.
+- Write it in Context: "rasterisation only", with the largest per-pixel
+  difference you measured.
+
+The visual still fails if a solid pixel differs, a glyph, icon or weight
+differs, or an edge moves by a whole pixel or more. Edge noise does not
+excuse a wrong property: if 1 fails, the row fails.
 
 ## 7. Scope of a retest
 
