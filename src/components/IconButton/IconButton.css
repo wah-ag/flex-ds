@@ -1,0 +1,56 @@
+/* IconButton — Figma node 45:324. Semantic tokens only. */
+
+/* The outline is an inset shadow, not a border: browsers round border widths
+   down to whole device pixels (a one-and-a-half pixel border draws as one at
+   1x), and shadows are not rounded. The padding grows by the same width, so
+   the box matches Figma's bordered frame. Figma binds no fill, so there is
+   no background. */
+
+.icon-button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-gap-xs);
+  width: var(--size-control-lg);
+  height: var(--size-control-lg);
+  margin: 0;
+  padding: calc(var(--spacing-padding-md) + var(--border-width-default));
+  border: none;
+  border-radius: var(--border-radius-control-xs);
+  background: none;
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-interactive-brand-idle);
+  color: var(--icon-interactive-brand-idle);
+  cursor: pointer;
+}
+
+.icon-button:is(:hover, [data-state='hover']) {
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-interactive-brand-hover);
+  color: var(--icon-interactive-brand-hover);
+}
+
+.icon-button:is(:active, [data-state='press']) {
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-interactive-brand-press);
+  color: var(--icon-interactive-brand-press);
+}
+
+.icon-button:disabled {
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-neutral-disable);
+  color: var(--icon-neutral-disable);
+  cursor: not-allowed;
+}
+
+/* The stroke is drawn in screen pixels, so it stays at border-width-icon
+   whatever the icon's viewBox is scaled to. */
+
+.icon-button__icon {
+  flex-shrink: 0;
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+  color: currentColor;
+  stroke-width: var(--border-width-icon);
+}
+
+.icon-button__icon * {
+  vector-effect: non-scaling-stroke;
+}
