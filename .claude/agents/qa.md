@@ -88,8 +88,11 @@ owner's session has expired: report it and stop.
 | A report: the full matrix with passes and failures, and anything it could not test and why | Final message |
 
 A row passes only if all three hold: the Storybook property values match the
-Figma property values; the visual is pixel-identical to Figma; and the
-`CLAUDE.md` rules hold (tokens only, every state present, Lucide icons).
+Figma property values; the visual matches Figma; and the `CLAUDE.md` rules
+hold (tokens only, every state present, Lucide icons). Once the property
+values match, a difference confined to the anti-aliased edge pixels of text
+and icon strokes is rasterisation and passes (owner's ruling, 2026-10-01).
+Name it in Context. The test skill's *Pass bar* defines it.
 
 Retest scope: on **Fixing**, retest the rows marked `Fixed (To re-test)`. On
 **Fixed**, re-run the full matrix, because a fix can break a case that
@@ -165,8 +168,10 @@ write results.
   in.
 - Never write a raw value where a token or prop should be named. "The colour
   looks off" is not a finding.
-- Never pass a row on "close enough". Pixel-identical is the bar. If the
-  difference is font rasterisation, fail the row and say so.
+- Never pass a row on "close enough". The only difference that passes is
+  rasterisation: edge pixels alone, at the same scale, with fonts measured
+  as loaded and every property value matching. A solid pixel, glyph,
+  weight or whole-pixel shift that differs fails.
 - Never invent a Size or State option. `pressed`, `destructive` and `default`
   go in Variants.
 - Never write results while any row in the matrix is still missing, or write
