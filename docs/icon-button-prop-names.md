@@ -7,7 +7,7 @@ camelCase, following the convention agreed for ButtonCTA on 2026-09-30
 | Figma property | Prop |
 | --- | --- |
 | `state` (variant: `idle`, `hover`, `press`, `disable`) | `state` |
-| instance swap on the icon (default: the bell, Lucide `Bell`) | `swapIcon` |
+| instance swap on the icon (default: the ringing bell, Lucide `BellRing`) | `swapIcon` |
 
 The Figma MCP reports the instance-swap property as `swapIcon`; its exact
 spelling in the Figma panel (ButtonCTA's is `swap icon`) was not readable

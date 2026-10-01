@@ -1,4 +1,4 @@
-import { Bell } from 'lucide-react';
+import { BellRing } from 'lucide-react';
 import './IconButton.css';
 
 // Figma: IconButton, node 45:324.
@@ -8,7 +8,7 @@ import './IconButton.css';
 // input; passing them only pins the look, for docs.
 export function IconButton({
   state = 'idle',
-  swapIcon: SwapIcon = Bell,
+  swapIcon: SwapIcon = BellRing,
   type = 'button',
   className,
   ...rest

@@ -1,5 +1,5 @@
 // Figma: https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=45-324
-import { Bell, Plus, Search } from 'lucide-react';
+import { BellRing, Plus, Search } from 'lucide-react';
 import { IconButton } from './IconButton';
 
 const FIGMA = 'https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress';
@@ -12,7 +12,7 @@ const NODES = {
   disable: '77-320',
 };
 
-const ICONS = { Bell, Plus, Search };
+const ICONS = { BellRing, Plus, Search };
 
 export default {
   title: 'Components/IconButton',
@@ -34,7 +34,7 @@ export default {
   },
   args: {
     state: 'idle',
-    swapIcon: 'Bell',
+    swapIcon: 'BellRing',
     'aria-label': 'Notifications',
   },
 };
