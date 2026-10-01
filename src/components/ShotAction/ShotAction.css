@@ -1,0 +1,9 @@
+/* ShotAction — Figma node 31:191. Semantic tokens only. */
+
+/* Figma binds border-width-icon on ShotAction's outline bookmark (31:190,
+   icon I30:173;16:347). The stroke is drawn in screen pixels (lucide's
+   nonScalingStroke), so it stays at border-width-icon whatever the icon's
+   24-unit viewBox is scaled to. */
+.shot-action__icon {
+  stroke-width: var(--border-width-icon);
+}
