@@ -20,9 +20,17 @@
   cursor: not-allowed;
 }
 
+/* The icon stroke is drawn in screen pixels at border-width-icon, so it does
+   not shrink when the 24-unit icon is sized down to size-icon-md or -sm. */
+
 .button-cta__icon {
   flex-shrink: 0;
   color: currentColor;
+  stroke-width: var(--border-width-icon);
+}
+
+.button-cta__icon * {
+  vector-effect: non-scaling-stroke;
 }
 
 /* Sizes */
