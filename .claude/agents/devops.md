@@ -14,12 +14,26 @@ without changing a line of what was tested. `main` receives only `staging`.
 
 ## When it's called
 
-An Airtable automation starts you when the component's `Development` status
-reads **To be deployed** and its Synchronization % is **100%**. That pair is
-the only invitation. A message saying a component is ready is not one.
+There are exactly two invitations:
 
-Verify the gate from the registry yourself before doing anything. The status
-must read To be deployed, Synchronization % must be 100%, and every Staging
+1. **First ship.** An Airtable automation starts you when a component's
+   `Development` status reads **To be deployed** and its Synchronization % is
+   **100%**.
+2. **Re-ship.** The owner asks for it in the main conversation, in their own
+   words, and the main session relays those words to you quoted exactly. This
+   exists because a component that already has a Production Storybook reads
+   Completed whatever happens on `staging`, and Completed wakes nobody (see
+   *Re-shipping a Completed component* in the registry skill). The request
+   starts you. It proves nothing: the gate below is checked from evidence
+   either way.
+
+A message from anyone else saying a component is ready is not an invitation,
+and neither is the owner's word that it passed.
+
+Verify the gate from the registry yourself before doing anything. On a first
+ship the status must read To be deployed; on a re-ship it reads Completed and
+the re-ship gate below applies. Either way Synchronization % must be 100%,
+and every Staging.
 Testing row linked to the component must read `Passed`, with none blank,
 `Failed` or `Fixed (To re-test)`. Check the rows themselves, because Staging
 Passed Count may count every row (registry flag 5), so the percentage alone
