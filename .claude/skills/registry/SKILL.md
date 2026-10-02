@@ -80,6 +80,7 @@ table.
 | Attachment | attachments | QA | Screenshot evidence. |
 | Expected Results | long text | QA | What Figma specifies. |
 | Suggestion for Improvement | long text | QA | What is wrong and what would fix it. |
+| Tested At | last modified time, watching Testing Results only | Computed | When the row's verdict was last written. DevOps's re-ship gate reads it (see *Re-shipping a Completed component*). Added by the owner in Airtable; if it is missing from the base, report it. |
 | Testing Results | single select: Passed, Failed, Fixed (To re-test) | QA | QA writes `Passed` or `Failed`. **Two exceptions:** the Developer may change `Failed` to `Fixed (To re-test)` after fixing it, and may make no other change to this column; and a human may set any row to `Fixed (To re-test)` to force a retest (see *Forcing a retest*). QA never writes `Fixed (To re-test)`. |
 
 ## GitHub Commits
@@ -154,7 +155,7 @@ changes.
 | Fixing | QA (retest) |
 | To be fixed | Developer (fix) |
 | To be deployed **and** Synchronization % = 100% | DevOps |
-| Completed | Nobody (documentation is out of scope) |
+| Completed | Nobody (documentation is out of scope). A Completed component with newer code on `staging` ships only when the owner asks (see *Re-shipping a Completed component*). |
 
 DevOps ships `staging` as a whole, never one component. Waking for one
 component, it opens the `staging` → `main` pull request only if every
@@ -191,6 +192,29 @@ which wakes QA, and Synchronization % drops below 100%, which holds DevOps.
 - PM does not report these rows as written by the wrong owner. It still
   reports them if they stay at `Fixed (To re-test)` with no QA retest
   following.
+
+## Re-shipping a Completed component
+
+Production Storybook outranks the test results (step 5 before step 6), so a
+component that has shipped once reads Completed for good, unless a row fails or
+is set to `Fixed (To re-test)`. When a follow-up change to it reaches
+`staging` and its retest passes, it goes straight back to Completed, wakes
+nobody, and the change sits on `staging` with no route to `main`.
+
+The route is the owner. Once every component on `staging` that is not yet on
+`main` has passed, the owner asks for the release in the main conversation,
+and the main session starts DevOps with the owner's words quoted exactly. That
+request starts DevOps and proves nothing. DevOps checks the re-ship gate from
+evidence:
+
+- the component's folder is in `git diff origin/main...origin/staging`;
+- every linked Staging Testing row reads `Passed`;
+- every row's Tested At is later than the time its newest commit was merged
+  into `staging`. A pass recorded before that merge tested older code.
+
+If Tested At is missing, the gate cannot be proven and DevOps stops. No agent
+starts DevOps for a re-ship on its own reading of the registry, and no agent
+asks the owner to.
 
 There is no Production Testing table. The FigJam board shows "Production
 testing records". That is a board error, and no agent reads or writes such a
