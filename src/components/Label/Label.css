@@ -1,0 +1,106 @@
+/* Label — Figma node 31:228. Semantic tokens only.
+   Every size hugs its content: Figma binds no width or height. The height
+   comes from the line height plus the vertical padding. */
+
+.label {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-gap-xs);
+  margin: 0;
+  border-radius: var(--border-radius-rounded);
+  white-space: nowrap;
+}
+
+/* Sizes */
+
+.label--lg {
+  padding: var(--spacing-padding-xs) var(--spacing-padding-sm);
+  font: var(--label-lg);
+}
+
+.label--md {
+  padding: var(--spacing-padding-xxs) var(--spacing-padding-sm);
+  font: var(--label-md);
+}
+
+.label--sm {
+  padding: var(--spacing-padding-xxs) var(--spacing-padding-sm);
+  font: var(--label-sm);
+}
+
+/* The icon follows its own icon token through currentColor. Its stroke is
+   drawn in screen pixels at border-width-icon, so it does not shrink when
+   the 24-unit icon is sized down. */
+
+.label__icon {
+  flex-shrink: 0;
+  width: var(--size-icon-xs);
+  height: var(--size-icon-xs);
+  color: var(--label-icon-color);
+  stroke: currentColor;
+  stroke-width: var(--border-width-icon);
+}
+
+.label__icon * {
+  vector-effect: non-scaling-stroke;
+}
+
+.label--lg .label__icon {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+}
+
+/* Categories. Figma's brand uses the secondary role and error the danger
+   role. Hover changes only the background; text and icon stay. */
+
+.label--brand {
+  --label-icon-color: var(--icon-interactive-secondary);
+  background: var(--background-accent-secondary-idle);
+  color: var(--text-interactive-secondary-idle);
+}
+
+.label--brand:is(:hover, [data-state='hover']) {
+  background: var(--background-accent-secondary-interactive);
+}
+
+.label--info {
+  --label-icon-color: var(--icon-interactive-info);
+  background: var(--background-accent-info-idle);
+  color: var(--text-interactive-info);
+}
+
+.label--info:is(:hover, [data-state='hover']) {
+  background: var(--background-accent-info-interactive);
+}
+
+.label--success {
+  --label-icon-color: var(--icon-interactive-success);
+  background: var(--background-accent-success-idle);
+  color: var(--text-interactive-success);
+}
+
+.label--success:is(:hover, [data-state='hover']) {
+  background: var(--background-accent-success-interactive);
+}
+
+.label--error {
+  --label-icon-color: var(--icon-interactive-danger);
+  background: var(--background-accent-danger-idle);
+  color: var(--text-interactive-danger);
+}
+
+.label--error:is(:hover, [data-state='hover']) {
+  background: var(--background-accent-danger-interactive);
+}
+
+.label--warning {
+  --label-icon-color: var(--icon-interactive-warning);
+  background: var(--background-accent-warning-idle);
+  color: var(--text-interactive-warning);
+}
+
+.label--warning:is(:hover, [data-state='hover']) {
+  background: var(--background-accent-warning-interactive);
+}
