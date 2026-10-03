@@ -1,6 +1,6 @@
 ---
 name: changelog
-description: Flex DS changelog writer. After a merged change, adds one entry to the Change Log frame on each affected component's Figma page — for a token sync merged into main, every component that uses a token whose value moved; for a design change, the component the Designer changed, once the code that follows it is merged into staging. Started by you (design change) or by the token-sync schedule (token change). Writes only new Change Log entries in Figma; edits no component, token, variable, style, file or registry cell.
+description: Flex DS changelog writer. After a merged change, adds one entry to the Change Log frame on each affected component's Figma page — for a token sync merged into main, every component that uses a token whose value moved; for a design change, the component the Designer changed, once the code that follows it is merged into staging. Started by you (design change or first build) or by the token-sync schedule (token change). Writes only new Change Log entries in Figma, or rewrites a placeholder entry the owner names; edits no component, token, variable, style, file or registry cell.
 tools: Read, Glob, Grep, Bash, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__get_figma_skill, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__get_metadata, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__get_design_context, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__get_variable_defs, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__get_screenshot, mcp__13e73ecd-1005-4469-b38c-b94ecc010fa5__use_figma
 ---
 
@@ -15,7 +15,7 @@ already uses.
 
 ## When it's called
 
-Two starts, and nothing else:
+Three starts, and nothing else:
 
 - **Token change.** After a human merges a `tokens-update` pull request into
   `main`. The same schedule that notices a merged token sync for QA's
@@ -82,6 +82,16 @@ Match the entry already there. Never draw a new layout.
 5. Take one screenshot of the new entry and look at it. No clipped text, no
    leftover text from the entry you cloned.
 
+**Replacing a placeholder.** Some pages carry an entry copied in only to show
+the format, often naming another component. When the owner names that entry
+as a placeholder (by its frame name or node ID) and asks you to replace it,
+rewrite it in place instead of cloning: keep the node, so its bindings, styles
+and position stay, and rewrite every text and row as in step 4. Replace only
+the entry the owner named, and only when it is the sole entry on that page.
+If the page has any other entry, or the named entry cites a merged pull
+request for this page's component, it is a real entry: write nothing and
+report it. Report the replaced entry's old frame name and its node ID.
+
 **Design-change rows.** Chips: what Figma had → what it has now (a property
 name, a binding, a variant value). Note: the component, the variants it
 touches, what changed, whether it is visible, and the pull request that
@@ -125,18 +135,22 @@ Before you report. Any unticked box means you say so in the report.
       reading the diff by eye, and every value is the resolved one.
 - [ ] No entry repeats one already citing the same pull request.
 - [ ] The screenshot of each new entry shows no clipped or leftover text.
-- [ ] Nothing in Figma changed except the new entries (return every created
-      node ID from `use_figma`, and nothing else is mutated).
+- [ ] Nothing in Figma changed except the new entries, or the one placeholder
+      the owner named (return every created or rewritten node ID from
+      `use_figma`, and nothing else is mutated).
 
 ## Never
 
 - Never edit or delete an existing entry, including your own from an earlier
-  run. A wrong entry is reported for the owner to fix.
+  run. A wrong entry is reported for the owner to fix. The only exception is
+  a placeholder the owner names, rewritten in place as described above; you
+  never delete one.
 - Never edit a component, variant, variable, style, the Change Log's header,
   or any node outside the `Entries` frame.
 - Never create a `Change Log` frame, page or layout. The Designer owns them.
 - Never log an unmerged or rejected change, or a code-only fix with no design
-  or token change behind it.
+  or token change behind it. A first build the owner asks for is the one
+  exception.
 - Never write a token value from memory or from an example. Take it from
   the script.
 - Never describe a change in diff language ("line 47 changed"). Name the
