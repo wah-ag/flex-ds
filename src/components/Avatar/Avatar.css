@@ -1,0 +1,96 @@
+/* Avatar — Figma node 32:315. Semantic tokens only.
+   Every size is a fixed square bound to its size-avatar token. */
+
+.avatar {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: var(--avatar-radius);
+  vertical-align: middle;
+}
+
+/* Sizes. Figma binds sm to control-2xs and every larger size to control-xs
+   (the circle image overrides both with rounded, below). */
+
+.avatar--2xl {
+  --avatar-size: var(--size-avatar-2xl);
+  --avatar-radius: var(--border-radius-control-xs);
+  --avatar-icon-size: var(--size-icon-lg);
+}
+
+.avatar--xl {
+  --avatar-size: var(--size-avatar-xl);
+  --avatar-radius: var(--border-radius-control-xs);
+  --avatar-icon-size: var(--size-icon-lg);
+}
+
+.avatar--lg {
+  --avatar-size: var(--size-avatar-lg);
+  --avatar-radius: var(--border-radius-control-xs);
+  --avatar-icon-size: var(--size-icon-md);
+}
+
+.avatar--md {
+  --avatar-size: var(--size-avatar-md);
+  --avatar-radius: var(--border-radius-control-xs);
+  --avatar-icon-size: var(--size-icon-sm);
+}
+
+.avatar--sm {
+  --avatar-size: var(--size-avatar-sm);
+  --avatar-radius: var(--border-radius-control-2xs);
+  --avatar-icon-size: var(--size-icon-xs);
+}
+
+/* Image categories. Figma draws the stroke inside the frame, over the
+   image, so the border is an overlay and the image fills the whole frame. */
+
+.avatar--circle-image {
+  --avatar-radius: var(--border-radius-rounded);
+}
+
+.avatar--rectangle-image::after,
+.avatar--circle-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: var(--border-width-default) solid var(--border-neutral-base);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.avatar__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* Icon category. The icon follows icon-interactive-brand-idle through
+   currentColor. Its stroke is drawn in screen pixels at border-width-icon,
+   so it does not shrink when the 24-unit icon is sized down. */
+
+.avatar--icon {
+  background: var(--background-accent-brand-idle);
+  color: var(--icon-interactive-brand-idle);
+}
+
+.avatar__icon {
+  flex-shrink: 0;
+  width: var(--avatar-icon-size);
+  height: var(--avatar-icon-size);
+  stroke: currentColor;
+  stroke-width: var(--border-width-icon);
+}
+
+.avatar__icon * {
+  vector-effect: non-scaling-stroke;
+}
