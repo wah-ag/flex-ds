@@ -38,8 +38,8 @@ label is always tied to the input.
   the web scale (only the core `scale-3`, and `size-dots-sm`, which is a dot
   size). The Designer should place it in the auto-layout flow and bind its
   spacing to an existing token.
-- **Width.** The field fills its container. Figma's width is a fixed 376
-  with no token.
+- **Width.** The field fills its container, by owner decision. Figma's
+  width is a fixed 376 with no token; this is settled, not an open question.
 - **States.**
   - `active` is focused and empty (pointer focus).
   - `typing` is focused with a value.
@@ -72,14 +72,26 @@ label is always tied to the input.
   `background-interactive-brand-idle`, the variable Figma binds to its drawn
   "blink cursor".
 
-## Design gaps: states Figma does not show
+## Out of scope by owner decision (2026-10-03)
 
-Built only as far as Figma shows. Each needs a Designer decision:
+The owner decided to leave these states out. They are not built, and they
+are not open design gaps:
 
-- **Filled, not focused.** The entered text uses `text-neutral-base`, the
-  colour of Figma's `typing` text, and the field otherwise looks `idle`.
-- **Keyboard focus with a value.** It shows the `typing` look plus the
-  ring. Figma's `focus` cell shows only an empty field.
+- **Holding a value but not focused.** There is no dedicated look. The
+  entered text uses `text-neutral-base`, the colour of Figma's `typing`
+  text, and the field otherwise looks `idle`.
 - **Error with hover or focus.** The error look holds on hover. Keyboard
-  focus adds the ring on top. Figma has no such cell.
-- **Press.** Figma has no press state for the field, and none is built.
+  focus still shows the standard ring.
+- **Press.**
+
+## Deferred design gap
+
+- **Helper Text.** Not built; see *Owner decisions* above. The Designer
+  needs to fix it in Figma before `helperText` and `showHelperText` can be
+  built.
+
+## Question for the Designer
+
+- **Keyboard focus while the field holds a value.** Figma's `focus` cell
+  shows only an empty field. For now it shows the `typing` look plus the
+  ring.
