@@ -2,9 +2,9 @@
 
 PasswordField is the Figma component set `PasswordField`, node 95:596
 (registry row "InputField/PasswordField"). It is built on
-`component/password-field`, stacked on the FieldControl refactor
-(`component/text-field-control`), and imports FieldControl
-(`docs/field-control-prop-names.md`).
+`component/password-field`, which also carries the owner-approved
+extraction of FieldControl and FieldLabel from TextField. PasswordField
+imports both (`docs/field-control-prop-names.md`).
 
 ## Props
 
@@ -68,17 +68,24 @@ whether the password is shown.
   `background-neutral-inverse` / `background-interactive-danger-idle`).
 - The caret is brand (`background-interactive-brand-idle`) in every state.
   Figma's `error` caret (`background-interactive-danger-idle`) is ignored.
-
-## Question (blocks the pull request)
-
-- **Which way does the field start?** Figma draws the open eye in `idle`,
-  `hover`, `active`, `focus` and `disable`, and pairs the open eye with the
-  visible password. Read literally, a new field shows the password in plain
-  text until the user hides it, and that is how this draft behaves. Most
-  password fields start hidden. If it should start hidden, Figma's empty
-  cells should show the closed eye.
+- **The field starts hidden** (masked, closed eye). Only `password visible`
+  and `error visible` start shown.
+- **The eye is keyboard-focusable** and in the tab order
+  (`trailingFocusable` on FieldControl), with a ring from the existing focus
+  tokens. Used from the keyboard, it keeps focus. TextField's clear button is
+  unchanged: it stays out of the tab order.
 
 ## Design gaps (Designer)
+
+- **Empty cells show the open eye.** Figma draws eye-open in `idle`,
+  `hover`, `active`, `focus` and `disable`. Since the field starts hidden
+  (owner decision), those cells render the closed eye (Lucide `EyeOff`).
+  Figma should show eye-close there.
+- **No focus look for the eye.** Figma draws no focus state for the eye. It
+  uses the ring described in `docs/field-control-prop-names.md` until the
+  Designer draws one. While the eye has keyboard focus, the input does not,
+  so the box shows its unfocused look (`idle`, or the held `error`).
+  Figma has no cell for this.
 
 - **Hover border is bound to an icon token.** In `hover` (149:146), the
   border is bound to `icon/interactive/brand-hover`. The border role has its
@@ -99,13 +106,6 @@ whether the password is shown.
 - **Focus ring.** In Figma the ring sits in the layout (76 → 84). As in
   TextField (owner decision 2026-10-03), it is drawn outside the box, so focus
   never changes the height.
-
-## Open before the pull request
-
-- **Label styles.** The label repeats TextField's label rule (`title-sm`,
-  `text-neutral-base`), because the label is still part of TextField. It
-  should become a shared `FieldLabel` subcomponent that both import. That is
-  another change to TextField, which needs the owner's approval.
-- **Keyboard access to the toggle.** FieldControl keeps the trailing action
-  out of the tab order, as TextField's clear button was, so keyboard users
-  cannot reveal the password. Figma gives the eye no focus look.
+- **Dots.** Figma draws the hidden password as dots bound to `size-dots-sm`,
+  `spacing-gap-xs` and `background-neutral-inverse` (danger in error). Native
+  bullets come from the font and cannot take these tokens (owner decision).

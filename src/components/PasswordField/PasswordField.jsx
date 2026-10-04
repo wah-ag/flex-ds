@@ -1,17 +1,21 @@
 import { useEffect, useId, useState } from 'react';
 import { Circle, Eye, EyeOff } from 'lucide-react';
 import { FieldControl } from '../FieldControl/FieldControl';
+import { FieldLabel } from '../FieldLabel/FieldLabel';
 import './PasswordField.css';
 
 // Figma: PasswordField, node 95:596. Props are named as Figma names its
 // component properties, and `state` takes Figma's variant values as written
 // (docs/password-field-prop-names.md).
 //
-// The bordered box is FieldControl, shared with TextField. Its trailing
-// action is the show/hide toggle. Owner decisions, 2026-10-04:
+// The label is FieldLabel and the bordered box is FieldControl, both shared
+// with TextField. The box's trailing action is the show/hide toggle. Owner
+// decisions, 2026-10-04:
 // - the hidden password uses the browser's own bullets (type="password"),
 //   not Figma's drawn dots;
-// - the caret is brand in every state, including error.
+// - the caret is brand in every state, including error;
+// - the field starts hidden (eye closed);
+// - the eye is in the tab order, with the focus-ring tokens.
 //
 // States:
 // - `hover` comes from a real pointer; `active` (focused, empty) and the
@@ -35,9 +39,8 @@ const LOOK = {
   disable: 'disable',
 };
 
-// Only the `invisible` states start hidden: every other Figma cell shows the
-// open eye. See docs/password-field-prop-names.md, "Question".
-const startsVisible = (state) => !state.endsWith('invisible');
+// The field starts hidden; only the `… visible` states start shown.
+const startsVisible = (state) => state.endsWith(' visible');
 
 export function PasswordField({
   state = 'idle',
@@ -59,9 +62,7 @@ export function PasswordField({
 
   return (
     <div className={['password-field', className].filter(Boolean).join(' ')} data-state={state}>
-      <label className="password-field__label" htmlFor={inputId}>
-        {labelText}
-      </label>
+      <FieldLabel labelText={labelText} htmlFor={inputId} />
       <FieldControl
         {...rest}
         id={inputId}
@@ -75,6 +76,7 @@ export function PasswordField({
         trailingIcon={visible ? Eye : EyeOff}
         trailingLabel={`Show ${labelText}`}
         trailingPressed={visible}
+        trailingFocusable
         onTrailingClick={() => setVisible((value) => !value)}
       />
     </div>

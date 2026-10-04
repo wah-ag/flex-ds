@@ -1,8 +1,8 @@
 /* TextField — Figma InputField, node 64:556. Semantic tokens only.
    The field fills its container, by owner decision: Figma's width is fixed
    and bound to no token. Helper Text is deferred (no token for its offset).
-   The bordered box, its looks and the focus ring are FieldControl
-   (src/components/FieldControl), extracted on 2026-10-04. */
+   The label is FieldLabel; the bordered box, its looks and the focus ring
+   are FieldControl. Both were extracted on 2026-10-04. */
 
 .text-field {
   box-sizing: border-box;
@@ -11,10 +11,4 @@
   align-items: stretch;
   gap: var(--spacing-gap-sm);
   width: 100%;
-}
-
-.text-field__label {
-  margin: 0;
-  font: var(--title-sm);
-  color: var(--text-neutral-base);
 }

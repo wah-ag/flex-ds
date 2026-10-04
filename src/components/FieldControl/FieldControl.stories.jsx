@@ -80,7 +80,8 @@ export const NoTrailing = {
 };
 
 // The trailing slot as a toggle, the way PasswordField uses it: the parent
-// owns the toggled state and swaps the icon and the input type. Figma shows
+// owns the toggled state and swaps the icon and the input type, and the
+// toggle is a tab stop (trailingFocusable). Figma shows
 // the open eye while the password is visible and the closed eye while hidden.
 export const TrailingToggle = {
   name: 'Trailing action as a toggle',
@@ -95,6 +96,7 @@ export const TrailingToggle = {
         trailingIcon={shown ? Eye : EyeOff}
         trailingLabel="Show password"
         trailingPressed={shown}
+        trailingFocusable
         onTrailingClick={() => setShown((value) => !value)}
       />
     );

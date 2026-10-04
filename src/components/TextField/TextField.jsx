@@ -1,6 +1,7 @@
 import { useId } from 'react';
 import { Circle, CircleX } from 'lucide-react';
 import { FieldControl } from '../FieldControl/FieldControl';
+import { FieldLabel } from '../FieldLabel/FieldLabel';
 import './TextField.css';
 
 // Figma: InputField, node 64:556. Built as TextField by owner decision
@@ -9,8 +10,8 @@ import './TextField.css';
 //
 // The bordered box (icons, input, caret, trailing action) is FieldControl,
 // extracted on 2026-10-04 by owner decision so PasswordField can share it
-// (docs/field-control-prop-names.md). TextField adds the label and makes the
-// trailing action clear the field. States are FieldControl's:
+// (docs/field-control-prop-names.md), with the label as FieldLabel. TextField
+// lays them out and makes the trailing action clear the field. States are FieldControl's:
 // - `active` is focused and empty; `typing` is focused with a value. Both
 //   come from real focus and real input.
 // - `focus` is keyboard focus, and only keyboard focus shows the ring.
@@ -49,9 +50,7 @@ export function TextField({
 
   return (
     <div className={['text-field', className].filter(Boolean).join(' ')}>
-      <label className="text-field__label" htmlFor={inputId}>
-        {labelText}
-      </label>
+      <FieldLabel labelText={labelText} htmlFor={inputId} />
       <FieldControl
         {...rest}
         id={inputId}

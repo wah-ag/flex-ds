@@ -49,6 +49,7 @@ export function FieldControl({
   trailingIcon: TrailingIcon,
   trailingLabel,
   trailingPressed,
+  trailingFocusable = false,
   onTrailingClick,
   type = 'text',
   id,
@@ -119,21 +120,23 @@ export function FieldControl({
         />
       </div>
       {showTrailing && TrailingIcon && (
-        // The trailing action stays out of the tab order and never takes
-        // focus from the input; after it runs, focus returns to the input.
+        // A pointer never takes focus from the input. By default the action
+        // is out of the tab order and focus returns to the input after it
+        // runs. With `trailingFocusable`, it is a tab stop with its own focus
+        // ring, and keeps focus when it is used from the keyboard.
         <button
           type="button"
           className="field-control__trailing"
           aria-label={trailingLabel}
           aria-pressed={trailingPressed}
-          tabIndex={-1}
+          tabIndex={trailingFocusable ? undefined : -1}
           disabled={isDisabled}
           onMouseDown={(event) => event.preventDefault()}
           onClick={(event) => {
             const input = inputRef.current;
             if (!input) return;
             onTrailingClick?.(event, input);
-            input.focus();
+            if (!trailingFocusable) input.focus();
           }}
         >
           <TrailingIcon

@@ -1,27 +1,33 @@
-# FieldControl — name and prop names (for review)
+# FieldControl and FieldLabel — names and prop names (for review)
 
-FieldControl is the bordered box of a text input: the border, the leading
-icon, the input with its caret, and one trailing action. It was extracted
-from TextField on 2026-10-04, by owner decision, so that PasswordField can
-import it instead of copying TextField's styles. TextField imports it and
-its rendered look, props, stories and behaviour are unchanged.
+FieldControl and FieldLabel are the two parts of a form field, extracted
+from TextField on 2026-10-04 by owner decision (a one-off exception for
+TextField, which reads Completed), so that PasswordField can import them
+instead of copying TextField's styles. TextField imports both, and its
+rendered look, props, stories and behaviour are unchanged.
 
-It has **no Figma node of its own**. In Figma it is the "text field" frame
-inside InputField (64:556) and inside PasswordField (95:596); neither is an
-instance of a shared component. Its name is therefore a name by role, not a
-Figma name, and is proposed here for review.
+- **FieldControl** is the bordered box: the border, the leading icon, the
+  input with its caret, and one trailing action.
+- **FieldLabel** is the label above it.
 
-## Name
+Neither has **a Figma node of its own**. In Figma they are the "text field"
+frame and the label text layer inside InputField (64:556) and inside
+PasswordField (95:596, label layer 93:575). Neither is an instance of a
+shared component. Their names are therefore names by role, not Figma names,
+and are proposed here for review.
+
+## Names
 
 | Proposed | Why |
 | --- | --- |
 | `FieldControl` | It is the control part of a form field, as opposed to the field's label. `InputControl` and `TextFieldBox` were the alternatives; `FieldControl` reads correctly for both TextField and PasswordField. |
+| `FieldLabel` | The label of a form field. It is not `Label`, which is already the badge-style Label component (Figma 31:228). |
 
-The Designer may want to make this frame a component in Figma, so both
-InputField and PasswordField use instances of it. There is no Components row
-for it in the registry; only the Designer can create one.
+The Designer may want to make both components in Figma, so InputField and
+PasswordField use instances of them. Neither has a Components row in the
+registry, and only the Designer can create one.
 
-## Props
+## FieldControl props
 
 None come from Figma, because there is no Figma node. Where a prop carries a
 TextField property through, it keeps the meaning (and, where it can, the
@@ -38,7 +44,8 @@ name) of that property.
 | `trailingIcon` | none | The trailing action's icon, a Lucide component. | `swapTrailingIcon` |
 | `trailingLabel` | none | The trailing action's accessible name (`aria-label`). It is required whenever the action is shown, because the button has no visible text. | — (TextField passes `Clear <labelText>`) |
 | `trailingPressed` | none | `aria-pressed` on the trailing button, for an action that toggles (PasswordField's show/hide). Leave it unset for a one-shot action such as clear. | — |
-| `onTrailingClick` | none | `(event, input) => void`, called when the trailing action is clicked. `input` is the `<input>` element. Afterwards focus returns to the input. | — (TextField clears the field) |
+| `trailingFocusable` | `false` | When `true`, the trailing action is a tab stop with a focus ring, and keeps focus when it is used from the keyboard. When `false` (TextField's clear), it is out of the tab order and focus returns to the input after it runs. | — |
+| `onTrailingClick` | none | `(event, input) => void`, called when the trailing action is clicked. `input` is the `<input>` element. | — (TextField clears the field) |
 
 `leadingIcon` and `trailingIcon` drop TextField's `swap` prefix because they
 are not Figma instance-swap properties here. TextField keeps
@@ -48,18 +55,38 @@ are not Figma instance-swap properties here. TextField keeps
 
 `type` (default `text`), `id`, `name`, `value`, `defaultValue`, `onChange`,
 `onFocus`, `onBlur` and the rest go to the `<input>`. FieldControl renders
-no label. The parent renders it and passes the input's `id`; used on its
-own, FieldControl needs an `aria-label`.
+no label. The parent renders a FieldLabel and passes the input's `id`; used
+on its own, FieldControl needs an `aria-label`.
 
-## Behaviour carried over from TextField unchanged
+## FieldLabel props
 
-- The trailing action is a real `<button type="button">`, out of the tab
-  order (`tabIndex={-1}`), and never takes focus from the input. It is
-  disabled when `state` is `disable`.
+| Prop | What it does |
+| --- | --- |
+| `labelText` | The label's text. TextField and PasswordField pass their own `labelText`. |
+| `htmlFor` | The `id` of the input it names. It renders a real `<label>`. |
+
+It has one look (`title-sm`, `text-neutral-base`) and no states.
+
+## Behaviour
+
+- The trailing action is a real `<button type="button">`. A pointer never
+  takes focus from the input. It is disabled when `state` is `disable`.
+- By default (TextField's clear button, unchanged) it is out of the tab
+  order. With `trailingFocusable` (PasswordField's eye, owner decision
+  2026-10-04) it is a tab stop. Its keyboard focus ring uses the existing
+  focus tokens: `border-width-focus`, `border-interactive-brand-focus`,
+  offset `spacing-padding-xxs`, radius `border-radius-control-xs`.
 - Hover, active, typing and keyboard focus come from real input. Only
-  keyboard focus shows the ring, which is drawn outside the box.
+  keyboard focus on the input shows the field's ring, which is drawn outside
+  the box.
 - The caret is always `background-interactive-brand-idle`, in every look,
   including `error` (owner decision, 2026-10-04).
+
+## Design gap
+
+- **No focus look for a focusable trailing action.** Figma draws no focus
+  state for the eye (or any trailing icon). The ring above is built from the
+  existing focus tokens. The Designer should draw it.
 
 ## What moved, for the reviewer
 
@@ -67,12 +94,6 @@ own, FieldControl needs an `aria-label`.
   `FieldControl.css`, with the classes renamed from `text-field__control`
   and friends to `field-control*`. Every token is the same.
 - `data-state`, `data-look` and `data-ring` moved from TextField's outer
-  `<div>` to the FieldControl box. The label and the outer wrapper are
-  unchanged.
-
-## For review
-
-- The trailing action stays out of the tab order, as TextField's clear
-  button was. For PasswordField's show/hide toggle, that means keyboard
-  users cannot reveal the password. Figma gives the trailing icon no focus
-  look, so making it a tab stop needs a design decision first.
+  `<div>` to the FieldControl box.
+- TextField's label rule moved to `FieldLabel.css`, with `text-field__label`
+  renamed `field-label`. The tokens are the same.

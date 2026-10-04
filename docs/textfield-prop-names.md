@@ -104,3 +104,7 @@ the clear button) moved into the shared subcomponent `FieldControl`
 PasswordField can import it. TextField's props, look and behaviour are
 unchanged; it passes its props through and makes the trailing action clear
 the field.
+
+The label moved the same way, into the shared subcomponent `FieldLabel`
+(`src/components/FieldLabel`), so PasswordField can import it too. Its look
+is unchanged.
