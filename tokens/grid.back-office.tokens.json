@@ -1,0 +1,14 @@
+{
+  "column": {
+    "$type": "dimension",
+    "$value": "{scale-6}"
+  },
+  "margin": {
+    "$type": "dimension",
+    "$value": "{scale-19}"
+  },
+  "gutter": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  }
+}
