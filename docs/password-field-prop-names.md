@@ -86,21 +86,22 @@ whether the password is shown.
   Designer draws one. While the eye has keyboard focus, the input does not,
   so the box shows its unfocused look (`idle`, or the held `error`).
   Figma has no cell for this.
-
-- **Hover border is bound to an icon token.** In `hover` (149:146), the
-  border is bound to `icon/interactive/brand-hover`. The border role has its
-  own `border-interactive-brand-hover`. The Developer may not swap a binding,
-  so the hover border is left unresolved. It renders FieldControl's shared
-  hover look (`border-interactive-brand-idle`, TextField's hover) until the
-  Designer rebinds it.
 - **Hover eye ignores `showTrailing`.** In `hover`, eye-open (149:155) is not
   tied to `showTrailing`; in every other cell it is. The code honours
   `showTrailing` in every state.
-- **Focus leading icon disagrees with InputField.** PasswordField `focus`
-  colours the leading icon `icon/interactive/brand-idle` (93:528). InputField
-  `focus` (64:610) leaves it `icon/neutral/primary`. Both draw the same
-  shared box, so FieldControl follows InputField. One of the two Figma
-  components should change.
+- **PasswordField and InputField disagree on two looks of the same box.**
+  Both components draw the same field frame (FieldControl), but:
+
+  | Look | PasswordField (95:596) | InputField / TextField (64:556) |
+  | --- | --- | --- |
+  | Hover border | `border/interactive/brand-hover` (149:146, field 149:148) | `border/interactive/brand-idle` (64:573) |
+  | Keyboard-focus leading icon | `icon/interactive/brand-idle` (93:528) | `icon/neutral/primary` (64:610) |
+
+  By owner decision (2026-10-04, fix round 1), each component follows its own
+  Figma. PasswordField passes `hoverBorder="brand-hover"` and
+  `focusLeadingIcon="brand"` to FieldControl, and TextField keeps the
+  defaults. The Designer should decide whether the two fields are meant to
+  differ. If not, align one Figma component and drop the option.
 - **Width.** Figma's width is a fixed 376 with no token. Like TextField, the
   field fills its container.
 - **Focus ring.** In Figma the ring sits in the layout (76 → 84). As in
@@ -109,3 +110,11 @@ whether the password is shown.
 - **Dots.** Figma draws the hidden password as dots bound to `size-dots-sm`,
   `spacing-gap-xs` and `background-neutral-inverse` (danger in error). Native
   bullets come from the font and cannot take these tokens (owner decision).
+
+## Correction (fix round 1, 2026-10-04)
+
+An earlier version of this file said the `hover` border (149:146) was bound
+to `icon/interactive/brand-hover`. That is wrong. `get_variable_defs` on the
+field (149:148) and the variant (149:146) reports
+`border/interactive/brand-hover`, a border token that exists in the build.
+The hover border now renders `--border-interactive-brand-hover`.

@@ -39,6 +39,8 @@ export default {
     showTrailing: { control: 'boolean' },
     trailingIcon: { control: 'select', options: Object.keys(TRAILING_ICONS), mapping: TRAILING_ICONS },
     trailingLabel: { control: 'text' },
+    hoverBorder: { control: 'inline-radio', options: ['brand-idle', 'brand-hover'] },
+    focusLeadingIcon: { control: 'inline-radio', options: ['neutral', 'brand'] },
   },
   args: {
     state: 'idle',
@@ -101,4 +103,16 @@ export const TrailingToggle = {
       />
     );
   },
+};
+
+// The two parent-chosen looks, as PasswordField sets them (PasswordField
+// 149:146 and 93:528). TextField uses the defaults.
+export const HoverBorderBrandHover = {
+  name: 'hover / hoverBorder brand-hover',
+  args: { state: 'hover', hoverBorder: 'brand-hover' },
+};
+
+export const FocusLeadingIconBrand = {
+  name: 'focus / focusLeadingIcon brand',
+  args: { state: 'focus', focusLeadingIcon: 'brand' },
 };

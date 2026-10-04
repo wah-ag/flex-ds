@@ -19,6 +19,13 @@ import './FieldControl.css';
 // - `error` and `disable` are held states, set through `state`.
 // Passing `hover`, `active`, `typing` or `focus` as `state` only pins the
 // look, for docs.
+//
+// Two looks differ between the Figma components that use this box, so the
+// parent picks them (owner decision, 2026-10-04):
+// - `hoverBorder`: 'brand-idle' (InputField 64:573, the default) or
+//   'brand-hover' (PasswordField 149:146).
+// - `focusLeadingIcon`: 'neutral' (InputField 64:610, the default) or
+//   'brand' (PasswordField 93:528).
 
 const PINNED = ['hover', 'active', 'typing', 'focus', 'error', 'disable'];
 
@@ -51,6 +58,8 @@ export function FieldControl({
   trailingPressed,
   trailingFocusable = false,
   onTrailingClick,
+  hoverBorder = 'brand-idle',
+  focusLeadingIcon = 'neutral',
   type = 'text',
   id,
   value,
@@ -84,6 +93,8 @@ export function FieldControl({
       className={['field-control', `field-control--${size}`, className].filter(Boolean).join(' ')}
       data-state={state}
       data-look={look}
+      data-hover-border={hoverBorder === 'brand-hover' ? 'brand-hover' : undefined}
+      data-focus-leading={focusLeadingIcon === 'brand' ? 'brand' : undefined}
       data-ring={showRing ? '' : undefined}
     >
       <div className="field-control__content">

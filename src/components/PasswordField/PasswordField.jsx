@@ -15,7 +15,10 @@ import './PasswordField.css';
 //   not Figma's drawn dots;
 // - the caret is brand in every state, including error;
 // - the field starts hidden (eye closed);
-// - the eye is in the tab order, with the focus-ring tokens.
+// - the eye is in the tab order, with the focus-ring tokens;
+// - hover uses border-interactive-brand-hover (149:146) and keyboard focus
+//   colours the leading icon icon-interactive-brand-idle (93:528), as
+//   PasswordField's Figma binds them; TextField keeps InputField's looks.
 //
 // States:
 // - `hover` comes from a real pointer; `active` (focused, empty) and the
@@ -77,6 +80,8 @@ export function PasswordField({
         trailingLabel={`Show ${labelText}`}
         trailingPressed={visible}
         trailingFocusable
+        hoverBorder="brand-hover"
+        focusLeadingIcon="brand"
         onTrailingClick={() => setVisible((value) => !value)}
       />
     </div>

@@ -148,6 +148,19 @@
   --field-control-trailing: var(--icon-neutral-base);
 }
 
+/* Parent-chosen variants of two looks, where the Figma components that use
+   this box disagree (docs/field-control-prop-names.md). Without the
+   attributes, the looks above stand (InputField's). */
+
+.field-control[data-hover-border='brand-hover'][data-look='idle']:hover,
+.field-control[data-hover-border='brand-hover'][data-look='hover'] {
+  --field-control-border: var(--border-interactive-brand-hover);
+}
+
+.field-control[data-focus-leading='brand'][data-look='focus'] {
+  --field-control-leading: var(--icon-interactive-brand-idle);
+}
+
 .field-control[data-look='error'] {
   --field-control-border: var(--border-interactive-danger);
   --field-control-leading: var(--icon-interactive-danger);
