@@ -1,0 +1,94 @@
+/* TextArea — Figma TextArea, node 110:1364. Semantic tokens only, with one
+   exception: the height (see below). The label is FieldLabel; the box is the
+   <textarea> itself. It fills its container, as TextField and PasswordField
+   do: Figma's width is a fixed 376 bound to no token. */
+
+.text-area {
+  /* OWNER RULING 1 (2026-10-04, TextArea only): the box height may stay
+     unbound to tokens and use Figma's values: 120 default, 120 minimum,
+     150 maximum. These three are the only raw values in this component.
+     Every other value is a semantic token. */
+  --text-area-height: 120px;
+  --text-area-min-height: 120px;
+  --text-area-max-height: 150px;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-gap-sm);
+  width: 100%;
+}
+
+/* The box. Per-look roles; each look below overrides only what Figma
+   changes. The outline is an inset shadow, not a border, as in FieldControl
+   and ButtonCTA: shadows are not rounded down to whole device pixels. The
+   padding grows by the same width, so the box matches Figma's frame. */
+.text-area__box {
+  --text-area-border: var(--border-neutral-secondary);
+  --text-area-background: var(--background-neutral-base);
+  --text-area-text: var(--text-neutral-base);
+  --text-area-placeholder: var(--text-neutral-primary);
+
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: var(--text-area-height);
+  min-height: var(--text-area-min-height);
+  max-height: var(--text-area-max-height);
+  margin: 0;
+  padding: calc(var(--spacing-padding-sm) + var(--border-width-default))
+    calc(var(--spacing-padding-md) + var(--border-width-default));
+  border: none;
+  border-radius: var(--border-radius-control-xs);
+  background: var(--text-area-background);
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--text-area-border);
+  font: var(--body-md);
+  color: var(--text-area-text);
+  /* The caret is brand, as in FieldControl. */
+  caret-color: var(--background-interactive-brand-idle);
+  /* OWNER RULING 3 (2026-10-04): the browser's own resize handle, vertical
+     only, clamped by the min and max heights above. Figma's "long-text"
+     grip is not drawn. */
+  resize: vertical;
+  /* Focus shows the `active` look (brand border). The browser outline is
+     off, as in FieldControl; a focus ring is deferred (owner ruling 2). */
+  outline: none;
+}
+
+.text-area__box::placeholder {
+  color: var(--text-area-placeholder);
+  opacity: 1;
+}
+
+/* Looks. `data-state` is the held state (or a pinned one, for docs). Live
+   looks come from real input on an idle box, in order: hover, then focus
+   (active), then a held pointer (press). */
+
+.text-area__box[data-state='idle']:hover,
+.text-area__box[data-state='hover'] {
+  --text-area-border: var(--border-interactive-brand-idle);
+}
+
+.text-area__box[data-state='idle']:focus,
+.text-area__box[data-state='active'] {
+  --text-area-border: var(--border-interactive-brand-idle);
+}
+
+.text-area__box[data-state='idle']:active,
+.text-area__box[data-state='press'] {
+  --text-area-border: var(--border-interactive-brand-press);
+}
+
+.text-area__box[data-state='disable'] {
+  --text-area-border: var(--border-neutral-disable);
+  --text-area-background: var(--background-neutral-disable);
+  --text-area-text: var(--text-neutral-disable);
+  --text-area-placeholder: var(--text-neutral-disable);
+  cursor: not-allowed;
+}
+
+.text-area__box:disabled {
+  opacity: 1;
+  -webkit-text-fill-color: currentColor;
+}
