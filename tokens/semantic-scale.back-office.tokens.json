@@ -63,6 +63,18 @@
     "$type": "dimension",
     "$value": "{scale-7}"
   },
+  "grid-margin-sm": {
+    "$type": "dimension",
+    "$value": "{scale-15}"
+  },
+  "grid-margin-md": {
+    "$type": "dimension",
+    "$value": "{scale-16}"
+  },
+  "grid-margin-lg": {
+    "$type": "dimension",
+    "$value": "{scale-19}"
+  },
   "spacing-padding-xxs": {
     "$type": "dimension",
     "$value": "{scale-1}"
@@ -86,18 +98,6 @@
   "spacing-padding-xl": {
     "$type": "dimension",
     "$value": "{scale-8}"
-  },
-  "spacing-margin-sm": {
-    "$type": "dimension",
-    "$value": "{scale-8}"
-  },
-  "spacing-margin-md": {
-    "$type": "dimension",
-    "$value": "{scale-11}"
-  },
-  "spacing-margin-lg": {
-    "$type": "dimension",
-    "$value": "{scale-12}"
   },
   "spacing-gap-xs": {
     "$type": "dimension",
@@ -389,5 +389,24 @@
     "$type": "dimension",
     "$value": "{border-radius-lg}",
     "$description": "Modals, dialogs"
+  },
+  "grid-gutter-sm": {
+    "$type": "dimension",
+    "$value": "{scale-6}"
+  },
+  "grid-gutter-md": {
+    "$type": "dimension",
+    "$value": "{scale-8}"
+  },
+  "grid-gutter-lg": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "grid-columns-default": {
+    "$type": "dimension",
+    "$value": {
+      "value": 12,
+      "unit": "px"
+    }
   }
 }
