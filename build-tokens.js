@@ -50,6 +50,13 @@ const fixByName = (name, v) => {
   return v;
 };
 
+// The Figma exporter writes EVERY Number variable as a px dimension — it has no
+// unitless type and ignores variable scopes. A count is not a size: a token
+// whose name has a `columns` segment (grid-columns-default) is emitted as a
+// plain number, so `repeat(var(--grid-columns-default), 1fr)` works.
+const isCount = (name) => /(^|-)columns(-|$)/.test(name);
+const toCount = (v) => (v && typeof v === 'object' && 'value' in v ? v.value : v);
+
 // Runs BEFORE any transform, so every transform sees the fixed values.
 StyleDictionary.registerPreprocessor({
   name: 'figma/fix',
@@ -59,7 +66,10 @@ StyleDictionary.registerPreprocessor({
         const t = node[key];
         if (!t || typeof t !== 'object') continue;
         const name = [...path, key].join('-').toLowerCase();
-        if ('$value' in t) {
+        if ('$value' in t && isCount(name)) {
+          t.$type = 'number';
+          t.$value = toCount(t.$value);
+        } else if ('$value' in t) {
           t.$value = fix(t.$value);
           if (t.$type === 'typography') t.$value = fixTypography(t.$value);
           else t.$value = fixByName(name, t.$value);
@@ -88,13 +98,25 @@ const css = (name, sources, selector, filter) =>
     },
   });
 
+// The built-in ios-swift size transform reads every dimension as rem and
+// multiplies by 16, so 16px became CGFloat(256). Our values are already px,
+// and 1px = 1pt on iOS: keep the number as it is.
+StyleDictionary.registerTransform({
+  name: 'size/swift/pxToCGFloat',
+  type: 'value',
+  filter: (t) => t.$type === 'dimension',
+  transform: (t) => `CGFloat(${parseFloat(t.$value).toFixed(2)})`,
+});
+
 const native = (sources) =>
   new StyleDictionary({
     source: sources,
     preprocessors: ['figma/fix'],
     log: { verbosity: 'silent' },
     platforms: {
-      ios: { transformGroup: 'ios-swift', buildPath: 'build/ios/',
+      ios: { transforms: ['attribute/cti', 'name/camel', 'color/UIColorSwift',
+                          'content/swift/literal', 'asset/swift/literal', 'size/swift/pxToCGFloat'],
+             buildPath: 'build/ios/',
              files: [{ destination: 'Tokens.swift', format: 'ios-swift/class.swift',
                        options: { className: 'Tokens' },
                        filter: (t) => t.$type !== 'typography' && t.$type !== 'shadow' }] },

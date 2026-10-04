@@ -47,6 +47,16 @@ Run `npm run check:tokens`, then read the diff with these rules:
   a core primitive is not a substitute.
 - Names come from Figma. The pipeline never renames a token.
 
+## Numbers the exporter cannot type
+
+The exporter writes every Figma Number variable as a px dimension. It has no
+unitless type and ignores variable scopes (tested 2026-10-04). So a count
+arrives as `{ "value": 12, "unit": "px" }`. `build-tokens.js` emits any
+token with a `columns` segment in its name (`grid-columns-default`) as a plain
+number on every platform. If a new count is added in Figma, name it with a
+`columns` segment or extend that rule by pull request. It is never fixed in
+`tokens/`.
+
 ## Verify the rebuild, do not assume it
 
 A green build proves the export resolves, not that it is right.
