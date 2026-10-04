@@ -44,7 +44,9 @@ Each item names the column to report and its owner.
 | Production Storybook set with no Commit | Commit | DevOps |
 | Staging Storybook set with no GitHub Commits row, or a commit touching the component's folder on `staging` with no row | GitHub Commits | Developer |
 | A GitHub Commits row linked to no component | GitHub Commits (on Components) | Developer |
-| A folder in `src/components/` with no row | — | Designer (rows are created with the Figma link) |
+| A folder in `src/components/` with no row, unless it is a code-only subcomponent declared under `docs/` (see the registry skill) | — | Designer (rows are created with the Figma link) |
+| A declared code-only subcomponent that no component with a row imports | — | Developer |
+| A row with a verdict whose Context names no tested `staging` commit | Context | QA |
 | A row past To-do with no folder in `src/components/` | Staging Storybook | Developer |
 | Development past To-do while Design is not `Done` | Design | Designer |
 | A value in Astro Link, Release Review or Release Verdict | That column | Unassigned — addressed to you |

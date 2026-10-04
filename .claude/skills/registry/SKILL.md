@@ -76,11 +76,10 @@ table.
 | Variants | long text | QA | The variant tested. States the State column cannot record (`pressed`, `destructive`, `default`) are written here. |
 | Size | multiple select: xs, sm, md, lg, xl, comfort, compact, null | QA | Size tested. |
 | State | multiple select: draft, pending, upcoming, completed, rejected, cancelled, hovered, idle, focus, selected, isCurrent, error, disabled, loading, filled | QA | State tested. |
-| Context | text | QA | Test context. |
+| Context | text | QA | Test context. Every time QA writes a verdict, Context names the `staging` commit it tested, as `Tested on staging <full hash>` (see *Re-shipping a Completed component*). |
 | Attachment | attachments | QA | Screenshot evidence. |
 | Expected Results | long text | QA | What Figma specifies. |
 | Suggestion for Improvement | long text | QA | What is wrong and what would fix it. |
-| Tested At | last modified time, watching Testing Results only | Computed | When the row's verdict was last written. DevOps's re-ship gate reads it (see *Re-shipping a Completed component*). Added by the owner in Airtable; if it is missing from the base, report it. |
 | Testing Results | single select: Passed, Failed, Fixed (To re-test) | QA | QA writes `Passed` or `Failed`. **Two exceptions:** the Developer may change `Failed` to `Fixed (To re-test)` after fixing it, and may make no other change to this column; and a human may set any row to `Fixed (To re-test)` to force a retest (see *Forcing a retest*). QA never writes `Fixed (To re-test)`. |
 
 ## GitHub Commits
@@ -193,6 +192,30 @@ which wakes QA, and Synchronization % drops below 100%, which holds DevOps.
   reports them if they stay at `Fixed (To re-test)` with no QA retest
   following.
 
+## Code-only subcomponents
+
+A code-only subcomponent is a folder in `src/components/` that the Developer
+extracted so that components could import it instead of copying styles, and
+that has **no Figma node of its own** (owner decision, 2026-10-04; FieldControl
+and FieldLabel are the first). It gets **no Components row**, no Staging
+Testing rows and no Figma or Design value. Nobody creates a row for it, and
+nobody fills in Design or Figma to make one.
+
+- **Declared in docs.** The Developer's write-up under `docs/` names it, says
+  it has no Figma node, and lists the components that import it. A folder
+  with no row and no such declaration is still a stop for DevOps and a
+  finding for PM.
+- **Tested through its importers.** QA tests it as rendered inside each
+  component that imports it. Their Staging Testing rows are its evidence.
+- **Shipped with its importers.** It reaches `main` only together with every
+  component on `origin/staging` that imports it, and each of those must pass
+  its own gate in the same release. An importer that is Completed is a
+  re-ship, so the owner forces its retest and asks for the re-ship.
+- **Commits.** A commit that touches it is recorded in GitHub Commits against
+  the component whose pull request carried it, like any other commit.
+- If the Designer later makes it a Figma component, it gets a row then and
+  stops being code-only.
+
 ## Re-shipping a Completed component
 
 Production Storybook outranks the test results (step 5 before step 6), so a
@@ -209,10 +232,22 @@ evidence:
 
 - the component's folder is in `git diff origin/main...origin/staging`;
 - every linked Staging Testing row reads `Passed`;
-- every row's Tested At is later than the time its newest commit was merged
-  into `staging`. A pass recorded before that merge tested older code.
+- every row's Context names the `staging` commit QA tested
+  (`Tested on staging <full hash>`), and that commit contains the merge that
+  brought the component's newest code onto `staging`:
+  `git merge-base --is-ancestor <that merge> <tested commit>` succeeds. A pass
+  recorded on an older commit tested older code.
+- the tested commit is itself on `origin/staging`
+  (`git merge-base --is-ancestor <tested commit> origin/staging`).
 
-If Tested At is missing, the gate cannot be proven and DevOps stops. No agent
+"The component's newest code" includes every code-only subcomponent it
+imports (see *Code-only subcomponents*): a change to one of them is a change
+to every component that imports it.
+
+If a row's Context names no tested commit, the gate cannot be proven and
+DevOps stops. The owner forces a retest (see *Forcing a retest*) and QA's
+retest records the commit. There is no Tested At column: the owner decided
+on 2026-10-04 that the tested commit, written by QA, is the evidence. No agent
 starts DevOps for a re-ship on its own reading of the registry, and no agent
 asks the owner to.
 

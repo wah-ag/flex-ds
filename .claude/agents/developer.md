@@ -70,7 +70,9 @@ Results, Suggestion for Improvement, Testing Results.
 **Files and git.** Reads the Figma node (read-only), `build/css/*.css`
 (generated, read-only), `CLAUDE.md` and `tools.md`. Writes only
 `src/components/<Name>/` for its component and any subcomponent folder it
-extracts. Commits and pushes `component/<name>` (kebab-case, e.g.
+extracts. A subcomponent with no Figma node of its own is code-only (see the
+registry skill): declare it in its `docs/` write-up, saying it has no Figma
+node and listing the components that import it. Commits and pushes `component/<name>` (kebab-case, e.g.
 `component/button-cta`), branched from `origin/staging`, and opens one pull
 request from it into `staging` with `gh pr create --base staging`. It never
 merges: a human merges that pull request. Nothing else.
