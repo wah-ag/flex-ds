@@ -95,3 +95,12 @@ are not open design gaps:
 - **Keyboard focus while the field holds a value.** Figma's `focus` cell
   shows only an empty field. For now it shows the `typing` look plus the
   ring.
+
+## FieldControl (2026-10-04)
+
+By owner decision, TextField's bordered box (border, icons, input, caret and
+the clear button) moved into the shared subcomponent `FieldControl`
+(`src/components/FieldControl`, `docs/field-control-prop-names.md`), so
+PasswordField can import it. TextField's props, look and behaviour are
+unchanged; it passes its props through and makes the trailing action clear
+the field.

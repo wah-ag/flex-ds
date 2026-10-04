@@ -1,0 +1,158 @@
+/* FieldControl: the bordered box of a text input, shared by TextField and
+   PasswordField. Semantic tokens only. Moved unchanged from TextField.css
+   (owner decision, 2026-10-04). It fills its container. */
+
+.field-control {
+  /* Per-look roles. Each look below overrides only what Figma changes. */
+  --field-control-border: var(--border-neutral-secondary);
+  --field-control-background: var(--background-neutral-base);
+  --field-control-leading: var(--icon-neutral-primary);
+  --field-control-trailing: var(--icon-neutral-primary);
+  --field-control-text: var(--text-neutral-base);
+  --field-control-placeholder: var(--text-neutral-primary);
+
+  /* The outline is an inset shadow, not a border, as in ButtonCTA and
+     IconButton: shadows are not rounded down to whole device pixels. The
+     padding grows by the same width, so the box matches Figma's frame. */
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-gap-sm);
+  width: 100%;
+  padding: calc(var(--spacing-padding-sm) + var(--border-width-default))
+    calc(var(--spacing-padding-md) + var(--border-width-default));
+  border-radius: var(--border-radius-control-xs);
+  background: var(--field-control-background);
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--field-control-border);
+}
+
+.field-control--lg {
+  height: var(--size-control-lg);
+}
+
+/* Figma's sm binds size/control/md, by design (owner, 2026-10-03). */
+.field-control--sm {
+  height: var(--size-control-md);
+}
+
+.field-control__content {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: var(--spacing-gap-sm);
+  min-width: 0;
+}
+
+/* The caret is always brand, in every look (owner decision, 2026-10-04). */
+.field-control__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  font: var(--body-md);
+  color: var(--field-control-text);
+  caret-color: var(--background-interactive-brand-idle);
+}
+
+.field-control__input::placeholder {
+  color: var(--field-control-placeholder);
+  opacity: 1;
+}
+
+.field-control__input:disabled {
+  opacity: 1;
+  -webkit-text-fill-color: currentColor;
+  cursor: not-allowed;
+}
+
+/* Icons: Lucide, sized with size-icon-md and coloured through currentColor.
+   The stroke is drawn in screen pixels at border-width-icon. */
+
+.field-control__icon {
+  flex-shrink: 0;
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+  color: currentColor;
+  stroke-width: var(--border-width-icon);
+}
+
+.field-control__icon * {
+  vector-effect: non-scaling-stroke;
+}
+
+.field-control__icon--leading {
+  color: var(--field-control-leading);
+}
+
+.field-control__trailing {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--field-control-trailing);
+  cursor: pointer;
+}
+
+.field-control__trailing:disabled {
+  cursor: not-allowed;
+}
+
+/* Looks. `data-look` is the live state (or the pinned one, for docs);
+   hover comes from a real pointer on the box. */
+
+.field-control[data-look='idle']:hover,
+.field-control[data-look='hover'] {
+  --field-control-border: var(--border-interactive-brand-idle);
+  --field-control-trailing: var(--icon-neutral-base);
+}
+
+.field-control[data-look='active'],
+.field-control[data-look='typing'] {
+  --field-control-border: var(--border-interactive-brand-idle);
+  --field-control-leading: var(--icon-interactive-brand-idle);
+  --field-control-trailing: var(--icon-neutral-base);
+}
+
+.field-control[data-look='focus'] {
+  --field-control-border: var(--border-interactive-brand-idle);
+  --field-control-trailing: var(--icon-neutral-base);
+}
+
+.field-control[data-look='error'] {
+  --field-control-border: var(--border-interactive-danger);
+  --field-control-leading: var(--icon-interactive-danger);
+  --field-control-trailing: var(--icon-interactive-danger);
+  --field-control-text: var(--text-interactive-danger);
+  --field-control-placeholder: var(--text-interactive-danger);
+}
+
+.field-control[data-look='disable'] {
+  --field-control-border: var(--border-neutral-disable);
+  --field-control-background: var(--background-neutral-disable);
+  --field-control-leading: var(--icon-neutral-disable);
+  --field-control-trailing: var(--icon-neutral-disable);
+  --field-control-text: var(--text-neutral-disable);
+  --field-control-placeholder: var(--text-neutral-disable);
+  cursor: not-allowed;
+}
+
+/* Keyboard focus: a ring outside the box, as in ButtonCTA, so focusing
+   never changes the field's height (owner decision, 2026-10-03). */
+
+.field-control[data-ring]::after {
+  content: '';
+  position: absolute;
+  inset: calc(-1 * (var(--spacing-padding-xxs) + var(--border-width-focus)));
+  border: var(--border-width-focus) solid var(--border-interactive-brand-focus);
+  border-radius: var(--border-radius-control-sm);
+  pointer-events: none;
+}
