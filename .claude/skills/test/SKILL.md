@@ -123,6 +123,12 @@ next agent.
    Expected Results and Attachment filled in. Fill Suggestion for
    Improvement only on a case that fails, and clear it on a retest that now
    passes. Leave Testing Results blank on new rows.
+   Context names the `staging` commit you tested, as
+   `Tested on staging <full hash>`. Take it from `git rev-parse origin/staging`
+   after `git fetch`, and confirm the deployed build is that commit:
+   `gh api repos/wah-ag/flex-ds/commits/<hash>/status` reads `success` for
+   Vercel. If `staging` moves while you test, re-check and record the commit
+   you actually tested. DevOps's re-ship gate reads it.
 2. Then write Testing Results for all rows in as few calls as the API allows
    (10 records per call), `Passed` before `Failed`.
 3. Size and State take existing options only. `pressed`, `destructive` and

@@ -54,14 +54,25 @@ Every one of them must pass the gate for its kind:
   every Staging Testing row `Passed`.
 - **Re-ship** (Production Storybook set, folder in the diff): reads
   Completed, with every Staging Testing row `Passed`, **and** every row's
-  Tested At is later than the merge into `staging` of the component's newest
-  commit there. Take that time from the merge commit on `origin/staging`
-  (`git log -1 --format=%cI`), not from Date Committed, which is when the
-  Developer wrote the commit. A row passed before the code it covers reached
-  `staging` tested older code. If Tested At is missing or empty, the gate
-  cannot be proven: stop and report it.
+  Context names the `staging` commit QA tested (`Tested on staging <full
+  hash>`), and that commit contains the merge that brought the component's
+  newest code onto `staging`, including any code-only subcomponent it
+  imports: `git merge-base --is-ancestor <that merge> <tested commit>`
+  succeeds, and the tested commit is on `origin/staging`. Find the merge with
+  `git log --merges --first-parent origin/staging` over the folders, not from
+  Date Committed, which is when the Developer wrote the commit. A row passed
+  on an older commit tested older code. If a row names no tested commit, the
+  gate cannot be proven: stop and report it.
+- **Code-only subcomponent** (no Components row, declared under `docs/` as
+  having no Figma node; see *Code-only subcomponents* in the registry skill):
+  passes only if every component on `origin/staging` that imports it
+  (`grep -rl` for its folder name under `src/components/`) has a Components
+  row and passes its own gate above in this same release. An importer that
+  is Completed and not in the diff is a re-ship too: without the owner's
+  re-ship request for it, stop and report it.
 
-A changed folder with no Components row is a stop. If any component fails
+A changed folder with no Components row is a stop, unless it is a declared
+code-only subcomponent that passes the rule above. If any component fails
 the gate, open nothing: report which components are still waiting and their
 status, and stop. The wake of the last component to pass ships them all.
 
@@ -185,7 +196,8 @@ Storybook (all of them).
       `origin/staging` commit you verified. Nothing reached `staging` after
       it.
 - [ ] Every component folder the pull request changes has a Components row
-      that passed the gate.
+      that passed the gate, or is a declared code-only subcomponent whose
+      every importer passed the gate in this release.
 - [ ] A human approved the pull request: the main session relayed the
       owner's own words naming it, for the head you verified (see *How
       approval reaches you*). Nothing else counted as approval, and nothing
