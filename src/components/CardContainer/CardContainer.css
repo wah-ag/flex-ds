@@ -1,0 +1,44 @@
+/* CardContainer — Figma CardContainer, node 36:158. Semantic tokens only.
+   The card fills its container: Figma's width is a fixed 514 bound to no
+   token (owner ruling, 2026-10-04). Height hugs the slot. */
+
+.card-container {
+  /* Per-look roles; each look below overrides only what Figma changes. */
+  --card-container-border-width: var(--border-width-default);
+  --card-container-border: var(--border-neutral-base);
+  /* No elevation at rest. `none` is not valid inside a shadow list, so the
+     resting value is an empty shadow. */
+  --card-container-elevation: 0 0 0 0 transparent;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-gap-xs);
+  width: 100%;
+  /* The outline is an inset shadow, not a border, as in ButtonCTA and
+     FieldControl: shadows are not rounded down to whole device pixels. The
+     padding grows by the same width, so the slot sits where Figma puts it
+     (17,13 at the default width; 18,14 at the selected width). */
+  padding: calc(var(--spacing-padding-md) + var(--card-container-border-width))
+    calc(var(--spacing-padding-lg) + var(--card-container-border-width));
+  border: none;
+  border-radius: var(--border-radius-card);
+  background: var(--background-neutral-base);
+  box-shadow:
+    inset 0 0 0 var(--card-container-border-width) var(--card-container-border),
+    var(--card-container-elevation);
+}
+
+/* hover: a real pointer over an idle card, or the pinned look. Figma keeps
+   the default border and lifts the card to elevation level 1. */
+.card-container[data-state='idle']:hover,
+.card-container[data-state='hover'] {
+  --card-container-elevation: var(--elevation-level-1);
+}
+
+/* active: the selected border width in brand, no elevation. */
+.card-container[data-state='active'] {
+  --card-container-border-width: var(--border-width-selected);
+  --card-container-border: var(--border-interactive-brand-idle);
+}
