@@ -1,0 +1,8 @@
+/* FieldLabel: the label above a form field. Semantic tokens only. Moved
+   unchanged from TextField.css (owner decision, 2026-10-04). */
+
+.field-label {
+  margin: 0;
+  font: var(--title-sm);
+  color: var(--text-neutral-base);
+}
