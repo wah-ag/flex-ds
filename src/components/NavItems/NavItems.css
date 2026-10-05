@@ -1,0 +1,19 @@
+/* NavItems — Figma node 58:406 (Header/NavItems). Semantic tokens only.
+
+   A row that hugs its children, centred on the cross axis, with the
+   spacing-gap-lg gap Figma binds. The children bring their own sizes and
+   styles; nothing of theirs is restyled here. */
+
+.nav-items {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-gap-lg);
+  margin: 0;
+  padding: 0;
+}
+
+/* Figma lays every child out at its own size (shrink-0). */
+.nav-items > * {
+  flex-shrink: 0;
+}
