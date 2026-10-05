@@ -43,6 +43,10 @@
     "$type": "dimension",
     "$value": "{scale-8}"
   },
+  "font-size-body-xl": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
   "font-size-body-sm-underlined": {
     "$type": "dimension",
     "$value": "{scale-6}"
@@ -98,6 +102,18 @@
   "spacing-padding-xl": {
     "$type": "dimension",
     "$value": "{scale-10}"
+  },
+  "spacing-padding-control-sm": {
+    "$type": "dimension",
+    "$value": "{scale-8}"
+  },
+  "spacing-padding-control-md": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "spacing-padding-control-lg": {
+    "$type": "dimension",
+    "$value": "{scale-11}"
   },
   "spacing-gap-xs": {
     "$type": "dimension",
@@ -162,6 +178,10 @@
   "line-height-body-lg": {
     "$type": "dimension",
     "$value": "{scale-11}"
+  },
+  "line-height-body-xl": {
+    "$type": "dimension",
+    "$value": "{scale-12}"
   },
   "line-height-body-sm-underlined": {
     "$type": "dimension",
