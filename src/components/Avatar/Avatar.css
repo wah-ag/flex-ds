@@ -17,36 +17,43 @@
 }
 
 /* Sizes. Figma binds sm to control-2xs and every larger size to control-xs
-   (the circle image overrides both with rounded, below). */
+   (the circle image overrides both with rounded, below). The icon stroke is
+   border-width-icon-bold on 2xl, xl and lg, and border-width-icon-default
+   on md and sm. */
 
 .avatar--2xl {
   --avatar-size: var(--size-avatar-2xl);
   --avatar-radius: var(--border-radius-control-xs);
   --avatar-icon-size: var(--size-icon-lg);
+  --avatar-icon-stroke: var(--border-width-icon-bold);
 }
 
 .avatar--xl {
   --avatar-size: var(--size-avatar-xl);
   --avatar-radius: var(--border-radius-control-xs);
   --avatar-icon-size: var(--size-icon-lg);
+  --avatar-icon-stroke: var(--border-width-icon-bold);
 }
 
 .avatar--lg {
   --avatar-size: var(--size-avatar-lg);
   --avatar-radius: var(--border-radius-control-xs);
   --avatar-icon-size: var(--size-icon-md);
+  --avatar-icon-stroke: var(--border-width-icon-bold);
 }
 
 .avatar--md {
   --avatar-size: var(--size-avatar-md);
   --avatar-radius: var(--border-radius-control-xs);
   --avatar-icon-size: var(--size-icon-sm);
+  --avatar-icon-stroke: var(--border-width-icon-default);
 }
 
 .avatar--sm {
   --avatar-size: var(--size-avatar-sm);
   --avatar-radius: var(--border-radius-control-2xs);
   --avatar-icon-size: var(--size-icon-xs);
+  --avatar-icon-stroke: var(--border-width-icon-default);
 }
 
 /* Image categories. Figma draws the stroke inside the frame, over the
@@ -75,11 +82,9 @@
 }
 
 /* Icon category. The icon follows icon-interactive-brand-idle through
-   currentColor. Its stroke is drawn in screen pixels at
-   border-width-icon-bold. Until token PR #64 reaches the
-   build, that token is absent and the stroke falls back to the old
-   border-width-icon (same 2px). It does not shrink when the 24-unit icon is
-   sized down. */
+   currentColor. Its stroke is drawn in screen pixels at the size's
+   --avatar-icon-stroke (set per size above), so it does not shrink when the
+   24-unit icon is sized down. */
 
 .avatar--icon {
   background: var(--background-accent-brand-idle);
@@ -91,7 +96,7 @@
   width: var(--avatar-icon-size);
   height: var(--avatar-icon-size);
   stroke: currentColor;
-  stroke-width: var(--border-width-icon-bold, var(--border-width-icon));
+  stroke-width: var(--avatar-icon-stroke);
 }
 
 .avatar__icon * {
