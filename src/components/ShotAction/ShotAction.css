@@ -1,9 +1,11 @@
 /* ShotAction — Figma node 31:191. Semantic tokens only. */
 
-/* Figma binds border-width-icon on ShotAction's outline bookmark (31:190,
-   icon I30:173;16:347). The stroke is drawn in screen pixels (lucide's
-   nonScalingStroke), so it stays at border-width-icon whatever the icon's
-   24-unit viewBox is scaled to. */
+/* ShotAction's outline bookmark (31:190, icon I30:173;16:347) strokes at
+   border-width-icon-default (1px), by owner ruling. Until token PR #64
+   reaches the build, that token is absent and the stroke falls back to the
+   old border-width-icon (2px); once #64 lands it renders at 1px. The stroke
+   is drawn in screen pixels (lucide's nonScalingStroke), so it holds
+   whatever the icon's 24-unit viewBox is scaled to. */
 .shot-action__icon {
-  stroke-width: var(--border-width-icon);
+  stroke-width: var(--border-width-icon-default, var(--border-width-icon));
 }

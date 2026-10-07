@@ -71,14 +71,17 @@
 }
 
 /* Icons: Lucide, sized with size-icon-md and coloured through currentColor.
-   The stroke is drawn in screen pixels at border-width-icon. */
+   The stroke is drawn in screen pixels at
+   border-width-icon-bold. Until token PR #64 reaches the
+   build, that token is absent and the stroke falls back to the old
+   border-width-icon (same 2px). */
 
 .field-control__icon {
   flex-shrink: 0;
   width: var(--size-icon-md);
   height: var(--size-icon-md);
   color: currentColor;
-  stroke-width: var(--border-width-icon);
+  stroke-width: var(--border-width-icon-bold, var(--border-width-icon));
 }
 
 .field-control__icon * {
