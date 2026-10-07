@@ -147,13 +147,13 @@
     "$type": "color",
     "$value": "{color-red-100}"
   },
-  "text-interactive-brand-idle": {
-    "$type": "color",
-    "$value": "{color-navy-500}"
-  },
   "text-neutral-base": {
     "$type": "color",
     "$value": "{color-grey-900}"
+  },
+  "text-interactive-brand-idle": {
+    "$type": "color",
+    "$value": "{color-navy-500}"
   },
   "text-interactive-brand-hover": {
     "$type": "color",
