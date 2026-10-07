@@ -88,6 +88,20 @@ The visual still fails if a solid pixel differs, a glyph, icon or weight
 differs, or an edge moves by a whole pixel or more. Edge noise does not
 excuse a wrong property: if 1 fails, the row fails.
 
+**Optical size is not a finding on Label** (owner's ruling, 2026-10-03).
+Figma sets DM Sans to `"opsz" 14` at every size. The browser's default
+`font-optical-sizing: auto` renders opsz equal to the font size instead, so
+Label's md (12) and sm (10) text draws slightly narrower. No token carries
+opsz. On Label, a difference confined to opsz passes. To claim it:
+
+- Check that every other property matches token for token.
+- Write it in Context: "opsz 12/10 vs Figma 14 accepted by owner,
+  2026-10-03".
+
+The ruling covers Label only. On any other component, opsz below 14 px is
+still a finding until the owner rules on it. The design gap stays open: the
+ruling accepts the difference but adds no token.
+
 ## 7. Scope of a retest
 
 | Started by | Scope |
@@ -109,6 +123,12 @@ next agent.
    Expected Results and Attachment filled in. Fill Suggestion for
    Improvement only on a case that fails, and clear it on a retest that now
    passes. Leave Testing Results blank on new rows.
+   Context names the `staging` commit you tested, as
+   `Tested on staging <full hash>`. Take it from `git rev-parse origin/staging`
+   after `git fetch`, and confirm the deployed build is that commit:
+   `gh api repos/wah-ag/flex-ds/commits/<hash>/status` reads `success` for
+   Vercel. If `staging` moves while you test, re-check and record the commit
+   you actually tested. DevOps's re-ship gate reads it.
 2. Then write Testing Results for all rows in as few calls as the API allows
    (10 records per call), `Passed` before `Failed`.
 3. Size and State take existing options only. `pressed`, `destructive` and
