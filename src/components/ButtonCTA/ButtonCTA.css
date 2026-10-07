@@ -20,16 +20,15 @@
   cursor: not-allowed;
 }
 
-/* The icon stroke is drawn in screen pixels at
-   border-width-icon-bold. Until token PR #64 reaches the
-   build, that token is absent and the stroke falls back to the old
-   border-width-icon (same 2px). It does not shrink when the 24-unit icon is
-   sized down to size-icon-md or -sm. */
+/* The icon stroke is drawn in screen pixels, so it does not shrink when the
+   24-unit icon is sized down to size-icon-md or -sm. Figma strokes the icons
+   at border-width-icon-bold on lg and md, and at border-width-icon-default
+   on sm (see the sm rule below). */
 
 .button-cta__icon {
   flex-shrink: 0;
   color: currentColor;
-  stroke-width: var(--border-width-icon-bold, var(--border-width-icon));
+  stroke-width: var(--border-width-icon-bold);
 }
 
 .button-cta__icon * {
@@ -50,7 +49,7 @@
 
 .button-cta--sm {
   height: var(--size-control-sm);
-  padding: var(--spacing-padding-xs) var(--spacing-padding-md);
+  padding: var(--spacing-padding-xs);
 }
 
 .button-cta--lg .button-cta__icon,
@@ -62,6 +61,7 @@
 .button-cta--sm .button-cta__icon {
   width: var(--size-icon-sm);
   height: var(--size-icon-sm);
+  stroke-width: var(--border-width-icon-default);
 }
 
 /* Primary */
@@ -98,6 +98,10 @@
 .button-cta--secondary {
   background: none;
   padding-inline: calc(var(--spacing-padding-md) + var(--border-width-default));
+}
+
+.button-cta--secondary.button-cta--sm {
+  padding-inline: calc(var(--spacing-padding-xs) + var(--border-width-default));
 }
 
 .button-cta--secondary[data-tone='brand'] {
