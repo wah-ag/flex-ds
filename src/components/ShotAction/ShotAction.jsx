@@ -8,8 +8,9 @@ import './ShotAction.css';
 // imports ButtonCTA. Its only styles are its own icon's stroke. The button
 // fits its label, as ButtonCTA does (owner decision: no width token).
 
-// The outline bookmark (31:190) strokes at border-width-icon, which Figma
-// binds on this instance, drawn in screen pixels (see ShotAction.css).
+// The outline bookmark (31:190) strokes at border-width-icon-default (1px,
+// owner ruling), falling back to the old border-width-icon until token PR #64
+// reaches the build; drawn in screen pixels (see ShotAction.css).
 function BookmarkOutline({ className, ...props }) {
   return (
     <Bookmark

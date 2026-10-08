@@ -111,6 +111,19 @@
       }
     }
   },
+  "body-xl": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-font-family-dm-sans}",
+      "fontWeight": "Medium",
+      "fontSize": "{font-size-body-xl}",
+      "lineHeight": "{line-height-body-xl}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
   "body-lg": {
     "$type": "typography",
     "$description": "Lead paragraphs, long-form reading. Tokens: font-size/body/lg, line-height/body/lg, typography/font-family/dm-sans, typography/font-weight/regular-400. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
@@ -202,6 +215,20 @@
       "fontWeight": "SemiBold",
       "fontSize": "{font-size-body-lg}",
       "lineHeight": "{line-height-body-lg}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "body-md-bold": {
+    "$type": "typography",
+    "$description": "Default body copy. Tokens: font-size/body/md, line-height/body/md, typography/font-family/dm-sans, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office).",
+    "$value": {
+      "fontFamily": "{typography-font-family-dm-sans}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{font-size-body-md}",
+      "lineHeight": "{line-height-body-md}",
       "letterSpacing": {
         "value": 0,
         "unit": "px"

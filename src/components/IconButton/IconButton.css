@@ -40,15 +40,18 @@
   cursor: not-allowed;
 }
 
-/* The stroke is drawn in screen pixels, so it stays at border-width-icon
-   whatever the icon's viewBox is scaled to. */
+/* The stroke is drawn in screen pixels, so it stays at
+   border-width-icon-bold. Until token PR #64 reaches the
+   build, that token is absent and the stroke falls back to the old
+   border-width-icon (same 2px). That holds whatever the icon's viewBox is
+   scaled to. */
 
 .icon-button__icon {
   flex-shrink: 0;
   width: var(--size-icon-md);
   height: var(--size-icon-md);
   color: currentColor;
-  stroke-width: var(--border-width-icon);
+  stroke-width: var(--border-width-icon-bold, var(--border-width-icon));
 }
 
 .icon-button__icon * {

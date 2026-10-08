@@ -36,3 +36,6 @@ coverage/
 
 # Storybook static build
 storybook-static/
+.claude/worktrees/
+
+

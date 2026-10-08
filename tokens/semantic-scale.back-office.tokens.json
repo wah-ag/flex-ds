@@ -75,13 +75,13 @@
     "$type": "dimension",
     "$value": "{scale-16}"
   },
-  "grid-margin-lg": {
-    "$type": "dimension",
-    "$value": "{scale-19}"
-  },
   "spacing-padding-xxs": {
     "$type": "dimension",
     "$value": "{scale-1}"
+  },
+  "grid-margin-lg": {
+    "$type": "dimension",
+    "$value": "{scale-19}"
   },
   "spacing-padding-xs": {
     "$type": "dimension",
@@ -103,6 +103,14 @@
     "$type": "dimension",
     "$value": "{scale-8}"
   },
+  "spacing-padding-2xl": {
+    "$type": "dimension",
+    "$value": "{scale-10}"
+  },
+  "spacing-padding-3xl": {
+    "$type": "dimension",
+    "$value": "{scale-12}"
+  },
   "spacing-padding-control-sm": {
     "$type": "dimension",
     "$value": "{scale-15}"
@@ -114,6 +122,10 @@
   "spacing-padding-control-lg": {
     "$type": "dimension",
     "$value": "{scale-19}"
+  },
+  "spacing-gap-xxs": {
+    "$type": "dimension",
+    "$value": "{scale-thin}"
   },
   "spacing-gap-xs": {
     "$type": "dimension",
@@ -129,13 +141,17 @@
   },
   "spacing-gap-lg": {
     "$type": "dimension",
-    "$value": "{scale-4}"
+    "$value": "{scale-5}"
   },
   "spacing-gap-xl": {
     "$type": "dimension",
     "$value": "{scale-8}"
   },
   "spacing-gap-2xl": {
+    "$type": "dimension",
+    "$value": "{scale-9}"
+  },
+  "spacing-gap-3xl": {
     "$type": "dimension",
     "$value": "{scale-11}"
   },
@@ -279,6 +295,10 @@
     "$type": "dimension",
     "$value": "{scale-13}"
   },
+  "size-row-lg": {
+    "$type": "dimension",
+    "$value": "{scale-15}"
+  },
   "line-height-title-xs": {
     "$type": "dimension",
     "$value": "{scale-7}"
@@ -306,13 +326,6 @@
   "elevation-level-2-key-offset-y": {
     "$type": "dimension",
     "$value": "{scale-1}"
-  },
-  "size-number": {
-    "$type": "dimension",
-    "$value": {
-      "value": 0,
-      "unit": "px"
-    }
   },
   "elevation-level-2-key-blur": {
     "$type": "dimension",
@@ -365,7 +378,12 @@
     "$value": "{border-width-xl}",
     "$description": "Selected card/tab, checked state"
   },
-  "border-width-icon": {
+  "border-width-icon-bold": {
+    "$type": "dimension",
+    "$value": "{border-width-xl}",
+    "$description": "Icon stroke width"
+  },
+  "border-width-icon-default": {
     "$type": "dimension",
     "$value": "{border-width-md}",
     "$description": "Icon stroke width"
