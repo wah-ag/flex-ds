@@ -1,0 +1,57 @@
+/* EmployerProfile — Figma node 32:337 (CardContent/EmployerProfile).
+   Semantic tokens only.
+
+   A row, centred on the cross axis, with the spacing-gap-md gap Figma binds.
+   It hugs its content (owner ruling 2026-10-08: Figma's unbound 198 width is
+   not built) but never grows past its parent, so a parent that limits the
+   width makes the title truncate. Avatar brings its own size, radius and
+   border; nothing of it is restyled here. */
+
+.employer-profile {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-gap-md);
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Figma lays the avatar out at its own size (shrink-0). */
+.employer-profile > .avatar {
+  flex-shrink: 0;
+}
+
+/* The text column fills what is left. min-width: 0 lets it shrink below its
+   content width, which is what lets the title's ellipsis appear. */
+.employer-profile__text {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-gap-xxs);
+  min-width: 0;
+}
+
+.employer-profile__title,
+.employer-profile__helper {
+  margin: 0;
+}
+
+/* title/sm. One line, ellipsis when the parent limits the width (owner
+   ruling 2026-10-08). */
+.employer-profile__title {
+  overflow: hidden;
+  font: var(--title-sm);
+  color: var(--text-neutral-bold);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* label/md. Figma sets the helper to fill the column and grow in height, so
+   it wraps when the column is narrower than it. */
+.employer-profile__helper {
+  font: var(--label-md);
+  color: var(--text-neutral-secondary);
+  overflow-wrap: break-word;
+}
