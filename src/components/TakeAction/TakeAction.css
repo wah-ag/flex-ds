@@ -1,0 +1,57 @@
+/* TakeAction — Figma node 32:652 (CardContent/TakeAction).
+   Semantic tokens only.
+
+   A row under a divider (border-width-divider, border-neutral-base), with
+   spacing-padding-sm above it. The time group sits at the start and the
+   ButtonCTA at the end, both centred vertically, as Figma lays them out.
+
+   Width (provisional, awaiting owner confirmation): Figma fixes the frame
+   at an unbound width of 454. The row fills its parent instead. ButtonCTA
+   keeps its own width; no ButtonCTA style is overridden here. */
+
+.take-action {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: var(--spacing-padding-sm) 0 0;
+  border-top: var(--border-width-divider) solid var(--border-neutral-base);
+}
+
+/* Clock and text, spacing-gap-xs apart. The group may shrink so the text can
+   truncate; ButtonCTA keeps its content width. */
+.take-action__time {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-gap-xs);
+  min-width: 0;
+  margin: 0;
+  font: var(--label-lg);
+  color: var(--text-interactive-info);
+}
+
+/* The icon stroke is drawn in screen pixels, so it stays at
+   border-width-icon-bold when the 24-unit icon is sized to size-icon-sm. */
+.take-action__icon {
+  flex-shrink: 0;
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+  color: var(--icon-interactive-info);
+  stroke-width: var(--border-width-icon-bold);
+}
+
+.take-action__icon * {
+  vector-effect: non-scaling-stroke;
+}
+
+/* Provisional, awaiting owner confirmation: Figma fixes the text at an
+   unbound width of 111. It hugs its content instead, stays on one line, and ends in
+   an ellipsis when the row is too narrow. */
+.take-action__text {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
