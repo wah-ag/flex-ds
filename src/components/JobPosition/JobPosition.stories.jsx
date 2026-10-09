@@ -26,8 +26,8 @@ export default {
           'instance override to the narrower spacing-padding-xs is accepted as a known difference and is not built. The ' +
           'component hugs its content and a long title wraps. There are no interaction states, because Figma ' +
           'designs none and the content is not interactive (a Label\'s own pointer hover is Label\'s behaviour). ' +
-          'Default icons Users and Mars await the Designer\'s confirmation. Known Label issue: Label draws its icon ' +
-          'stroke at border-width-icon-bold where Figma binds a thinner 1-unit stroke; that belongs to Label\'s own round.',
+          'Default icons Users and Mars await the Designer\'s confirmation. The pill icons draw at Label md\'s ' +
+          'border-width-icon-default stroke (Label PR #77).',
       },
     },
   },

@@ -55,12 +55,14 @@ round; once it exists, JobPosition's pills can pass `xs`.
 Figma's "people" and "gender" (♂) icons are mapped to Lucide `Users` and
 `Mars`. The Designer should confirm the mapping.
 
-## Known Label issue: icon stroke (not fixed here)
+## Icon stroke: resolved in Label (PR #77)
 
-Figma binds the pill icons' stroke to 1px (`border-width-default` on these
-instances; `border-width-icon-default` on the Label md master). Label's code
-draws every icon at `border-width-icon-bold` (2px). That belongs to Label's
-own repair round; JobPosition does not override it.
+Figma binds the pill icons' stroke to 1 unit (`border-width-default` on these
+instances; `border-width-icon-default` on the Label md master). Label's fix
+(PR #77, merged to `staging` 2026-10-09) draws md and sm icons at
+`border-width-icon-default`, which resolves to the same `border-width-md` as
+`border-width-default`. JobPosition builds on that Label and overrides
+nothing.
 
 ## Layout: owner rulings (2026-10-09)
 
