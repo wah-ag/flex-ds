@@ -24,7 +24,9 @@ export default {
           '`genderText`, `genderIcon`) have no Figma property and are proposed in docs/job-position-prop-names.md. ' +
           'Owner rulings, 2026-10-09: the Labels keep their own md padding (spacing-padding-sm); Figma\'s ' +
           'instance override to the narrower spacing-padding-xs is accepted as a known difference and is not built. The ' +
-          'component hugs its content and a long title wraps. There are no interaction states, because Figma ' +
+          'component hugs its content. Owner ruling 2026-10-09 (replacing the earlier wrap ruling): a long title stays ' +
+          'on one line and ends in an ellipsis when the parent limits the width, and the pill row keeps one line and ' +
+          'may overflow. There are no interaction states, because Figma ' +
           'designs none and the content is not interactive (a Label\'s own pointer hover is Label\'s behaviour). ' +
           'Default icons Users and Mars await the Designer\'s confirmation. The pill icons draw at Label md\'s ' +
           'border-width-icon-default stroke (Label PR #77).',
@@ -68,8 +70,9 @@ export const LongTitleNarrowContainer = {
   parameters: {
     docs: {
       description: {
-        story: `${figmaLink} Owner ruling 2026-10-09: the component hugs its content and a long title wraps ` +
-          'when the parent limits the width. The dashed outline marks the parent.',
+        story: `${figmaLink} Owner ruling 2026-10-09: a long title stays on one line and ends in an ellipsis ` +
+          'when the parent limits the width. The pill row keeps one line and may overflow the parent; the owner ' +
+          'accepted that. The dashed outline marks the parent.',
       },
     },
   },

@@ -3,9 +3,10 @@
 
    A column: the job title, then (spacing-gap-xxs) a row of two Labels
    (spacing-gap-sm). It hugs its content and never grows past its parent;
-   when the parent limits the width, a long title wraps (owner ruling
-   2026-10-09). The Labels bring their own padding, radius, colour and type;
-   nothing of them is restyled here. */
+   when the parent limits the width, a long title stays on one line and ends
+   in an ellipsis, and the pill row keeps its one line and may overflow
+   (owner ruling 2026-10-09). The Labels bring their own padding, radius,
+   colour and type; nothing of them is restyled here. */
 
 .job-position {
   box-sizing: border-box;
@@ -18,12 +19,16 @@
   padding: 0;
 }
 
-/* title/md. Figma sets the title to fill the column and break long words. */
+/* title/md. Fills the column. One line, ellipsis when the parent limits the
+   width (owner ruling 2026-10-09). Figma's text layer wraps; the owner
+   replaced that, as for EmployerProfile. */
 .job-position__title {
+  overflow: hidden;
   margin: 0;
   font: var(--title-md);
   color: var(--text-neutral-bold);
-  overflow-wrap: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* Figma's "Container": a row, centred on the cross axis. */

@@ -15,7 +15,10 @@ import './JobPosition.css';
 // - Label is imported unchanged, at its own md padding (spacing-padding-sm).
 //   Figma's instance override to spacing-padding-xs is not built, and
 //   Label's styles are not overridden here.
-// - The component hugs its content; a long job title wraps.
+// - The component hugs its content. A long job title stays on one line and
+//   ends in an ellipsis when the parent limits the width; the full title is
+//   also set as the `title` attribute. The pill row keeps one line and may
+//   overflow a narrow parent.
 // - No interaction states: Figma designs none and the content is not
 //   interactive.
 //
@@ -34,7 +37,7 @@ export function JobPosition({
 }) {
   return (
     <div {...rest} className={['job-position', className].filter(Boolean).join(' ')}>
-      <p className="job-position__title">{jobTitle}</p>
+      <p className="job-position__title" title={jobTitle}>{jobTitle}</p>
       {showLabel && (
         <div className="job-position__labels">
           <Label category="brand" size="md" state="idle" labelText={openingsText} swapIcon={openingsIcon} />

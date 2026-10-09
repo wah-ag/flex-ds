@@ -68,9 +68,15 @@ nothing.
 
 - **Width.** Figma binds no width. The component hugs its content and never
   grows past its parent.
-- **Long title.** The title wraps when the parent limits the width.
-- **Pill row.** Laid out as Figma draws it: one row, Labels at their own
-  size.
+- **Long title.** The title stays on one line and ends in an ellipsis when
+  the parent limits the width; the full title is also set as the `title`
+  attribute. This replaces the earlier ruling that the title wraps. The
+  owner said: "when job position title is longer, I want dots". Figma's
+  text layer is fill-width and wraps; this ruling knowingly replaces that,
+  as for EmployerProfile. At the sample title the two look the same.
+- **Pill row.** Laid out as Figma draws it: one row, no wrap, Labels at
+  their own size. In a parent narrower than the two pills, the row
+  overflows the parent. The owner accepted this: "overflow is fine".
 
 ## States: none, by owner decision (2026-10-09)
 
