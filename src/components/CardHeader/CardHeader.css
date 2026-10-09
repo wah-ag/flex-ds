@@ -1,0 +1,39 @@
+/* CardHeader — Figma node 32:346 (CardContent/CardHeader).
+   Semantic tokens only.
+
+   A row that fills its parent (owner ruling 2026-10-09: Figma's unbound 439
+   width is not built). The content column sits at the start and the header
+   slot at the end, both at the top, as Figma lays them out, with at least
+   spacing-gap-lg between them (owner ruling 2026-10-09). EmployerProfile and
+   JobPosition bring their own styles; nothing of them is restyled here. */
+
+.card-header {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-gap-lg);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Figma's "Frame 2": a column, spacing-gap-lg between EmployerProfile and
+   JobPosition, each at its own (hug) width. min-width: 0 lets the column
+   shrink so the children's own ellipsis can appear in a narrow parent. */
+.card-header__content {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-gap-lg);
+  min-width: 0;
+}
+
+/* The header slot hugs its content and sits at the top (owner ruling
+   2026-10-09: Figma's unbound 40 height is not built). */
+.card-header__slot {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: flex-start;
+}
