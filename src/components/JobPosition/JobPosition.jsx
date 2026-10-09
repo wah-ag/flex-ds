@@ -1,4 +1,4 @@
-import { Mars, Users } from 'lucide-react';
+import { UsersRound, VenusAndMars } from 'lucide-react';
 import { Label } from '../Label/Label';
 import './JobPosition.css';
 
@@ -22,16 +22,17 @@ import './JobPosition.css';
 // - No interaction states: Figma designs none and the content is not
 //   interactive.
 //
-// Default icons: Figma's "people" and "gender" icons, mapped to Lucide Users
-// and Mars, pending the Designer's confirmation.
+// Default icons: Figma's "people" and "gender" glyphs in 32:239 and 32:247
+// are Lucide UsersRound and VenusAndMars; their vector paths match Lucide's
+// exactly (QA finding, 2026-10-09).
 
 export function JobPosition({
   jobTitle = 'Senior Product Designer',
   showLabel = true,
   openingsText = '3 openings',
-  openingsIcon = Users,
+  openingsIcon = UsersRound,
   genderText = 'opens to male',
-  genderIcon = Mars,
+  genderIcon = VenusAndMars,
   className,
   ...rest
 }) {

@@ -1,5 +1,5 @@
 // Figma: https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=32-258
-import { Briefcase, Mars, Users, Venus } from 'lucide-react';
+import { Briefcase, Mars, UsersRound, Venus, VenusAndMars } from 'lucide-react';
 import { JobPosition } from './JobPosition';
 import jobPositionCss from './JobPosition.css?raw';
 import { MODES, exists, referencedTokens, resolve } from '../../../stories/lib/tokens.js';
@@ -8,7 +8,7 @@ const FIGMA = 'https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.C
 const NODE = '32-258';
 const figmaLink = `Figma node [${NODE.replace('-', ':')}](${FIGMA}?node-id=${NODE}).`;
 
-const ICONS = { Users, Mars, Venus, Briefcase };
+const ICONS = { UsersRound, VenusAndMars, Venus, Mars, Briefcase };
 
 export default {
   title: 'Components/CardContent/JobPosition',
@@ -28,7 +28,7 @@ export default {
           'on one line and ends in an ellipsis when the parent limits the width, and the pill row keeps one line and ' +
           'may overflow. There are no interaction states, because Figma ' +
           'designs none and the content is not interactive (a Label\'s own pointer hover is Label\'s behaviour). ' +
-          'Default icons Users and Mars await the Designer\'s confirmation. The pill icons draw at Label md\'s ' +
+          'Default icons are Lucide UsersRound and VenusAndMars, matching Figma\'s glyphs. The pill icons draw at Label md\'s ' +
           'border-width-icon-default stroke (Label PR #77).',
       },
     },
@@ -45,9 +45,9 @@ export default {
     jobTitle: 'Senior Product Designer',
     showLabel: true,
     openingsText: '3 openings',
-    openingsIcon: 'Users',
+    openingsIcon: 'UsersRound',
     genderText: 'opens to male',
-    genderIcon: 'Mars',
+    genderIcon: 'VenusAndMars',
   },
 };
 
