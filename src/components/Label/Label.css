@@ -31,10 +31,9 @@
 }
 
 /* The icon follows its own icon token through currentColor. Its stroke is
-   drawn in screen pixels at border-width-icon-bold. Until token PR #64 reaches the
-   build, that token is absent and the stroke falls back to the old
-   border-width-icon (same 2px). It does not shrink
-   when the 24-unit icon is sized down. */
+   drawn in screen pixels, so it does not shrink when the 24-unit icon is
+   sized down. Figma binds border-width-icon-default on md and sm, and
+   border-width-icon-bold on lg. */
 
 .label__icon {
   flex-shrink: 0;
@@ -42,7 +41,7 @@
   height: var(--size-icon-xs);
   color: var(--label-icon-color);
   stroke: currentColor;
-  stroke-width: var(--border-width-icon-bold, var(--border-width-icon));
+  stroke-width: var(--border-width-icon-default);
 }
 
 .label__icon * {
@@ -52,6 +51,7 @@
 .label--lg .label__icon {
   width: var(--size-icon-sm);
   height: var(--size-icon-sm);
+  stroke-width: var(--border-width-icon-bold);
 }
 
 /* Categories. Figma's brand uses the secondary role and error the danger
