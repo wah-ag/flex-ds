@@ -25,9 +25,9 @@ defaults that must change per use, so they are props. The names below are
 | Suggested prop | Passed to | Default |
 | --- | --- | --- |
 | `openingsText` | first Label's `labelText` | `"3 openings"` |
-| `openingsIcon` | first Label's `swapIcon` (a Lucide component) | `Users` |
+| `openingsIcon` | first Label's `swapIcon` (a Lucide component) | `UsersRound` |
 | `genderText` | second Label's `labelText` | `"opens to male"` |
-| `genderIcon` | second Label's `swapIcon` (a Lucide component) | `Mars` |
+| `genderIcon` | second Label's `swapIcon` (a Lucide component) | `VenusAndMars` |
 
 If the Designer adds properties for these to 32:258, the props should follow
 Figma's names. Other HTML attributes pass through to the wrapping `<div>`.
@@ -50,10 +50,13 @@ pills therefore render at Label's own 8px, and the 4px override is not
 built. A token-driven padding setting on Label is planned for Label's own
 round; once it exists, JobPosition's pills can pass `xs`.
 
-## Default icons: to be confirmed
+## Default icons: settled by the Figma vectors (2026-10-09)
 
-Figma's "people" and "gender" (♂) icons are mapped to Lucide `Users` and
-`Mars`. The Designer should confirm the mapping.
+Figma's "people" glyph in 32:239 is Lucide `UsersRound`, and its "gender"
+glyph in 32:247 is Lucide `VenusAndMars`: their paths, doubled to Lucide's
+24 grid, match Lucide's exactly (QA finding on staging 8bf77fe). The first
+build used `Users` and `Mars`; the repair round switched the defaults. Both
+icons are in the installed `lucide-react` (1.48.0).
 
 ## Icon stroke: resolved in Label (PR #77)
 
