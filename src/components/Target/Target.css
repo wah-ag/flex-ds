@@ -1,0 +1,40 @@
+/* Target — Figma node 32:273 (CardContent/Target).
+   Semantic tokens only.
+
+   A column: the target name (label/md, secondary) above the target value
+   (body/md-bold, bold), spacing-gap-xs apart. Figma's frame hugs its
+   content. The value never wraps (Figma: whitespace-nowrap), so it sets the
+   column's width; the name fills that width and wraps inside it
+   (Figma: min-w-full, w-min-content, break-word). */
+
+.target {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-gap-xs);
+  margin: 0;
+  padding: 0;
+}
+
+.target__name,
+.target__value {
+  margin: 0;
+}
+
+/* label/md. Fills the column and wraps when it is longer than the value. */
+.target__name {
+  align-self: stretch;
+  width: min-content;
+  min-width: 100%;
+  font: var(--label-md);
+  color: var(--text-neutral-secondary);
+  overflow-wrap: break-word;
+}
+
+/* body/md-bold. One line, as Figma draws it. */
+.target__value {
+  font: var(--body-md-bold);
+  color: var(--text-neutral-bold);
+  white-space: nowrap;
+}
