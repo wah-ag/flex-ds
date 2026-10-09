@@ -1,0 +1,44 @@
+/* JobPosition — Figma node 32:258 (CardContent/JobPosition).
+   Semantic tokens only.
+
+   A column: the job title, then (spacing-gap-xxs) a row of two Labels
+   (spacing-gap-sm). It hugs its content and never grows past its parent;
+   when the parent limits the width, a long title stays on one line and ends
+   in an ellipsis, and the pill row keeps its one line and may overflow
+   (owner ruling 2026-10-09). The Labels bring their own padding, radius,
+   colour and type; nothing of them is restyled here. */
+
+.job-position {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-gap-xxs);
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* title/md. Fills the column. One line, ellipsis when the parent limits the
+   width (owner ruling 2026-10-09). Figma's text layer wraps; the owner
+   replaced that, as for EmployerProfile. */
+.job-position__title {
+  overflow: hidden;
+  margin: 0;
+  font: var(--title-md);
+  color: var(--text-neutral-bold);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Figma's "Container": a row, centred on the cross axis. */
+.job-position__labels {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-gap-sm);
+}
+
+/* Figma lays each Label out at its own size (shrink-0). */
+.job-position__labels > .label {
+  flex-shrink: 0;
+}
