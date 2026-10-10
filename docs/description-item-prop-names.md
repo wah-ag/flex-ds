@@ -8,12 +8,18 @@ DescriptionItem is the Figma component `CardContent/DescriptionItem`, node
 
 | Figma property | Prop | Values |
 | --- | --- | --- |
-| `category` (variant: `check`, `uncheck`) | `category` | `'check'` (default) or `'uncheck'` |
+| `category` (variant: `check`, `uncheck`; Figma also has `category3`, `category4`, see below) | `category` | `'check'` (default) or `'uncheck'` |
+| `align position` (variant: `horizontal`, `vertical`) | `alignPosition` | `'horizontal'` (default) or `'vertical'` |
 | description text (text) | `descriptionText` | string (default `"Own end-to end product design from research to shipped UI"`) |
 
 The names are as the Figma MCP reports them. Their exact spelling in the
 Figma panel could not be read through the API, so the Designer should
-confirm them. No prop was renamed.
+confirm them.
+
+**Renamed: `align position` → `alignPosition`** (owner, 2026-10-10). Figma's
+property name has a space, which cannot be a React prop. `alignPosition` is
+the camelCase form, as for every other multi-word property here. No other
+prop was renamed.
 
 ## Props with no Figma property (proposed, for review)
 
@@ -72,6 +78,39 @@ subcomponent.
     `opsz` 16 and the 12px Label at `opsz` 12, against Figma's `opsz` 14.
     Accepted; no token carries an optical size.
 
+## Design update, owner rulings, 2026-10-10 (second round)
+
+The Designer added the `align position` variant property and two vertical
+variants to 124:826.
+
+1. **Prop:** `alignPosition`, `'horizontal'` (default) or `'vertical'`.
+2. **Vertical variants are `check` / `uncheck`.** Figma names them
+   `category=category3` (264:366, empty glyph) and `category=category4`
+   (264:377, ticked glyph). These are Designer placeholders. The code builds a
+   2 × 2 matrix, `category` × `alignPosition`, and follows the names per
+   ruling 1 (`check` is ticked). **Figma-side gap:** the Designer renames
+   them in Figma.
+3. **Horizontal is unchanged.** Figma now draws an unbound 46 gap between the
+   description and the Label. Rulings 7 and 8 stand: the row fills its
+   parent, the Label sits at the far end, and at least `--spacing-gap-lg`
+   separates them. **Figma-side gap:** the 46 is unbound.
+4. **Vertical layout:**
+   - It fills its parent, and the description stays one line with an
+     ellipsis.
+   - The Label sits on its own line, `--spacing-gap-xxs` below the checkbox
+     row. The checkbox row keeps `--spacing-padding-xs` above and below.
+   - The Label is indented by `calc(var(--size-icon-lg) + var(--spacing-gap-sm))`,
+     so it lines up with the description in every scale: 32 on web, 26 in
+     back office. **Figma-side gap:** Figma binds `spacing/padding/2xl`, which
+     is 32 on web but 20 in back office, so it would misalign there.
+   - The toggle behaves as in horizontal: glyph-only, controlled, no state
+     styling.
+5. **Retest:** after this ships, QA retests every row.
+
+Still open in Figma from the first round: the horizontal glyphs are still
+swapped (124:825 `check` draws the empty box), and the 4px padding still
+sits in different places in the two horizontal variants.
+
 ## Tokens used
 
 | Figma variable | Built token |
@@ -84,7 +123,9 @@ subcomponent.
 | `icon/interactive/brand-idle` | `--icon-interactive-brand-idle` |
 | (unbound, owner ruling) glyph size | `--size-icon-lg` |
 | (unbound, owner ruling) glyph stroke | `--border-width-icon-bold` |
-| (unbound, owner ruling) gap before the Label | `--spacing-gap-lg` |
+| (unbound, owner ruling) gap before the Label, horizontal | `--spacing-gap-lg` |
+| `spacing/gap/xxs` (vertical, row to Label) | `--spacing-gap-xxs` |
+| `spacing/padding/2xl` (vertical, Label indent) | not used: `calc(--size-icon-lg + --spacing-gap-sm)`, owner ruling |
 
 The Label's own tokens (`label/md`, `spacing/padding/sm`,
 `spacing/padding/xxs`, `background/accent/secondary-idle`,

@@ -19,8 +19,12 @@ import './DescriptionItem.css';
 //   only.
 // - The row fills its parent; the description is one line with an ellipsis.
 // - The Label is imported as it is (brand / md / no icon), hugging its text.
+// - `alignPosition` is Figma's "align position" variant: `horizontal` puts
+//   the Label at the far end of the row, `vertical` puts it on its own line
+//   under the description. The toggle behaves the same in both.
 export function DescriptionItem({
   category = 'check',
+  alignPosition = 'horizontal',
   descriptionText = 'Own end-to end product design from research to shipped UI',
   labelText = 'In 74% of posts',
   onCategoryChange,
@@ -34,7 +38,12 @@ export function DescriptionItem({
   return (
     <div
       {...rest}
-      className={['description-item', `description-item--${category}`, className]
+      className={[
+        'description-item',
+        `description-item--${category}`,
+        `description-item--${alignPosition}`,
+        className,
+      ]
         .filter(Boolean)
         .join(' ')}
     >
