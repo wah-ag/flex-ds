@@ -30,11 +30,13 @@
 /* Figma's "Container" 32:285: the Targets spread with space-between,
    centred on the cross axis. It hugs its content height (owner ruling
    2026-10-10: Figma's fixed 48 height is not built). Figma binds no gap
-   between the Targets. */
+   between the Targets; they keep at least spacing-gap-md apart (owner
+   ruling 2026-10-10). */
 .card-item__targets {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--spacing-gap-md);
   align-self: stretch;
   overflow-wrap: break-word;
 }
