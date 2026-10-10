@@ -1,29 +1,62 @@
 /* DescriptionItem — Figma node 124:826 (CardContent/DescriptionItem).
    Semantic tokens only.
 
-   One row that fills its parent (owner ruling, 2026-10-10): the checkbox and
-   the description on the left, spacing-gap-sm apart, and the Label at the far
-   end. The description is one line ending in an ellipsis, and keeps at least
-   spacing-gap-lg before the Label. The row is the description's line height
-   plus spacing-padding-xs above and below (32 on web), in both variants. */
+   Fills its parent (owner ruling, 2026-10-10). The checkbox and the
+   description sit spacing-gap-sm apart; the description is one line ending in
+   an ellipsis. The checkbox row is the description's line height plus
+   spacing-padding-xs above and below (32 on web).
+
+   alignPosition="horizontal": one row, the Label at the far end, at least
+   spacing-gap-lg after the description (Figma's unbound 46 is not built).
+
+   alignPosition="vertical": the Label on its own line, spacing-gap-xxs below
+   the checkbox row, indented to line up with the description: the glyph size
+   plus the checkbox-to-text gap (owner ruling, 2026-10-10; Figma binds
+   spacing/padding/2xl, which matches on web only). */
 
 .description-item {
   box-sizing: border-box;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-gap-lg);
   width: 100%;
   margin: 0;
-  padding: var(--spacing-padding-xs) 0;
 }
 
 .description-item__content {
   display: flex;
-  flex: 1 1 auto;
   align-items: center;
   gap: var(--spacing-gap-sm);
   min-width: 0;
+}
+
+/* Horizontal */
+
+.description-item--horizontal {
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-gap-lg);
+  padding: var(--spacing-padding-xs) 0;
+}
+
+.description-item--horizontal .description-item__content {
+  flex: 1 1 auto;
+}
+
+/* Vertical */
+
+.description-item--vertical {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-gap-xxs);
+  padding: 0;
+}
+
+.description-item--vertical .description-item__content {
+  padding: var(--spacing-padding-xs) 0;
+}
+
+.description-item--vertical .description-item__label {
+  align-self: flex-start;
+  margin-inline-start: calc(var(--size-icon-lg) + var(--spacing-gap-sm));
 }
 
 /* The checkbox. A native input sits over the Lucide glyph and takes the
