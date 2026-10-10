@@ -55,12 +55,13 @@ It has no subcomponent of its own and no code-only subcomponent.
   ShotAction idle / active). Stories cover `showSlot` on and off, plus
   content examples.
 
-## Open, not ruled
+## Ruled 2026-10-10: minimum gap between Targets
 
 - Figma binds no gap between the Targets in "Container" 32:285, only
-  space-between. With long values in a narrow parent the Targets can touch,
-  and Target values never wrap (Target's own rule), so the row can overflow.
-  Built as Figma draws it; no minimum gap was chosen.
+  space-between. The owner ruled on 2026-10-10 that the Targets keep at
+  least `--spacing-gap-md` apart ("gap-md min gap"), and the row keeps
+  space-between. Target values still never wrap (Target's own rule), so in
+  a narrow parent the row can overflow, but the Targets no longer touch.
 
 ## Tokens used by CardItem itself
 
@@ -68,5 +69,6 @@ It has no subcomponent of its own and no code-only subcomponent.
 | --- | --- | --- |
 | `spacing/gap/sm` | `--spacing-gap-sm` | Root column: content above Slot |
 | `spacing/gap/lg` | `--spacing-gap-lg` | Content column: CardHeader above the Target row |
+| none (owner ruling 2026-10-10) | `--spacing-gap-md` | Target row: minimum gap between Targets |
 
 Every other value comes from the imported components.
