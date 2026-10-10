@@ -1,30 +1,36 @@
 # DescriptionItem — prop names (for review)
 
 DescriptionItem is the Figma component `CardContent/DescriptionItem`, node
-124:826. It is built on `component/description-item` as
+**269:447** (variants `category=check`, 269:446, and `category=uncheck`,
+269:445). It is built on `component/description-item` as
 `src/components/DescriptionItem/`.
+
+## Rebuild from 269:447 (owner ruling, 2026-10-10)
+
+The Designer replaced the earlier node 124:826, which no longer exists in
+Figma, with 269:447. The owner ruled that 269:447 is the source of truth, and
+that where it differs from the earlier code or rulings, 269:447 wins:
+
+- **`alignPosition` is removed.** 269:447 has no `align position`
+  property. The horizontal and vertical layouts built from 124:826 are gone.
+- **Flex-wrap layout.** The row wraps, as Figma's frame does. The Label sits
+  beside the description while both fit on the line, and moves to its own
+  line under it when they do not.
+- **The description wraps** onto as many lines as it needs. This replaces the
+  earlier one-line ellipsis ruling.
 
 ## Figma properties
 
 | Figma property | Prop | Values |
 | --- | --- | --- |
-| `category` (variant: `check`, `uncheck`; Figma also has `category3`, `category4`, see below) | `category` | `'check'` (default) or `'uncheck'` |
-| `align position` (variant: `horizontal`, `vertical`) | `alignPosition` | `'horizontal'` (default) or `'vertical'` |
-| description text (text) | `descriptionText` | string (default `"Own end-to end product design from research to shipped UI"`) |
+| `category` (variant: `check`, `uncheck`) | `category` | `'check'` (default) or `'uncheck'` |
+| description text (text) | `descriptionText` | string (default `"Own end-to end product design from research to shipped something"`, as in Figma) |
 
-The names are as the Figma MCP reports them. Their exact spelling in the
-Figma panel could not be read through the API, so the Designer should
-confirm them.
-
-**Renamed: `align position` → `alignPosition`** (owner, 2026-10-10). Figma's
-property name has a space, which cannot be a React prop. `alignPosition` is
-the camelCase form, as for every other multi-word property here. No other
-prop was renamed.
+No prop is renamed. The names are as the Figma MCP reports them. Their exact
+spelling in the Figma panel could not be read through the API, so the
+Designer should confirm them.
 
 ## Props with no Figma property (proposed, for review)
-
-The owner asked for both on 2026-10-10 and for their names to be written up
-here.
 
 | Prop | What it does | Why this name |
 | --- | --- | --- |
@@ -37,79 +43,60 @@ Other HTML attributes pass through to the wrapping `<div>`.
 
 DescriptionItem imports, unchanged:
 
-- `Label` (Figma instance 124:808 / 124:819) as `category="brand"`,
+- `Label` (Figma instances 269:427 / 269:439) as `category="brand"`,
   `size="md"`, `showIcon={false}`, at its own hug width.
 
-The checkbox is drawn inline with Lucide `Square` and `SquareCheck` (owner
-ruling, 2026-10-10: no shared Checkbox component yet). It has no
-subcomponent.
+The checkbox is drawn inline with Lucide `Square` and `SquareCheck` (no
+shared Checkbox component yet). DescriptionItem has no subcomponent and no
+code-only subcomponent.
 
-## Owner rulings, 2026-10-10
+## Rulings still standing (2026-10-10, not contradicted by 269:447)
 
 1. **Variant names win.** `category="check"` is ticked and
-   `category="uncheck"` is empty. In Figma the glyphs are swapped
-   (`category=check`, 124:825, draws `checkbox-unchecked`; `category=uncheck`,
-   124:824, draws `checkbox-checked`). This is a Figma-side gap: the Designer
-   swaps the glyphs.
+   `category="uncheck"` is empty. In 269:447 the glyphs are still swapped
+   (269:446 `check` draws `checkbox-unchecked`; 269:445 `uncheck` draws
+   `checkbox-checked`). **Figma-side gap:** the Designer swaps the glyphs.
 2. **Interactive, controlled toggle.** A native `<input type="checkbox">`
    over the glyph, keyboard-operable (Space toggles). Only the checkbox
-   toggles: the description, the Label and the row do nothing, and the text
-   is not wrapped in a `<label>`. The checkbox is named by the description
-   through `aria-labelledby`. The parent owns `category` and hears
-   `onCategoryChange`.
-   - States: no hover, press, focus or disabled styling is built. The
-     browser's own focus ring shows on the checkbox. QA does not fail it for
-     missing states.
-3. Glyph size `--size-icon-lg` (24 on web, 20 in back office, accepted).
-4. Glyph stroke `--border-width-icon-bold` (2).
-5. Lucide `Square` (uncheck) and `SquareCheck` (check). Colours as Figma
-   binds them: `--icon-neutral-primary` empty, `--icon-interactive-brand-idle`
-   ticked.
-6. The checkbox is drawn inline; no shared Checkbox component yet. (The same
-   glyph family is used at 20 by `Menu/Item/Checkbox`, 116:1070.)
-7. The row fills its parent. Figma's unbound 632 is not built.
-8. A long description stays on one line and ends in an ellipsis, at least
-   `--spacing-gap-lg` before the Label. Figma binds no gap there.
-9. The Label hugs its text; Figma's fixed 103 is not built. Figma puts the
-   4px vertical padding on the inner frame in one variant and on the row in
-   the other; one consistent 32 row is built (`--spacing-padding-xs` above
-   and below the 24 line), and the Designer makes Figma consistent.
-10. DM Sans optical size: the browser renders the 16px description at
-    `opsz` 16 and the 12px Label at `opsz` 12, against Figma's `opsz` 14.
-    Accepted; no token carries an optical size.
+   toggles: the description, the Label and the row do nothing. The checkbox
+   is named by the description through `aria-labelledby`. The parent owns
+   `category` and hears `onCategoryChange`.
+3. **No interaction states.** No hover, press, focus or disabled styling is
+   built. The browser's own focus ring shows on the checkbox.
+4. Glyph size `--size-icon-lg` (24 on web, 20 in back office, accepted);
+   stroke `--border-width-icon-bold`; colours as Figma binds them:
+   `--icon-neutral-primary` empty, `--icon-interactive-brand-idle` ticked.
+5. **Fill width.** The row fills its parent. Figma's fixed 684 (frame) and
+   504 (description column) are unbound and not built.
+6. DM Sans optical size: the browser renders the 16px description at `opsz`
+   16 and the 12px Label at `opsz` 12, against Figma's `opsz` 14. Accepted.
 
-## Design update, owner rulings, 2026-10-10 (second round)
+## Open gaps for owner and Designer review
 
-The Designer added the `align position` variant property and two vertical
-variants to 124:826.
+These are listed for review. None is hard-coded, and no token was invented.
 
-1. **Prop:** `alignPosition`, `'horizontal'` (default) or `'vertical'`.
-2. **Vertical variants are `check` / `uncheck`.** Figma names them
-   `category=category3` (264:366, empty glyph) and `category=category4`
-   (264:377, ticked glyph). These are Designer placeholders. The code builds a
-   2 × 2 matrix, `category` × `alignPosition`, and follows the names per
-   ruling 1 (`check` is ticked). **Figma-side gap:** the Designer renames
-   them in Figma.
-3. **Horizontal is unchanged.** Figma now draws an unbound 46 gap between the
-   description and the Label. Rulings 7 and 8 stand: the row fills its
-   parent, the Label sits at the far end, and at least `--spacing-gap-lg`
-   separates them. **Figma-side gap:** the 46 is unbound.
-4. **Vertical layout:**
-   - It fills its parent, and the description stays one line with an
-     ellipsis.
-   - The Label sits on its own line, `--spacing-gap-xxs` below the checkbox
-     row. The checkbox row keeps `--spacing-padding-xs` above and below.
-   - The Label is indented by `calc(var(--size-icon-lg) + var(--spacing-gap-sm))`,
-     so it lines up with the description in every scale: 32 on web, 26 in
-     back office. **Figma-side gap:** Figma binds `spacing/padding/2xl`, which
-     is 32 on web but 20 in back office, so it would misalign there.
-   - The toggle behaves as in horizontal: glyph-only, controlled, no state
-     styling.
-5. **Retest:** after this ships, QA retests every row.
-
-Still open in Figma from the first round: the horizontal glyphs are still
-swapped (124:825 `check` draws the empty box), and the 4px padding still
-sits in different places in the two horizontal variants.
+1. **Unbound 46 gap** between the description and the Label (Figma
+   `gap-x 46` in both variants). Built: at least `--spacing-gap-lg`, as the
+   earlier ruling says.
+2. **Unbound 4 gap between wrapped lines**, in `uncheck` (269:445) only;
+   `check` (269:446) has none. Built: no row gap, as no variable is bound.
+   The Designer should bind one value in both variants, or remove it.
+3. **Label indent bound to `spacing/gap/2xl`.** That is 32 on web, which
+   equals the 24 glyph plus the 8 gap, but 18 in back office, against 20 + 6
+   = 26, so the Label would sit out of line there. Built:
+   `calc(var(--size-icon-lg) + var(--spacing-gap-sm))` (owner correction,
+   2026-10-10), which lines up in every scale. **Figma-side gap:** the
+   Designer rebinds it or accepts the code.
+4. **Fixed 504 description column.** In Figma, the 504 width makes the
+   description wrap while the Label still sits beside it. With fill width and
+   no bound width, the code keeps the Label beside the description only while
+   the description fits on one line next to it. Otherwise the Label wraps to
+   its own line and the description takes the full width. A bound width or
+   minimum width would let the code match Figma here.
+5. **Glyphs swapped** (ruling 1 above). This is still open in Figma.
+6. **Label vertical alignment.** Figma top-aligns the Label slot
+   (`items-start`), so the 24 Label sits at the top of the 32 checkbox row
+   instead of centred on it. Built as Figma draws it.
 
 ## Tokens used
 
@@ -123,11 +110,10 @@ sits in different places in the two horizontal variants.
 | `icon/interactive/brand-idle` | `--icon-interactive-brand-idle` |
 | (unbound, owner ruling) glyph size | `--size-icon-lg` |
 | (unbound, owner ruling) glyph stroke | `--border-width-icon-bold` |
-| (unbound, owner ruling) gap before the Label, horizontal | `--spacing-gap-lg` |
-| `spacing/gap/xxs` (vertical, row to Label) | `--spacing-gap-xxs` |
-| `spacing/padding/2xl` (vertical, Label indent) | not used: `calc(--size-icon-lg + --spacing-gap-sm)`, owner ruling |
+| (unbound 46, owner ruling) minimum gap before the Label | `--spacing-gap-lg` |
+| `spacing/gap/2xl` (Label indent) | not used: `calc(--size-icon-lg + --spacing-gap-sm)`, owner correction |
 
 The Label's own tokens (`label/md`, `spacing/padding/sm`,
-`spacing/padding/xxs`, `background/accent/secondary-idle`,
+`spacing/padding/xxs`, `spacing/gap/xs`, `background/accent/secondary-idle`,
 `text/interactive/secondary-idle`, `border-radius-rounded`) come with the
 imported Label.

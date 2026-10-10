@@ -1,12 +1,16 @@
-// Figma: https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=124-826
+// Figma: https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=269-447
 import { useArgs } from 'storybook/preview-api';
 import { DescriptionItem } from './DescriptionItem';
 import descriptionItemCss from './DescriptionItem.css?raw';
 import { MODES, exists, referencedTokens, resolve } from '../../../stories/lib/tokens.js';
 
 const FIGMA = 'https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress';
-const NODE = '124-826';
+const NODE = '269-447';
 const figmaLink = `Figma node [${NODE.replace('-', ':')}](${FIGMA}?node-id=${NODE}).`;
+
+const LONG_DESCRIPTION =
+  'Own end-to end product design from research to shipped UI, including discovery, prototyping, ' +
+  'usability testing, design system contributions and close collaboration with engineering';
 
 // The dashed outline marks the parent. It is a story-only frame, not a
 // component value: DescriptionItem fills whatever parent it is given.
@@ -37,32 +41,29 @@ export default {
     docs: {
       description: {
         component: `Description item. Figma: [CardContent/DescriptionItem](${FIGMA}?node-id=${NODE}). ` +
-          'A checkbox and a one-line description (body/lg, text-neutral-base), and a Label (brand / md / no icon, ' +
-          'imported as it is). `alignPosition` is the Figma "align position" variant: `horizontal` puts the ' +
-          'Label at the far end of the row, at least spacing-gap-lg after the description; `vertical` puts it ' +
-          'on its own line, spacing-gap-xxs below, indented by size-icon-lg plus spacing-gap-sm so it lines up ' +
-          'with the description (owner ruling, 2026-10-10). `category` is the Figma variant: ' +
-          '`check` is ticked and `uncheck` is empty (owner ruling, 2026-10-10; Figma\'s glyphs are swapped and ' +
-          'the Designer fixes them). Only the checkbox toggles, with a click or Space; it is a native checkbox ' +
+          'A checkbox and a description (body/lg, text-neutral-base) that wraps onto as many lines as it ' +
+          'needs, and a Label (brand / md / no icon, imported as it is). The row fills its parent and wraps: ' +
+          'the Label sits beside the description, at least spacing-gap-lg after it, while both fit, and moves ' +
+          'to its own line under it when they do not, indented by size-icon-lg plus spacing-gap-sm so it lines ' +
+          'up with the description (owner ruling, 2026-10-10). `category` is the Figma variant: `check` is ' +
+          'ticked and `uncheck` is empty (owner ruling, 2026-10-10; Figma\'s glyphs are swapped and the ' +
+          'Designer fixes them). Only the checkbox toggles, with a click or Space; it is a native checkbox ' +
           'named by the description. The component is controlled: the parent passes `category` and hears ' +
           '`onCategoryChange(nextCategory, event)`. `labelText` sets the Label\'s text ' +
-          '(docs/description-item-prop-names.md). The component fills its parent; a long description ends in ' +
-          'an ellipsis. No hover, press, focus or disabled styling is ' +
-          'designed: the browser\'s own focus ring shows on the checkbox.',
+          '(docs/description-item-prop-names.md). No hover, press, focus or disabled styling is designed: ' +
+          'the browser\'s own focus ring shows on the checkbox.',
       },
     },
   },
   argTypes: {
     category: { control: 'inline-radio', options: ['check', 'uncheck'] },
-    alignPosition: { control: 'inline-radio', options: ['horizontal', 'vertical'] },
     descriptionText: { control: 'text' },
     labelText: { control: 'text' },
     onCategoryChange: { action: 'onCategoryChange' },
   },
   args: {
     category: 'check',
-    alignPosition: 'horizontal',
-    descriptionText: 'Own end-to end product design from research to shipped UI',
+    descriptionText: 'Own end-to end product design from research to shipped something',
     labelText: 'In 74% of posts',
   },
   decorators: [
@@ -75,91 +76,52 @@ export default {
 };
 
 export const Check = {
-  name: 'category=check, alignPosition=horizontal',
-  args: { category: 'check', alignPosition: 'horizontal' },
+  name: 'category=check',
+  args: { category: 'check' },
   parameters: {
     docs: {
       description: {
-        story: `${figmaLink} Ticked: Lucide SquareCheck in icon-interactive-brand-idle. Click the checkbox or ` +
-          'press Space on it to untick.',
+        story: `${figmaLink} Ticked (Figma 269:446): Lucide SquareCheck in icon-interactive-brand-idle. Click ` +
+          'the checkbox or press Space on it to untick.',
       },
     },
   },
 };
 
 export const Uncheck = {
-  name: 'category=uncheck, alignPosition=horizontal',
-  args: { category: 'uncheck', alignPosition: 'horizontal' },
+  name: 'category=uncheck',
+  args: { category: 'uncheck' },
   parameters: {
     docs: {
       description: {
-        story: `${figmaLink} Empty: Lucide Square in icon-neutral-primary. Click the checkbox or press Space on ` +
-          'it to tick.',
+        story: `${figmaLink} Empty (Figma 269:445): Lucide Square in icon-neutral-primary. Click the checkbox ` +
+          'or press Space on it to tick.',
       },
     },
   },
 };
 
-export const LongDescription = {
-  name: 'Long description (ellipsis), alignPosition=horizontal',
-  args: {
-    category: 'uncheck',
-    alignPosition: 'horizontal',
-    descriptionText:
-      'Own end-to end product design from research to shipped UI, including discovery, prototyping, ' +
-      'usability testing, design system contributions and close collaboration with engineering',
-  },
+export const LongDescriptionCheck = {
+  name: 'category=check, long description (wraps)',
+  args: { category: 'check', descriptionText: LONG_DESCRIPTION },
   parameters: {
     docs: {
       description: {
-        story: `${figmaLink} Owner ruling, 2026-10-10: a description longer than the row stays on one line and ` +
-          'ends in an ellipsis, at least spacing-gap-lg before the Label.',
+        story: `${figmaLink} The description and the Label no longer fit on one line, so the Label wraps to ` +
+          'its own line, indented to line up with the description, and the description wraps onto several ' +
+          'lines. No gap is built between the wrapped lines (Figma\'s 4 is unbound).',
       },
     },
   },
 };
 
-export const CheckVertical = {
-  name: 'category=check, alignPosition=vertical',
-  args: { category: 'check', alignPosition: 'vertical' },
+export const LongDescriptionUncheck = {
+  name: 'category=uncheck, long description (wraps)',
+  args: { category: 'uncheck', descriptionText: LONG_DESCRIPTION },
   parameters: {
     docs: {
       description: {
-        story: `${figmaLink} Ticked, with the Label on its own line (Figma 264:377, named category4 there; the ` +
-          'Designer renames it). The Label sits spacing-gap-xxs below the checkbox row, indented by ' +
-          'size-icon-lg plus spacing-gap-sm. Click the checkbox or press Space on it to untick.',
-      },
-    },
-  },
-};
-
-export const UncheckVertical = {
-  name: 'category=uncheck, alignPosition=vertical',
-  args: { category: 'uncheck', alignPosition: 'vertical' },
-  parameters: {
-    docs: {
-      description: {
-        story: `${figmaLink} Empty, with the Label on its own line (Figma 264:366, named category3 there; the ` +
-          'Designer renames it). Click the checkbox or press Space on it to tick.',
-      },
-    },
-  },
-};
-
-export const LongDescriptionVertical = {
-  name: 'Long description (ellipsis), alignPosition=vertical',
-  args: {
-    category: 'uncheck',
-    alignPosition: 'vertical',
-    descriptionText:
-      'Own end-to end product design from research to shipped UI, including discovery, prototyping, ' +
-      'usability testing, design system contributions and close collaboration with engineering',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: `${figmaLink} Owner ruling, 2026-10-10: in the vertical layout too, a description longer than ` +
-          'the row stays on one line and ends in an ellipsis.',
+        story: `${figmaLink} As above, empty.`,
       },
     },
   },
