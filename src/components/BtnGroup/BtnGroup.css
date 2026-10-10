@@ -1,0 +1,15 @@
+/* BtnGroup — Figma node 32:573 (CardContent/BtnGroup). Semantic tokens only.
+
+   A row that hugs its content, items centred, spacing-gap-md between the
+   ShotAction and the Share ButtonCTA. The buttons bring their own styles;
+   nothing of them is restyled here. */
+
+.btn-group {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--spacing-gap-md);
+  margin: 0;
+  padding: 0;
+}
