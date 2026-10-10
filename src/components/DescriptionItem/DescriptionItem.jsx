@@ -3,11 +3,13 @@ import { Square, SquareCheck } from 'lucide-react';
 import { Label } from '../Label/Label';
 import './DescriptionItem.css';
 
-// Figma: CardContent/DescriptionItem, node 124:826.
+// Figma: CardContent/DescriptionItem, node 269:447.
 // Props are named as Figma names its component properties
 // (docs/description-item-prop-names.md).
 //
 // Owner rulings, 2026-10-10:
+// - Figma 269:447 is the source of truth. It has one variant property,
+//   `category`; the earlier `alignPosition` prop (124:826) is removed.
 // - `category="check"` is ticked and `category="uncheck"` is empty, as the
 //   variant names say. Figma's glyphs are swapped; the Designer fixes them.
 // - The checkbox is a real, native, keyboard-operable control. Only the
@@ -17,15 +19,13 @@ import './DescriptionItem.css';
 //   `onCategoryChange(nextCategory, event)`.
 // - No hover, press, focus or disabled styling: the browser's own focus ring
 //   only.
-// - The row fills its parent; the description is one line with an ellipsis.
+// - The row fills its parent and wraps, as Figma's frame does: the Label
+//   sits beside the description while both fit, and moves to its own line
+//   under it when they do not. The description wraps onto several lines.
 // - The Label is imported as it is (brand / md / no icon), hugging its text.
-// - `alignPosition` is Figma's "align position" variant: `horizontal` puts
-//   the Label at the far end of the row, `vertical` puts it on its own line
-//   under the description. The toggle behaves the same in both.
 export function DescriptionItem({
   category = 'check',
-  alignPosition = 'horizontal',
-  descriptionText = 'Own end-to end product design from research to shipped UI',
+  descriptionText = 'Own end-to end product design from research to shipped something',
   labelText = 'In 74% of posts',
   onCategoryChange,
   className,
@@ -38,12 +38,7 @@ export function DescriptionItem({
   return (
     <div
       {...rest}
-      className={[
-        'description-item',
-        `description-item--${category}`,
-        `description-item--${alignPosition}`,
-        className,
-      ]
+      className={['description-item', `description-item--${category}`, className]
         .filter(Boolean)
         .join(' ')}
     >
@@ -64,13 +59,9 @@ export function DescriptionItem({
           {descriptionText}
         </p>
       </div>
-      <Label
-        className="description-item__label"
-        category="brand"
-        size="md"
-        showIcon={false}
-        labelText={labelText}
-      />
+      <div className="description-item__label-slot">
+        <Label category="brand" size="md" showIcon={false} labelText={labelText} />
+      </div>
     </div>
   );
 }
