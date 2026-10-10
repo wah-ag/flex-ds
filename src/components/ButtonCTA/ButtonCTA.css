@@ -93,10 +93,14 @@
    The outline is an inset shadow, not a border: browsers round border widths
    down to whole device pixels (a one-and-a-half pixel border draws as one at
    1x), and shadows are not rounded. The padding grows by the same width, so the size matches Figma's
-   bordered frame. */
+   bordered frame.
+   Fill, as Figma 16:438 binds it per state: background/neutral/base on idle,
+   hover, press, focus (inner btn-cta layer) and error; background/neutral/
+   disable on disable (see the disabled rule below). ShotAction idle (31:190,
+   layer 30:173) renders this variant and binds the same base fill. */
 
 .button-cta--secondary {
-  background: none;
+  background: var(--background-neutral-base);
   padding-inline: calc(var(--spacing-padding-md) + var(--border-width-default));
 }
 
@@ -125,6 +129,7 @@
 }
 
 .button-cta--secondary[data-tone='disabled'] {
+  background: var(--background-neutral-disable);
   box-shadow: inset 0 0 0 var(--border-width-default) var(--border-neutral-disable);
   color: var(--text-neutral-disable);
 }
