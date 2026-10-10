@@ -1,0 +1,107 @@
+/* DescriptionItem — Figma node 269:447 (CardContent/DescriptionItem).
+   Semantic tokens only.
+
+   A wrapping row, as Figma's frame is: the checkbox and description on the
+   left, the Label slot after them. It fills its parent (owner ruling,
+   2026-10-10; Figma's fixed 684 and 504 widths are not built). The Label
+   stays beside the description while both fit on the line, and wraps to its
+   own line under it when they do not. The description wraps onto several
+   lines.
+
+   Gaps for owner review (docs/description-item-prop-names.md):
+   - Figma's 46 between the description and the Label is unbound. The
+     earlier ruling stands: at least spacing-gap-lg.
+   - Figma's 4 between wrapped lines is unbound and only in `uncheck`. No row
+     gap is built.
+   - Figma binds the Label slot's indent to spacing/gap/2xl, which lines up
+     with the description on web (32 = 24 glyph + 8 gap) but not in back
+     office (18 against 20 + 6). Built as size-icon-lg + spacing-gap-sm
+     instead (owner ruling, 2026-10-10). */
+
+.description-item {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  column-gap: var(--spacing-gap-lg);
+  width: 100%;
+  margin: 0;
+}
+
+.description-item__content {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: flex-start;
+  gap: var(--spacing-gap-sm);
+  min-width: 0;
+  padding: var(--spacing-padding-xs) 0;
+}
+
+/* The Label slot. Its start-side indent is the glyph size plus the
+   checkbox-to-text gap, so a wrapped Label lines up under the description in
+   every scale (owner ruling, 2026-10-10). Figma binds spacing/gap/2xl here,
+   which only lines up on web; that is the Designer's fix. */
+.description-item__label-slot {
+  display: flex;
+  flex-shrink: 0;
+  padding-inline-start: calc(var(--size-icon-lg) + var(--spacing-gap-sm));
+}
+
+/* The checkbox. A native input sits over the Lucide glyph and takes the
+   click and the keyboard; the glyph only draws. No hover, press, focus or
+   disabled styling (owner ruling): the browser's own focus ring shows on the
+   input. */
+
+.description-item__control {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  width: var(--size-icon-lg);
+  height: var(--size-icon-lg);
+}
+
+.description-item__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Sized by --size-icon-lg, coloured through currentColor, stroked with
+   --border-width-icon-bold in screen pixels. */
+.description-item__icon {
+  width: 100%;
+  height: 100%;
+  color: var(--description-item-icon-color);
+  stroke: currentColor;
+  stroke-width: var(--border-width-icon-bold);
+  pointer-events: none;
+}
+
+.description-item__icon * {
+  vector-effect: non-scaling-stroke;
+}
+
+.description-item--uncheck {
+  --description-item-icon-color: var(--icon-neutral-primary);
+}
+
+.description-item--check {
+  --description-item-icon-color: var(--icon-interactive-brand-idle);
+}
+
+/* body/lg, wrapping onto as many lines as it needs. */
+.description-item__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font: var(--body-lg);
+  color: var(--text-neutral-base);
+  overflow-wrap: break-word;
+}
