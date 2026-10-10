@@ -1,0 +1,48 @@
+/* CardItem — Figma node 32:651 (CardContent/CardItem).
+   Semantic tokens only.
+
+   A column that fills its parent (owner ruling 2026-10-10: Figma's fixed
+   454 width is not built): the content (32:648) above the bottom Slot
+   (32:647), spacing-gap-sm apart. CardHeader, BtnGroup and Target bring
+   their own styles; nothing of them is restyled here. */
+
+.card-item {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-gap-sm);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Figma's 32:648: CardHeader above the Target row, spacing-gap-lg apart,
+   both at full width. */
+.card-item__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-gap-lg);
+  align-self: stretch;
+}
+
+/* Figma's "Container" 32:285: the Targets spread with space-between,
+   centred on the cross axis. It hugs its content height (owner ruling
+   2026-10-10: Figma's fixed 48 height is not built). Figma binds no gap
+   between the Targets; they keep at least spacing-gap-md apart (owner
+   ruling 2026-10-10). */
+.card-item__targets {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-gap-md);
+  align-self: stretch;
+  overflow-wrap: break-word;
+}
+
+/* Figma's "Slot" 32:647: full width, hugs its content height (owner ruling
+   2026-10-10: Figma's fixed 57 height is not built). */
+.card-item__slot {
+  align-self: stretch;
+}
