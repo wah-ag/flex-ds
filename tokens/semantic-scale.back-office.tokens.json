@@ -125,11 +125,11 @@
   },
   "spacing-gap-xxs": {
     "$type": "dimension",
-    "$value": "{scale-thin}"
+    "$value": "{scale-1}"
   },
   "spacing-gap-xs": {
     "$type": "dimension",
-    "$value": "{scale-1}"
+    "$value": "{scale-2}"
   },
   "spacing-gap-sm": {
     "$type": "dimension",
