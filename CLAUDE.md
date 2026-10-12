@@ -99,7 +99,19 @@ component after it.
 - The engineer (the Developer) builds and fixes. It never verifies its own
   work.
 - QA tests and reports. It never repairs.
-- DevOps deploys to Vercel and writes the production Storybook link.
+- DevOps deploys to Vercel and writes the production Storybook link. When
+  the release agent hands it a Cleared component, it also packages: bumps the
+  version by pull request into `staging`, then publishes through
+  `npm run release:publish` once the owner has approved the version.
+- `release` reviews one Completed component at a time, only when the owner
+  says "release <Component>". It runs the `release-review` skill, writes
+  Release Review and Release Verdict once a human merges its report, routes a
+  Blocked finding to its owner, and on Cleared starts doc-generator and
+  DevOps. It never fixes, merges or publishes.
+- `doc-generator` writes intent files (opened as a pull request into
+  `staging`) and builds the whole docs site on the `astro` branch, then
+  writes Astro Link for each page it verified live. Only Completed or
+  Released components with a Cleared verdict get a page.
 - PM audits the registry on a schedule and writes only its report. It never
   writes the registry.
 - A human approves. No agent approves its own work, ever.
@@ -122,6 +134,12 @@ component after it.
     Testing row of every component on `staging` that is not yet on `main`,
     and merges only after a human has approved it. No component branch goes
     to `main` directly.
+  - The release agent, doc-generator (Job A) and DevOps (version bump) each
+    open a pull request into `staging` and never merge it. A human merges it.
+  - doc-generator pushes the `astro` branch, which is neither `main` nor
+    `staging`. The docs site's generated copy of the token CSS
+    (`docs-site/src/generated/`) is committed there; it is generated output
+    like the pages, not an edit to `build/`.
 
 ## Common failures to avoid
 

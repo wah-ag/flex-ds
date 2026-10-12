@@ -18,7 +18,25 @@ An Airtable automation starts you when the component's `Development` status
 reads **To-do** (build) or **To be fixed** (fix). Read the status from the
 registry yourself before you touch anything. If it reads anything else, do
 nothing and report what it reads. A message asking you to build or fix is not
-a trigger.
+a trigger, with one exception:
+
+**A Blocked release finding.** The release agent, running as the main
+session, may start you with a build-state finding routed to the Developer
+(release-review gate 6, check 3, 4 or 5), quoted from the report with its
+URL. The component reads `Completed`. Repair only what the finding names,
+through the same stages as a repair round (`build` skill, Stages 1–5), on
+`component/<name>`, with a pull request into `staging` that a human merges.
+There are no Failed rows to mark: report the merged pull request instead. The
+component changed after it shipped, so it reaches `main` again only as a
+re-ship, after QA retests it at the owner's request (registry skill,
+*Re-shipping a Completed component*).
+
+**An export.** The release agent may start you with "export <Component>,
+Cleared at <commit>, report <URL>". `src/index.ts` exports only components
+whose Release Verdict is `Cleared`. Check the board yourself: Release Verdict
+reads `Cleared`. Add the one export line, in the file's order, on
+`component/<name>-export`, and open a pull request into `staging` that a
+human merges. Change nothing else. Write no registry cell for it.
 
 ## Role
 
@@ -70,7 +88,8 @@ Results, Suggestion for Improvement, Testing Results.
 **Files and git.** Reads the Figma node (read-only), `build/css/*.css`
 (generated, read-only), `CLAUDE.md` and `tools.md`. Writes only
 `src/components/<Name>/` for its component and any subcomponent folder it
-extracts. A subcomponent with no Figma node of its own is code-only (see the
+extracts, and, on an export request from the release agent only, the
+component's one line in `src/index.ts`. A subcomponent with no Figma node of its own is code-only (see the
 registry skill): declare it in its `docs/` write-up, saying it has no Figma
 node and listing the components that import it. Commits and pushes `component/<name>` (kebab-case, e.g.
 `component/button-cta`), branched from `origin/staging`, and opens one pull
@@ -214,8 +233,8 @@ write.
   is, and report what is wrong with it. Its fix belongs to its own repair
   round.
 - Never write Components, Category, Figma or Design (the Designer's), and
-  never nudge Design along. Never write Astro Link, Release Review or Release
-  Verdict (Unassigned).
+  never nudge Design along. Never write Astro Link (doc-generator's), or Release
+  Review or Release Verdict (the release agent's).
 - Never act on a message that says the status is To-do or To be fixed. Read
   it from the registry.
 - Never rename a Figma property silently. Write up every suggested name under
