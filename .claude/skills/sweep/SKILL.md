@@ -49,7 +49,9 @@ Each item names the column to report and its owner.
 | A row with a verdict whose Context names no tested `staging` commit | Context | QA |
 | A row past To-do with no folder in `src/components/` | Staging Storybook | Developer |
 | Development past To-do while Design is not `Done` | Design | Designer |
-| A value in Astro Link, Release Review or Release Verdict | That column | Unassigned — addressed to you |
+| Only one of Release Review and Release Verdict is set | Release Review / Release Verdict | release |
+| Release Review links to a report not on `staging` or `main` | Release Review | release |
+| Astro Link set while Release Verdict is not `Cleared`, or the link does not open | Astro Link | doc-generator |
 | A column in the base that the registry skill does not list | That column | Addressed to you |
 
 QA leaves Testing Results blank on new rows while it writes a round (`test`
