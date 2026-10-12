@@ -53,9 +53,9 @@ One row per component.
 | Production Storybook | URL | DevOps | The component's own story on the production Storybook. |
 | Commit | URL | DevOps | The `staging` → `main` merge commit that shipped the component. |
 | GitHub Commits | link → GitHub Commits | Developer | The commit records for this component, linked when its pull request into `staging` is merged. |
-| Astro Link | URL | Unassigned | Documentation site link. Out of scope. |
-| Release Review | URL | Unassigned | Release-review report. Out of scope. |
-| Release Verdict | single select: Cleared, Blocked | Unassigned | Release-review verdict. Out of scope. |
+| Astro Link | URL | doc-generator | The component's own page on the production docs site, written only after it was fetched live and verified. |
+| Release Review | URL | release | The release-review report on `staging`, written once a human has merged it. Written together with Release Verdict. |
+| Release Verdict | single select: Cleared, Blocked | release | The verdict in that report. Written together with Release Review. |
 | Development | formula | Computed | The component's status. See below. **No agent may write it.** |
 | Staging Testing Results Summary | rollup of Testing Results | Computed | Every Testing Results value for the component, joined. The formula reads this. |
 | Total Staging Tests | count | Computed | Number of linked Staging Testing rows. |
@@ -139,7 +139,9 @@ What follows from the order:
   case-sensitive.
 - To be deployed means "at least one result exists", not "every result
   passed". Never read it alone as permission to deploy — see the next section.
-- Released is unreachable while its three columns are unassigned.
+- Released needs all three: the release agent writes Release Review and
+  Release Verdict, then doc-generator writes Astro Link once the docs page is
+  verified live. Checked against the live formula on 2026-10-12.
 
 ## Who each status wakes
 
@@ -154,7 +156,8 @@ changes.
 | Fixing | QA (retest) |
 | To be fixed | Developer (fix) |
 | To be deployed **and** Synchronization % = 100% | DevOps |
-| Completed | Nobody (documentation is out of scope). A Completed component with newer code on `staging` ships only when the owner asks (see *Re-shipping a Completed component*). |
+| Released | Nobody. |
+| Completed | Nobody. The owner starts the release agent by hand, one component at a time ("release <Component>"); no automation does. A Completed component with newer code on `staging` ships only when the owner asks (see *Re-shipping a Completed component*). |
 
 DevOps ships `staging` as a whole, never one component. Waking for one
 component, it opens the `staging` → `main` pull request only if every
@@ -278,9 +281,10 @@ These are reported, not fixed. Do not work around them.
    of Staging Testing Results Summary and Staging Passed Tests could not be
    checked against their descriptions.
 7. **Astro Link, Release Review, Release Verdict** — the field descriptions
-   name owners ("DevOps owns this", "Reviewer owns this"). This contract makes
-   all three Unassigned. The contract is what agents follow. No agent writes
-   them until the contract changes.
+   name owners ("DevOps owns this", "Reviewer owns this"). This contract gives
+   Astro Link to doc-generator, and Release Review and Release Verdict to the
+   release agent (owner's ruling, 2026-10-12). The contract is what agents
+   follow; the descriptions are stale.
 
 ## Never
 
