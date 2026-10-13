@@ -6,7 +6,7 @@ camelCase, following the convention agreed for ButtonCTA on 2026-09-30
 
 | Figma property | Prop |
 | --- | --- |
-| `category` (variant: `brand`, `info`, `success`, `error`, `warning`) | `category` |
+| `category` (variant: `brand`, `info`, `success`, `error`, `warning`, `normal`; `normal` added in Figma 2026-10-13, nodes 274:623, 274:660, 274:674, 274:651, 274:654, 274:657) | `category` |
 | `size` (variant: `lg`, `md`, `sm`) | `size` |
 | `state` (variant: `idle`, `hover`) | `state` |
 | label text (text, default "Label") | `labelText` |

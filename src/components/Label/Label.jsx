@@ -3,6 +3,8 @@ import './Label.css';
 
 // Figma: Label, node 31:228.
 // Props are named as Figma names its component properties.
+// `category` is brand, info, success, error, warning or normal (normal added
+// in Figma on 2026-10-13, nodes 274:623 and siblings).
 
 // `state` is idle or hover, and nothing else, by owner decision on 2026-10-03
 // (docs/label-prop-names.md). Label is not a control: it takes no focus and
