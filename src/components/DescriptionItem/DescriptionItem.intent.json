@@ -1,7 +1,12 @@
 {
   "component": "DescriptionItem",
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=269-447",
-  "use_when": [],
+  "use_when": [
+    {
+      "text": "used together with card container to give options to user with checkbox during the process of posting a job description with the status of how many post this option is applied for",
+      "source": "Figma 269:447 (CardContent/DescriptionItem component description, paragraph 1)"
+    }
+  ],
   "dont_use_when": [],
   "variant_intent": {
     "category": {

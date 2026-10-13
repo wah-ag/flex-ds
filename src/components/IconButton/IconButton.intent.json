@@ -1,9 +1,28 @@
 {
   "component": "IconButton",
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=45-324",
-  "use_when": [],
+  "use_when": [
+    {
+      "text": "it serves as icon button and use in header, back office table row actions",
+      "source": "Figma 45:324 (IconButton component description, paragraph 1)"
+    }
+  ],
   "dont_use_when": [],
   "variant_intent": {
+    "category": {
+      "stroke": {
+        "text": "it serves as three category, stroke icon button is to be used in header and fill icon button for table rows actions.",
+        "source": "Figma 45:324 (IconButton component description, paragraph 2)"
+      },
+      "default-fill": {
+        "text": "it serves as three category, stroke icon button is to be used in header and fill icon button for table rows actions.",
+        "source": "Figma 45:324 (IconButton component description, paragraph 2)"
+      },
+      "error-fill": {
+        "text": "it serves as three category, stroke icon button is to be used in header and fill icon button for table rows actions.",
+        "source": "Figma 45:324 (IconButton component description, paragraph 2)"
+      }
+    },
     "state": {
       "idle": null,
       "hover": null,
@@ -28,6 +47,11 @@
     }
   ],
   "required_tokens": [
+    "--background-accent-brand-idle",
+    "--background-accent-brand-interactive",
+    "--background-accent-danger-idle",
+    "--background-accent-danger-interactive",
+    "--background-neutral-disable",
     "--border-interactive-brand-hover",
     "--border-interactive-brand-idle",
     "--border-interactive-brand-press",
@@ -38,6 +62,7 @@
     "--icon-interactive-brand-hover",
     "--icon-interactive-brand-idle",
     "--icon-interactive-brand-press",
+    "--icon-interactive-danger",
     "--icon-neutral-disable",
     "--size-control-lg",
     "--size-icon-md",
@@ -47,15 +72,15 @@
   "a11y": [
     {
       "text": "Renders a native <button>, with type=\"button\" by default.",
-      "source": "src/components/IconButton/IconButton.jsx:17"
+      "source": "src/components/IconButton/IconButton.jsx:23"
     },
     {
       "text": "state=\"disable\" sets the native disabled attribute.",
-      "source": "src/components/IconButton/IconButton.jsx:22"
+      "source": "src/components/IconButton/IconButton.jsx:29"
     },
     {
       "text": "The icon is aria-hidden=\"true\" and focusable=\"false\", and the button renders no text; other attributes, such as aria-label, pass through to the <button>.",
-      "source": "src/components/IconButton/IconButton.jsx:24"
+      "source": "src/components/IconButton/IconButton.jsx:31"
     }
   ]
 }

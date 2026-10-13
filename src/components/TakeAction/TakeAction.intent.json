@@ -1,7 +1,12 @@
 {
   "component": "TakeAction",
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=32-652",
-  "use_when": [],
+  "use_when": [
+    {
+      "text": "used to inform this job posting will be closed in this day and user call to action to apply now.",
+      "source": "Figma 32:652 (CardContent/TakeAction component description, paragraph 1)"
+    }
+  ],
   "dont_use_when": [],
   "variant_intent": {},
   "placement": [],
