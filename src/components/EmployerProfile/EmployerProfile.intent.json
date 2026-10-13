@@ -1,0 +1,28 @@
+{
+  "component": "EmployerProfile",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=32-337",
+  "use_when": [],
+  "dont_use_when": [],
+  "variant_intent": {},
+  "placement": [],
+  "pairs_with": [
+    {
+      "component": "CardHeader",
+      "source": "src/components/CardHeader/CardHeader.jsx:1"
+    }
+  ],
+  "required_tokens": [
+    "--label-md",
+    "--spacing-gap-md",
+    "--spacing-gap-xxs",
+    "--text-neutral-bold",
+    "--text-neutral-secondary",
+    "--title-sm"
+  ],
+  "a11y": [
+    {
+      "text": "The employer title is a <p> whose title attribute carries the full title.",
+      "source": "src/components/EmployerProfile/EmployerProfile.jsx:32"
+    }
+  ]
+}
