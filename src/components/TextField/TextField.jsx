@@ -15,7 +15,10 @@ import './TextField.css';
 // - `active` is focused and empty; `typing` is focused with a value. Both
 //   come from real focus and real input.
 // - `focus` is keyboard focus, and only keyboard focus shows the ring.
-// - `hover` comes from a real pointer.
+// - `hover` comes from a real pointer. Its border is
+//   border/interactive/brand-hover in both sizes (Figma 64:573 and 126:757,
+//   changed from brand-idle by the Designer on 2026-10-13), so TextField
+//   passes FieldControl's `hoverBorder="brand-hover"`.
 // - `error` and `disable` are held states, set through `state`.
 // Passing `hover`, `active`, `typing` or `focus` as `state` only pins the
 // look, for docs.
@@ -57,6 +60,7 @@ export function TextField({
         type={type}
         state={state}
         size={size}
+        hoverBorder="brand-hover"
         placeholderText={placeholderText}
         showLeading={showLeading}
         leadingIcon={swapLeadingIcon}

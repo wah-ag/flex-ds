@@ -46,7 +46,7 @@ name) of that property.
 | `trailingPressed` | none | `aria-pressed` on the trailing button, for an action that toggles (PasswordField's show/hide). Leave it unset for a one-shot action such as clear. | — |
 | `trailingFocusable` | `false` | When `true`, the trailing action is a tab stop with a focus ring, and keeps focus when it is used from the keyboard. When `false` (TextField's clear), it is out of the tab order and focus returns to the input after it runs. | — |
 | `onTrailingClick` | none | `(event, input) => void`, called when the trailing action is clicked. `input` is the `<input>` element. | — (TextField clears the field) |
-| `hoverBorder` | `brand-idle` | The hover border: `brand-idle` (`border-interactive-brand-idle`, InputField 64:573) or `brand-hover` (`border-interactive-brand-hover`, PasswordField 149:146). | — (TextField uses the default) |
+| `hoverBorder` | `brand-idle` | The hover border: `brand-idle` (`border-interactive-brand-idle`) or `brand-hover` (`border-interactive-brand-hover`: PasswordField 149:146, and InputField 64:573 and 126:757 since 2026-10-13). | — (TextField passes `brand-hover`) |
 | `focusLeadingIcon` | `neutral` | The leading icon in keyboard focus: `neutral` (unchanged, `icon-neutral-primary`, InputField 64:610) or `brand` (`icon-interactive-brand-idle`, PasswordField 93:528). | — (TextField uses the default) |
 
 `hoverBorder` and `focusLeadingIcon` exist because the two Figma components
@@ -94,13 +94,19 @@ It has one look (`title-sm`, `text-neutral-base`) and no states.
 - **No focus look for a focusable trailing action.** Figma draws no focus
   state for the eye (or any trailing icon). The ring above is built from the
   existing focus tokens. The Designer should draw it.
-- **InputField and PasswordField draw the same box with two different
-  looks.** The hover border is `border/interactive/brand-idle` in InputField
-  (64:573) and `border/interactive/brand-hover` in PasswordField (149:146).
-  The keyboard-focus leading icon is `icon/neutral/primary` in InputField
-  (64:610) and `icon/interactive/brand-idle` in PasswordField (93:528). The
-  Designer should decide whether this is intended. If not, align one
-  component, and `hoverBorder` and `focusLeadingIcon` can go.
+- **InputField and PasswordField draw the same box with one different
+  look.** The keyboard-focus leading icon is `icon/neutral/primary` in
+  InputField (64:610) and `icon/interactive/brand-idle` in PasswordField
+  (93:528). The Designer should decide whether this is intended. If not,
+  align one component, and `focusLeadingIcon` can go.
+- **The hover border no longer differs.** On 2026-10-13 the Designer moved
+  InputField's hover border (64:573, 126:757) from
+  `border/interactive/brand-idle` to `border/interactive/brand-hover`,
+  matching PasswordField (149:146). TextField now passes
+  `hoverBorder="brand-hover"`, as PasswordField and SearchField do, so no
+  importer uses the `brand-idle` default any more. Whether to flip the
+  default or drop `hoverBorder` is for the owner; this round leaves
+  FieldControl unchanged.
 
 ## What moved, for the reviewer
 
