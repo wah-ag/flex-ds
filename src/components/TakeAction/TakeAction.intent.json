@@ -1,0 +1,30 @@
+{
+  "component": "TakeAction",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=32-652",
+  "use_when": [],
+  "dont_use_when": [],
+  "variant_intent": {},
+  "placement": [],
+  "pairs_with": [],
+  "required_tokens": [
+    "--border-neutral-base",
+    "--border-width-divider",
+    "--border-width-icon-bold",
+    "--icon-interactive-info",
+    "--label-lg",
+    "--size-icon-sm",
+    "--spacing-gap-xs",
+    "--spacing-padding-sm",
+    "--text-interactive-info"
+  ],
+  "a11y": [
+    {
+      "text": "The time remaining is a <p>; its clock icon is aria-hidden=\"true\" and focusable=\"false\".",
+      "source": "src/components/TakeAction/TakeAction.jsx:27"
+    },
+    {
+      "text": "The action is ButtonCTA, a native <button>.",
+      "source": "src/components/TakeAction/TakeAction.jsx:31"
+    }
+  ]
+}

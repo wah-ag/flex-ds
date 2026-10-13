@@ -1,10 +1,16 @@
-/* IconButton — Figma node 45:324. Semantic tokens only. */
+/* IconButton — Figma node 45:324. Semantic tokens only.
 
-/* The outline is an inset shadow, not a border: browsers round border widths
-   down to whole device pixels (a one-and-a-half pixel border draws as one at
-   1x), and shadows are not rounded. The padding grows by the same width, so
-   the box matches Figma's bordered frame. Figma binds no fill, so there is
-   no background. */
+   Every category shares the frame: size-control-lg square,
+   spacing-padding-md, spacing-gap-xs, border-radius-control-xs, and one
+   size-icon-md icon stroked at border-width-icon-bold.
+
+   category=stroke has no fill and a border-width-default stroke. The stroke
+   is drawn as an inset shadow, not a border: browsers round border widths
+   down to whole device pixels, and shadows are not rounded. The padding grows
+   by the same width, so the box matches Figma's bordered frame.
+
+   category=default-fill and category=error-fill have a fill and no stroke.
+   Figma binds the same fill to hover and press in both. */
 
 .icon-button {
   box-sizing: border-box;
@@ -15,43 +21,82 @@
   width: var(--size-control-lg);
   height: var(--size-control-lg);
   margin: 0;
-  padding: calc(var(--spacing-padding-md) + var(--border-width-default));
+  padding: var(--spacing-padding-md);
   border: none;
   border-radius: var(--border-radius-control-xs);
   background: none;
-  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-interactive-brand-idle);
-  color: var(--icon-interactive-brand-idle);
+  box-shadow: none;
   cursor: pointer;
 }
 
-.icon-button:is(:hover, [data-state='hover']) {
+.icon-button:disabled {
+  cursor: not-allowed;
+}
+
+/* category=stroke */
+
+.icon-button[data-category='stroke'] {
+  padding: calc(var(--spacing-padding-md) + var(--border-width-default));
+  box-shadow: inset 0 0 0 var(--border-width-default) var(--border-interactive-brand-idle);
+  color: var(--icon-interactive-brand-idle);
+}
+
+.icon-button[data-category='stroke']:enabled:is(:hover, [data-state='hover']) {
   box-shadow: inset 0 0 0 var(--border-width-default) var(--border-interactive-brand-hover);
   color: var(--icon-interactive-brand-hover);
 }
 
-.icon-button:is(:active, [data-state='press']) {
+.icon-button[data-category='stroke']:enabled:is(:active, [data-state='press']) {
   box-shadow: inset 0 0 0 var(--border-width-default) var(--border-interactive-brand-press);
   color: var(--icon-interactive-brand-press);
 }
 
-.icon-button:disabled {
+.icon-button[data-category='stroke']:disabled {
   box-shadow: inset 0 0 0 var(--border-width-default) var(--border-neutral-disable);
   color: var(--icon-neutral-disable);
-  cursor: not-allowed;
 }
 
-/* The stroke is drawn in screen pixels, so it stays at
-   border-width-icon-bold. Until token PR #64 reaches the
-   build, that token is absent and the stroke falls back to the old
-   border-width-icon (same 2px). That holds whatever the icon's viewBox is
-   scaled to. */
+/* category=default-fill */
+
+.icon-button[data-category='default-fill'] {
+  background: var(--background-accent-brand-idle);
+  color: var(--icon-interactive-brand-idle);
+}
+
+.icon-button[data-category='default-fill']:enabled:is(:hover, :active, [data-state='hover'], [data-state='press']) {
+  background: var(--background-accent-brand-interactive);
+}
+
+.icon-button[data-category='default-fill']:disabled {
+  background: var(--background-neutral-disable);
+  color: var(--icon-neutral-disable);
+}
+
+/* category=error-fill */
+
+.icon-button[data-category='error-fill'] {
+  background: var(--background-accent-danger-idle);
+  color: var(--icon-interactive-danger);
+}
+
+.icon-button[data-category='error-fill']:enabled:is(:hover, :active, [data-state='hover'], [data-state='press']) {
+  background: var(--background-accent-danger-interactive);
+}
+
+.icon-button[data-category='error-fill']:disabled {
+  background: var(--background-neutral-disable);
+  color: var(--icon-neutral-disable);
+}
+
+/* The icon. The stroke is drawn in screen pixels, so it stays at
+   border-width-icon-bold whatever the icon's viewBox is scaled to. */
 
 .icon-button__icon {
   flex-shrink: 0;
   width: var(--size-icon-md);
   height: var(--size-icon-md);
   color: currentColor;
-  stroke-width: var(--border-width-icon-bold, var(--border-width-icon));
+  stroke-width: var(--border-width-icon-bold);
 }
 
 .icon-button__icon * {

@@ -1,0 +1,87 @@
+{
+  "component": "CardContainer",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=36-158",
+  "use_when": [
+    {
+      "text": "Cards also contain other components in slot area.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Do, text I69:1498;2406:461;69:1495)"
+    },
+    {
+      "text": "Cards can serve as entry points into deeper levels of detail or navigation, such as a music album or details on an upcoming vacation.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Do, text I69:1498;2406:461;69:1495)"
+    },
+    {
+      "text": "Contents can include anything from images to headlines, supporting text, buttons and lists.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Do, text I69:1498;2406:461;69:1495)"
+    },
+    {
+      "text": "Use cards to display contents and actions on a single topic.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Do, text I69:1498;2406:461;69:1495)"
+    },
+    {
+      "text": "Cards should be easy to scan for relevant and actionable information.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Do, text I69:1498;2406:461;69:1495)"
+    },
+    {
+      "text": "Maintain consistent spacing, padding, and alignment across similar cards.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Do, text I69:1498;2406:461;69:1495)"
+    }
+  ],
+  "dont_use_when": [
+    {
+      "text": "Don’t scroll within a card to reveal information.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Don’t, text I69:1498;2406:416;69:1488)"
+    },
+    {
+      "text": "Don’t use multiple competing CTAs within a single card.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Don’t, text I69:1498;2406:416;69:1488)"
+    },
+    {
+      "text": "Card shouldn’t contain that can be swiped, such as image carousel or pagination. Also, swipe gestures shouldn’t cause portions of cards to detach upon swiping.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Don’t, text I69:1498;2406:416;69:1488)"
+    },
+    {
+      "text": "Don’t create inconsistent card sizes, spacing, or layouts for similar content.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Don’t, text I69:1498;2406:416;69:1488)"
+    },
+    {
+      "text": "On a mobile device, cards can’t internally scroll, as it could use two scroll bars to be displayed.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Don’t, text I69:1498;2406:416;69:1488)"
+    },
+    {
+      "text": "Don’t make the entire card clickable unless the whole card represents a single action.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Don’t, text I69:1498;2406:416;69:1488)"
+    },
+    {
+      "text": "Don’t let cards bump other elements out of the way. When a card is picked up, it appears in front of all elements, except app bars and navigation.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Don’t, text I69:1498;2406:416;69:1488)"
+    }
+  ],
+  "variant_intent": {
+    "state": {
+      "idle": null,
+      "hover": null,
+      "active": null
+    }
+  },
+  "placement": [],
+  "pairs_with": [],
+  "required_tokens": [
+    "--background-neutral-base",
+    "--border-interactive-brand-idle",
+    "--border-neutral-base",
+    "--border-radius-card",
+    "--border-width-default",
+    "--border-width-selected",
+    "--elevation-level-1",
+    "--spacing-gap-xs",
+    "--spacing-padding-lg",
+    "--spacing-padding-md"
+  ],
+  "a11y": [
+    {
+      "text": "Renders a <div> with no role or aria attributes; `state` is set only as data-state.",
+      "source": "src/components/CardContainer/CardContainer.jsx:28"
+    }
+  ]
+}

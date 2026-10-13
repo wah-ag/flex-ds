@@ -1,0 +1,44 @@
+{
+  "component": "NavLabel",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=55-34",
+  "use_when": [],
+  "dont_use_when": [],
+  "variant_intent": {
+    "type": {
+      "idle": null,
+      "hover": null,
+      "active": null
+    }
+  },
+  "placement": [],
+  "pairs_with": [
+    {
+      "component": "NavItems",
+      "source": "src/components/NavItems/NavItems.jsx:2"
+    }
+  ],
+  "required_tokens": [
+    "--background-interactive-brand-idle",
+    "--border-radius-control-2xs",
+    "--size-control-lg",
+    "--spacing-gap-sm",
+    "--spacing-padding-sm",
+    "--text-interactive-brand-idle",
+    "--text-neutral-primary",
+    "--title-md"
+  ],
+  "a11y": [
+    {
+      "text": "Renders a native <a>; `href` and other attributes pass through.",
+      "source": "src/components/NavLabel/NavLabel.jsx:36"
+    },
+    {
+      "text": "Sets aria-current=\"page\" when type=\"active\".",
+      "source": "src/components/NavLabel/NavLabel.jsx:37"
+    },
+    {
+      "text": "The underline is aria-hidden=\"true\".",
+      "source": "src/components/NavLabel/NavLabel.jsx:43"
+    }
+  ]
+}

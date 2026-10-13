@@ -1,0 +1,22 @@
+{
+  "component": "NavItems",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=58-406",
+  "use_when": [],
+  "dont_use_when": [],
+  "variant_intent": {},
+  "placement": [],
+  "pairs_with": [],
+  "required_tokens": [
+    "--spacing-gap-lg"
+  ],
+  "a11y": [
+    {
+      "text": "Renders a <div> with no role or aria attributes of its own.",
+      "source": "src/components/NavItems/NavItems.jsx:29"
+    },
+    {
+      "text": "Its two IconButtons default to aria-label \"Notifications\" and \"Mail\".",
+      "source": "src/components/NavItems/NavItems.jsx:31"
+    }
+  ]
+}

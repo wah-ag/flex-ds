@@ -1,0 +1,115 @@
+{
+  "component": "Avatar",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=32-315",
+  "use_when": [
+    {
+      "text": "Use avatars to provide clear visual identification of users or entities.",
+      "source": "Figma 69:2101 (Avatar Doc Frame › Do, text I69:2101;2406:461;69:2097)"
+    },
+    {
+      "text": "Use the appropriate size based on the context and layout.",
+      "source": "Figma 69:2101 (Avatar Doc Frame › Do, text I69:2101;2406:461;69:2097)"
+    },
+    {
+      "text": "Use a profile image when a user’s photo is available.",
+      "source": "Figma 69:2101 (Avatar Doc Frame › Do, text I69:2101;2406:461;69:2097)"
+    },
+    {
+      "text": "Maintain consistent shape, sizing, and spacing across similar contexts.",
+      "source": "Figma 69:2101 (Avatar Doc Frame › Do, text I69:2101;2406:461;69:2097)"
+    },
+    {
+      "text": "Use accessible alternative text or labels when the avatar conveys meaningful information.",
+      "source": "Figma 69:2101 (Avatar Doc Frame › Do, text I69:2101;2406:461;69:2097)"
+    },
+    {
+      "text": "Use status indicators only when they provide relevant and useful information.",
+      "source": "Figma 69:2101 (Avatar Doc Frame › Do, text I69:2101;2406:461;69:2097)"
+    }
+  ],
+  "dont_use_when": [
+    {
+      "text": "Don’t use inconsistent sizes or shapes for avatars serving the same purpose.",
+      "source": "Figma 69:2101 (Avatar Doc Frame › Don’t, text I69:2101;2406:416;69:2094)"
+    },
+    {
+      "text": "Don’t use distorted, stretched, or low-quality profile images.",
+      "source": "Figma 69:2101 (Avatar Doc Frame › Don’t, text I69:2101;2406:416;69:2094)"
+    },
+    {
+      "text": "Don’t rely on the avatar alone to communicate important information.",
+      "source": "Figma 69:2101 (Avatar Doc Frame › Don’t, text I69:2101;2406:416;69:2094)"
+    },
+    {
+      "text": "Don’t overcrowd avatars with unnecessary badges or status indicators.",
+      "source": "Figma 69:2101 (Avatar Doc Frame › Don’t, text I69:2101;2406:416;69:2094)"
+    },
+    {
+      "text": "Don’t use decorative images that could be mistaken for a user or entity avatar.",
+      "source": "Figma 69:2101 (Avatar Doc Frame › Don’t, text I69:2101;2406:416;69:2094)"
+    },
+    {
+      "text": "Don’t remove accessible labels when the avatar represents a specific person or entity.",
+      "source": "Figma 69:2101 (Avatar Doc Frame › Don’t, text I69:2101;2406:416;69:2094)"
+    }
+  ],
+  "variant_intent": {
+    "size": {
+      "2xl": null,
+      "xl": null,
+      "lg": null,
+      "md": null,
+      "sm": null
+    },
+    "category": {
+      "rectangle image": null,
+      "circle image": null,
+      "icon": null
+    }
+  },
+  "placement": [],
+  "pairs_with": [
+    {
+      "component": "EmployerProfile",
+      "source": "src/components/EmployerProfile/EmployerProfile.jsx:1"
+    },
+    {
+      "component": "NavItems",
+      "source": "src/components/NavItems/NavItems.jsx:4"
+    }
+  ],
+  "required_tokens": [
+    "--background-accent-brand-idle",
+    "--border-neutral-base",
+    "--border-radius-control-2xs",
+    "--border-radius-control-xs",
+    "--border-radius-rounded",
+    "--border-width-default",
+    "--border-width-icon-bold",
+    "--border-width-icon-default",
+    "--icon-interactive-brand-idle",
+    "--size-avatar-2xl",
+    "--size-avatar-lg",
+    "--size-avatar-md",
+    "--size-avatar-sm",
+    "--size-avatar-xl",
+    "--size-icon-lg",
+    "--size-icon-md",
+    "--size-icon-sm",
+    "--size-icon-xs"
+  ],
+  "a11y": [
+    {
+      "text": "Renders a <span> with no role or aria attributes of its own.",
+      "source": "src/components/Avatar/Avatar.jsx:31"
+    },
+    {
+      "text": "The image categories render a native <img> with the `alt` prop, which defaults to an empty string.",
+      "source": "src/components/Avatar/Avatar.jsx:37"
+    },
+    {
+      "text": "The icon category’s icon is aria-hidden=\"true\" and focusable=\"false\".",
+      "source": "src/components/Avatar/Avatar.jsx:39"
+    }
+  ]
+}

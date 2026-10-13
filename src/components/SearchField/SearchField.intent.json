@@ -1,0 +1,33 @@
+{
+  "component": "SearchField",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=199-102",
+  "use_when": [],
+  "dont_use_when": [],
+  "variant_intent": {
+    "state": {
+      "idle": null,
+      "hover": null,
+      "typing": null,
+      "focus": null,
+      "error": null,
+      "disable": null
+    }
+  },
+  "placement": [],
+  "pairs_with": [],
+  "required_tokens": [],
+  "a11y": [
+    {
+      "text": "Renders no visible label; labelText is the input’s placeholder and its aria-label.",
+      "source": "src/components/SearchField/SearchField.jsx:53"
+    },
+    {
+      "text": "The field is a native <input>; state=\"disable\" sets disabled.",
+      "source": "src/components/FieldControl/FieldControl.jsx:117"
+    },
+    {
+      "text": "state=\"error\" sets aria-invalid on the input.",
+      "source": "src/components/FieldControl/FieldControl.jsx:118"
+    }
+  ]
+}
