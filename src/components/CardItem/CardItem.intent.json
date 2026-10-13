@@ -1,7 +1,12 @@
 {
   "component": "CardItem",
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=32-651",
-  "use_when": [],
+  "use_when": [
+    {
+      "text": "this can be used with card container to post job listing",
+      "source": "Figma 32:651 (CardContent/CardItem component description, paragraph 1)"
+    }
+  ],
   "dont_use_when": [],
   "variant_intent": {},
   "placement": [],

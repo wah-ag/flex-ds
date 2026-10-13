@@ -1,7 +1,12 @@
 {
   "component": "BtnGroup",
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=32-573",
-  "use_when": [],
+  "use_when": [
+    {
+      "text": "button group for user action, save toggle button and share button is for external link sharing",
+      "source": "Figma 32:573 (CardContent/BtnGroup component description, paragraph 1)"
+    }
+  ],
   "dont_use_when": [],
   "variant_intent": {},
   "placement": [],

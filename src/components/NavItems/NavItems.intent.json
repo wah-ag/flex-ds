@@ -1,7 +1,12 @@
 {
   "component": "NavItems",
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=58-406",
-  "use_when": [],
+  "use_when": [
+    {
+      "text": "call to action from user like help, notification and messages together with user profile",
+      "source": "Figma 58:406 (Header/NavItems component description, paragraph 1)"
+    }
+  ],
   "dont_use_when": [],
   "variant_intent": {},
   "placement": [],

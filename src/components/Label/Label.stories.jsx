@@ -21,6 +21,9 @@ const NODES = {
   'warning/lg/idle': '71-2558', 'warning/lg/hover': '71-2597',
   'warning/md/idle': '71-2546', 'warning/md/hover': '71-2591',
   'warning/sm/idle': '71-2552', 'warning/sm/hover': '71-2594',
+  'normal/lg/idle': '274-623', 'normal/lg/hover': '274-660',
+  'normal/md/idle': '274-674', 'normal/md/hover': '274-651',
+  'normal/sm/idle': '274-654', 'normal/sm/hover': '274-657',
 };
 
 const ICONS = { Circle, Info, Star };
@@ -39,7 +42,7 @@ export default {
     },
   },
   argTypes: {
-    category: { control: 'inline-radio', options: ['brand', 'info', 'success', 'error', 'warning'] },
+    category: { control: 'inline-radio', options: ['brand', 'info', 'success', 'error', 'warning', 'normal'] },
     size: { control: 'inline-radio', options: ['lg', 'md', 'sm'] },
     state: { control: 'inline-radio', options: ['idle', 'hover'] },
     labelText: { control: 'text' },
@@ -102,3 +105,10 @@ export const WarningMdIdle = cell('warning', 'md', 'idle');
 export const WarningMdHover = cell('warning', 'md', 'hover');
 export const WarningSmIdle = cell('warning', 'sm', 'idle');
 export const WarningSmHover = cell('warning', 'sm', 'hover');
+
+export const NormalLgIdle = cell('normal', 'lg', 'idle');
+export const NormalLgHover = cell('normal', 'lg', 'hover');
+export const NormalMdIdle = cell('normal', 'md', 'idle');
+export const NormalMdHover = cell('normal', 'md', 'hover');
+export const NormalSmIdle = cell('normal', 'sm', 'idle');
+export const NormalSmHover = cell('normal', 'sm', 'hover');

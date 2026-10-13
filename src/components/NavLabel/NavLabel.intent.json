@@ -1,8 +1,18 @@
 {
   "component": "NavLabel",
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=55-34",
-  "use_when": [],
-  "dont_use_when": [],
+  "use_when": [
+    {
+      "text": "used as a header navigation label",
+      "source": "Figma 55:34 (Header/NavLabel component description, paragraph 1, first clause)"
+    }
+  ],
+  "dont_use_when": [
+    {
+      "text": "don't use on side navigation",
+      "source": "Figma 55:34 (Header/NavLabel component description, paragraph 1, second clause)"
+    }
+  ],
   "variant_intent": {
     "type": {
       "idle": null,

@@ -1,8 +1,18 @@
 {
   "component": "ShotAction",
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=31-191",
-  "use_when": [],
-  "dont_use_when": [],
+  "use_when": [
+    {
+      "text": "it can be used as toggle button on job listings card for actions like favorite, saved",
+      "source": "Figma 31:191 (ShotAction component description, paragraph 1)"
+    }
+  ],
+  "dont_use_when": [
+    {
+      "text": "don't use as a primary action button.",
+      "source": "Figma 31:191 (ShotAction component description, paragraph 2)"
+    }
+  ],
   "variant_intent": {
     "state": {
       "idle": null,
