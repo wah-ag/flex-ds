@@ -54,8 +54,9 @@
   stroke-width: var(--border-width-icon-bold);
 }
 
-/* Categories. Figma's brand uses the secondary role and error the danger
-   role. Hover changes only the background; text and icon stay. */
+/* Categories: brand, info, success, error, warning, normal. Figma's brand
+   uses the secondary role, error the danger role, and normal the neutral
+   group. Hover changes only the background; text and icon stay. */
 
 .label--brand {
   --label-icon-color: var(--icon-interactive-secondary);
@@ -105,4 +106,18 @@
 
 .label--warning:is(:hover, [data-state='hover']) {
   background: var(--background-accent-warning-interactive);
+}
+
+/* normal (Figma 274:623 and siblings, added 2026-10-13): the neutral
+   group. Figma binds background-neutral-surface at rest and
+   background-neutral-disable on hover, as bound. */
+
+.label--normal {
+  --label-icon-color: var(--icon-neutral-primary);
+  background: var(--background-neutral-surface);
+  color: var(--text-neutral-primary);
+}
+
+.label--normal:is(:hover, [data-state='hover']) {
+  background: var(--background-neutral-disable);
 }
