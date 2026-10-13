@@ -1,8 +1,18 @@
 {
   "component": "TextArea",
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=110-1364",
-  "use_when": [],
-  "dont_use_when": [],
+  "use_when": [
+    {
+      "text": "used when long text action is needed from user",
+      "source": "Figma 110:1364 (InputField/TextArea component description, paragraph 1, first clause)"
+    }
+  ],
+  "dont_use_when": [
+    {
+      "text": "don't use as text field that needs only short text input",
+      "source": "Figma 110:1364 (InputField/TextArea component description, paragraph 1, second clause)"
+    }
+  ],
   "variant_intent": {
     "state": {
       "idle": null,

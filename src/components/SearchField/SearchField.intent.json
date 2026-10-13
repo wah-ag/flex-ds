@@ -1,7 +1,20 @@
 {
   "component": "SearchField",
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=199-102",
-  "use_when": [],
+  "use_when": [
+    {
+      "text": "Used for user to search job title and brand name keyword.",
+      "source": "Figma 199:102 (SearchBarItem/SearchField component description, paragraph 1)"
+    },
+    {
+      "text": "Place the search bar in predictable, high-visibility spots like the top navigation header or centered in a hero section. Never make users hunt for it.",
+      "source": "Figma 199:102 (SearchBarItem/SearchField component description, paragraph 2)"
+    },
+    {
+      "text": "Provide a helpful hint inside the box",
+      "source": "Figma 199:102 (SearchBarItem/SearchField component description, paragraph 3)"
+    }
+  ],
   "dont_use_when": [],
   "variant_intent": {
     "state": {

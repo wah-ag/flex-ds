@@ -1,7 +1,12 @@
 {
   "component": "EmployerProfile",
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=32-337",
-  "use_when": [],
+  "use_when": [
+    {
+      "text": "it serves as profile, avatar can change as image, icon and circle shape. It can be used as user profile and brand profile, also in job category.",
+      "source": "Figma 32:337 (CardContent/EmployerProfile component description, paragraph 1)"
+    }
+  ],
   "dont_use_when": [],
   "variant_intent": {},
   "placement": [],
