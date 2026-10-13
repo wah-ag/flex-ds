@@ -1,0 +1,166 @@
+{
+  "component": "ButtonCTA",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=16-438",
+  "use_when": [
+    {
+      "text": "Keep button labels clear, concise, and action-oriented.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Do, text I17:826;2406:461;17:822)"
+    },
+    {
+      "text": "Use the appropriate size based on the context and layout.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Do, text I17:826;2406:461;17:822)"
+    },
+    {
+      "text": "Maintain consistent button styles and hierarchy across the product.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Do, text I17:826;2406:461;17:822)"
+    },
+    {
+      "text": "Use the correct usage variant for the intended interaction and context.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Do, text I17:826;2406:461;17:822)"
+    },
+    {
+      "text": "Provide clear interaction states, including hover, pressed, focus, and disabled.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Do, text I17:826;2406:461;17:822)"
+    },
+    {
+      "text": "Keep sufficient spacing between buttons to make actions easy to identify and interact with.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Do, text I17:826;2406:461;17:822)"
+    }
+  ],
+  "dont_use_when": [
+    {
+      "text": "Don’t use multiple Primary buttons together when one clear primary action is sufficient.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Don’t, text I17:826;2406:416;17:819)"
+    },
+    {
+      "text": "Don’t use a Primary button for secondary or less important actions.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Don’t, text I17:826;2406:416;17:819)"
+    },
+    {
+      "text": "Don’t use Secondary buttons when the action is the main focus of the screen.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Don’t, text I17:826;2406:416;17:819)"
+    },
+    {
+      "text": "Don’t mix different button sizes within the same action group without a clear purpose.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Don’t, text I17:826;2406:416;17:819)"
+    },
+    {
+      "text": "Don’t use buttons for navigation when a link is more appropriate.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Don’t, text I17:826;2406:416;17:819)"
+    },
+    {
+      "text": "Don’t use overly long button labels that make the button difficult to scan or fit within the layout.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Don’t, text I17:826;2406:416;17:819)"
+    },
+    {
+      "text": "Don’t use button styles inconsistently across similar actions or screens.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Don’t, text I17:826;2406:416;17:819)"
+    },
+    {
+      "text": "Don’t remove or alter the button’s required interaction states, such as hover, pressed, focus, or disabled.",
+      "source": "Figma 17:826 (Buttons Doc Frame › Don’t, text I17:826;2406:416;17:819)"
+    }
+  ],
+  "variant_intent": {
+    "category": {
+      "primary": {
+        "text": "Use Primary buttons for the most important action on a screen.",
+        "source": "Figma 17:826 (Buttons Doc Frame › Do, text I17:826;2406:461;17:822)"
+      },
+      "secondary": {
+        "text": "Use Secondary buttons for supporting or alternative actions.",
+        "source": "Figma 17:826 (Buttons Doc Frame › Do, text I17:826;2406:461;17:822)"
+      }
+    },
+    "size": {
+      "lg": null,
+      "md": null,
+      "sm": null
+    },
+    "state": {
+      "idle": null,
+      "hover": null,
+      "press": null,
+      "focus": null,
+      "disable": null,
+      "error": null
+    }
+  },
+  "placement": [
+    {
+      "text": "CardItem’s WithSlotContent story renders it in CardItem’s bottom Slot (`children`).",
+      "source": "src/components/CardItem/CardItem.stories.jsx:20"
+    }
+  ],
+  "pairs_with": [
+    {
+      "component": "BtnGroup",
+      "source": "src/components/BtnGroup/BtnGroup.jsx:2"
+    },
+    {
+      "component": "CardItem",
+      "source": "src/components/CardItem/CardItem.stories.jsx:20"
+    },
+    {
+      "component": "ShotAction",
+      "source": "src/components/ShotAction/ShotAction.jsx:2"
+    },
+    {
+      "component": "TakeAction",
+      "source": "src/components/TakeAction/TakeAction.jsx:2"
+    }
+  ],
+  "required_tokens": [
+    "--background-interactive-brand-disable",
+    "--background-interactive-brand-hover",
+    "--background-interactive-brand-idle",
+    "--background-interactive-brand-press",
+    "--background-interactive-danger-idle",
+    "--background-neutral-base",
+    "--background-neutral-disable",
+    "--body-cta",
+    "--border-interactive-brand-focus",
+    "--border-interactive-brand-hover",
+    "--border-interactive-brand-idle",
+    "--border-interactive-brand-press",
+    "--border-interactive-danger",
+    "--border-neutral-disable",
+    "--border-radius-control-sm",
+    "--border-radius-control-xs",
+    "--border-width-default",
+    "--border-width-focus",
+    "--border-width-icon-bold",
+    "--border-width-icon-default",
+    "--size-control-lg",
+    "--size-control-md",
+    "--size-control-sm",
+    "--size-icon-md",
+    "--size-icon-sm",
+    "--spacing-gap-xs",
+    "--spacing-padding-md",
+    "--spacing-padding-sm",
+    "--spacing-padding-xs",
+    "--spacing-padding-xxs",
+    "--text-interactive-brand-hover",
+    "--text-interactive-brand-idle",
+    "--text-interactive-brand-press",
+    "--text-interactive-danger",
+    "--text-neutral-disable",
+    "--text-neutral-disable-inverse",
+    "--text-neutral-inverse"
+  ],
+  "a11y": [
+    {
+      "text": "Renders a native <button>, with type=\"button\" by default.",
+      "source": "src/components/ButtonCTA/ButtonCTA.jsx:26"
+    },
+    {
+      "text": "state=\"disable\" sets the native disabled attribute.",
+      "source": "src/components/ButtonCTA/ButtonCTA.jsx:34"
+    },
+    {
+      "text": "The icons are aria-hidden=\"true\" and focusable=\"false\"; the visible text is buttonLabel.",
+      "source": "src/components/ButtonCTA/ButtonCTA.jsx:23"
+    }
+  ]
+}

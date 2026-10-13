@@ -1,0 +1,32 @@
+{
+  "component": "ShotAction",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=31-191",
+  "use_when": [],
+  "dont_use_when": [],
+  "variant_intent": {
+    "state": {
+      "idle": null,
+      "active": null
+    }
+  },
+  "placement": [],
+  "pairs_with": [
+    {
+      "component": "BtnGroup",
+      "source": "src/components/BtnGroup/BtnGroup.jsx:3"
+    }
+  ],
+  "required_tokens": [
+    "--border-width-icon-default"
+  ],
+  "a11y": [
+    {
+      "text": "Renders ButtonCTA, a native <button>.",
+      "source": "src/components/ShotAction/ShotAction.jsx:43"
+    },
+    {
+      "text": "Sets aria-pressed to true when state=\"active\" and false when state=\"idle\".",
+      "source": "src/components/ShotAction/ShotAction.jsx:50"
+    }
+  ]
+}

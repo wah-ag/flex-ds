@@ -1,0 +1,45 @@
+{
+  "component": "TextArea",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=110-1364",
+  "use_when": [],
+  "dont_use_when": [],
+  "variant_intent": {
+    "state": {
+      "idle": null,
+      "hover": null,
+      "press": null,
+      "active": null,
+      "disable": null
+    }
+  },
+  "placement": [],
+  "pairs_with": [],
+  "required_tokens": [
+    "--background-interactive-brand-idle",
+    "--background-neutral-base",
+    "--background-neutral-disable",
+    "--body-md",
+    "--border-interactive-brand-idle",
+    "--border-interactive-brand-press",
+    "--border-neutral-disable",
+    "--border-neutral-secondary",
+    "--border-radius-control-xs",
+    "--border-width-default",
+    "--spacing-gap-sm",
+    "--spacing-padding-md",
+    "--spacing-padding-sm",
+    "--text-neutral-base",
+    "--text-neutral-disable",
+    "--text-neutral-primary"
+  ],
+  "a11y": [
+    {
+      "text": "The label is a native <label> tied to the textarea’s id.",
+      "source": "src/components/TextArea/TextArea.jsx:44"
+    },
+    {
+      "text": "Renders a native <textarea>; state=\"disable\" sets disabled.",
+      "source": "src/components/TextArea/TextArea.jsx:45"
+    }
+  ]
+}

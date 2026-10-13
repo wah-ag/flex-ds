@@ -1,0 +1,39 @@
+{
+  "component": "DescriptionItem",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=269-447",
+  "use_when": [],
+  "dont_use_when": [],
+  "variant_intent": {
+    "category": {
+      "check": null,
+      "uncheck": null
+    }
+  },
+  "placement": [],
+  "pairs_with": [],
+  "required_tokens": [
+    "--body-lg",
+    "--border-width-icon-bold",
+    "--icon-interactive-brand-idle",
+    "--icon-neutral-primary",
+    "--size-icon-lg",
+    "--spacing-gap-lg",
+    "--spacing-gap-sm",
+    "--spacing-padding-xs",
+    "--text-neutral-base"
+  ],
+  "a11y": [
+    {
+      "text": "Renders a native checkbox <input>, checked when category=\"check\".",
+      "source": "src/components/DescriptionItem/DescriptionItem.jsx:47"
+    },
+    {
+      "text": "The checkbox is named by the description text through aria-labelledby.",
+      "source": "src/components/DescriptionItem/DescriptionItem.jsx:51"
+    },
+    {
+      "text": "The drawn box icon is aria-hidden=\"true\" and focusable=\"false\".",
+      "source": "src/components/DescriptionItem/DescriptionItem.jsx:56"
+    }
+  ]
+}

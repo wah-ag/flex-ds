@@ -1,0 +1,26 @@
+{
+  "component": "JobPosition",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=32-258",
+  "use_when": [],
+  "dont_use_when": [],
+  "variant_intent": {},
+  "placement": [],
+  "pairs_with": [
+    {
+      "component": "CardHeader",
+      "source": "src/components/CardHeader/CardHeader.jsx:2"
+    }
+  ],
+  "required_tokens": [
+    "--spacing-gap-sm",
+    "--spacing-gap-xxs",
+    "--text-neutral-bold",
+    "--title-md"
+  ],
+  "a11y": [
+    {
+      "text": "The job title is a <p> whose title attribute carries the full title.",
+      "source": "src/components/JobPosition/JobPosition.jsx:41"
+    }
+  ]
+}

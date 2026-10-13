@@ -1,0 +1,23 @@
+{
+  "component": "BtnGroup",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=32-573",
+  "use_when": [],
+  "dont_use_when": [],
+  "variant_intent": {},
+  "placement": [],
+  "pairs_with": [
+    {
+      "component": "CardItem",
+      "source": "src/components/CardItem/CardItem.jsx:1"
+    }
+  ],
+  "required_tokens": [
+    "--spacing-gap-md"
+  ],
+  "a11y": [
+    {
+      "text": "Renders a <div> with no role or aria attributes of its own, holding a ShotAction and a ButtonCTA, each a native <button>.",
+      "source": "src/components/BtnGroup/BtnGroup.jsx:24"
+    }
+  ]
+}

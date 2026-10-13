@@ -1,0 +1,61 @@
+{
+  "component": "IconButton",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=45-324",
+  "use_when": [],
+  "dont_use_when": [],
+  "variant_intent": {
+    "state": {
+      "idle": null,
+      "hover": null,
+      "press": null,
+      "disable": null
+    }
+  },
+  "placement": [
+    {
+      "text": "CardHeader’s slot stories render it in CardHeader’s header slot (`children`), with aria-label \"Save job\".",
+      "source": "src/components/CardHeader/CardHeader.stories.jsx:62"
+    }
+  ],
+  "pairs_with": [
+    {
+      "component": "CardHeader",
+      "source": "src/components/CardHeader/CardHeader.stories.jsx:62"
+    },
+    {
+      "component": "NavItems",
+      "source": "src/components/NavItems/NavItems.jsx:3"
+    }
+  ],
+  "required_tokens": [
+    "--border-interactive-brand-hover",
+    "--border-interactive-brand-idle",
+    "--border-interactive-brand-press",
+    "--border-neutral-disable",
+    "--border-radius-control-xs",
+    "--border-width-default",
+    "--border-width-icon-bold",
+    "--icon-interactive-brand-hover",
+    "--icon-interactive-brand-idle",
+    "--icon-interactive-brand-press",
+    "--icon-neutral-disable",
+    "--size-control-lg",
+    "--size-icon-md",
+    "--spacing-gap-xs",
+    "--spacing-padding-md"
+  ],
+  "a11y": [
+    {
+      "text": "Renders a native <button>, with type=\"button\" by default.",
+      "source": "src/components/IconButton/IconButton.jsx:17"
+    },
+    {
+      "text": "state=\"disable\" sets the native disabled attribute.",
+      "source": "src/components/IconButton/IconButton.jsx:22"
+    },
+    {
+      "text": "The icon is aria-hidden=\"true\" and focusable=\"false\", and the button renders no text; other attributes, such as aria-label, pass through to the <button>.",
+      "source": "src/components/IconButton/IconButton.jsx:24"
+    }
+  ]
+}

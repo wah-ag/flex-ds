@@ -1,0 +1,133 @@
+{
+  "component": "Label",
+  "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=31-228",
+  "use_when": [
+    {
+      "text": "Use labels to provide short, meaningful contextual information.",
+      "source": "Figma 71:2279 (Label Doc Frame › Do, text I71:2279;2406:461;71:2275)"
+    },
+    {
+      "text": "Keep label text concise and easy to scan.",
+      "source": "Figma 71:2279 (Label Doc Frame › Do, text I71:2279;2406:461;71:2275)"
+    },
+    {
+      "text": "Use the appropriate variant to communicate different meanings or statuses.",
+      "source": "Figma 71:2279 (Label Doc Frame › Do, text I71:2279;2406:461;71:2275)"
+    },
+    {
+      "text": "Maintain consistent padding, height, typography, and spacing.",
+      "source": "Figma 71:2279 (Label Doc Frame › Do, text I71:2279;2406:461;71:2275)"
+    },
+    {
+      "text": "Use labels consistently across similar content and contexts.",
+      "source": "Figma 71:2279 (Label Doc Frame › Do, text I71:2279;2406:461;71:2275)"
+    },
+    {
+      "text": "Ensure sufficient contrast between the label text and background.",
+      "source": "Figma 71:2279 (Label Doc Frame › Do, text I71:2279;2406:461;71:2275)"
+    },
+    {
+      "text": "Use labels to support content hierarchy without distracting from the primary information.",
+      "source": "Figma 71:2279 (Label Doc Frame › Do, text I71:2279;2406:461;71:2275)"
+    }
+  ],
+  "dont_use_when": [
+    {
+      "text": "Don’t use labels for long sentences or large amounts of information.",
+      "source": "Figma 71:2279 (Label Doc Frame › Don’t, text I71:2279;2406:416;71:2278)"
+    },
+    {
+      "text": "Don’t use too many labels within a single component or section.",
+      "source": "Figma 71:2279 (Label Doc Frame › Don’t, text I71:2279;2406:416;71:2278)"
+    },
+    {
+      "text": "Don’t use color as the only way to communicate meaning.",
+      "source": "Figma 71:2279 (Label Doc Frame › Don’t, text I71:2279;2406:416;71:2278)"
+    },
+    {
+      "text": "Don’t mix inconsistent sizes, styles, or shapes for labels with the same purpose.",
+      "source": "Figma 71:2279 (Label Doc Frame › Don’t, text I71:2279;2406:416;71:2278)"
+    },
+    {
+      "text": "Don’t use labels as buttons unless they are designed and documented as interactive.",
+      "source": "Figma 71:2279 (Label Doc Frame › Don’t, text I71:2279;2406:416;71:2278)"
+    },
+    {
+      "text": "Don’t use decorative labels that do not provide meaningful information.",
+      "source": "Figma 71:2279 (Label Doc Frame › Don’t, text I71:2279;2406:416;71:2278)"
+    }
+  ],
+  "variant_intent": {
+    "category": {
+      "brand": null,
+      "info": null,
+      "success": null,
+      "error": null,
+      "warning": null
+    },
+    "size": {
+      "lg": null,
+      "md": null,
+      "sm": null
+    },
+    "state": {
+      "idle": null,
+      "hover": null
+    }
+  },
+  "placement": [],
+  "pairs_with": [
+    {
+      "component": "DescriptionItem",
+      "source": "src/components/DescriptionItem/DescriptionItem.jsx:3"
+    },
+    {
+      "component": "JobPosition",
+      "source": "src/components/JobPosition/JobPosition.jsx:2"
+    }
+  ],
+  "required_tokens": [
+    "--background-accent-danger-idle",
+    "--background-accent-danger-interactive",
+    "--background-accent-info-idle",
+    "--background-accent-info-interactive",
+    "--background-accent-secondary-idle",
+    "--background-accent-secondary-interactive",
+    "--background-accent-success-idle",
+    "--background-accent-success-interactive",
+    "--background-accent-warning-idle",
+    "--background-accent-warning-interactive",
+    "--border-radius-rounded",
+    "--border-width-icon-bold",
+    "--border-width-icon-default",
+    "--icon-interactive-danger",
+    "--icon-interactive-info",
+    "--icon-interactive-secondary",
+    "--icon-interactive-success",
+    "--icon-interactive-warning",
+    "--label-lg",
+    "--label-md",
+    "--label-sm",
+    "--size-icon-sm",
+    "--size-icon-xs",
+    "--spacing-gap-xs",
+    "--spacing-padding-sm",
+    "--spacing-padding-xs",
+    "--spacing-padding-xxs",
+    "--text-interactive-danger",
+    "--text-interactive-info",
+    "--text-interactive-secondary-idle",
+    "--text-interactive-success",
+    "--text-interactive-warning"
+  ],
+  "a11y": [
+    {
+      "text": "Renders a <span> with no role or aria attributes of its own.",
+      "source": "src/components/Label/Label.jsx:25"
+    },
+    {
+      "text": "The icon is aria-hidden=\"true\" and focusable=\"false\".",
+      "source": "src/components/Label/Label.jsx:33"
+    }
+  ]
+}
