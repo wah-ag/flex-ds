@@ -54,7 +54,7 @@ One row per component.
 | Commit | URL | DevOps | The `staging` → `main` merge commit that shipped the component. |
 | GitHub Commits | link → GitHub Commits | Developer | The commit records for this component, linked when its pull request into `staging` is merged. |
 | Astro Link | URL | doc-generator | The component's own page on the production docs site, written only after it was fetched live and verified. |
-| Release Review | URL | release | The release-review report on `staging`, written once a human has merged it. Written together with Release Verdict. |
+| Release Review | URL | release | The release-review report's permalink at the merge commit hash on `staging` (never a branch URL), written once a human has merged it. Written together with Release Verdict. |
 | Release Verdict | single select: Cleared, Blocked | release | The verdict in that report. Written together with Release Review. |
 | Development | formula | Computed | The component's status. See below. **No agent may write it.** |
 | Staging Testing Results Summary | rollup of Testing Results | Computed | Every Testing Results value for the component, joined. The formula reads this. |

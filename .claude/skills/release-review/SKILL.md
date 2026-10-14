@@ -75,8 +75,8 @@ one. In this order:
    addressed to its owner.
 
 The report reaches `staging` by pull request, merged by a human. Only once it
-reads merged, the release agent writes Release Review (the report's URL on
-`staging`) and Release Verdict, together or not at all (`registry` skill).
+reads merged, the release agent writes Release Review (the report's permalink at the
+merge commit hash, never a branch URL) and Release Verdict, together or not at all (`registry` skill).
 
 ## Never
 
