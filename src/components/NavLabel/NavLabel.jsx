@@ -4,7 +4,7 @@ import './NavLabel.css';
 // component properties (docs/nav-label-prop-names.md):
 // - `type`: idle, hover, active.
 // - `navLabelText`: the label, default "Nav Label".
-// - `showNavLine`: whether the underline shows on hover and active.
+// - `showNavLine`: whether the underline slot exists on hover and active.
 //
 // NavLabel is a header navigation link, so it renders an <a>. Its HTML
 // attributes (`href`, `onClick`, `target`, ...) pass through; give it an
@@ -14,7 +14,9 @@ import './NavLabel.css';
 // - `hover` is a real pointer over the link;
 // - `active` is the current page, and sets `aria-current="page"`.
 // Passing `hover` as `type` only pins the look, for docs. Hover and active
-// look the same, as drawn. Figma designs no focused, pressed or disabled
+// share the brand text colour and layout, but only active paints the
+// underline: on hover Figma keeps the underline's space with no fill
+// (design change, 2026-10-14). Figma designs no focused, pressed or disabled
 // state, and by owner ruling (2026-10-04) none is invented: focus keeps the
 // browser's default outline.
 //
