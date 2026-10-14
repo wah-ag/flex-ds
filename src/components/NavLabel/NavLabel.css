@@ -33,12 +33,17 @@
   min-height: 0;
 }
 
-/* The underline. Its slot exists only on hover and active, and only when
-   showNavLine is on; only active paints it. At idle it is dropped
-   (display: none), as the owner accepted (2026-10-08). */
+/* The underline. When showNavLine is on, its 4-high slot is laid out in
+   every state, as Figma draws idle (191:1243), hover (55:32) and active
+   (55:33), so the text sits at the same height in all three and nothing
+   jumps on hover. Only active paints it: idle and hover leave it unpainted
+   (visibility: hidden), as Figma leaves them unfilled. Owner ruling
+   2026-10-14 ("option a, idle keeps the empty slot"), superseding the
+   2026-10-08 ruling that idle drops the slot. */
 
 .nav-label__line {
-  display: none;
+  display: block;
+  visibility: hidden;
   align-self: stretch;
   flex-shrink: 0;
   /* Owner exception (2026-10-04): Figma draws the underline 4 high with no
@@ -51,27 +56,15 @@
   border-top-right-radius: var(--border-radius-control-2xs);
 }
 
-/* Hover (real pointer, or pinned) and active share the brand text colour
-   and the same layout: the underline slot exists in both. */
+/* Hover (real pointer, or pinned) and active share the brand text colour. */
 
 .nav-label:is(:hover, [data-type='hover'], [data-type='active']) {
   color: var(--text-interactive-brand-idle);
 }
 
-/* Hover: Figma (55:32, Nav Underline 55:27) keeps the underline layer in
-   the layout, 4 high, with no fill (design change, 2026-10-14). The slot
-   keeps its space, so the text sits where it does on active, and nothing is
-   painted. */
-
-.nav-label:is(:hover, [data-type='hover']) .nav-label__line {
-  display: block;
-  visibility: hidden;
-}
-
 /* Active (the current page) paints the underline, also under a real
-   pointer: this rule has the same specificity and comes last, so it wins. */
+   pointer. */
 
 .nav-label[data-type='active'] .nav-label__line {
-  display: block;
   visibility: visible;
 }
