@@ -12,3 +12,4 @@
 // Styles are not imported here. Load `@wah-ag/flex-ds/tokens.css` and
 // `@wah-ag/flex-ds/styles.css` once, at the app root.
 export {};
+export { ButtonCTA } from './components/ButtonCTA/ButtonCTA';
