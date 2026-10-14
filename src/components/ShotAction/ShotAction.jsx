@@ -1,6 +1,5 @@
 import { Bookmark } from 'lucide-react';
 import { ButtonCTA } from '../ButtonCTA/ButtonCTA';
-import './ShotAction.css';
 
 // Figma: Button/ShotAction, node 31:191.
 // `state` is Figma's only component property: idle (31:190) and active (31:189).

@@ -1,5 +1,4 @@
 import { Circle } from 'lucide-react';
-import './ButtonCTA.css';
 
 // Figma: ButtonCTA, node 16:438.
 // Props are named as Figma names its component properties.

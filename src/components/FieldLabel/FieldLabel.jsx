@@ -1,4 +1,3 @@
-import './FieldLabel.css';
 
 // FieldLabel: the visible label above a form field, shared by TextField and
 // PasswordField. It has no Figma node of its own; it is the label text layer

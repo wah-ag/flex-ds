@@ -1,5 +1,4 @@
 import { Circle } from 'lucide-react';
-import './Label.css';
 
 // Figma: Label, node 31:228.
 // Props are named as Figma names its component properties.

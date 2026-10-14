@@ -2,7 +2,6 @@ import { useId } from 'react';
 import { Circle, CircleX } from 'lucide-react';
 import { FieldControl } from '../FieldControl/FieldControl';
 import { FieldLabel } from '../FieldLabel/FieldLabel';
-import './TextField.css';
 
 // Figma: InputField, node 64:556. Built as TextField by owner decision
 // (docs/textfield-prop-names.md). Props are named as Figma names its

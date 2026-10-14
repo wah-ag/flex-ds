@@ -1,5 +1,4 @@
 import { PenTool } from 'lucide-react';
-import './Avatar.css';
 
 // Figma: Avatar, node 32:315.
 // `size`, `category` and `swapIcon` are named as Figma names its component

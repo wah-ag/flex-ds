@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 import { Circle } from 'lucide-react';
-import './FieldControl.css';
 
 // FieldControl: the bordered box of a text input, shared by every field.
 // It has no Figma node of its own; it is the "text field" frame inside
