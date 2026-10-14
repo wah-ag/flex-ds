@@ -103,8 +103,12 @@ or request quoted, and nothing else.
    report every failure in a single pass.
 5. Commit the report on its branch, push, and open its pull request into
    `staging`. **Stop** and report the pull request URL: a human merges it.
-6. Once it reads merged, write Release Review (the report's URL on
-   `staging`) and Release Verdict, together or not at all. Read both back.
+6. Once it reads merged, write Release Review and Release Verdict, together
+   or not at all. Read both back. Release Review is the report's permalink at
+   the pull request's merge commit,
+   `https://github.com/<owner>/<repo>/blob/<merge commit hash>/reports/release-review/<file>`,
+   never a branch URL (`blob/staging/...`): a branch link shows whatever the
+   file says today, not what it said when the verdict was formed.
 7. **Blocked:** route each finding to its owner, as the table below says.
    Report the routing and stop.
 8. **Cleared, not yet exported:** `src/index.ts` exports only Cleared
@@ -177,8 +181,8 @@ Before opening the report's pull request:
 
 Before writing the board:
 
-- [ ] A human merged the report's pull request; the URL points at it on
-      `staging`.
+- [ ] A human merged the report's pull request; the URL is pinned to its
+      merge commit hash, not to a branch.
 - [ ] Both cells are written together, and read back.
 
 Before routing:
