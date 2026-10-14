@@ -46,7 +46,7 @@ the caller passes its own `aria-current`.
 
 | Figma `type` | Real input | Text colour | Underline |
 | --- | --- | --- | --- |
-| `idle` | At rest. | `text-neutral-primary` | none (slot dropped, owner ruling 2026-10-08) |
+| `idle` | At rest. | `text-neutral-primary` | slot kept, not painted, when `showNavLine` |
 | `hover` | Pointer over the link. | `text-interactive-brand-idle` | slot kept, not painted, when `showNavLine` |
 | `active` | The current page. | `text-interactive-brand-idle` | painted when `showNavLine` |
 
@@ -64,6 +64,24 @@ slot keeps its space and the text sits where it does on active, and gets
 no token is needed. On an active link under a real pointer, the bar stays
 painted. This supersedes "hover and active stay visually identical" in
 ruling 4 below.
+
+### Idle keeps the empty slot (owner ruling, 2026-10-14)
+
+With hover keeping the slot and idle dropping it, the text moved up on a
+real hover with nothing appearing. The owner ruled "option a, idle keeps
+the empty slot". This supersedes the 2026-10-08 ruling, under which idle
+dropped its slot (`display: none`) and its text sat about 4px lower than
+Figma draws it.
+
+Idle now matches Figma's idle variant 191:1243 (Nav Underline 191:1245, 4
+high, no fill). The slot is laid out whenever `showNavLine` is on, in every
+state, with `visibility: hidden`, and only active paints it. The text sits
+at the same height in idle, hover and active, so nothing jumps on hover.
+With `showNavLine` off, no slot exists in any state.
+
+Not changed, and still open for the owner: Figma reports the text as a box
+24 high at y=12, while the code centres the text in the space above the
+slot.
 
 ## Owner rulings (2026-10-04)
 
