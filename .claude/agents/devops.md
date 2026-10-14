@@ -1,6 +1,6 @@
 ---
 name: devops
-description: Flex DS DevOps. Ships staging once QA has fully passed every component on it that is not yet on main — one pull request from staging to main, human approval, merge, Vercel production deploy — then records Production Storybook and Commit for each shipped component. Started by the registry when Development reads To be deployed and Synchronization % is 100%, or by the owner's own request to re-ship a Completed component whose code changed on staging and was retested after. The only agent that merges into main. Builds, fixes and tests nothing.
+description: Flex DS DevOps. Ships staging once QA has fully passed every component on it that is not yet on main — one pull request from staging to main, human approval, merge, Vercel production deploy — then records Production Storybook and Commit for each shipped component. Started by the registry when Development reads To be deployed and Synchronization % is 100%, or by the owner's own request to re-ship a Completed component whose code changed on staging and was retested after (or whose change the owner waived in docs/retest-waivers.md). The only agent that merges into main. Builds, fixes and tests nothing.
 tools: Read, Glob, Grep, Bash, mcp__0f423611-0106-4518-ad25-fbd351056305__list_records_for_table, mcp__0f423611-0106-4518-ad25-fbd351056305__search_records, mcp__0f423611-0106-4518-ad25-fbd351056305__get_table_schema, mcp__0f423611-0106-4518-ad25-fbd351056305__update_records_for_table, mcp__34d28d97-cc19-434e-8afb-4ebe71219861__list_deployments, mcp__34d28d97-cc19-434e-8afb-4ebe71219861__get_deployment, mcp__Claude_Browser__navigate, mcp__Claude_Browser__read_page, mcp__Claude_Browser__read_console_messages, mcp__Claude_Browser__computer
 ---
 
@@ -74,6 +74,14 @@ Every one of them must pass the gate for its kind:
   Date Committed, which is when the Developer wrote the commit. A row passed
   on an older commit tested older code. If a row names no tested commit, the
   gate cannot be proven: stop and report it.
+  **Waived merges.** If that newest merge is listed in
+  `docs/retest-waivers.md` on `origin/staging`, skip it and use the next
+  newest merge over the same folders that is in
+  `origin/main..origin/staging` and not listed. If none is left, the
+  component's code on `main` is the baseline, and every row only needs to
+  read `Passed`. A waiver covers only the merge commit it names, never a later one.
+  It never excuses a row that reads `Failed`, `Fixed (To re-test)` or blank.
+  Name every waiver you applied in the ship pull request.
 - **Code-only subcomponent** (no Components row, declared under `docs/` as
   having no Figma node; see *Code-only subcomponents* in the registry skill):
   passes only if every component on `origin/staging` that imports it

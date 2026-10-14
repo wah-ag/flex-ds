@@ -1,6 +1,5 @@
 import { UsersRound, VenusAndMars } from 'lucide-react';
 import { Label } from '../Label/Label';
-import './JobPosition.css';
 
 // Figma: CardContent/JobPosition, node 32:258. A molecule: the job title
 // above a row of two Label instances (32:239 and 32:247, brand / md / idle).

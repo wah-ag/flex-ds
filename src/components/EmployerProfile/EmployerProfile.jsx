@@ -1,5 +1,4 @@
 import { Avatar } from '../Avatar/Avatar';
-import './EmployerProfile.css';
 
 // Figma: CardContent/EmployerProfile, node 32:337. A molecule: an Avatar
 // (32:322, xl, rectangle image) beside a column holding the employer title

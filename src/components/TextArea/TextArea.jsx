@@ -1,6 +1,5 @@
 import { useId } from 'react';
 import { FieldLabel } from '../FieldLabel/FieldLabel';
-import './TextArea.css';
 
 // Figma: TextArea, node 110:1364. Props are named as Figma names its
 // component properties (docs/text-area-prop-names.md):

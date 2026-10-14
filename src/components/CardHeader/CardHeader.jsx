@@ -1,6 +1,5 @@
 import { EmployerProfile } from '../EmployerProfile/EmployerProfile';
 import { JobPosition } from '../JobPosition/JobPosition';
-import './CardHeader.css';
 
 // Figma: CardContent/CardHeader, node 32:346. An organism: a column holding
 // an EmployerProfile (instance 32:338) above a JobPosition (instance 32:286),

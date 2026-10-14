@@ -1,6 +1,5 @@
 import { Clock } from 'lucide-react';
 import { ButtonCTA } from '../ButtonCTA/ButtonCTA';
-import './TakeAction.css';
 
 // Figma: CardContent/TakeAction, node 32:652. The foot of a card: the time
 // left to act (a clock and a line of text) on one side, and a ButtonCTA on

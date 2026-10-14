@@ -243,6 +243,15 @@ evidence:
 - the tested commit is itself on `origin/staging`
   (`git merge-base --is-ancestor <tested commit> origin/staging`).
 
+**Retest waivers.** The owner can waive the retest for one specific merge by
+listing its commit in `docs/retest-waivers.md`, through a pull request a human
+merges into `staging`. DevOps then skips that merge when finding "the merge
+that brought the component's newest code", and uses the next newest merge
+still waiting to ship (in `origin/main..origin/staging`) that is not listed;
+if none is left, every row only needs to read `Passed`. A waiver names one merge and covers nothing after it. It
+never excuses a `Failed`, `Fixed (To re-test)` or blank row. No agent adds a
+waiver on its own.
+
 "The component's newest code" includes every code-only subcomponent it
 imports (see *Code-only subcomponents*): a change to one of them is a change
 to every component that imports it.

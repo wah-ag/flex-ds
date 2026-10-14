@@ -1,7 +1,6 @@
 import { useId } from 'react';
 import { Square, SquareCheck } from 'lucide-react';
 import { Label } from '../Label/Label';
-import './DescriptionItem.css';
 
 // Figma: CardContent/DescriptionItem, node 269:447.
 // Props are named as Figma names its component properties

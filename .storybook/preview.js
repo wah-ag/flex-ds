@@ -1,6 +1,8 @@
 import '../build/css/tokens.css';
 import '../build/css/tokens-dark.css';
 import '../build/css/tokens-back-office.css';
+// Component styles, one stylesheet: components do not import their own CSS.
+import '../src/styles.css';
 
 // Theme and scale are attributes on <html>, the same ancestor the product
 // uses. Components never read them; the token cascade resolves them.

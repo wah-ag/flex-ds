@@ -1,7 +1,6 @@
 import { BtnGroup } from '../BtnGroup/BtnGroup';
 import { CardHeader } from '../CardHeader/CardHeader';
 import { Target } from '../Target/Target';
-import './CardItem.css';
 
 // Figma: CardContent/CardItem, node 32:651. A molecule: a CardHeader
 // (instance 32:541) with a BtnGroup (instance 32:576) in its header slot,

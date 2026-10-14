@@ -1,4 +1,3 @@
-import './NavLabel.css';
 
 // Figma: Header/NavLabel, node 55:34. Props are named as Figma names its
 // component properties (docs/nav-label-prop-names.md):
