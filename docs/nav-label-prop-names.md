@@ -79,9 +79,20 @@ state, with `visibility: hidden`, and only active paints it. The text sits
 at the same height in idle, hover and active, so nothing jumps on hover.
 With `showNavLine` off, no slot exists in any state.
 
-Not changed, and still open for the owner: Figma reports the text as a box
-24 high at y=12, while the code centres the text in the space above the
-slot.
+### Text position (owner ruling, 2026-10-14, option a)
+
+Figma's Label layers (idle 191:1244, hover 55:26, active 55:20) are 24-high
+line boxes, packed to the bottom of the justify-end frame: 48 - 4 (slot) -
+8 (gap) - 24 = y 12. The code used to stretch the text slot over the 28 px
+below the padding and centre the line in it, so the text sat at y 10, 2 px
+high, in every state. QA failed the hover row on this, and the owner chose
+option a, a code fix: the text slot now hugs its `--title-md` line box, and
+the frame's flex-end puts it at y 12 in idle, hover and active, with the
+underline slot at y 44. Nothing jumps on hover.
+
+With `showNavLine` off, there is no slot, and Figma's auto layout (Nav
+Underline hidden, justify end) puts the 24-high text at the bottom, y 24.
+The code now does the same. Before this change it centred the text at y 16.
 
 ## Owner rulings (2026-10-04)
 
