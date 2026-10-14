@@ -3,8 +3,8 @@
 
    Width hugs the label text: Figma binds no width, and its 89 is only the
    width of the default text (owner ruling, 2026-10-04). Height is the
-   control-lg size; the text fills what the top padding, the gap and the
-   underline leave, centred in it, as drawn. */
+   control-lg size; content is packed to the bottom (justify end), as
+   drawn. */
 
 .nav-label {
   box-sizing: border-box;
@@ -25,12 +25,15 @@
      (2026-10-04). Figma designs no focused state. */
 }
 
+/* The text hugs its --title-md line box (24 high), as Figma's Label layers
+   do (55:26, 191:1244, 55:20), and the frame's flex-end places it: just
+   above the gap and the underline slot, at y 12 (owner ruling 2026-10-14,
+   option a). With showNavLine off there is no slot, so it sits at the
+   bottom, as Figma's auto layout places it with Nav Underline hidden. */
+
 .nav-label__text {
-  display: flex;
-  flex: 1 0 0;
-  align-items: center;
-  justify-content: center;
-  min-height: 0;
+  display: block;
+  flex: 0 0 auto;
 }
 
 /* The underline. When showNavLine is on, its 4-high slot is laid out in
