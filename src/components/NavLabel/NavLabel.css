@@ -33,8 +33,9 @@
   min-height: 0;
 }
 
-/* The underline. It shows only on hover and active, and only when
-   showNavLine is on. */
+/* The underline. Its slot exists only on hover and active, and only when
+   showNavLine is on; only active paints it. At idle it is dropped
+   (display: none), as the owner accepted (2026-10-08). */
 
 .nav-label__line {
   display: none;
@@ -50,12 +51,27 @@
   border-top-right-radius: var(--border-radius-control-2xs);
 }
 
-/* Hover (real pointer, or pinned) and active look the same, as drawn. */
+/* Hover (real pointer, or pinned) and active share the brand text colour
+   and the same layout: the underline slot exists in both. */
 
 .nav-label:is(:hover, [data-type='hover'], [data-type='active']) {
   color: var(--text-interactive-brand-idle);
 }
 
-.nav-label:is(:hover, [data-type='hover'], [data-type='active']) .nav-label__line {
+/* Hover: Figma (55:32, Nav Underline 55:27) keeps the underline layer in
+   the layout, 4 high, with no fill (design change, 2026-10-14). The slot
+   keeps its space, so the text sits where it does on active, and nothing is
+   painted. */
+
+.nav-label:is(:hover, [data-type='hover']) .nav-label__line {
   display: block;
+  visibility: hidden;
+}
+
+/* Active (the current page) paints the underline, also under a real
+   pointer: this rule has the same specificity and comes last, so it wins. */
+
+.nav-label[data-type='active'] .nav-label__line {
+  display: block;
+  visibility: visible;
 }

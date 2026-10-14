@@ -5,7 +5,7 @@ const FIGMA = 'https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.C
 
 // Each type's own Figma variant node.
 const NODES = {
-  idle: '55-31',
+  idle: '191-1243',
   hover: '55-32',
   active: '55-33',
 };
@@ -20,8 +20,9 @@ export default {
       description: {
         component: `Header navigation link. Figma: [Header/NavLabel](${FIGMA}?node-id=55-34). ` +
           '`hover` comes from a real pointer; passing it as `type` pins the look for review. ' +
-          '`active` marks the current page (`aria-current="page"`). Hover and active look the same, as drawn. ' +
-          '`showNavLine` turns the underline on hover and active on or off. Width hugs the text. ' +
+          '`active` marks the current page (`aria-current="page"`) and paints the underline. ' +
+          'Hover keeps the underline\'s space but paints nothing, as drawn (design change, 2026-10-14). ' +
+          '`showNavLine` turns the underline slot on hover and active on or off. Width hugs the text. ' +
           'Figma designs no focused, pressed or disabled state; by owner ruling (2026-10-04) none is ' +
           'invented and focus keeps the browser default outline. HTML attributes (`href`, `onClick`, ...) ' +
           'pass through to the `<a>`. See docs/nav-label-prop-names.md.',
