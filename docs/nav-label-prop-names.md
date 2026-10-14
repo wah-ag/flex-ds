@@ -1,8 +1,8 @@
 # NavLabel — prop names, owner rulings and gaps (for review)
 
 NavLabel is the Figma component set `Header/NavLabel`, node 55:34, with three
-variants: `type=idle` (55:31), `type=hover` (55:32) and `type=active`
-(55:33). It is built on `component/nav-label` as `src/components/NavLabel/`.
+variants: `type=idle` (191:1243, formerly 55:31), `type=hover` (55:32) and
+`type=active` (55:33). It is built on `component/nav-label` as `src/components/NavLabel/`.
 
 ## Props
 
@@ -46,12 +46,53 @@ the caller passes its own `aria-current`.
 
 | Figma `type` | Real input | Text colour | Underline |
 | --- | --- | --- | --- |
-| `idle` | At rest. | `text-neutral-primary` | none |
-| `hover` | Pointer over the link. | `text-interactive-brand-idle` | shown when `showNavLine` |
-| `active` | The current page. | `text-interactive-brand-idle` | shown when `showNavLine` |
+| `idle` | At rest. | `text-neutral-primary` | slot kept, not painted, when `showNavLine` |
+| `hover` | Pointer over the link. | `text-interactive-brand-idle` | slot kept, not painted, when `showNavLine` |
+| `active` | The current page. | `text-interactive-brand-idle` | painted when `showNavLine` |
 
-Passing `hover` as `type` pins the hover look, for review. Hover and active
-look the same, as drawn.
+Passing `hover` as `type` pins the hover look, for review.
+
+### Hover design change (2026-10-14)
+
+The owner changed hover in Figma so that the underline bar is invisible. In
+55:32 the Nav Underline layer (55:27) is still visible and still takes its
+4-high slot in the auto layout, but it has no fill. Nothing else changed:
+text colour, type style, padding, gap and height are unchanged, and active
+still paints the bar. In code, the hover bar keeps `display: block`, so the
+slot keeps its space and the text sits where it does on active, and gets
+`visibility: hidden`, so nothing is painted. No colour value is involved, so
+no token is needed. On an active link under a real pointer, the bar stays
+painted. This supersedes "hover and active stay visually identical" in
+ruling 4 below.
+
+### Idle keeps the empty slot (owner ruling, 2026-10-14)
+
+With hover keeping the slot and idle dropping it, the text moved up on a
+real hover with nothing appearing. The owner ruled "option a, idle keeps
+the empty slot". This supersedes the 2026-10-08 ruling, under which idle
+dropped its slot (`display: none`) and its text sat about 4px lower than
+Figma draws it.
+
+Idle now matches Figma's idle variant 191:1243 (Nav Underline 191:1245, 4
+high, no fill). The slot is laid out whenever `showNavLine` is on, in every
+state, with `visibility: hidden`, and only active paints it. The text sits
+at the same height in idle, hover and active, so nothing jumps on hover.
+With `showNavLine` off, no slot exists in any state.
+
+### Text position (owner ruling, 2026-10-14, option a)
+
+Figma's Label layers (idle 191:1244, hover 55:26, active 55:20) are 24-high
+line boxes, packed to the bottom of the justify-end frame: 48 - 4 (slot) -
+8 (gap) - 24 = y 12. The code used to stretch the text slot over the 28 px
+below the padding and centre the line in it, so the text sat at y 10, 2 px
+high, in every state. QA failed the hover row on this, and the owner chose
+option a, a code fix: the text slot now hugs its `--title-md` line box, and
+the frame's flex-end puts it at y 12 in idle, hover and active, with the
+underline slot at y 44. Nothing jumps on hover.
+
+With `showNavLine` off, there is no slot, and Figma's auto layout (Nav
+Underline hidden, justify end) puts the 24-high text at the bottom, y 24.
+The code now does the same. Before this change it centred the text at y 16.
 
 ## Owner rulings (2026-10-04)
 
@@ -67,7 +108,8 @@ An earlier build stopped on these gaps. The owner accepted all of them on
    only the width of the default text and is not used.
 4. **States.** Figma designs no focused, pressed or disabled state, and none
    is invented. Focus keeps the browser's default outline so keyboard users
-   can see it. Hover and active stay visually identical, as drawn.
+   can see it. (Hover and active were visually identical at the time;
+   superseded by the 2026-10-14 hover change above.)
 5. **Variable name.** Figma's radius variable reports its name as
    `var(--border-radius-control-2xs)`, not in the slash form the other
    variables use. It is accepted, and the built token
