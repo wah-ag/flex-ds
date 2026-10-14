@@ -1,5 +1,4 @@
 import { BellRing } from 'lucide-react';
-import './IconButton.css';
 
 // Figma: IconButton, node 45:324 (rebuilt 2026-10-13).
 // Props are named as Figma names its component properties:

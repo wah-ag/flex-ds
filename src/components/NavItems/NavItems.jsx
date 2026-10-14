@@ -2,7 +2,6 @@ import { BellRing, Mail } from 'lucide-react';
 import { NavLabel } from '../NavLabel/NavLabel';
 import { IconButton } from '../IconButton/IconButton';
 import { Avatar } from '../Avatar/Avatar';
-import './NavItems.css';
 
 // Figma: Header/NavItems, node 58:406. A molecule: one NavLabel (58:394),
 // two IconButtons (58:395, the bell; 58:396, mail) and an Avatar (58:397,

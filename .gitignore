@@ -39,3 +39,6 @@ storybook-static/
 .claude/worktrees/
 
 
+
+# Package build output (rebuild with `npm run build:package`)
+/dist/

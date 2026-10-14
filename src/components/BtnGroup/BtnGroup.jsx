@@ -1,7 +1,6 @@
 import { ExternalLink } from 'lucide-react';
 import { ButtonCTA } from '../ButtonCTA/ButtonCTA';
 import { ShotAction } from '../ShotAction/ShotAction';
-import './BtnGroup.css';
 
 // Figma: CardContent/BtnGroup, node 32:573. A row holding a ShotAction
 // (instance 32:353, idle: "Save") and a ButtonCTA (instance 32:517:

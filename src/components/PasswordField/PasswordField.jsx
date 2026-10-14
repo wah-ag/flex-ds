@@ -2,7 +2,6 @@ import { useEffect, useId, useState } from 'react';
 import { Circle, Eye, EyeOff } from 'lucide-react';
 import { FieldControl } from '../FieldControl/FieldControl';
 import { FieldLabel } from '../FieldLabel/FieldLabel';
-import './PasswordField.css';
 
 // Figma: PasswordField, node 95:596. Props are named as Figma names its
 // component properties, and `state` takes Figma's variant values as written

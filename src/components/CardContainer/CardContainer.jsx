@@ -1,4 +1,3 @@
-import './CardContainer.css';
 
 // Figma: CardContainer, node 36:158. Props are named as Figma names its
 // component properties (docs/card-container-prop-names.md):

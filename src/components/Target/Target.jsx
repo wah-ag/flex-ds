@@ -1,4 +1,3 @@
-import './Target.css';
 
 // Figma: CardContent/Target, node 32:273. An atom: a target name (for
 // example "Experience") above its value (for example "5 - 7 Years").
