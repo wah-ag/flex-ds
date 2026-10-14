@@ -1,0 +1,36 @@
+# Retest waivers
+
+The re-ship gate (`.claude/agents/devops.md`, and *Re-shipping a Completed
+component* in the registry skill) requires every changed component's Staging
+Testing rows to have passed on a `staging` commit that contains the merge
+that brought its newest code. A waiver tells DevOps that one merge does not
+need that retest.
+
+A waiver is the owner's decision and is written here only by the owner, or for
+the owner in a pull request the owner reviews. It counts only once a human has
+merged it into `staging`. A waiver an agent writes or relays on its own is not
+a waiver.
+
+## How DevOps applies a waiver
+
+For each component, DevOps finds the newest merge that touches the component's
+folder, or a code-only subcomponent it imports. If that merge is listed below,
+DevOps skips it and takes the next newest merge that touches the folder, is
+still waiting to ship (in `origin/main..origin/staging`) and is not listed. The
+tested commit must contain *that* merge. If no such merge is left, the
+component's code on `main` is the baseline, and every row only needs to read
+`Passed`. Everything else in the
+gate is unchanged:
+
+- every linked Staging Testing row reads `Passed`;
+- a row that reads `Failed`, `Fixed (To re-test)` or blank still blocks;
+- every row names its tested commit, and that commit is on `origin/staging`.
+
+A waiver covers exactly the merge commit it names. It never covers a later
+merge, even one with the same kind of change.
+
+## Waivers
+
+| Merge commit | PR | Components | What changed | Why no retest | Owner decision |
+| --- | --- | --- | --- | --- | --- |
+| `d22ee86` | #122 | Every component folder under `src/components/` (21, including the code-only FieldControl and FieldLabel) | Each `.jsx` drops its own `import './X.css'`. All component stylesheets now load from one `src/styles.css`, in import-graph order. | All components had already passed QA. The stylesheets themselves are unchanged; only where they load from moved. | 2026-10-14: "I don't want to retest because all the components passed QA and no need to retest again. I prefer to change the rule for this stage" |
