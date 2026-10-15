@@ -63,7 +63,8 @@
       "info": null,
       "success": null,
       "error": null,
-      "warning": null
+      "warning": null,
+      "normal": null
     },
     "size": {
       "lg": null,
@@ -97,6 +98,8 @@
     "--background-accent-success-interactive",
     "--background-accent-warning-idle",
     "--background-accent-warning-interactive",
+    "--background-neutral-disable",
+    "--background-neutral-surface",
     "--border-radius-rounded",
     "--border-width-icon-bold",
     "--border-width-icon-default",
@@ -105,6 +108,7 @@
     "--icon-interactive-secondary",
     "--icon-interactive-success",
     "--icon-interactive-warning",
+    "--icon-neutral-primary",
     "--label-lg",
     "--label-md",
     "--label-sm",
@@ -118,16 +122,17 @@
     "--text-interactive-info",
     "--text-interactive-secondary-idle",
     "--text-interactive-success",
-    "--text-interactive-warning"
+    "--text-interactive-warning",
+    "--text-neutral-primary"
   ],
   "a11y": [
     {
       "text": "Renders a <span> with no role or aria attributes of its own.",
-      "source": "src/components/Label/Label.jsx:25"
+      "source": "src/components/Label/Label.jsx:26"
     },
     {
       "text": "The icon is aria-hidden=\"true\" and focusable=\"false\".",
-      "source": "src/components/Label/Label.jsx:33"
+      "source": "src/components/Label/Label.jsx:34"
     }
   ]
 }
