@@ -10,15 +10,15 @@ built on `component/card-container` and composes no other component.
 | Figma property | Prop | Default |
 | --- | --- | --- |
 | `state` (variant: idle, hover, active) | `state` | `idle` |
-| `card slot` (slot) | `children` | none |
+| `card slot` (slot) | `cardSlot` | none |
 
 Figma has no `size` property, and CardContainer has no `size` prop.
 
-### Suggested name (applied, for review)
+### Owner ruling on the slot name (2026-10-15)
 
-| Figma name | Prop | Why |
+| Figma name | Prop | Ruling |
 | --- | --- | --- |
-| `card slot` | `children` | A JavaScript prop name cannot contain a space, and React passes slot content as `children`. Every slot in this system maps this way. If the Designer wants a named prop, `cardSlot` is the literal camelCase form. |
+| `card slot` | `cardSlot` | Owner ruling 2026-10-15: `card slot` → `cardSlot`, the literal camelCase of the Figma name, chosen over `children`. A JavaScript prop name cannot contain a space, so the space is dropped and the next word capitalised. `children` is not part of the API: it is neither rendered nor passed to the root `<div>`. |
 
 ### Not from Figma
 
