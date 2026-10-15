@@ -2,9 +2,10 @@
 // Figma: CardContainer, node 36:158. Props are named as Figma names its
 // component properties (docs/card-container-prop-names.md):
 // - `state`: idle, hover, active.
-// - `card slot` is Figma's slot. A JavaScript prop cannot carry a space, so
-//   the slot is React's `children`. This mapping is written up for review,
-//   not a silent rename.
+// - `card slot` is Figma's slot. It is the `cardSlot` prop, the literal
+//   camelCase of the Figma name, by owner ruling (2026-10-15). React's
+//   `children` is not part of the API: it is neither rendered nor passed to
+//   the root <div>.
 //
 // States come from real input where the product has it:
 // - `hover` is a real pointer over an idle card (the default border plus
@@ -20,7 +21,10 @@
 
 const STATES = ['idle', 'hover', 'active'];
 
-export function CardContainer({ state = 'idle', children, className, ...rest }) {
+export function CardContainer({ state = 'idle', cardSlot, className, ...props }) {
+  // `children` is not part of the API (the slot is `cardSlot`). Drop it so
+  // it never reaches the root <div> through the pass-through attributes.
+  const { children: _children, ...rest } = props;
   const look = STATES.includes(state) ? state : 'idle';
 
   return (
@@ -29,7 +33,7 @@ export function CardContainer({ state = 'idle', children, className, ...rest }) 
       className={['card-container', className].filter(Boolean).join(' ')}
       data-state={look}
     >
-      {children}
+      {cardSlot}
     </div>
   );
 }
