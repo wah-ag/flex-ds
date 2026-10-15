@@ -15,4 +15,5 @@ export {};
 export { Avatar } from './components/Avatar/Avatar';
 export { ButtonCTA } from './components/ButtonCTA/ButtonCTA';
 export { CardContainer } from './components/CardContainer/CardContainer';
+export { IconButton } from './components/IconButton/IconButton';
 export { Label } from './components/Label/Label';
