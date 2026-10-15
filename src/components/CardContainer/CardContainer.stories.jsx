@@ -42,7 +42,7 @@ export default {
     docs: {
       description: {
         component: `Card surface that holds any content in its slot. Figma: [CardContainer](${FIGMA}?node-id=36-158). ` +
-          'Figma\'s `card slot` is React\'s `children` (see docs/card-container-prop-names.md). ' +
+          'Figma\'s `card slot` is the `cardSlot` prop, by owner ruling 2026-10-15 (see docs/card-container-prop-names.md). ' +
           '`hover` comes from a real pointer over an idle card; passing it as `state` pins the look for review. ' +
           '`active` is the card the product has chosen, set with `state="active"`. ' +
           'The card fills its container; Figma\'s fixed 514 width is unbound by owner ruling (2026-10-04). ' +
@@ -53,11 +53,11 @@ export default {
   },
   argTypes: {
     state: { control: 'select', options: Object.keys(NODES) },
-    children: { control: false },
+    cardSlot: { control: false },
   },
   args: {
     state: 'idle',
-    children: <SlotContent />,
+    cardSlot: <SlotContent />,
   },
 };
 
