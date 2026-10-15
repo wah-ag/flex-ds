@@ -15,3 +15,4 @@ export {};
 export { Avatar } from './components/Avatar/Avatar';
 export { ButtonCTA } from './components/ButtonCTA/ButtonCTA';
 export { CardContainer } from './components/CardContainer/CardContainer';
+export { Label } from './components/Label/Label';
