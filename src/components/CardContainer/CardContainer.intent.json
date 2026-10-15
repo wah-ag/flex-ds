@@ -81,7 +81,7 @@
   "a11y": [
     {
       "text": "Renders a <div> with no role or aria attributes; `state` is set only as data-state.",
-      "source": "src/components/CardContainer/CardContainer.jsx:28"
+      "source": "src/components/CardContainer/CardContainer.jsx:31-34"
     }
   ]
 }
