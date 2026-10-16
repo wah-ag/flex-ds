@@ -5,7 +5,8 @@ import { FieldLabel } from '../FieldLabel/FieldLabel';
 
 // Figma: PasswordField, node 95:596. Props are named as Figma names its
 // component properties, and `state` takes Figma's variant values as written
-// (docs/password-field-prop-names.md).
+// (camelCase since the owner's rename of 2026-10-16;
+// docs/password-field-prop-names.md).
 //
 // The label is FieldLabel and the bordered box is FieldControl, both shared
 // with TextField. The box's trailing action is the show/hide toggle. Owner
@@ -23,7 +24,7 @@ import { FieldLabel } from '../FieldLabel/FieldLabel';
 // - `hover` comes from a real pointer; `active` (focused, empty) and the
 //   value looks from real focus and input; `focus` is keyboard focus and
 //   shows the ring. Passing them as `state` only pins the look, for docs.
-// - `error visible`, `error invisible` and `disable` are held.
+// - `errorVisible`, `errorInvisible` and `disable` are held.
 // - visible / invisible is the toggle: the eye flips it. `state` only sets
 //   where it starts. The eye shows the current visibility, as in Figma:
 //   open while the password is shown, closed while it is hidden.
@@ -34,15 +35,16 @@ const LOOK = {
   hover: 'hover',
   active: 'active',
   focus: 'focus',
-  'password visible': 'typing',
-  'password invisible': 'typing',
-  'error visible': 'error',
-  'error invisible': 'error',
+  passwordVisible: 'typing',
+  passwordInvisible: 'typing',
+  errorVisible: 'error',
+  errorInvisible: 'error',
   disable: 'disable',
 };
 
-// The field starts hidden; only the `… visible` states start shown.
-const startsVisible = (state) => state.endsWith(' visible');
+// The field starts hidden; only the `…Visible` states start shown.
+const STARTS_VISIBLE = ['passwordVisible', 'errorVisible'];
+const startsVisible = (state) => STARTS_VISIBLE.includes(state);
 
 export function PasswordField({
   state = 'idle',

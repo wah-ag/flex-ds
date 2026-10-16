@@ -10,15 +10,15 @@ const NODES = {
   hover: '149-146',
   active: '95-588',
   focus: '95-593',
-  'password visible': '95-591',
-  'password invisible': '95-594',
-  'error visible': '95-592',
-  'error invisible': '95-589',
+  passwordVisible: '95-591',
+  passwordInvisible: '95-594',
+  errorVisible: '95-592',
+  errorInvisible: '95-589',
   disable: '95-595',
 };
 
 // Figma's value cells show the entered password "Jae@74".
-const WITH_VALUE = ['password visible', 'password invisible', 'error visible', 'error invisible'];
+const WITH_VALUE = ['passwordVisible', 'passwordInvisible', 'errorVisible', 'errorInvisible'];
 
 const LEADING_ICONS = { Circle, Lock, KeyRound, AtSign };
 
@@ -31,7 +31,7 @@ export default {
       description: {
         component: `Password input with a label and a show/hide toggle. Figma: [PasswordField](${FIGMA}?node-id=95-596). ` +
           'It fills its container. `hover`, `active` and `focus` come from real input; passing them as ' +
-          '`state` pins the look. `error …` and `disable` are held. The eye toggles visibility; `state` ' +
+          '`state` pins the look. `errorVisible`, `errorInvisible` and `disable` are held. The eye toggles visibility; `state` ' +
           'only sets where it starts. Hidden passwords use the browser\'s own bullets. ' +
           'See docs/password-field-prop-names.md.',
       },
@@ -69,8 +69,8 @@ export const Idle = cell('idle');
 export const Hover = cell('hover');
 export const Active = cell('active');
 export const Focus = cell('focus');
-export const PasswordVisible = cell('password visible');
-export const PasswordInvisible = cell('password invisible');
-export const ErrorVisible = cell('error visible');
-export const ErrorInvisible = cell('error invisible');
+export const PasswordVisible = cell('passwordVisible');
+export const PasswordInvisible = cell('passwordInvisible');
+export const ErrorVisible = cell('errorVisible');
+export const ErrorInvisible = cell('errorInvisible');
 export const Disable = cell('disable');
