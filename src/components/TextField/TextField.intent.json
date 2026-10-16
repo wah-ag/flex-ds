@@ -7,6 +7,10 @@
       "source": "Figma 71:2194 (Text Field › Do, text I71:2194;2406:461;71:2190)"
     },
     {
+      "text": "Use TextField for the text the user needs to read back, such as a name or email.",
+      "source": "Figma 71:2194 (Text Field › Do, text I71:2194;2406:461;71:2190)"
+    },
+    {
       "text": "Use placeholder text only when an example or format helps users understand the expected input.",
       "source": "Figma 71:2194 (Text Field › Do, text I71:2194;2406:461;71:2190)"
     },
@@ -41,15 +45,7 @@
       "source": "Figma 71:2194 (Text Field › Don’t, text I71:2194;2406:416;71:2187)"
     },
     {
-      "text": "Don’t use PasswordField for text the user needs to read back, such as a name or email. Use TextField.",
-      "source": "Figma 71:2194 (Text Field › Don’t, text I71:2194;2406:416;71:2187)"
-    },
-    {
       "text": "Don’t add unnecessary input fields when the information is not required.",
-      "source": "Figma 71:2194 (Text Field › Don’t, text I71:2194;2406:416;71:2187)"
-    },
-    {
-      "text": "Don’t expose password values as plain text by default.",
       "source": "Figma 71:2194 (Text Field › Don’t, text I71:2194;2406:416;71:2187)"
     }
   ],
