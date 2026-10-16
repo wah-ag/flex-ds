@@ -1,4 +1,4 @@
-# PasswordField — prop and state names (for review)
+# PasswordField — prop and state names
 
 PasswordField is the Figma component set `PasswordField`, node 95:596
 (registry row "InputField/PasswordField"). It is built on
@@ -34,8 +34,8 @@ the input. `type` is owned by the toggle.
 
 ## `state` values
 
-`state` takes Figma's variant values exactly as Figma writes them, spaces
-included, so they match the Figma panel one for one:
+`state` takes Figma's variant values exactly as Figma writes them, so they
+match the Figma panel one for one:
 
 | Figma `state` | Meaning | FieldControl look |
 | --- | --- | --- |
@@ -43,17 +43,19 @@ included, so they match the Figma panel one for one:
 | `hover` | Pointer over the field (real hover; passing it pins the look). | `hover` |
 | `active` | Focused by pointer, empty (real; passing it pins). | `active` |
 | `focus` | Focused by keyboard, shows the ring (real; passing it pins). | `focus` |
-| `password visible` | Focused with a value, password shown. | `typing` |
-| `password invisible` | Focused with a value, password hidden. | `typing` |
-| `error visible` | Held error, password shown. | `error` |
-| `error invisible` | Held error, password hidden. | `error` |
+| `passwordVisible` | Focused with a value, password shown. | `typing` |
+| `passwordInvisible` | Focused with a value, password hidden. | `typing` |
+| `errorVisible` | Held error, password shown. | `error` |
+| `errorInvisible` | Held error, password hidden. | `error` |
 | `disable` | Held disabled. | `disable` |
 
-**For review:** values with spaces are legal JavaScript strings but unusual
-as prop values. If you'd rather have them, the suggested alternatives are
+**Decided (owner, 2026-10-16):** the four spaced values (`password visible`,
+`password invisible`, `error visible`, `error invisible`) are renamed to
 `passwordVisible`, `passwordInvisible`, `errorVisible` and `errorInvisible`.
-They have not been applied, because prop values follow Figma unless a human
-decides otherwise.
+The Designer renamed the Figma variants first (95:591, 95:594, 95:592,
+95:589), so the prop values still follow Figma exactly. The old spaced values
+are no longer accepted. The other five values are unchanged. This closes the
+open suggestion that blocked the release review at 65928e7 (gate 5).
 
 **Visible / invisible is a toggle, not a held state.** The eye button flips
 it. `state` only sets where it starts. The eye shows the current visibility,
@@ -68,8 +70,8 @@ whether the password is shown.
   `background-neutral-inverse` / `background-interactive-danger-idle`).
 - The caret is brand (`background-interactive-brand-idle`) in every state.
   Figma's `error` caret (`background-interactive-danger-idle`) is ignored.
-- **The field starts hidden** (masked, closed eye). Only `password visible`
-  and `error visible` start shown.
+- **The field starts hidden** (masked, closed eye). Only `passwordVisible`
+  and `errorVisible` start shown.
 - **The eye is keyboard-focusable** and in the tab order
   (`trailingFocusable` on FieldControl), with a ring from the existing focus
   tokens. Used from the keyboard, it keeps focus. TextField's clear button is
