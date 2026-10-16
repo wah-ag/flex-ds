@@ -3,19 +3,40 @@
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=199-102",
   "use_when": [
     {
-      "text": "Used for user to search job title and brand name keyword.",
-      "source": "Figma 199:102 (SearchBarItem/SearchField component description, paragraph 1)"
+      "text": "Add a hint or example when it helps users understand what they can search for.",
+      "source": "Figma 224:2304 (Search Field › Do, text I224:2304;2406:461;224:2301)"
     },
     {
-      "text": "Place the search bar in predictable, high-visibility spots like the top navigation header or centered in a hero section. Never make users hunt for it.",
-      "source": "Figma 199:102 (SearchBarItem/SearchField component description, paragraph 2)"
+      "text": "Keep the search input easy to find and accessible within the interface.",
+      "source": "Figma 224:2304 (Search Field › Do, text I224:2304;2406:461;224:2301)"
     },
     {
-      "text": "Provide a helpful hint inside the box",
-      "source": "Figma 199:102 (SearchBarItem/SearchField component description, paragraph 3)"
+      "text": "Keep the entered query visible while users review or refine results.",
+      "source": "Figma 224:2304 (Search Field › Do, text I224:2304;2406:461;224:2301)"
+    },
+    {
+      "text": "Search as users type only when it feels responsive and doesn’t disrupt their input.",
+      "source": "Figma 224:2304 (Search Field › Do, text I224:2304;2406:461;224:2301)"
     }
   ],
-  "dont_use_when": [],
+  "dont_use_when": [
+    {
+      "text": "Don’t clear the query unexpectedly when results update or users return to the field.",
+      "source": "Figma 224:2304 (Search Field › Don’t, text I224:2304;2406:416;224:2297)"
+    },
+    {
+      "text": "Don’t make users guess whether they need to press Enter or wait for automatic results.",
+      "source": "Figma 224:2304 (Search Field › Don’t, text I224:2304;2406:416;224:2297)"
+    },
+    {
+      "text": "Don’t clear the query unexpectedly when results refresh, the user navigates back, or the field loses focus.",
+      "source": "Figma 224:2304 (Search Field › Don’t, text I224:2304;2406:416;224:2297)"
+    },
+    {
+      "text": "Don’t use the search field for unrelated actions, such as filtering a form section or entering a URL, without making that purpose clear.",
+      "source": "Figma 224:2304 (Search Field › Don’t, text I224:2304;2406:416;224:2297)"
+    }
+  ],
   "variant_intent": {
     "state": {
       "idle": null,
@@ -36,11 +57,11 @@
     },
     {
       "text": "The field is a native <input>; state=\"disable\" sets disabled.",
-      "source": "src/components/FieldControl/FieldControl.jsx:117"
+      "source": "src/components/FieldControl/FieldControl.jsx:116"
     },
     {
       "text": "state=\"error\" sets aria-invalid on the input.",
-      "source": "src/components/FieldControl/FieldControl.jsx:118"
+      "source": "src/components/FieldControl/FieldControl.jsx:117"
     }
   ]
 }
