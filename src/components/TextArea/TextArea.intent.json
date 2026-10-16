@@ -13,10 +13,6 @@
     {
       "text": "Use comfortable line-height inside the textarea so multi-line content stays readable",
       "source": "Figma 349:493 (Text Area › Do, text I349:493;2406:461;349:499)"
-    },
-    {
-      "text": "Use placeholder text only when an example or format helps users understand the expected input.",
-      "source": "Figma 349:493 (Text Area › Do, text I349:493;2406:461;349:499)"
     }
   ],
   "dont_use_when": [
@@ -25,7 +21,7 @@
       "source": "Figma 349:493 (Text Area › Don’t, text I349:493;2406:416;349:496)"
     },
     {
-      "text": "Don’t use a text area for short, single-line information such as a name, email address, or postal code.",
+      "text": "Don’t use a text area for short, single-line information such as a name, email address, or postal code. Use TextField.",
       "source": "Figma 349:493 (Text Area › Don’t, text I349:493;2406:416;349:496)"
     },
     {
