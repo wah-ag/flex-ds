@@ -294,7 +294,9 @@ and before writing Production Storybook (all of them).
       passed before the merge, with nothing skipped.
 - [ ] Every shipped component already has a GitHub Commits row for each of
       its commits on `staging` (the Developer's). A missing row is reported,
-      not written by you.
+      not written by you. A commit that changes only `<Name>.intent.json`
+      (doc-generator's `intent/*` pull requests) needs no row. Owner,
+      2026-10-16: intent-only commits get no GitHub Commits row.
 
 ## Never
 
