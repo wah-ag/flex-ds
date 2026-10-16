@@ -3,7 +3,7 @@
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=199-102",
   "use_when": [
     {
-      "text": "Add a hint or example when it helps users understand what they can search for.",
+      "text": "Say what can be searched in the hint, such as ‘Search jobs or companies’.",
       "source": "Figma 224:2304 (Search Field › Do, text I224:2304;2406:461;224:2301)"
     },
     {
