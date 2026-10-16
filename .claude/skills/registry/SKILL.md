@@ -90,6 +90,10 @@ request's merge commit gets no row. The Developer owns this table and writes
 it after a human merges its pull request (changed by the owner on
 2026-09-30; DevOps owned it before).
 
+A commit that changes only `<Name>.intent.json`, from doc-generator's
+`intent/*` pull requests, gets no row. No agent records it (owner,
+2026-10-16).
+
 | Column | Type | Owner |
 | --- | --- | --- |
 | Commit Hash | text (primary) | Developer |
