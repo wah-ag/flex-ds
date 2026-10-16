@@ -55,6 +55,13 @@ as prop values. If you'd rather have them, the suggested alternatives are
 They have not been applied, because prop values follow Figma unless a human
 decides otherwise.
 
+**Decision (owner, 2026-10-16): rename.** The values become
+`passwordVisible`, `passwordInvisible`, `errorVisible` and `errorInvisible`.
+The Designer renames the Figma variants first, so the prop values still
+follow Figma. After that the Developer renames them in code, QA retests, and
+the component is re-shipped and reviewed for release again. Until then the
+code keeps the spaced values above.
+
 **Visible / invisible is a toggle, not a held state.** The eye button flips
 it. `state` only sets where it starts. The eye shows the current visibility,
 as Figma draws it: open while the password is shown, closed while hidden. The
