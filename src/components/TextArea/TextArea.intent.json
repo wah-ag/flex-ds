@@ -3,14 +3,42 @@
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=110-1364",
   "use_when": [
     {
-      "text": "used when long text action is needed from user",
-      "source": "Figma 110:1364 (InputField/TextArea component description, paragraph 1, first clause)"
+      "text": "Set a useful default size so users can see that they can enter multiple lines.",
+      "source": "Figma 349:493 (Text Area › Do, text I349:493;2406:461;349:499)"
+    },
+    {
+      "text": "Use a text area when the response may naturally span more than one line; use a text field for short values.",
+      "source": "Figma 349:493 (Text Area › Do, text I349:493;2406:461;349:499)"
+    },
+    {
+      "text": "Use comfortable line-height inside the textarea so multi-line content stays readable",
+      "source": "Figma 349:493 (Text Area › Do, text I349:493;2406:461;349:499)"
+    },
+    {
+      "text": "Use placeholder text only when an example or format helps users understand the expected input.",
+      "source": "Figma 349:493 (Text Area › Do, text I349:493;2406:461;349:499)"
     }
   ],
   "dont_use_when": [
     {
-      "text": "don't use as text field that needs only short text input",
-      "source": "Figma 110:1364 (InputField/TextArea component description, paragraph 1, second clause)"
+      "text": "Don’t make the initial field too small for the expected response.",
+      "source": "Figma 349:493 (Text Area › Don’t, text I349:493;2406:416;349:496)"
+    },
+    {
+      "text": "Don’t use a text area for short, single-line information such as a name, email address, or postal code.",
+      "source": "Figma 349:493 (Text Area › Don’t, text I349:493;2406:416;349:496)"
+    },
+    {
+      "text": "Don’t truncate or silently discard text when users reach a limit.",
+      "source": "Figma 349:493 (Text Area › Don’t, text I349:493;2406:416;349:496)"
+    },
+    {
+      "text": "Don’t make the field so short that users can’t review a typical response.",
+      "source": "Figma 349:493 (Text Area › Don’t, text I349:493;2406:416;349:496)"
+    },
+    {
+      "text": "Don’t use a text area for sensitive information that needs protected password-style entry.",
+      "source": "Figma 349:493 (Text Area › Don’t, text I349:493;2406:416;349:496)"
     }
   ],
   "variant_intent": {
@@ -45,11 +73,11 @@
   "a11y": [
     {
       "text": "The label is a native <label> tied to the textarea’s id.",
-      "source": "src/components/TextArea/TextArea.jsx:44"
+      "source": "src/components/TextArea/TextArea.jsx:43"
     },
     {
       "text": "Renders a native <textarea>; state=\"disable\" sets disabled.",
-      "source": "src/components/TextArea/TextArea.jsx:45"
+      "source": "src/components/TextArea/TextArea.jsx:50"
     }
   ]
 }
