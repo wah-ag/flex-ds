@@ -90,13 +90,6 @@ request's merge commit gets no row. The Developer owns this table and writes
 it after a human merges its pull request (changed by the owner on
 2026-09-30; DevOps owned it before).
 
-**Intent commits.** doc-generator's `intent/*` pull requests also get rows
-(owner ruling, 2026-10-16). Once one is merged into `staging`, the Developer
-writes one row per commit for each component whose `<Name>.intent.json` that
-commit touches. The hash is the same on each of those rows, Commit Type is
-`Documentation`, and each row is linked to its component. DevOps needs these
-rows before it writes Production Storybook for a component the commit ships.
-
 | Column | Type | Owner |
 | --- | --- | --- |
 | Commit Hash | text (primary) | Developer |

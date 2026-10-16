@@ -38,14 +38,6 @@ reads `Cleared`. Add the one export line, in the file's order, on
 `component/<name>-export`, and open a pull request into `staging` that a
 human merges. Change nothing else. Write no registry cell for it.
 
-**Intent commits.** doc-generator's `intent/*` pull requests change only
-`<Name>.intent.json`. Once a human has merged one into `staging`, the main
-session may start you to record its commits (owner ruling, 2026-10-16). Change
-no file. For each commit the merged pull request carried, write one GitHub
-Commits row per component whose `<Name>.intent.json` it touches. Use the same
-hash on each component's row (see the registry skill), with Commit Type
-`Documentation`, and link each row to its component. Write nothing else.
-
 ## Role
 
 Builds and fixes components and their stories, then records the staging
@@ -128,7 +120,6 @@ owner's session has expired: report it and stop.
 | A pull request from `component/<name>` into `staging`, merged by a human, then deployed by Vercel | GitHub, `origin/staging`, staging Storybook |
 | Composes: every component this one imports | Components row |
 | One GitHub Commits row per commit the merged pull request carried that touches the component's folder, linked through Components → GitHub Commits | GitHub Commits |
-| On an intent-commits start: one `Documentation` row per commit per component whose intent file it touches, linked to that component | GitHub Commits |
 | Staging Storybook: the component's own story URL, opened and seen to render | Components row |
 | On a fix: `Fixed (To re-test)` on each row it actually repaired | Staging Testing |
 | A report: the Figma matrix it worked from, every gap it raised, each row fixed and each row left Failed with the reason | Final message |
