@@ -11,18 +11,22 @@ variants: `state=idle` (110:1363), `hover` (110:1361), `press` (110:1359),
 | --- | --- | --- |
 | `state` (variant: idle, hover, press, active, disable) | `state` | `idle` |
 | `placeholderText` (text) | `placeholderText` | `Enter your text` |
-| `textAreaLevelText` (text) | `textAreaLevelText` | `Text Area` |
+| `labelText` (text) | `labelText` | `Text Area` |
 
 Figma has no `size` property, and TextArea has no `size` prop.
 
-### Suggested rename (not applied)
+### Owner ruling: `textAreaLevelText` renamed to `labelText` (2026-10-17)
 
-| Figma name | Suggested | Why |
-| --- | --- | --- |
-| `textAreaLevelText` | `labelText` | It sets the label above the box. "Level" reads as a misspelling of "Label". `labelText` is the name TextField, PasswordField and FieldLabel already use. |
+The label property was first named `textAreaLevelText`, in Figma and in
+code. "Level" read as a misspelling of "Label", and `labelText` is the name
+TextField, PasswordField and FieldLabel already use. On 2026-10-17 the owner
+ruled: "Rename textAreaLevelText to labelText. I'll rename the property in
+Figma first."
 
-The prop keeps the Figma name until the Designer renames the property in
-Figma, or a human decides otherwise.
+The Designer renamed the property on the component set (node 110:1364)
+first. `get_design_context` on 2026-10-17 reads it as `labelText`, default
+`Text Area`. The prop was then renamed to match. The default is unchanged.
+`textAreaLevelText` is no longer accepted.
 
 ### Not from Figma
 
