@@ -18,4 +18,5 @@ export { CardContainer } from './components/CardContainer/CardContainer';
 export { IconButton } from './components/IconButton/IconButton';
 export { Label } from './components/Label/Label';
 export { PasswordField } from './components/PasswordField/PasswordField';
+export { SearchField } from './components/SearchField/SearchField';
 export { TextField } from './components/TextField/TextField';
