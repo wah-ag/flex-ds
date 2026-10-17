@@ -35,12 +35,12 @@ export default {
   argTypes: {
     state: { control: 'select', options: Object.keys(NODES) },
     placeholderText: { control: 'text' },
-    textAreaLevelText: { control: 'text' },
+    labelText: { control: 'text' },
   },
   args: {
     state: 'idle',
     placeholderText: 'Enter your text',
-    textAreaLevelText: 'Text Area',
+    labelText: 'Text Area',
   },
 };
 
