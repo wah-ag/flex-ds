@@ -3,7 +3,7 @@ import { NavLabel } from './NavLabel';
 
 const FIGMA = 'https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress';
 
-// Each type's own Figma variant node.
+// Each state's own Figma variant node.
 const NODES = {
   idle: '191-1243',
   hover: '55-32',
@@ -19,7 +19,7 @@ export default {
     docs: {
       description: {
         component: `Header navigation link. Figma: [Header/NavLabel](${FIGMA}?node-id=55-34). ` +
-          '`hover` comes from a real pointer; passing it as `type` pins the look for review. ' +
+          '`hover` comes from a real pointer; passing it as `state` pins the look for review. ' +
           '`active` marks the current page (`aria-current="page"`) and paints the underline. ' +
           'Idle and hover keep the underline\'s space but paint nothing, as drawn, so the text sits at the ' +
           'same height in every state and does not jump on hover (owner ruling 2026-10-14). ' +
@@ -31,23 +31,23 @@ export default {
     },
   },
   argTypes: {
-    type: { control: 'inline-radio', options: Object.keys(NODES) },
+    state: { control: 'inline-radio', options: Object.keys(NODES) },
     navLabelText: { control: 'text' },
     showNavLine: { control: 'boolean' },
   },
   args: {
-    type: 'idle',
+    state: 'idle',
     navLabelText: 'Nav Label',
     showNavLine: true,
     href: '#',
   },
 };
 
-const cell = (type, showNavLine = true) => {
-  const node = NODES[type];
+const cell = (state, showNavLine = true) => {
+  const node = NODES[state];
   return {
-    name: showNavLine ? type : `${type}, showNavLine off`,
-    args: { type, showNavLine },
+    name: showNavLine ? state : `${state}, showNavLine off`,
+    args: { state, showNavLine },
     parameters: {
       design: { type: 'figma', url: `${FIGMA}?node-id=${node}` },
       docs: { description: { story: `Figma node [${node}](${FIGMA}?node-id=${node}).` } },
