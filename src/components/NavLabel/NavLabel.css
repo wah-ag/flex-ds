@@ -61,13 +61,13 @@
 
 /* Hover (real pointer, or pinned) and active share the brand text colour. */
 
-.nav-label:is(:hover, [data-state='hover'], [data-state='active']) {
+.nav-label:is(:hover, [data-type='hover'], [data-type='active']) {
   color: var(--text-interactive-brand-idle);
 }
 
 /* Active (the current page) paints the underline, also under a real
    pointer. */
 
-.nav-label[data-state='active'] .nav-label__line {
+.nav-label[data-type='active'] .nav-label__line {
   visibility: visible;
 }
