@@ -1,0 +1,95 @@
+/* Starlight's variables mapped onto Flex DS semantic tokens (astro-page
+   skill, section 7). No hex, rgb( or raw size of its own: every value is a
+   token from src/generated/tokens.css, and dark mode comes from the cascade
+   (Starlight puts data-theme="dark" on <html>, the attribute the tokens use). */
+
+:root,
+:root[data-theme='light'],
+:root[data-theme='dark'] {
+	--sl-color-white: var(--text-neutral-bold);
+	--sl-color-gray-1: var(--text-neutral-base);
+	--sl-color-gray-2: var(--text-neutral-primary);
+	--sl-color-gray-3: var(--text-neutral-secondary);
+	--sl-color-gray-4: var(--border-neutral-secondary);
+	--sl-color-gray-5: var(--border-neutral-base);
+	--sl-color-gray-6: var(--background-neutral-surface);
+	--sl-color-gray-7: var(--background-neutral-surface);
+	--sl-color-black: var(--background-neutral-base);
+
+	--sl-color-accent-low: var(--background-accent-brand-idle);
+	--sl-color-accent: var(--background-interactive-brand-idle);
+	--sl-color-accent-high: var(--text-interactive-brand-idle);
+	--sl-color-text-accent: var(--text-interactive-brand-idle);
+	--sl-color-text-invert: var(--text-neutral-inverse);
+
+	--sl-color-bg: var(--background-neutral-base);
+	--sl-color-bg-nav: var(--background-neutral-base);
+	--sl-color-bg-sidebar: var(--background-neutral-base);
+	--sl-color-bg-inline-code: var(--background-neutral-surface);
+	--sl-color-hairline: var(--border-neutral-base);
+	--sl-color-hairline-light: var(--border-neutral-base);
+	--sl-color-hairline-shade: var(--border-neutral-secondary);
+
+	--sl-font: var(--typography-font-family-dm-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+.site-title,
+.hero h1 {
+	font-family: var(--typography-font-family-sora);
+}
+
+.flex-header {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--spacing-gap-md);
+	align-items: center;
+	padding: var(--spacing-padding-sm) var(--spacing-padding-md);
+	border: var(--border-width-default) solid var(--border-neutral-base);
+	border-radius: var(--border-radius-control-xs);
+	background: var(--background-neutral-surface);
+}
+
+.flex-notice {
+	padding: var(--spacing-padding-sm) var(--spacing-padding-md);
+	border-inline-start: var(--border-width-focus) solid var(--border-interactive-brand-idle);
+	background: var(--background-neutral-surface);
+	color: var(--text-neutral-base);
+}
+
+.flex-source {
+	display: inline-block;
+	color: var(--text-neutral-secondary);
+}
+
+.flex-embed-pair {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--spacing-gap-md);
+}
+
+.flex-embed {
+	display: block;
+	width: 100%;
+	height: calc(var(--size-control-xl) * 6);
+	border: var(--border-width-default) solid var(--border-neutral-base);
+	border-radius: var(--border-radius-control-xs);
+	background: var(--background-neutral-base);
+}
+
+.flex-embed--figma,
+.flex-embed--docs {
+	height: calc(var(--size-control-xl) * 9);
+}
+
+.flex-swatch {
+	display: inline-block;
+	width: var(--size-icon-md);
+	height: var(--size-icon-md);
+	vertical-align: middle;
+	border: var(--border-width-default) solid var(--border-neutral-secondary);
+	border-radius: var(--border-radius-control-2xs);
+}

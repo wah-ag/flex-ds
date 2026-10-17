@@ -1,0 +1,1679 @@
+{
+  "readAt": "2026-10-17T16:20:00Z/2026-10-17T16:35:00Z",
+  "pinnedCommit": "b1331577568ee489ba0ad1bd58392e73ee9d700d",
+  "fileKey": "de4EKsCcP28lQPV2upHdAN",
+  "tools": [
+    "get_metadata",
+    "get_variable_defs",
+    "get_screenshot"
+  ],
+  "note": "Read-only. Layer names in get_metadata are not the rendered text; the usage text was checked against get_screenshot of each documentation frame.",
+  "components": {
+    "Avatar": {
+      "node": "32:315",
+      "figmaName": "Avatar",
+      "kind": "frame",
+      "variantAxes": {
+        "size": [
+          "xl",
+          "2xl",
+          "lg",
+          "md",
+          "sm"
+        ],
+        "category": [
+          "rectangle image",
+          "circle image",
+          "icon"
+        ]
+      },
+      "variants": [
+        {
+          "node": "32:314",
+          "props": {
+            "size": "xl",
+            "category": "rectangle image"
+          }
+        },
+        {
+          "node": "32:324",
+          "props": {
+            "size": "2xl",
+            "category": "rectangle image"
+          }
+        },
+        {
+          "node": "47:333",
+          "props": {
+            "size": "2xl",
+            "category": "circle image"
+          }
+        },
+        {
+          "node": "47:335",
+          "props": {
+            "size": "xl",
+            "category": "circle image"
+          }
+        },
+        {
+          "node": "47:336",
+          "props": {
+            "size": "lg",
+            "category": "circle image"
+          }
+        },
+        {
+          "node": "47:337",
+          "props": {
+            "size": "md",
+            "category": "circle image"
+          }
+        },
+        {
+          "node": "47:338",
+          "props": {
+            "size": "sm",
+            "category": "circle image"
+          }
+        },
+        {
+          "node": "38:234",
+          "props": {
+            "size": "2xl",
+            "category": "icon"
+          }
+        },
+        {
+          "node": "38:250",
+          "props": {
+            "size": "xl",
+            "category": "icon"
+          }
+        },
+        {
+          "node": "38:256",
+          "props": {
+            "size": "lg",
+            "category": "icon"
+          }
+        },
+        {
+          "node": "38:262",
+          "props": {
+            "size": "md",
+            "category": "icon"
+          }
+        },
+        {
+          "node": "38:268",
+          "props": {
+            "size": "sm",
+            "category": "icon"
+          }
+        },
+        {
+          "node": "32:313",
+          "props": {
+            "size": "lg",
+            "category": "rectangle image"
+          }
+        },
+        {
+          "node": "32:312",
+          "props": {
+            "size": "md",
+            "category": "rectangle image"
+          }
+        },
+        {
+          "node": "32:311",
+          "props": {
+            "size": "sm",
+            "category": "rectangle image"
+          }
+        }
+      ],
+      "layers": null,
+      "boundVariables": {
+        "size/avatar/xl": "48",
+        "var(--border-radius-control-xs)": "8",
+        "var(--border-width-default)": "1",
+        "border/neutral/base": "#e2e8f0",
+        "size/avatar/2xl": "56",
+        "var(--border-radius-rounded)": "1000",
+        "size/avatar/lg": "40",
+        "size/avatar/md": "32",
+        "size/avatar/sm": "24",
+        "var(--border-width-icon-bold)": "2",
+        "icon/interactive/brand-idle": "#113c9c",
+        "size/icon/lg": "24",
+        "var(--border-width-icon)": "2",
+        "spacing/padding/lg": "16",
+        "size/control/xl": "56",
+        "background/accent/brand-idle": "#c2d8fc70",
+        "spacing/padding/md": "12",
+        "size/icon/md": "20",
+        "spacing/padding/sm": "8",
+        "var(--border-width-icon-default)": "1",
+        "size/icon/sm": "16",
+        "size/icon/xs": "12",
+        "spacing/padding/xs": "4",
+        "var(--border-radius-control-2xs)": "4"
+      },
+      "unboundValues": null,
+      "unboundValuesNote": "Not read in this run: get_metadata and get_variable_defs list layers and bound variables only, and get_design_context was not used.",
+      "docFrame": {
+        "node": "69:2101",
+        "title": "Avatar",
+        "usageRegion": "Do and Don't sections",
+        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
+        "matchesIntentFile": true
+      }
+    },
+    "ButtonCTA": {
+      "node": "16:438",
+      "figmaName": "ButtonCTA",
+      "kind": "frame",
+      "variantAxes": {
+        "category": [
+          "secondary",
+          "primary"
+        ],
+        "size": [
+          "lg",
+          "md",
+          "sm"
+        ],
+        "state": [
+          "focus",
+          "error",
+          "disable",
+          "press",
+          "hover",
+          "idle"
+        ]
+      },
+      "variants": [
+        {
+          "node": "16:437",
+          "props": {
+            "category": "secondary",
+            "size": "lg",
+            "state": "focus"
+          }
+        },
+        {
+          "node": "16:419",
+          "props": {
+            "category": "secondary",
+            "size": "md",
+            "state": "focus"
+          }
+        },
+        {
+          "node": "16:432",
+          "props": {
+            "category": "secondary",
+            "size": "sm",
+            "state": "focus"
+          }
+        },
+        {
+          "node": "16:434",
+          "props": {
+            "category": "primary",
+            "size": "lg",
+            "state": "error"
+          }
+        },
+        {
+          "node": "16:431",
+          "props": {
+            "category": "primary",
+            "size": "md",
+            "state": "error"
+          }
+        },
+        {
+          "node": "16:418",
+          "props": {
+            "category": "primary",
+            "size": "sm",
+            "state": "error"
+          }
+        },
+        {
+          "node": "16:414",
+          "props": {
+            "category": "primary",
+            "size": "lg",
+            "state": "disable"
+          }
+        },
+        {
+          "node": "16:424",
+          "props": {
+            "category": "primary",
+            "size": "md",
+            "state": "disable"
+          }
+        },
+        {
+          "node": "16:428",
+          "props": {
+            "category": "primary",
+            "size": "sm",
+            "state": "disable"
+          }
+        },
+        {
+          "node": "16:421",
+          "props": {
+            "category": "primary",
+            "size": "lg",
+            "state": "focus"
+          }
+        },
+        {
+          "node": "16:435",
+          "props": {
+            "category": "primary",
+            "size": "md",
+            "state": "focus"
+          }
+        },
+        {
+          "node": "16:417",
+          "props": {
+            "category": "primary",
+            "size": "sm",
+            "state": "focus"
+          }
+        },
+        {
+          "node": "16:416",
+          "props": {
+            "category": "primary",
+            "size": "lg",
+            "state": "press"
+          }
+        },
+        {
+          "node": "16:415",
+          "props": {
+            "category": "primary",
+            "size": "md",
+            "state": "press"
+          }
+        },
+        {
+          "node": "16:410",
+          "props": {
+            "category": "primary",
+            "size": "sm",
+            "state": "press"
+          }
+        },
+        {
+          "node": "16:423",
+          "props": {
+            "category": "primary",
+            "size": "lg",
+            "state": "hover"
+          }
+        },
+        {
+          "node": "16:442",
+          "props": {
+            "category": "primary",
+            "size": "lg",
+            "state": "idle"
+          }
+        },
+        {
+          "node": "16:413",
+          "props": {
+            "category": "primary",
+            "size": "md",
+            "state": "hover"
+          }
+        },
+        {
+          "node": "16:412",
+          "props": {
+            "category": "primary",
+            "size": "sm",
+            "state": "hover"
+          }
+        },
+        {
+          "node": "16:422",
+          "props": {
+            "category": "secondary",
+            "size": "lg",
+            "state": "idle"
+          }
+        },
+        {
+          "node": "16:425",
+          "props": {
+            "category": "secondary",
+            "size": "md",
+            "state": "idle"
+          }
+        },
+        {
+          "node": "16:433",
+          "props": {
+            "category": "secondary",
+            "size": "sm",
+            "state": "idle"
+          }
+        },
+        {
+          "node": "16:420",
+          "props": {
+            "category": "secondary",
+            "size": "lg",
+            "state": "error"
+          }
+        },
+        {
+          "node": "16:408",
+          "props": {
+            "category": "secondary",
+            "size": "md",
+            "state": "error"
+          }
+        },
+        {
+          "node": "16:407",
+          "props": {
+            "category": "secondary",
+            "size": "sm",
+            "state": "error"
+          }
+        },
+        {
+          "node": "16:406",
+          "props": {
+            "category": "secondary",
+            "size": "lg",
+            "state": "disable"
+          }
+        },
+        {
+          "node": "16:405",
+          "props": {
+            "category": "secondary",
+            "size": "md",
+            "state": "disable"
+          }
+        },
+        {
+          "node": "16:404",
+          "props": {
+            "category": "secondary",
+            "size": "sm",
+            "state": "disable"
+          }
+        },
+        {
+          "node": "16:409",
+          "props": {
+            "category": "secondary",
+            "size": "lg",
+            "state": "hover"
+          }
+        },
+        {
+          "node": "16:430",
+          "props": {
+            "category": "secondary",
+            "size": "md",
+            "state": "hover"
+          }
+        },
+        {
+          "node": "16:436",
+          "props": {
+            "category": "secondary",
+            "size": "sm",
+            "state": "hover"
+          }
+        },
+        {
+          "node": "16:403",
+          "props": {
+            "category": "secondary",
+            "size": "lg",
+            "state": "press"
+          }
+        },
+        {
+          "node": "16:402",
+          "props": {
+            "category": "secondary",
+            "size": "md",
+            "state": "press"
+          }
+        },
+        {
+          "node": "16:429",
+          "props": {
+            "category": "secondary",
+            "size": "sm",
+            "state": "press"
+          }
+        },
+        {
+          "node": "16:401",
+          "props": {
+            "category": "primary",
+            "size": "md",
+            "state": "idle"
+          }
+        },
+        {
+          "node": "16:426",
+          "props": {
+            "category": "primary",
+            "size": "sm",
+            "state": "idle"
+          }
+        }
+      ],
+      "layers": null,
+      "boundVariables": {
+        "var(--border-width-icon-bold)": "2",
+        "icon/interactive/brand-idle": "#113c9c",
+        "size/icon/md": "20",
+        "text/interactive/brand-idle": "#113c9c",
+        "font-size/body/md": "14",
+        "typography/font-weight/semibold-600": "SemiBold",
+        "typography/font-family/dm-sans": "DM Sans",
+        "line-height/body/md": "20",
+        "body/cta": "Font(family: \"typography/font-family/dm-sans\", style: typography/font-weight/semibold-600, size: font-size/body/md, weight: 600, lineHeight: line-height/body/md, letterSpacing: 0)",
+        "spacing/gap/xs": "4",
+        "spacing/padding/md": "12",
+        "size/control/lg": "48",
+        "var(--border-radius-control-xs)": "8",
+        "var(--border-width-default)": "1",
+        "background/neutral/base": "#ffffff",
+        "border/interactive/brand-idle": "#113c9c",
+        "spacing/padding/xxs": "2",
+        "var(--border-radius-control-sm)": "12",
+        "var(--border-width-focus)": "2",
+        "border/interactive/brand-focus": "#607cbd",
+        "spacing/padding/sm": "8",
+        "size/control/md": "40",
+        "var(--border-width-icon-default)": "1",
+        "size/icon/sm": "16",
+        "spacing/padding/xs": "4",
+        "size/control/sm": "32",
+        "icon/neutral/inverse": "#ffffff",
+        "text/neutral/inverse": "#ffffff",
+        "background/interactive/danger-idle": "#dc2626",
+        "icon/neutral/disable-inverse": "#f8fafc",
+        "text/neutral/disable-inverse": "#f8fafc",
+        "background/interactive/brand-disable": "#a5c6fb",
+        "border/width/sm": "1",
+        "background/interactive/brand-idle": "#113c9c",
+        "background/interactive/brand-press": "#092156",
+        "background/interactive/brand-hover": "#0c2b6f",
+        "icon/interactive/danger": "#dc2626",
+        "text/interactive/danger": "#dc2626",
+        "border/interactive/danger": "#dc2626",
+        "icon/neutral/disable": "#97a2b1",
+        "text/neutral/disable": "#97a2b1",
+        "background/neutral/disable": "#e2e8f0",
+        "border/neutral/disable": "#97a2b1",
+        "icon/interactive/brand-hover": "#0c2b6f",
+        "text/interactive/brand-hover": "#0c2b6f",
+        "border/interactive/brand-hover": "#0c2b6f",
+        "icon/interactive/brand-press": "#092156",
+        "text/interactive/brand-press": "#092156",
+        "border/interactive/brand-press": "#092156"
+      },
+      "unboundValues": null,
+      "unboundValuesNote": "Not read in this run: get_metadata and get_variable_defs list layers and bound variables only, and get_design_context was not used.",
+      "docFrame": {
+        "node": "17:826",
+        "title": "Buttons",
+        "usageRegion": "Do and Don't sections",
+        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
+        "matchesIntentFile": true
+      }
+    },
+    "CardContainer": {
+      "node": "36:158",
+      "figmaName": "CardContainer",
+      "kind": "frame",
+      "variantAxes": {
+        "state": [
+          "idle",
+          "hover",
+          "active"
+        ]
+      },
+      "variants": [
+        {
+          "node": "36:157",
+          "props": {
+            "state": "idle"
+          }
+        },
+        {
+          "node": "36:159",
+          "props": {
+            "state": "hover"
+          }
+        },
+        {
+          "node": "36:169",
+          "props": {
+            "state": "active"
+          }
+        }
+      ],
+      "layers": null,
+      "boundVariables": {
+        "spacing/gap/xs": "4",
+        "spacing/padding/lg": "16",
+        "spacing/padding/md": "12",
+        "var(--border-radius-card)": "16",
+        "var(--border-width-default)": "1",
+        "background/neutral/base": "#ffffff",
+        "border/neutral/base": "#e2e8f0",
+        "var(--elevation-level-1-key-blur)": "2",
+        "var(--shadow-level-1-ambient)": "#2a313a0f",
+        "var(--shadow-level-1-key)": "#2a313a14",
+        "var(--elevation-offset-x)": "0",
+        "var(--elevation-spread)": "0",
+        "var(--elevation-level-1-ambient-offset-y)": "2",
+        "var(--elevation-level-1-key-offset-y)": "1",
+        "var(--elevation-level-1-ambient-blur)": "8",
+        "elevation/level-1": "Effect(type: DROP_SHADOW, color: var(--shadow-level-1-key), offset: (var(--elevation-offset-x), var(--elevation-level-1-key-offset-y)), radius: var(--elevation-level-1-key-blur), spread: var(--elevation-spread)); Effect(type: DROP_SHADOW, color: var(--shadow-level-1-ambient), offset: (var(--elevation-offset-x), var(--elevation-level-1-ambient-offset-y)), radius: var(--elevation-level-1-ambient-blur), spread: var(--elevation-spread))",
+        "var(--border-width-selected)": "2",
+        "border/interactive/brand-idle": "#113c9c"
+      },
+      "unboundValues": null,
+      "unboundValuesNote": "Not read in this run: get_metadata and get_variable_defs list layers and bound variables only, and get_design_context was not used.",
+      "docFrame": {
+        "node": "69:1498",
+        "title": "Cards",
+        "usageRegion": "Do and Don't sections",
+        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
+        "matchesIntentFile": true,
+        "unmappedNotes": [
+          {
+            "section": "Best Practise",
+            "text": "Combine card items (CardText, CardLayout and CardImage) with CardContainer to perform as a card."
+          }
+        ]
+      }
+    },
+    "EmployerProfile": {
+      "node": "32:337",
+      "figmaName": "CardContent/EmployerProfile",
+      "kind": "symbol",
+      "variantAxes": {},
+      "variants": [],
+      "layers": [
+        "32:322 instance Avatar",
+        "32:335 frame Company Header",
+        "32:327 text Title",
+        "32:334 text Posting Date"
+      ],
+      "boundVariables": {
+        "size/avatar/xl": "48",
+        "var(--border-radius-control-xs)": "8",
+        "var(--border-width-default)": "1",
+        "border/neutral/base": "#e2e8f0",
+        "text/neutral/bold": "#2a313a",
+        "font-size/title/sm": "14",
+        "typography/font-weight/semibold-600": "SemiBold",
+        "typography/font-family/sora": "Sora",
+        "line-height/title/sm": "20",
+        "title/sm": "Font(family: \"typography/font-family/sora\", style: typography/font-weight/semibold-600, size: font-size/title/sm, weight: 600, lineHeight: line-height/title/sm, letterSpacing: 0)",
+        "text/neutral/secondary": "#64748b",
+        "font-size/label/md": "12",
+        "typography/font-weight/medium-500": "Medium",
+        "typography/font-family/dm-sans": "DM Sans",
+        "line-height/label/md": "20",
+        "label/md": "Font(family: \"typography/font-family/dm-sans\", style: typography/font-weight/medium-500, size: font-size/label/md, weight: 500, lineHeight: line-height/label/md, letterSpacing: 0)",
+        "spacing/gap/xxs": "2",
+        "spacing/gap/md": "12"
+      },
+      "unboundValues": null,
+      "unboundValuesNote": "Not read in this run: get_metadata and get_variable_defs list layers and bound variables only, and get_design_context was not used.",
+      "docFrame": null
+    },
+    "IconButton": {
+      "node": "45:324",
+      "figmaName": "IconButton",
+      "kind": "frame",
+      "variantAxes": {
+        "state": [
+          "idle",
+          "hover",
+          "press",
+          "disable"
+        ],
+        "category": [
+          "stroke",
+          "default-fill",
+          "error-fill"
+        ]
+      },
+      "variants": [
+        {
+          "node": "45:323",
+          "props": {
+            "state": "idle",
+            "category": "stroke"
+          }
+        },
+        {
+          "node": "224:908",
+          "props": {
+            "state": "idle",
+            "category": "default-fill"
+          }
+        },
+        {
+          "node": "224:930",
+          "props": {
+            "state": "idle",
+            "category": "error-fill"
+          }
+        },
+        {
+          "node": "224:936",
+          "props": {
+            "state": "hover",
+            "category": "error-fill"
+          }
+        },
+        {
+          "node": "224:942",
+          "props": {
+            "state": "press",
+            "category": "error-fill"
+          }
+        },
+        {
+          "node": "224:914",
+          "props": {
+            "state": "hover",
+            "category": "default-fill"
+          }
+        },
+        {
+          "node": "224:921",
+          "props": {
+            "state": "press",
+            "category": "default-fill"
+          }
+        },
+        {
+          "node": "224:927",
+          "props": {
+            "state": "disable",
+            "category": "default-fill"
+          }
+        },
+        {
+          "node": "224:954",
+          "props": {
+            "state": "disable",
+            "category": "error-fill"
+          }
+        },
+        {
+          "node": "45:322",
+          "props": {
+            "state": "hover",
+            "category": "stroke"
+          }
+        },
+        {
+          "node": "77:317",
+          "props": {
+            "state": "press",
+            "category": "stroke"
+          }
+        },
+        {
+          "node": "77:320",
+          "props": {
+            "state": "disable",
+            "category": "stroke"
+          }
+        }
+      ],
+      "layers": null,
+      "boundVariables": {
+        "var(--border-width-icon-bold)": "2",
+        "icon/interactive/brand-idle": "#113c9c",
+        "size/icon/md": "20",
+        "spacing/gap/xs": "4",
+        "spacing/padding/md": "12",
+        "size/control/lg": "48",
+        "var(--border-radius-control-xs)": "8",
+        "var(--border-width-default)": "1",
+        "border/interactive/brand-idle": "#113c9c",
+        "background/accent/brand-idle": "#c2d8fc70",
+        "icon/interactive/danger": "#dc2626",
+        "background/accent/danger-idle": "#fce9e9",
+        "background/accent/danger-interactive": "#f4bcbc",
+        "background/accent/brand-interactive": "#c2d8fc",
+        "icon/neutral/disable": "#97a2b1",
+        "background/neutral/disable": "#e2e8f0",
+        "icon/interactive/brand-hover": "#0c2b6f",
+        "border/interactive/brand-hover": "#0c2b6f",
+        "icon/interactive/brand-press": "#092156",
+        "border/interactive/brand-press": "#092156",
+        "border/neutral/disable": "#97a2b1"
+      },
+      "unboundValues": null,
+      "unboundValuesNote": "Not read in this run: get_metadata and get_variable_defs list layers and bound variables only, and get_design_context was not used.",
+      "docFrame": null
+    },
+    "JobPosition": {
+      "node": "32:258",
+      "figmaName": "CardContent/JobPosition",
+      "kind": "symbol",
+      "variantAxes": {},
+      "variants": [],
+      "layers": [
+        "31:194 text Title",
+        "32:254 frame Container",
+        "32:239 instance openingsLabel",
+        "32:247 instance genderLabel"
+      ],
+      "boundVariables": {
+        "text/neutral/bold": "#2a313a",
+        "font-size/title/md": "16",
+        "typography/font-weight/semibold-600": "SemiBold",
+        "typography/font-family/sora": "Sora",
+        "line-height/title/md": "24",
+        "title/md": "Font(family: \"typography/font-family/sora\", style: typography/font-weight/semibold-600, size: font-size/title/md, weight: 600, lineHeight: line-height/title/md, letterSpacing: 0)",
+        "var(--border-width-default)": "1",
+        "icon/interactive/secondary": "#0ea5b7",
+        "size/icon/xs": "12",
+        "text/interactive/secondary-idle": "#0ea5b7",
+        "font-size/label/md": "12",
+        "typography/font-weight/medium-500": "Medium",
+        "typography/font-family/dm-sans": "DM Sans",
+        "line-height/label/md": "20",
+        "label/md": "Font(family: \"typography/font-family/dm-sans\", style: typography/font-weight/medium-500, size: font-size/label/md, weight: 500, lineHeight: line-height/label/md, letterSpacing: 0)",
+        "spacing/gap/xs": "4",
+        "spacing/padding/xs": "4",
+        "spacing/padding/xxs": "2",
+        "var(--border-radius-rounded)": "1000",
+        "background/accent/secondary-idle": "#e7f6f8",
+        "spacing/gap/sm": "8",
+        "spacing/gap/xxs": "2"
+      },
+      "unboundValues": null,
+      "unboundValuesNote": "Not read in this run: get_metadata and get_variable_defs list layers and bound variables only, and get_design_context was not used.",
+      "docFrame": null
+    },
+    "Label": {
+      "node": "31:228",
+      "figmaName": "Label",
+      "kind": "frame",
+      "variantAxes": {
+        "size": [
+          "lg",
+          "md",
+          "sm"
+        ],
+        "state": [
+          "idle",
+          "hover"
+        ],
+        "category": [
+          "brand",
+          "info",
+          "success",
+          "error",
+          "warning",
+          "normal"
+        ]
+      },
+      "variants": [
+        {
+          "node": "31:227",
+          "props": {
+            "size": "lg",
+            "state": "idle",
+            "category": "brand"
+          }
+        },
+        {
+          "node": "71:2432",
+          "props": {
+            "size": "lg",
+            "state": "hover",
+            "category": "brand"
+          }
+        },
+        {
+          "node": "31:226",
+          "props": {
+            "size": "md",
+            "state": "idle",
+            "category": "brand"
+          }
+        },
+        {
+          "node": "71:2435",
+          "props": {
+            "size": "md",
+            "state": "hover",
+            "category": "brand"
+          }
+        },
+        {
+          "node": "71:2376",
+          "props": {
+            "size": "md",
+            "state": "idle",
+            "category": "info"
+          }
+        },
+        {
+          "node": "71:2456",
+          "props": {
+            "size": "md",
+            "state": "hover",
+            "category": "info"
+          }
+        },
+        {
+          "node": "71:2384",
+          "props": {
+            "size": "md",
+            "state": "idle",
+            "category": "success"
+          }
+        },
+        {
+          "node": "71:2480",
+          "props": {
+            "size": "md",
+            "state": "hover",
+            "category": "success"
+          }
+        },
+        {
+          "node": "71:2392",
+          "props": {
+            "size": "md",
+            "state": "idle",
+            "category": "error"
+          }
+        },
+        {
+          "node": "71:2546",
+          "props": {
+            "size": "md",
+            "state": "idle",
+            "category": "warning"
+          }
+        },
+        {
+          "node": "274:674",
+          "props": {
+            "size": "md",
+            "state": "idle",
+            "category": "normal"
+          }
+        },
+        {
+          "node": "71:2591",
+          "props": {
+            "size": "md",
+            "state": "hover",
+            "category": "warning"
+          }
+        },
+        {
+          "node": "274:651",
+          "props": {
+            "size": "md",
+            "state": "hover",
+            "category": "normal"
+          }
+        },
+        {
+          "node": "71:2504",
+          "props": {
+            "size": "md",
+            "state": "hover",
+            "category": "error"
+          }
+        },
+        {
+          "node": "31:225",
+          "props": {
+            "size": "sm",
+            "state": "idle",
+            "category": "brand"
+          }
+        },
+        {
+          "node": "71:2438",
+          "props": {
+            "size": "sm",
+            "state": "hover",
+            "category": "brand"
+          }
+        },
+        {
+          "node": "71:2400",
+          "props": {
+            "size": "sm",
+            "state": "idle",
+            "category": "info"
+          }
+        },
+        {
+          "node": "71:2459",
+          "props": {
+            "size": "sm",
+            "state": "hover",
+            "category": "info"
+          }
+        },
+        {
+          "node": "71:2408",
+          "props": {
+            "size": "sm",
+            "state": "idle",
+            "category": "success"
+          }
+        },
+        {
+          "node": "71:2483",
+          "props": {
+            "size": "sm",
+            "state": "hover",
+            "category": "success"
+          }
+        },
+        {
+          "node": "71:2416",
+          "props": {
+            "size": "sm",
+            "state": "idle",
+            "category": "error"
+          }
+        },
+        {
+          "node": "71:2552",
+          "props": {
+            "size": "sm",
+            "state": "idle",
+            "category": "warning"
+          }
+        },
+        {
+          "node": "274:654",
+          "props": {
+            "size": "sm",
+            "state": "idle",
+            "category": "normal"
+          }
+        },
+        {
+          "node": "71:2594",
+          "props": {
+            "size": "sm",
+            "state": "hover",
+            "category": "warning"
+          }
+        },
+        {
+          "node": "274:657",
+          "props": {
+            "size": "sm",
+            "state": "hover",
+            "category": "normal"
+          }
+        },
+        {
+          "node": "71:2507",
+          "props": {
+            "size": "sm",
+            "state": "hover",
+            "category": "error"
+          }
+        },
+        {
+          "node": "71:2347",
+          "props": {
+            "size": "lg",
+            "state": "idle",
+            "category": "info"
+          }
+        },
+        {
+          "node": "71:2462",
+          "props": {
+            "size": "lg",
+            "state": "hover",
+            "category": "info"
+          }
+        },
+        {
+          "node": "71:2351",
+          "props": {
+            "size": "lg",
+            "state": "idle",
+            "category": "success"
+          }
+        },
+        {
+          "node": "71:2486",
+          "props": {
+            "size": "lg",
+            "state": "hover",
+            "category": "success"
+          }
+        },
+        {
+          "node": "71:2355",
+          "props": {
+            "size": "lg",
+            "state": "idle",
+            "category": "error"
+          }
+        },
+        {
+          "node": "71:2558",
+          "props": {
+            "size": "lg",
+            "state": "idle",
+            "category": "warning"
+          }
+        },
+        {
+          "node": "274:623",
+          "props": {
+            "size": "lg",
+            "state": "idle",
+            "category": "normal"
+          }
+        },
+        {
+          "node": "71:2597",
+          "props": {
+            "size": "lg",
+            "state": "hover",
+            "category": "warning"
+          }
+        },
+        {
+          "node": "274:660",
+          "props": {
+            "size": "lg",
+            "state": "hover",
+            "category": "normal"
+          }
+        },
+        {
+          "node": "71:2510",
+          "props": {
+            "size": "lg",
+            "state": "hover",
+            "category": "error"
+          }
+        }
+      ],
+      "layers": null,
+      "boundVariables": {
+        "var(--border-width-icon-bold)": "2",
+        "icon/interactive/secondary": "#0ea5b7",
+        "size/icon/sm": "16",
+        "text/interactive/secondary-idle": "#0ea5b7",
+        "font-size/label/lg": "14",
+        "typography/font-weight/medium-500": "Medium",
+        "typography/font-family/dm-sans": "DM Sans",
+        "line-height/label/lg": "20",
+        "label/lg": "Font(family: \"typography/font-family/dm-sans\", style: typography/font-weight/medium-500, size: font-size/label/lg, weight: 500, lineHeight: line-height/label/lg, letterSpacing: 0)",
+        "spacing/gap/xs": "4",
+        "spacing/padding/sm": "8",
+        "spacing/padding/xs": "4",
+        "var(--border-radius-rounded)": "1000",
+        "background/accent/secondary-idle": "#e7f6f8",
+        "background/accent/secondary-interactive": "#b4e3e9",
+        "var(--border-width-icon-default)": "1",
+        "size/icon/xs": "12",
+        "font-size/label/md": "12",
+        "line-height/label/md": "20",
+        "label/md": "Font(family: \"typography/font-family/dm-sans\", style: typography/font-weight/medium-500, size: font-size/label/md, weight: 500, lineHeight: line-height/label/md, letterSpacing: 0)",
+        "spacing/padding/xxs": "2",
+        "icon/interactive/info": "#3b82f6",
+        "text/interactive/info": "#3b82f6",
+        "background/accent/info-idle": "#ebf3fe",
+        "background/accent/info-interactive": "#c2d8fc",
+        "icon/interactive/success": "#16a34a",
+        "text/interactive/success": "#16a34a",
+        "background/accent/success-idle": "#e8f6ed",
+        "background/accent/success-interactive": "#b7e2c7",
+        "icon/interactive/danger": "#dc2626",
+        "text/interactive/danger": "#dc2626",
+        "background/accent/danger-idle": "#fce9e9",
+        "icon/interactive/warning": "#f0a202",
+        "text/interactive/warning": "#f0a202",
+        "background/accent/warning-idle": "#fef6e6",
+        "icon/neutral/primary": "#5b6a7e",
+        "text/neutral/primary": "#5b6a7e",
+        "background/neutral/surface": "#f0f1f3",
+        "background/accent/warning-interactive": "#fae2b1",
+        "background/neutral/disable": "#e2e8f0",
+        "background/accent/danger-interactive": "#f4bcbc",
+        "font-size/label/sm": "10",
+        "line-height/label/sm": "16",
+        "label/sm": "Font(family: \"typography/font-family/dm-sans\", style: typography/font-weight/medium-500, size: font-size/label/sm, weight: 500, lineHeight: line-height/label/sm, letterSpacing: 0)"
+      },
+      "unboundValues": null,
+      "unboundValuesNote": "Not read in this run: get_metadata and get_variable_defs list layers and bound variables only, and get_design_context was not used.",
+      "docFrame": {
+        "node": "71:2279",
+        "title": "Label",
+        "usageRegion": "Do and Don't sections",
+        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
+        "matchesIntentFile": true
+      }
+    },
+    "PasswordField": {
+      "node": "95:596",
+      "figmaName": "InputField/PasswordField",
+      "kind": "frame",
+      "variantAxes": {
+        "state": [
+          "disable",
+          "focus",
+          "passwordVisible",
+          "errorVisible",
+          "passwordInvisible",
+          "errorInvisible",
+          "active",
+          "idle",
+          "hover"
+        ]
+      },
+      "variants": [
+        {
+          "node": "95:595",
+          "props": {
+            "state": "disable"
+          }
+        },
+        {
+          "node": "95:593",
+          "props": {
+            "state": "focus"
+          }
+        },
+        {
+          "node": "95:591",
+          "props": {
+            "state": "passwordVisible"
+          }
+        },
+        {
+          "node": "95:592",
+          "props": {
+            "state": "errorVisible"
+          }
+        },
+        {
+          "node": "95:594",
+          "props": {
+            "state": "passwordInvisible"
+          }
+        },
+        {
+          "node": "95:589",
+          "props": {
+            "state": "errorInvisible"
+          }
+        },
+        {
+          "node": "95:588",
+          "props": {
+            "state": "active"
+          }
+        },
+        {
+          "node": "95:590",
+          "props": {
+            "state": "idle"
+          }
+        },
+        {
+          "node": "149:146",
+          "props": {
+            "state": "hover"
+          }
+        }
+      ],
+      "layers": null,
+      "boundVariables": {
+        "text/neutral/base": "#37404c",
+        "font-size/title/sm": "14",
+        "typography/font-weight/semibold-600": "SemiBold",
+        "typography/font-family/sora": "Sora",
+        "line-height/title/sm": "20",
+        "title/sm": "Font(family: \"typography/font-family/sora\", style: typography/font-weight/semibold-600, size: font-size/title/sm, weight: 600, lineHeight: line-height/title/sm, letterSpacing: 0)",
+        "var(--border-width-icon-bold)": "2",
+        "icon/neutral/disable": "#97a2b1",
+        "size/icon/md": "20",
+        "text/neutral/disable": "#97a2b1",
+        "font-size/body/md": "14",
+        "typography/font-weight/regular-400": "Regular",
+        "typography/font-family/dm-sans": "DM Sans",
+        "line-height/body/md": "20",
+        "body/md": "Font(family: \"typography/font-family/dm-sans\", style: typography/font-weight/regular-400, size: font-size/body/md, weight: 400, lineHeight: line-height/body/md, letterSpacing: 0)",
+        "spacing/gap/sm": "8",
+        "spacing/padding/md": "12",
+        "spacing/padding/sm": "8",
+        "size/control/lg": "48",
+        "var(--border-radius-control-xs)": "8",
+        "var(--border-width-default)": "1",
+        "background/neutral/disable": "#e2e8f0",
+        "border/neutral/disable": "#97a2b1",
+        "icon/interactive/brand-idle": "#113c9c",
+        "text/neutral/primary": "#5b6a7e",
+        "icon/neutral/base": "#37404c",
+        "background/neutral/base": "#ffffff",
+        "border/interactive/brand-idle": "#113c9c",
+        "spacing/padding/xxs": "2",
+        "var(--border-radius-control-sm)": "12",
+        "var(--border-width-focus)": "2",
+        "border/interactive/brand-focus": "#607cbd",
+        "background/interactive/brand-idle": "#113c9c",
+        "icon/interactive/danger": "#dc2626",
+        "text/interactive/danger": "#dc2626",
+        "border/interactive/danger": "#dc2626",
+        "size/dots/sm": "6",
+        "background/neutral/inverse": "#37404c",
+        "spacing/gap/xs": "4",
+        "background/interactive/danger-idle": "#dc2626",
+        "icon/neutral/primary": "#5b6a7e",
+        "border/neutral/secondary": "#64748b",
+        "border/interactive/brand-hover": "#0c2b6f"
+      },
+      "unboundValues": null,
+      "unboundValuesNote": "Not read in this run: get_metadata and get_variable_defs list layers and bound variables only, and get_design_context was not used.",
+      "docFrame": {
+        "node": "348:391",
+        "title": "Password Field",
+        "usageRegion": "Do and Don't sections",
+        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
+        "matchesIntentFile": true
+      }
+    },
+    "SearchField": {
+      "node": "199:102",
+      "figmaName": "SearchBarItem/SearchField",
+      "kind": "frame",
+      "variantAxes": {
+        "state": [
+          "idle",
+          "disable",
+          "error",
+          "hover",
+          "typing",
+          "focus"
+        ]
+      },
+      "variants": [
+        {
+          "node": "199:98",
+          "props": {
+            "state": "idle"
+          }
+        },
+        {
+          "node": "199:101",
+          "props": {
+            "state": "disable"
+          }
+        },
+        {
+          "node": "199:100",
+          "props": {
+            "state": "error"
+          }
+        },
+        {
+          "node": "199:99",
+          "props": {
+            "state": "hover"
+          }
+        },
+        {
+          "node": "199:96",
+          "props": {
+            "state": "typing"
+          }
+        },
+        {
+          "node": "199:97",
+          "props": {
+            "state": "focus"
+          }
+        }
+      ],
+      "layers": null,
+      "boundVariables": {
+        "var(--border-width-icon-bold)": "2",
+        "icon/neutral/primary": "#5b6a7e",
+        "size/icon/md": "20",
+        "text/neutral/primary": "#5b6a7e",
+        "font-size/body/md": "14",
+        "typography/font-weight/regular-400": "Regular",
+        "typography/font-family/dm-sans": "DM Sans",
+        "line-height/body/md": "20",
+        "body/md": "Font(family: \"typography/font-family/dm-sans\", style: typography/font-weight/regular-400, size: font-size/body/md, weight: 400, lineHeight: line-height/body/md, letterSpacing: 0)",
+        "spacing/gap/sm": "8",
+        "spacing/padding/md": "12",
+        "spacing/padding/sm": "8",
+        "size/control/md": "40",
+        "var(--border-radius-control-xs)": "8",
+        "background/neutral/base": "#ffffff",
+        "border/neutral/secondary": "#64748b",
+        "icon/neutral/disable": "#97a2b1",
+        "text/neutral/disable": "#97a2b1",
+        "background/neutral/disable": "#e2e8f0",
+        "border/neutral/disable": "#97a2b1",
+        "icon/interactive/danger": "#dc2626",
+        "text/interactive/danger": "#dc2626",
+        "border/interactive/danger": "#dc2626",
+        "border/interactive/brand-hover": "#0c2b6f",
+        "icon/interactive/brand-idle": "#113c9c",
+        "background/interactive/brand-idle": "#113c9c",
+        "border/interactive/brand-idle": "#113c9c",
+        "var(--border-width-default)": "1",
+        "spacing/padding/xxs": "2",
+        "var(--border-radius-control-sm)": "12",
+        "var(--border-width-focus)": "2",
+        "border/interactive/brand-focus": "#607cbd"
+      },
+      "unboundValues": null,
+      "unboundValuesNote": "Not read in this run: get_metadata and get_variable_defs list layers and bound variables only, and get_design_context was not used.",
+      "docFrame": {
+        "node": "224:2304",
+        "title": "Search Field",
+        "usageRegion": "Do and Don't sections",
+        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
+        "matchesIntentFile": true
+      }
+    },
+    "TextArea": {
+      "node": "110:1364",
+      "figmaName": "InputField/TextArea",
+      "kind": "frame",
+      "variantAxes": {
+        "state": [
+          "idle",
+          "disable",
+          "hover",
+          "active",
+          "press"
+        ]
+      },
+      "variants": [
+        {
+          "node": "110:1363",
+          "props": {
+            "state": "idle"
+          }
+        },
+        {
+          "node": "110:1362",
+          "props": {
+            "state": "disable"
+          }
+        },
+        {
+          "node": "110:1361",
+          "props": {
+            "state": "hover"
+          }
+        },
+        {
+          "node": "110:1360",
+          "props": {
+            "state": "active"
+          }
+        },
+        {
+          "node": "110:1359",
+          "props": {
+            "state": "press"
+          }
+        }
+      ],
+      "layers": null,
+      "boundVariables": {
+        "text/neutral/base": "#37404c",
+        "font-size/title/sm": "14",
+        "typography/font-weight/semibold-600": "SemiBold",
+        "typography/font-family/sora": "Sora",
+        "line-height/title/sm": "20",
+        "title/sm": "Font(family: \"typography/font-family/sora\", style: typography/font-weight/semibold-600, size: font-size/title/sm, weight: 600, lineHeight: line-height/title/sm, letterSpacing: 0)",
+        "text/neutral/primary": "#5b6a7e",
+        "font-size/body/md": "14",
+        "typography/font-weight/regular-400": "Regular",
+        "typography/font-family/dm-sans": "DM Sans",
+        "line-height/body/md": "20",
+        "body/md": "Font(family: \"typography/font-family/dm-sans\", style: typography/font-weight/regular-400, size: font-size/body/md, weight: 400, lineHeight: line-height/body/md, letterSpacing: 0)",
+        "icon/neutral/primary": "#5b6a7e",
+        "spacing/padding/md": "12",
+        "spacing/padding/sm": "8",
+        "var(--border-radius-control-xs)": "8",
+        "var(--border-width-default)": "1",
+        "background/neutral/base": "#ffffff",
+        "border/neutral/secondary": "#64748b",
+        "spacing/gap/sm": "8",
+        "text/neutral/disable": "#97a2b1",
+        "icon/neutral/disable": "#97a2b1",
+        "background/neutral/disable": "#e2e8f0",
+        "border/neutral/disable": "#97a2b1",
+        "border/interactive/brand-idle": "#113c9c",
+        "background/interactive/brand-idle": "#113c9c",
+        "border/interactive/brand-press": "#092156"
+      },
+      "unboundValues": null,
+      "unboundValuesNote": "Not read in this run: get_metadata and get_variable_defs list layers and bound variables only, and get_design_context was not used.",
+      "docFrame": {
+        "node": "349:493",
+        "title": "Text Area",
+        "usageRegion": "Do and Don't sections",
+        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
+        "matchesIntentFile": true
+      }
+    },
+    "TextField": {
+      "node": "64:556",
+      "figmaName": "InputField/TextField",
+      "kind": "frame",
+      "variantAxes": {
+        "state": [
+          "idle",
+          "disable",
+          "hover",
+          "active",
+          "typing",
+          "error",
+          "focus"
+        ],
+        "size": [
+          "lg",
+          "sm"
+        ]
+      },
+      "variants": [
+        {
+          "node": "64:557",
+          "props": {
+            "state": "idle",
+            "size": "lg"
+          }
+        },
+        {
+          "node": "126:741",
+          "props": {
+            "state": "idle",
+            "size": "sm"
+          }
+        },
+        {
+          "node": "64:565",
+          "props": {
+            "state": "disable",
+            "size": "lg"
+          }
+        },
+        {
+          "node": "126:749",
+          "props": {
+            "state": "disable",
+            "size": "sm"
+          }
+        },
+        {
+          "node": "64:573",
+          "props": {
+            "state": "hover",
+            "size": "lg"
+          }
+        },
+        {
+          "node": "126:757",
+          "props": {
+            "state": "hover",
+            "size": "sm"
+          }
+        },
+        {
+          "node": "64:581",
+          "props": {
+            "state": "active",
+            "size": "lg"
+          }
+        },
+        {
+          "node": "126:765",
+          "props": {
+            "state": "active",
+            "size": "sm"
+          }
+        },
+        {
+          "node": "64:591",
+          "props": {
+            "state": "typing",
+            "size": "lg"
+          }
+        },
+        {
+          "node": "126:775",
+          "props": {
+            "state": "typing",
+            "size": "sm"
+          }
+        },
+        {
+          "node": "64:601",
+          "props": {
+            "state": "error",
+            "size": "lg"
+          }
+        },
+        {
+          "node": "126:785",
+          "props": {
+            "state": "error",
+            "size": "sm"
+          }
+        },
+        {
+          "node": "64:610",
+          "props": {
+            "state": "focus",
+            "size": "lg"
+          }
+        },
+        {
+          "node": "126:794",
+          "props": {
+            "state": "focus",
+            "size": "sm"
+          }
+        }
+      ],
+      "layers": null,
+      "boundVariables": {
+        "text/neutral/base": "#37404c",
+        "font-size/title/sm": "14",
+        "typography/font-weight/semibold-600": "SemiBold",
+        "typography/font-family/sora": "Sora",
+        "line-height/title/sm": "20",
+        "title/sm": "Font(family: \"typography/font-family/sora\", style: typography/font-weight/semibold-600, size: font-size/title/sm, weight: 600, lineHeight: line-height/title/sm, letterSpacing: 0)",
+        "var(--border-width-icon-bold)": "2",
+        "icon/neutral/primary": "#5b6a7e",
+        "size/icon/md": "20",
+        "text/neutral/primary": "#5b6a7e",
+        "font-size/body/md": "14",
+        "typography/font-weight/regular-400": "Regular",
+        "typography/font-family/dm-sans": "DM Sans",
+        "line-height/body/md": "20",
+        "body/md": "Font(family: \"typography/font-family/dm-sans\", style: typography/font-weight/regular-400, size: font-size/body/md, weight: 400, lineHeight: line-height/body/md, letterSpacing: 0)",
+        "spacing/gap/sm": "8",
+        "scale/1": "2",
+        "spacing/padding/md": "12",
+        "spacing/padding/sm": "8",
+        "size/control/lg": "48",
+        "var(--border-radius-control-xs)": "8",
+        "var(--border-width-default)": "1",
+        "background/neutral/base": "#ffffff",
+        "border/neutral/secondary": "#64748b",
+        "size/control/md": "40",
+        "icon/neutral/disable": "#97a2b1",
+        "text/neutral/disable": "#97a2b1",
+        "background/neutral/disable": "#e2e8f0",
+        "border/neutral/disable": "#97a2b1",
+        "icon/neutral/base": "#37404c",
+        "border/interactive/brand-hover": "#0c2b6f",
+        "icon/interactive/brand-idle": "#113c9c",
+        "background/interactive/brand-idle": "#113c9c",
+        "border/interactive/brand-idle": "#113c9c",
+        "icon/interactive/danger": "#dc2626",
+        "text/interactive/danger": "#dc2626",
+        "border/interactive/danger": "#dc2626",
+        "spacing/padding/xxs": "2",
+        "var(--border-radius-control-sm)": "12",
+        "var(--border-width-focus)": "2",
+        "border/interactive/brand-focus": "#607cbd"
+      },
+      "unboundValues": null,
+      "unboundValuesNote": "Not read in this run: get_metadata and get_variable_defs list layers and bound variables only, and get_design_context was not used.",
+      "docFrame": {
+        "node": "71:2194",
+        "title": "Text Field",
+        "usageRegion": "Do and Don't sections",
+        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
+        "matchesIntentFile": true
+      }
+    }
+  }
+}

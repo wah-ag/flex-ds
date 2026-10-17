@@ -1,0 +1,9 @@
+{
+  "pinnedCommit": "b1331577568ee489ba0ad1bd58392e73ee9d700d",
+  "docsUrl": "https://flex-ds-docs.vercel.app",
+  "storybook": "https://flex-ds-sigma.vercel.app",
+  "github": "https://github.com/wah-ag/flex-ds",
+  "fonts": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Sora:wght@600&display=swap",
+  "package": "@design-rules-the-world/flex-ds",
+  "latestTag": "v0.1.0"
+}

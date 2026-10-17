@@ -1,0 +1,46 @@
+[
+  {
+    "label": "Avatar",
+    "slug": "components/avatar"
+  },
+  {
+    "label": "ButtonCTA",
+    "slug": "components/button-cta"
+  },
+  {
+    "label": "CardContainer",
+    "slug": "components/card-container"
+  },
+  {
+    "label": "EmployerProfile",
+    "slug": "components/employer-profile"
+  },
+  {
+    "label": "IconButton",
+    "slug": "components/icon-button"
+  },
+  {
+    "label": "JobPosition",
+    "slug": "components/job-position"
+  },
+  {
+    "label": "Label",
+    "slug": "components/label"
+  },
+  {
+    "label": "PasswordField",
+    "slug": "components/password-field"
+  },
+  {
+    "label": "SearchField",
+    "slug": "components/search-field"
+  },
+  {
+    "label": "TextArea",
+    "slug": "components/text-area"
+  },
+  {
+    "label": "TextField",
+    "slug": "components/text-field"
+  }
+]

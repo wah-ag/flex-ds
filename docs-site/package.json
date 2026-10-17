@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/check-links.mjs dist",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate": "node scripts/generate.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.42.6",

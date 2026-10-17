@@ -1,0 +1,353 @@
+/* Copied by docs-site/scripts/generate.mjs from build/css/tokens.css at wah-ag/flex-ds@b1331577568ee489ba0ad1bd58392e73ee9d700d. Do not edit. */
+:root {
+  --color-grey-0: #ffffff;
+  --color-grey-10: #f8fafc;
+  --color-grey-50: #f0f1f3;
+  --color-grey-100: #e2e8f0;
+  --color-grey-200: #cfd4db;
+  --color-grey-300: #b8bfca;
+  --color-grey-400: #97a2b1;
+  --color-grey-500: #8390a2;
+  --color-grey-600: #64748b;
+  --color-grey-700: #5b6a7e;
+  --color-grey-800: #475263;
+  --color-grey-900: #37404c;
+  --color-grey-1000: #2a313a;
+  --color-navy-50: #ebf3fe;
+  --color-navy-100: #c2d8fc;
+  --color-navy-100a: rgba(194, 216, 252, 0.44);
+  --color-navy-200: #a5c6fb;
+  --color-navy-300: #607cbd;
+  --color-navy-400: #4163b0;
+  --color-navy-500: #113c9c;
+  --color-navy-600: #0f378e;
+  --color-navy-700: #0c2b6f;
+  --color-navy-800: #092156;
+  --color-navy-900: #071942;
+  --color-teal-50: #e7f6f8;
+  --color-blue-50: #ebf3fe;
+  --color-green-50: #e8f6ed;
+  --color-green-100: #b7e2c7;
+  --color-green-200: #94d5ac;
+  --color-green-300: #63c186;
+  --color-green-400: #45b56e;
+  --color-green-500: #16a34a;
+  --color-green-600: #149443;
+  --color-green-700: #107435;
+  --color-green-800: #0c5a29;
+  --color-green-900: #09441f;
+  --color-blue-100: #c2d8fc;
+  --color-blue-200: #a5c6fb;
+  --color-blue-300: #7cabf9;
+  --color-blue-400: #629bf8;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #3676e0;
+  --color-blue-700: #2a5caf;
+  --color-blue-800: #204887;
+  --color-blue-900: #193767;
+  --color-orange-50: #fef6e6;
+  --color-red-50: #fce9e9;
+  --color-red-100: #f4bcbc;
+  --color-red-200: #ef9b9b;
+  --color-red-300: #e86e6e;
+  --color-red-400: #e35151;
+  --color-red-500: #dc2626;
+  --color-red-600: #c82323;
+  --color-red-700: #9c1b1b;
+  --color-red-800: #791515;
+  --color-red-900: #5c1010;
+  --typography-font-weight-regular-400: regular;
+  --typography-font-weight-medium-500: medium;
+  --typography-font-weight-semibold-600: semibold;
+  --typography-font-weight-bold-700: bold;
+  --color-orange-100: #fae2b1;
+  --color-orange-200: #f8d48b;
+  --color-orange-300: #f5c155;
+  --color-orange-400: #f3b535;
+  --color-orange-500: #f0a202;
+  --color-orange-600: #da9302;
+  --color-orange-700: #aa7301;
+  --color-orange-800: #845901;
+  --color-orange-900: #654401;
+  --color-teal-100: #b4e3e9;
+  --color-teal-200: #90d6de;
+  --color-teal-300: #5ec3cf;
+  --color-teal-400: #3eb7c5;
+  --color-teal-500: #0ea5b7;
+  --color-teal-600: #0d96a7;
+  --color-teal-700: #0a7582;
+  --color-teal-800: #085b65;
+  --color-teal-900: #06454d;
+  --typography-font-family-sora: Sora;
+  --typography-font-family-dm-sans: 'DM Sans';
+  --scale-none: 0px;
+  --scale-thin: 1px;
+  --scale-1: 2px;
+  --scale-2: 4px;
+  --scale-3: 6px;
+  --scale-4: 8px;
+  --scale-5: 10px;
+  --scale-6: 12px;
+  --scale-7: 14px;
+  --scale-8: 16px;
+  --scale-9: 18px;
+  --scale-10: 20px;
+  --scale-11: 24px;
+  --scale-12: 32px;
+  --scale-13: 40px;
+  --scale-14: 44px;
+  --scale-15: 48px;
+  --scale-16: 52px;
+  --scale-17: 56px;
+  --scale-18: 60px;
+  --scale-19: 64px;
+  --scale-20: 72px;
+  --scale-21: 80px;
+  --scale-23: 96px;
+  --scale-24: 120px;
+  --scale-rounded: 1000px;
+  --border-width-none: 0px;
+  --border-width-sm: 0.5px;
+  --border-width-md: 1px;
+  --border-width-lg: 1.5px;
+  --border-width-xl: 2px;
+  --border-radius-xs: 8px;
+  --border-radius-sm: 12px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 20px;
+  --border-radius-xl: 24px;
+  --border-radius-pill: 1000px;
+  --color-grey-1000a-06: rgba(42, 49, 58, 0.06); /** grey/1000 at 6% opacity — shadow primitive */
+  --color-grey-1000a-08: rgba(42, 49, 58, 0.08); /** grey/1000 at 8% opacity — shadow primitive */
+  --color-grey-1000a-10: rgba(42, 49, 58, 0.1); /** grey/1000 at 10% opacity — shadow primitive */
+  --color-grey-1000a-12: rgba(42, 49, 58, 0.12); /** grey/1000 at 12% opacity — shadow primitive */
+  --color-grey-1000a-16: rgba(42, 49, 58, 0.16); /** grey/1000 at 16% opacity — shadow primitive */
+  --color-grey-1000a-24: rgba(42, 49, 58, 0.24); /** grey/1000 at 24% opacity — shadow primitive */
+  --color-grey-1000a-32: rgba(42, 49, 58, 0.32); /** grey/1000 at 32% opacity — shadow primitive */
+  --color-grey-1000a-40: rgba(42, 49, 58, 0.4); /** grey/1000 at 40% opacity — shadow primitive */
+  --border-radius-none: 0px;
+  --border-radius-2xs: 4px;
+  --grid-columns-default: 12;
+  --background-neutral-base: var(--color-grey-0);
+  --background-neutral-surface: var(--color-grey-50);
+  --background-neutral-overlay: var(--color-grey-50);
+  --background-neutral-disable: var(--color-grey-100);
+  --background-neutral-inverse: var(--color-grey-900);
+  --background-interactive-brand-idle: var(--color-navy-500);
+  --background-interactive-brand-hover: var(--color-navy-700);
+  --background-interactive-brand-press: var(--color-navy-800);
+  --background-interactive-brand-disable: var(--color-navy-200);
+  --background-interactive-secondary-idle: var(--color-teal-500);
+  --background-interactive-secondary-hover: var(--color-teal-700);
+  --background-interactive-secondary-press: var(--color-teal-800);
+  --background-interactive-secondary-disable: var(--color-teal-200);
+  --background-interactive-info-idle: var(--color-blue-500);
+  --background-interactive-info-hover: var(--color-blue-700);
+  --background-interactive-info-press: var(--color-blue-700);
+  --background-interactive-success-idle: var(--color-green-500);
+  --background-interactive-success-hover: var(--color-green-700);
+  --background-interactive-success-press: var(--color-green-900);
+  --background-interactive-warning-idle: var(--color-orange-500);
+  --background-interactive-warning-hover: var(--color-orange-700);
+  --background-interactive-warning-press: var(--color-orange-900);
+  --background-interactive-danger-idle: var(--color-red-500);
+  --background-interactive-danger-hover: var(--color-red-700);
+  --background-interactive-danger-press: var(--color-red-900);
+  --background-accent-brand-idle: var(--color-navy-100a);
+  --background-accent-brand-interactive: var(--color-navy-100);
+  --background-accent-secondary-idle: var(--color-teal-50);
+  --background-accent-secondary-interactive: var(--color-teal-100);
+  --background-accent-info-idle: var(--color-blue-50);
+  --background-accent-info-interactive: var(--color-blue-100);
+  --background-accent-success-idle: var(--color-green-50);
+  --background-accent-success-interactive: var(--color-green-100);
+  --background-accent-warning-idle: var(--color-orange-50);
+  --background-accent-warning-interactive: var(--color-orange-100);
+  --background-accent-danger-idle: var(--color-red-50);
+  --background-accent-danger-interactive: var(--color-red-100);
+  --text-neutral-base: var(--color-grey-900);
+  --text-interactive-brand-idle: var(--color-navy-500);
+  --text-interactive-brand-hover: var(--color-navy-700);
+  --text-interactive-brand-press: var(--color-navy-800);
+  --text-interactive-brand-disable: var(--color-navy-50);
+  --text-interactive-secondary-idle: var(--color-teal-500);
+  --text-interactive-secondary-disable: var(--color-teal-100);
+  --text-interactive-info: var(--color-blue-500);
+  --text-interactive-success: var(--color-green-500);
+  --text-interactive-warning: var(--color-orange-500);
+  --text-interactive-danger: var(--color-red-500);
+  --icon-interactive-brand-idle: var(--color-navy-500);
+  --icon-interactive-brand-hover: var(--color-navy-700);
+  --icon-interactive-brand-press: var(--color-navy-800);
+  --icon-interactive-secondary: var(--color-teal-500);
+  --icon-interactive-info: var(--color-blue-500);
+  --icon-interactive-success: var(--color-green-500);
+  --icon-interactive-warning: var(--color-orange-500);
+  --icon-interactive-danger: var(--color-red-500);
+  --text-neutral-primary: var(--color-grey-700);
+  --text-neutral-secondary: var(--color-grey-600);
+  --text-neutral-bold: var(--color-grey-1000);
+  --text-neutral-disable: var(--color-grey-400);
+  --icon-neutral-base: var(--color-grey-900);
+  --icon-neutral-inverse: var(--color-grey-0);
+  --icon-neutral-disable: var(--color-grey-400);
+  --icon-neutral-disable-inverse: var(--color-grey-10);
+  --icon-neutral-primary: var(--color-grey-700);
+  --icon-neutral-secondary: var(--color-grey-600);
+  --border-interactive-brand-idle: var(--color-navy-500);
+  --border-interactive-brand-hover: var(--color-navy-700);
+  --border-interactive-brand-press: var(--color-navy-800);
+  --border-interactive-brand-focus: var(--color-navy-300);
+  --border-interactive-brand-disable: var(--color-navy-200);
+  --border-interactive-secondary-idle: var(--color-teal-500);
+  --border-interactive-secondary-hover: var(--color-teal-700);
+  --border-interactive-secondary-press: var(--color-teal-800);
+  --border-interactive-secondary-focus: var(--color-teal-300);
+  --border-interactive-secondary-disable: var(--color-teal-200);
+  --border-interactive-info: var(--color-blue-500);
+  --border-interactive-success: var(--color-green-500);
+  --border-interactive-warning: var(--color-orange-500);
+  --border-interactive-danger: var(--color-red-500);
+  --border-neutral-primary: var(--color-grey-700);
+  --border-neutral-base: var(--color-grey-100);
+  --border-neutral-secondary: var(--color-grey-600);
+  --border-neutral-disable: var(--color-grey-400);
+  --shadow-level-1-key: var(--color-grey-1000a-08);
+  --shadow-level-1-ambient: var(--color-grey-1000a-06);
+  --shadow-level-2-key: var(--color-grey-1000a-08);
+  --shadow-level-2-ambient: var(--color-grey-1000a-10);
+  --shadow-level-3-key: var(--color-grey-1000a-10);
+  --shadow-level-3-ambient: var(--color-grey-1000a-12);
+  --text-neutral-inverse: var(--color-grey-0); /** Text on solid brand, status or dark fills (e.g. primary buttons, badges). Flips with mode. */
+  --text-neutral-disable-inverse: var(--color-grey-10); /** Text on solid brand, status or dark fills (e.g. primary buttons, badges). Flips with mode. */
+  --font-size-headline-sm: var(--scale-11);
+  --font-size-headline-md: var(--scale-12);
+  --font-size-headline-lg: var(--scale-15);
+  --font-size-headline-xl: var(--scale-19);
+  --font-size-title-xs: var(--scale-6);
+  --font-size-title-sm: var(--scale-7);
+  --font-size-title-md: var(--scale-8);
+  --font-size-title-lg: var(--scale-10);
+  --font-size-body-sm: var(--scale-6);
+  --font-size-body-md: var(--scale-7);
+  --font-size-body-lg: var(--scale-8);
+  --font-size-body-xl: var(--scale-10);
+  --font-size-body-sm-underlined: var(--scale-6);
+  --font-size-body-md-underlined: var(--scale-7);
+  --font-size-label-sm: var(--scale-5);
+  --font-size-label-md: var(--scale-6);
+  --font-size-label-lg: var(--scale-7);
+  --grid-margin-sm: var(--scale-19);
+  --grid-margin-md: var(--scale-21);
+  --spacing-padding-xxs: var(--scale-1);
+  --grid-margin-lg: var(--scale-24);
+  --spacing-padding-xs: var(--scale-2);
+  --spacing-padding-sm: var(--scale-4);
+  --spacing-padding-md: var(--scale-6);
+  --spacing-padding-lg: var(--scale-8);
+  --spacing-padding-xl: var(--scale-11);
+  --spacing-padding-2xl: var(--scale-12);
+  --spacing-padding-3xl: var(--scale-14);
+  --spacing-padding-control-sm: var(--scale-19);
+  --spacing-padding-control-md: var(--scale-21);
+  --spacing-padding-control-lg: var(--scale-24);
+  --spacing-gap-xxs: var(--scale-1);
+  --spacing-gap-xs: var(--scale-2);
+  --spacing-gap-sm: var(--scale-4);
+  --spacing-gap-md: var(--scale-6);
+  --spacing-gap-lg: var(--scale-8);
+  --spacing-gap-xl: var(--scale-11);
+  --spacing-gap-2xl: var(--scale-12);
+  --spacing-gap-3xl: var(--scale-15);
+  --line-height-headline-sm: var(--scale-12);
+  --line-height-headline-md: var(--scale-13);
+  --line-height-headline-lg: var(--scale-17);
+  --line-height-headline-xl: var(--scale-20);
+  --line-height-title-sm: var(--scale-10);
+  --line-height-body-sm: var(--scale-8);
+  --line-height-label-sm: var(--scale-8);
+  --line-height-label-md: var(--scale-10);
+  --line-height-body-md: var(--scale-10);
+  --line-height-body-lg: var(--scale-11);
+  --line-height-body-xl: var(--scale-12);
+  --line-height-body-sm-underlined: var(--scale-8);
+  --line-height-body-md-underlined: var(--scale-10);
+  --line-height-title-md: var(--scale-11);
+  --line-height-title-lg: var(--scale-12);
+  --size-dots-sm: var(--scale-3);
+  --size-dots-md: var(--scale-4);
+  --size-avatar-xs: var(--scale-10);
+  --size-avatar-sm: var(--scale-11);
+  --size-avatar-md: var(--scale-12);
+  --size-avatar-lg: var(--scale-13);
+  --size-avatar-xl: var(--scale-15);
+  --size-avatar-2xl: var(--scale-17);
+  --size-control-sm: var(--scale-12);
+  --size-control-md: var(--scale-13);
+  --size-control-lg: var(--scale-15);
+  --size-control-xl: var(--scale-17);
+  --size-row-sm: var(--scale-13);
+  --size-icon-xs: var(--scale-6);
+  --size-icon-sm: var(--scale-8);
+  --size-icon-md: var(--scale-10);
+  --size-icon-lg: var(--scale-11);
+  --size-icon-xl: var(--scale-12);
+  --size-icon-xxl: var(--scale-13);
+  --size-row-md: var(--scale-15);
+  --size-row-lg: var(--scale-17);
+  --line-height-title-xs: var(--scale-8);
+  --line-height-label-lg: var(--scale-10);
+  --elevation-level-1-key-offset-y: var(--scale-thin);
+  --elevation-level-1-key-blur: var(--scale-1);
+  --elevation-level-1-ambient-offset-y: var(--scale-1);
+  --elevation-level-1-ambient-blur: var(--scale-4);
+  --elevation-level-2-key-offset-y: var(--scale-1);
+  --elevation-level-2-key-blur: var(--scale-2);
+  --elevation-level-2-ambient-offset-y: var(--scale-4);
+  --elevation-level-2-ambient-blur: var(--scale-8);
+  --elevation-level-3-key-offset-y: var(--scale-2);
+  --elevation-level-3-key-blur: var(--scale-4);
+  --elevation-level-3-ambient-offset-y: var(--scale-8);
+  --elevation-level-3-ambient-blur: var(--scale-12);
+  --elevation-offset-x: var(--scale-none);
+  --elevation-spread: var(--scale-none);
+  --border-width-divider: var(--border-width-md); /** Row and section dividers */
+  --border-width-default: var(--border-width-md); /** Inputs, cards, outlined buttons */
+  --border-width-selected: var(--border-width-xl); /** Selected card/tab, checked state */
+  --border-width-icon-bold: var(--border-width-xl); /** Icon stroke width */
+  --border-width-icon-default: var(--border-width-md); /** Icon stroke width */
+  --border-width-focus: var(--border-width-xl); /** Keyboard focus ring */
+  --border-radius-control-2xs: var(--border-radius-2xs); /** Checkboxes, small chips, table-cell highlights */
+  --border-radius-control-xs: var(--border-radius-xs); /** Buttons, inputs, selects */
+  --border-radius-control-sm: var(--border-radius-sm); /** Buttons, inputs, selects */
+  --border-radius-rounded: var(--border-radius-pill); /** Menus, popovers, tooltips */
+  --border-radius-card: var(--border-radius-md); /** Cards, panels, list groups */
+  --border-radius-container: var(--border-radius-lg); /** Bottom sheets, large panels, banners */
+  --border-radius-modal: var(--border-radius-xl); /** Modals, dialogs */
+  --grid-gutter-sm: var(--scale-8);
+  --grid-gutter-md: var(--scale-10);
+  --grid-gutter-lg: var(--scale-11);
+  --headline-xl: 600 var(--font-size-headline-xl)/var(--line-height-headline-xl) var(--typography-font-family-sora); /** Hero / page display heading. Tokens: font-size/headline/xl, line-height/headline/xl, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --headline-lg: 600 var(--font-size-headline-lg)/var(--line-height-headline-lg) var(--typography-font-family-sora); /** Page title (H1). Tokens: font-size/headline/lg, line-height/headline/lg, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --headline-md: 600 var(--font-size-headline-md)/var(--line-height-headline-md) var(--typography-font-family-sora); /** Section heading (H2). Tokens: font-size/headline/md, line-height/headline/md, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --headline-sm: 600 var(--font-size-headline-sm)/var(--line-height-headline-sm) var(--typography-font-family-sora); /** Sub-section heading (H3). Tokens: font-size/headline/sm, line-height/headline/sm, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --title-lg: 600 var(--font-size-title-lg)/var(--line-height-title-lg) var(--typography-font-family-sora); /** Card / dialog title. Tokens: font-size/title/lg, line-height/title/lg, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --title-md: 600 var(--font-size-title-md)/var(--line-height-title-md) var(--typography-font-family-sora); /** List &amp; panel titles. Tokens: font-size/title/md, line-height/title/md, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --title-sm: 600 var(--font-size-title-sm)/var(--line-height-title-sm) var(--typography-font-family-sora); /** Small component titles. Tokens: font-size/title/sm, line-height/title/sm, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --title-xs: 600 var(--font-size-title-xs)/var(--line-height-title-xs) var(--typography-font-family-sora); /** Overlines, dense table headers. Tokens: font-size/title/xs, line-height/title/xs, typography/font-family/sora, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --body-xl: 500 var(--font-size-body-xl)/var(--line-height-body-xl) var(--typography-font-family-dm-sans);
+  --body-lg: 400 var(--font-size-body-lg)/var(--line-height-body-lg) var(--typography-font-family-dm-sans); /** Lead paragraphs, long-form reading. Tokens: font-size/body/lg, line-height/body/lg, typography/font-family/dm-sans, typography/font-weight/regular-400. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --body-md: 400 var(--font-size-body-md)/var(--line-height-body-md) var(--typography-font-family-dm-sans); /** Default body copy. Tokens: font-size/body/md, line-height/body/md, typography/font-family/dm-sans, typography/font-weight/regular-400. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --body-sm: 400 var(--font-size-body-sm)/var(--line-height-body-sm) var(--typography-font-family-dm-sans); /** Captions, helper &amp; meta text. Tokens: font-size/body/sm, line-height/body/sm, typography/font-family/dm-sans, typography/font-weight/regular-400. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --body-md-underlined: 400 var(--font-size-body-md-underlined)/var(--line-height-body-md-underlined) var(--typography-font-family-dm-sans); /** Inline links (md). Tokens: font-size/body/md-underlined, line-height/body/md-underlined, typography/font-family/dm-sans, typography/font-weight/regular-400. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --body-sm-underlined: 400 var(--font-size-body-sm-underlined)/var(--line-height-body-sm-underlined) var(--typography-font-family-dm-sans); /** Inline links (sm). Tokens: font-size/body/sm-underlined, line-height/body/sm-underlined, typography/font-family/dm-sans, typography/font-weight/regular-400. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --body-cta: 600 var(--font-size-body-md)/var(--line-height-body-md) var(--typography-font-family-dm-sans); /** used for call to action button text */
+  --body-lg-bold: 600 var(--font-size-body-lg)/var(--line-height-body-lg) var(--typography-font-family-dm-sans);
+  --body-md-bold: 600 var(--font-size-body-md)/var(--line-height-body-md) var(--typography-font-family-dm-sans); /** Default body copy. Tokens: font-size/body/md, line-height/body/md, typography/font-family/dm-sans, typography/font-weight/semibold-600. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --label-lg: 500 var(--font-size-label-lg)/var(--line-height-label-lg) var(--typography-font-family-dm-sans); /** Large buttons, tabs. Tokens: font-size/label/lg, line-height/label/lg, typography/font-family/dm-sans, typography/font-weight/medium-500. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --label-md: 500 var(--font-size-label-md)/var(--line-height-label-md) var(--typography-font-family-dm-sans); /** Buttons, inputs, chips. Tokens: font-size/label/md, line-height/label/md, typography/font-family/dm-sans, typography/font-weight/medium-500. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --label-sm: 500 var(--font-size-label-sm)/var(--line-height-label-sm) var(--typography-font-family-dm-sans); /** Badges, tags, tiny UI. Tokens: font-size/label/sm, line-height/label/sm, typography/font-family/dm-sans, typography/font-weight/medium-500. Sizes adapt via Semantic Scale mode (web / mobile / back-office). */
+  --elevation-level-1: var(--elevation-offset-x) var(--elevation-level-1-key-offset-y) var(--elevation-level-1-key-blur) var(--elevation-spread) var(--shadow-level-1-key), var(--elevation-offset-x) var(--elevation-level-1-ambient-offset-y) var(--elevation-level-1-ambient-blur) var(--elevation-spread) var(--shadow-level-1-ambient); /** Level 1 · Low — cards, tiles, list items resting on the surface. */
+  --elevation-level-2: var(--elevation-offset-x) var(--elevation-level-2-key-offset-y) var(--elevation-level-2-key-blur) var(--elevation-spread) var(--shadow-level-2-key), var(--elevation-offset-x) var(--elevation-level-2-ambient-offset-y) var(--elevation-level-2-ambient-blur) var(--elevation-spread) var(--shadow-level-2-ambient); /** Level 2 · Mid — dropdowns, popovers, tooltips, sticky headers, hovered cards. */
+  --elevation-level-3: var(--elevation-offset-x) var(--elevation-level-3-key-offset-y) var(--elevation-level-3-key-blur) var(--elevation-spread) var(--shadow-level-3-key), var(--elevation-offset-x) var(--elevation-level-3-ambient-offset-y) var(--elevation-level-3-ambient-blur) var(--elevation-spread) var(--shadow-level-3-ambient); /** Level 3 · High — modals, dialogs, drawers, toasts. */
+}
