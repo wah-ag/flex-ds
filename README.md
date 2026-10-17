@@ -9,7 +9,7 @@ Flex DS is a design system: tokens exported from Figma, and React components bui
 ## Install
 
 ```bash
-npm install @wah-ag/flex-ds
+npm install @design-rules-the-world/flex-ds
 ```
 
 React 19 is a peer dependency: install `react` and `react-dom` `^19.3.0`
@@ -20,8 +20,8 @@ alongside it.
 Load the two stylesheets once, at the app root:
 
 ```js
-import '@wah-ag/flex-ds/tokens.css';
-import '@wah-ag/flex-ds/styles.css';
+import '@design-rules-the-world/flex-ds/tokens.css';
+import '@design-rules-the-world/flex-ds/styles.css';
 ```
 
 - `tokens.css` carries every design token, with the dark and back-office
@@ -34,7 +34,7 @@ the Google Fonts CDN; the package does not ship font files.
 ## Use
 
 ```jsx
-import { <Component> } from '@wah-ag/flex-ds';
+import { <Component> } from '@design-rules-the-world/flex-ds';
 ```
 
 A component is exported only once it has passed its release review, so the
