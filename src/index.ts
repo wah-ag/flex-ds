@@ -19,4 +19,5 @@ export { IconButton } from './components/IconButton/IconButton';
 export { Label } from './components/Label/Label';
 export { PasswordField } from './components/PasswordField/PasswordField';
 export { SearchField } from './components/SearchField/SearchField';
+export { TextArea } from './components/TextArea/TextArea';
 export { TextField } from './components/TextField/TextField';
