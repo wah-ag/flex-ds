@@ -5,8 +5,7 @@ import { FieldLabel } from '../FieldLabel/FieldLabel';
 // component properties (docs/text-area-prop-names.md):
 // - `state`: idle, hover, press, active, disable.
 // - `placeholderText`: the placeholder, default "Enter your text".
-// - `textAreaLevelText`: the label, default "Text Area". Figma spells it this
-//   way; a rename to `labelText` is proposed for review, not applied.
+// - `labelText`: the label, default "Text Area".
 //
 // The label is FieldLabel (code-only, imported). The box is the <textarea>
 // itself, so the browser's own resize handle can size it: FieldControl is an
@@ -29,7 +28,7 @@ const STATES = ['idle', 'hover', 'press', 'active', 'disable'];
 export function TextArea({
   state = 'idle',
   placeholderText = 'Enter your text',
-  textAreaLevelText = 'Text Area',
+  labelText = 'Text Area',
   id,
   className,
   ...rest
@@ -40,7 +39,7 @@ export function TextArea({
 
   return (
     <div className={['text-area', className].filter(Boolean).join(' ')}>
-      <FieldLabel labelText={textAreaLevelText} htmlFor={textAreaId} />
+      <FieldLabel labelText={labelText}htmlFor={textAreaId} />
       <textarea
         {...rest}
         id={textAreaId}
