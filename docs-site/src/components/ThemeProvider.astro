@@ -1,0 +1,12 @@
+---
+// Owner ruling 2026-10-17: the docs site is light only. This replaces
+// Starlight's ThemeProvider, which follows the system theme or a stored
+// choice, and pins data-theme="light" on <html> before first paint. The
+// component pages still show each component in on-dark through the Storybook
+// embeds; only the site itself stays light.
+---
+
+<script is:inline>
+	document.documentElement.dataset.theme = 'light';
+	window.StarlightThemeProvider = { updatePickers() {} };
+</script>

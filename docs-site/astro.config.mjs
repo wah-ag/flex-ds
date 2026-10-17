@@ -23,7 +23,12 @@ export default defineConfig({
 				{ tag: 'link', attrs: { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' } },
 				{ tag: 'link', attrs: { rel: 'stylesheet', href: site.fonts } },
 			],
-			customCss: ['./src/generated/tokens.css', './src/generated/tokens-dark.css', './src/styles/flex.css'],
+			// Light only (owner, 2026-10-17): no dark token overrides, no theme picker.
+			customCss: ['./src/generated/tokens.css', './src/styles/flex.css'],
+			components: {
+				ThemeProvider: './src/components/ThemeProvider.astro',
+				ThemeSelect: './src/components/ThemeSelect.astro',
+			},
 			sidebar: [
 				{
 					label: 'Get Started',

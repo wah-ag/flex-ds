@@ -1,7 +1,7 @@
 /* Starlight's variables mapped onto Flex DS semantic tokens (astro-page
    skill, section 7). No hex, rgb( or raw size of its own: every value is a
-   token from src/generated/tokens.css, and dark mode comes from the cascade
-   (Starlight puts data-theme="dark" on <html>, the attribute the tokens use). */
+   token from src/generated/tokens.css. The site is light only (owner,
+   2026-10-17): src/components/ThemeProvider.astro pins data-theme="light". */
 
 :root,
 :root[data-theme='light'],
