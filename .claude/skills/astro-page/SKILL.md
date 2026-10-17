@@ -127,9 +127,16 @@ state. A status is not a date; "next" is not a priority.
   the pinned checkout into `docs-site/src/generated/`, and the copy is
   committed on `astro` with the other generated output (Vercel builds only
   `docs-site/` and cannot see `build/`). It is never edited by hand; a wrong
-  value is fixed in Figma and regenerated. Starlight puts
-  `data-theme="dark"` on `<html>`, the same attribute the tokens use, so dark
-  mode comes from the cascade. Never branch on theme in script.
+  value is fixed in Figma and regenerated.
+- **The site is light only** (owner, 2026-10-17: "I want documentation as
+  light mode not dark mode"). `docs-site/src/components/ThemeProvider.astro`
+  overrides Starlight's and pins `data-theme="light"` on `<html>`, whatever
+  the system theme or a stored choice says. `ThemeSelect.astro` is empty, so
+  there is no theme picker. `astro.config.mjs` loads `tokens.css` only, not
+  `tokens-dark.css`. Keep all three as they are on every run. This is the
+  site's own chrome: component pages still show each component on-dark
+  through the Storybook `theme` global (section 5), and tables still list
+  on-dark values. Never branch on theme in script beyond that one pin.
 - Fonts load from the Google Fonts CDN, as `CLAUDE.md` requires: the
   families `--typography-font-family-*` name, Sora and DM Sans. Never
   self-host them or install a font package.
@@ -149,10 +156,11 @@ All green, or nothing is pushed.
    with **zero broken internal links**.
 2. `node scripts/security-check.mjs docs-site/dist` passes (`security-check`
    skill). The board source must carry no IDs.
-3. Open, in the built-in browser, in light and in dark: the home page; one
-   component page, every tab; Tokens. Each renders with a clean console, the
-   fonts measured as loaded (`test` skill, step 3) and the live embeds
-   showing.
+3. Open, in the built-in browser, with the browser set to dark
+   (`prefers-color-scheme: dark`): the home page; one component page, every
+   tab; Tokens. Each one renders light (`data-theme="light"`, no theme
+   picker), with a clean console, the fonts measured as loaded (`test` skill,
+   step 3) and the live embeds showing, including the on-dark ones.
 
 Then commit on the `astro` branch and push it.
 
