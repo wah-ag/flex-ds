@@ -1,14 +1,14 @@
 # NavLabel — prop names, owner rulings and gaps (for review)
 
 NavLabel is the Figma component set `Header/NavLabel`, node 55:34, with three
-variants: `type=idle` (191:1243, formerly 55:31), `type=hover` (55:32) and
-`type=active` (55:33). It is built on `component/nav-label` as `src/components/NavLabel/`.
+variants: `state=idle` (191:1243, formerly 55:31), `state=hover` (55:32) and
+`state=active` (55:33). It is built on `component/nav-label` as `src/components/NavLabel/`.
 
 ## Props
 
 | Figma property | Prop | Default |
 | --- | --- | --- |
-| `type` (variant: idle, hover, active) | `type` | `idle` |
+| `state` (variant: idle, hover, active) | `state` | `idle` |
 | `navLabelText` (text) | `navLabelText` | `Nav Label` |
 | `showNavLine` (boolean) | `showNavLine` | `true` |
 
@@ -18,39 +18,48 @@ through the API and should be confirmed by the Designer.
 
 Figma has no `size` property, and NavLabel has no `size` prop.
 
-### `type` and the HTML `type` attribute
+### Rename `type` → `state` (applied, 2026-10-17)
 
-`type` is a valid React prop as spelled, so it is kept. NavLabel renders an
-`<a>`, and `<a>` has its own HTML `type` attribute (a MIME-type hint for the
-link target). NavLabel consumes `type` and never forwards it, so the
-component's `type` never reaches the element, and a caller cannot set the
-`<a>`'s HTML `type` through NavLabel.
-
-#### Suggested rename (not applied)
-
-| Figma name | Suggested | Why |
+| Old name | New name | Values |
 | --- | --- | --- |
-| `type` | `state` | It holds idle, hover and active, which are states. `state` is the name Label, TextArea and the other components already use for the same idea, and it does not shadow the HTML `type` attribute. |
+| `type` | `state` | `idle`, `hover`, `active` (unchanged) |
 
-The prop keeps the Figma name until the Designer renames the property in
-Figma, or a human decides otherwise.
+The variant property used to be called `type`. This write-up suggested
+`state` instead: it holds idle, hover and active, which are states; `state`
+is the name Label, TextArea and the other components already use for the
+same idea; and it does not shadow the `<a>` element's own HTML `type`
+attribute (a MIME-type hint for the link target). The suggestion was never
+decided, and the first release review (PR #198, at `c08b62f`) was Blocked
+on it.
+
+On 2026-10-17 the owner decided the rename and changed it in Figma. Node
+55:34 now names the property `state`, with the variants `state=idle`
+(191:1243), `state=hover` (55:32) and `state=active` (55:33). The prop and
+the `data-state` attribute on the `<a>` (formerly `data-type`) follow Figma.
+The values, the visuals and the bound variables are unchanged.
+
+NavLabel no longer consumes `type`. A caller's `type` now passes through to
+the `<a>` like any other HTML attribute, so callers that still pass the old
+`type` prop must change to `state`. On 2026-10-17 that is
+`src/components/NavItems/NavItems.jsx` (`type="idle"`), whose change belongs
+to NavItems' own round.
 
 ### Not from Figma
 
 The link's own HTML attributes (`href`, `onClick`, `target`, `rel`,
 `aria-current`, ...) pass through to the `<a>`. NavLabel needs an `href` to
-be a real, focusable link. `type="active"` sets `aria-current="page"` unless
+be a real, focusable link. `state="active"` sets `aria-current="page"` unless
 the caller passes its own `aria-current`.
 
-## `type` values
+## `state` values
 
-| Figma `type` | Real input | Text colour | Underline |
+| Figma `state` | Real input | Text colour | Underline |
 | --- | --- | --- | --- |
 | `idle` | At rest. | `text-neutral-primary` | slot kept, not painted, when `showNavLine` |
 | `hover` | Pointer over the link. | `text-interactive-brand-idle` | slot kept, not painted, when `showNavLine` |
 | `active` | The current page. | `text-interactive-brand-idle` | painted when `showNavLine` |
 
-Passing `hover` as `type` pins the hover look, for review.
+Passing `hover` as `state` pins the hover look, for review.
 
 ### Hover design change (2026-10-14)
 
