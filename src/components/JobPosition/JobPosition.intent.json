@@ -3,7 +3,7 @@
   "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=32-258",
   "use_when": [
     {
-      "text": "used for job listing cards, job position title and, how many position opens for this job title and which gender they prefer",
+      "text": "used for job listing cards, job position title and labels that show how many position opens for this job title and which gender they prefer",
       "source": "Figma 32:258 (CardContent/JobPosition component description, paragraph 1)"
     }
   ],
@@ -25,7 +25,7 @@
   "a11y": [
     {
       "text": "The job title is a <p> whose title attribute carries the full title.",
-      "source": "src/components/JobPosition/JobPosition.jsx:41"
+      "source": "src/components/JobPosition/JobPosition.jsx:49"
     }
   ]
 }
