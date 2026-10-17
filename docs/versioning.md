@@ -3,7 +3,7 @@
 > **Draft for the owner's review.** Release-review gate 7 reads this file.
 > It counts only once a human has merged it.
 
-`@wah-ag/flex-ds` follows [Semantic Versioning 2.0.0](https://semver.org/),
+`@design-rules-the-world/flex-ds` follows [Semantic Versioning 2.0.0](https://semver.org/),
 under its rules for `0.x` versions. The package is `0.x` until the owner
 decides it is `1.0.0`; nothing in the pipeline moves it there.
 

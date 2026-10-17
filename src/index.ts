@@ -9,8 +9,8 @@
 // exported, and `npm test` refuses to pass ("src/index.ts exports nothing").
 // That refusal is the guard: no package publishes before a component clears.
 //
-// Styles are not imported here. Load `@wah-ag/flex-ds/tokens.css` and
-// `@wah-ag/flex-ds/styles.css` once, at the app root.
+// Styles are not imported here. Load `@design-rules-the-world/flex-ds/tokens.css` and
+// `@design-rules-the-world/flex-ds/styles.css` once, at the app root.
 export {};
 export { Avatar } from './components/Avatar/Avatar';
 export { ButtonCTA } from './components/ButtonCTA/ButtonCTA';
