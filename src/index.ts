@@ -17,6 +17,7 @@ export { ButtonCTA } from './components/ButtonCTA/ButtonCTA';
 export { CardContainer } from './components/CardContainer/CardContainer';
 export { EmployerProfile } from './components/EmployerProfile/EmployerProfile';
 export { IconButton } from './components/IconButton/IconButton';
+export { JobPosition } from './components/JobPosition/JobPosition';
 export { Label } from './components/Label/Label';
 export { PasswordField } from './components/PasswordField/PasswordField';
 export { SearchField } from './components/SearchField/SearchField';
