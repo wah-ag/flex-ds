@@ -1,5 +1,5 @@
 // Figma: https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=32-258
-import { Briefcase, Mars, UsersRound, Venus, VenusAndMars } from 'lucide-react';
+import { Venus } from 'lucide-react';
 import { JobPosition } from './JobPosition';
 import jobPositionCss from './JobPosition.css?raw';
 import { MODES, exists, referencedTokens, resolve } from '../../../stories/lib/tokens.js';
@@ -7,8 +7,6 @@ import { MODES, exists, referencedTokens, resolve } from '../../../stories/lib/t
 const FIGMA = 'https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress';
 const NODE = '32-258';
 const figmaLink = `Figma node [${NODE.replace('-', ':')}](${FIGMA}?node-id=${NODE}).`;
-
-const ICONS = { UsersRound, VenusAndMars, Venus, Mars, Briefcase };
 
 export default {
   title: 'Components/CardContent/JobPosition',
@@ -20,8 +18,11 @@ export default {
       description: {
         component: `Job position card content. Figma: [CardContent/JobPosition](${FIGMA}?node-id=${NODE}). ` +
           'The job title (title/md) above two Labels (brand / md / idle), imported as they are. `jobTitle` and ' +
-          '`showLabel` are the Figma component properties; the pill props (`openingsText`, `openingsIcon`, ' +
-          '`genderText`, `genderIcon`) have no Figma property and are proposed in docs/job-position-prop-names.md. ' +
+          '`showLabel` are the Figma component properties (`jobTitle`, `show label`). `openingsLabel` and ' +
+          '`genderLabel` are named after the two exposed Figma instances (32:239, 32:247). Owner decision ' +
+          '2026-10-17 (docs/job-position-prop-names.md): each is an object of Label\'s own props (`labelText`, ' +
+          '`swapIcon`, `showIcon`, ...) spread onto its Label, overriding the Figma defaults ' +
+          '("3 openings" with UsersRound, "opens to male" with VenusAndMars, brand / md / idle). ' +
           'Owner rulings, 2026-10-09: the Labels keep their own md padding (spacing-padding-sm); Figma\'s ' +
           'instance override to the narrower spacing-padding-xs is accepted as a known difference and is not built. The ' +
           'component hugs its content. Owner ruling 2026-10-09 (replacing the earlier wrap ruling): a long title stays ' +
@@ -36,18 +37,18 @@ export default {
   argTypes: {
     jobTitle: { control: 'text' },
     showLabel: { control: 'boolean' },
-    openingsText: { control: 'text' },
-    openingsIcon: { control: 'select', options: Object.keys(ICONS), mapping: ICONS },
-    genderText: { control: 'text' },
-    genderIcon: { control: 'select', options: Object.keys(ICONS), mapping: ICONS },
+    openingsLabel: {
+      control: 'object',
+      description: 'Props for the first Label (Figma instance `openingsLabel`, 32:239), e.g. `{ labelText, swapIcon }`.',
+    },
+    genderLabel: {
+      control: 'object',
+      description: 'Props for the second Label (Figma instance `genderLabel`, 32:247), e.g. `{ labelText, swapIcon }`.',
+    },
   },
   args: {
     jobTitle: 'Senior Product Designer',
     showLabel: true,
-    openingsText: '3 openings',
-    openingsIcon: 'UsersRound',
-    genderText: 'opens to male',
-    genderIcon: 'VenusAndMars',
   },
 };
 
@@ -87,12 +88,17 @@ export const LongTitleNarrowContainer = {
 
 export const CustomLabels = {
   name: 'Custom pill content',
-  args: { openingsText: '1 opening', genderText: 'opens to female', genderIcon: 'Venus' },
+  args: {
+    openingsLabel: { labelText: '1 opening' },
+    genderLabel: { labelText: 'opens to female', swapIcon: Venus },
+  },
   parameters: {
     docs: {
       description: {
         story: `${figmaLink} Owner ruling 2026-10-09: the pill texts and icons are sample defaults and change ` +
-          'per use through the pill props.',
+          'per use. Owner decision 2026-10-17: through `openingsLabel` and `genderLabel`, which take Label\'s ' +
+          'own props. Here the first pill overrides only `labelText` and keeps its default icon; the second ' +
+          'overrides `labelText` and `swapIcon`.',
       },
     },
   },
