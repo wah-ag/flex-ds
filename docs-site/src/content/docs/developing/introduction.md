@@ -9,7 +9,13 @@ description: Install the package, load its styles, use a component.
 npm install @design-rules-the-world/flex-ds
 ```
 
-React 19 is a peer dependency: install `react` and `react-dom` `^19.3.0` alongside it. The package's one dependency is `lucide-react`.
+React 19 is a peer dependency: install `react` and `react-dom` `^19.3.0` alongside it.
+
+```bash
+npm install react@^19.3.0 react-dom@^19.3.0
+```
+
+The package's one dependency is `lucide-react`.
 
 ## Set up
 
