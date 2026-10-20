@@ -96,9 +96,9 @@ pinned commit.
 | Tab | Content | Sources |
 | --- | --- | --- |
 | **Usage** | When to use; where it goes; when not to, with each alternative; best practice; what each variant is for; accessibility facts, each linked to its source line; composition (what it composes, what composes it); what this version promises. | `<Name>.intent.json` (`component-intent` skill), carried over entry by entry. An entry whose `source` is in the repo (`src/…`) shows it as a linked "Source:" line. An entry whose `source` is Figma shows **no** source line (owner, 2026-10-20). The text is still transposed from Figma, and the intent file keeps the source. Composition from the imports. |
-| **Examples** | The README usage example, then every story that is not a variant-matrix row, embedded live from the production Storybook in light and in dark. | README, `index.json`. Dark is the Storybook `theme` global (`globals=theme:dark`), never a re-styled copy. |
-| **Code** | The import line; props with defaults and doc comments; union types; the tokens it needs with their light and dark values; Storybook's own props table, embedded. | The component's types and source, `required_tokens`, `build/css/tokens.css` and `tokens-dark.css`, the Storybook docs page. |
-| **Design** | The Figma node embedded; the variant matrix with every matrix story linked; both themes; every value Figma never bound; the design gaps recorded against it. | `figma.json`, `index.json`, `docs/<name>-prop-names.md`. |
+| **Examples** | The README usage example only. **No Stories section** (owner, 2026-10-20): stories are not embedded here; each one is linked from the Design tab's variant matrix. | README. |
+| **Code** | The import line; props with defaults and doc comments; union types; the tokens it needs with their light and dark values. | The component's types and source, `required_tokens`, `build/css/tokens.css` and `tokens-dark.css`. |
+| **Design** | The Figma node embedded; **Storybook's props table, embedded** (owner, 2026-10-20); the variant matrix with every matrix story linked; both themes; every value Figma never bound; the design gaps recorded against it. | `figma.json`, `index.json`, `docs/<name>-prop-names.md`. The props table is the component's docs entry in the production `index.json` (`<id>--docs`), embedded as `iframe.html?id=<id>--docs&viewMode=docs`. `.storybook/preview.js` sets that page to Title + ArgTypes only (wah-ag/flex-ds#206). With no docs entry, show a notice. |
 | **Changelog** | `git log` for the component's folder and every subcomponent it composes, each commit marked with the version it shipped in. | Git at the pinned commit, tags. |
 
 Which stories are variant-matrix rows is decided by one rule in
@@ -171,7 +171,8 @@ All green, or nothing is pushed.
    (`prefers-color-scheme: dark`): the home page; one component page, every
    tab; Tokens. Each one renders light (`data-theme="light"`, no theme
    picker), with a clean console, the fonts measured as loaded (`test` skill,
-   step 3) and the live embeds showing, including the on-dark ones.
+   step 3) and the live embeds showing (the Figma node and the Storybook
+   props table on the Design tab).
 
 Then commit on the `astro` branch and push it.
 
