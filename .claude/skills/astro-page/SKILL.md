@@ -95,10 +95,10 @@ pinned commit.
 
 | Tab | Content | Sources |
 | --- | --- | --- |
-| **Usage** | When to use; where it goes; when not to, with each alternative; best practice; what each variant is for; accessibility facts, each linked to its source line; composition (what it composes, what composes it); what this version promises. | `<Name>.intent.json` (`component-intent` skill), carried over entry by entry with its `source`. Composition from the imports. |
-| **Examples** | The README usage example, then every story that is not a variant-matrix row, embedded live from the production Storybook in light and in dark. | README, `index.json`. Dark is the Storybook `theme` global (`globals=theme:dark`), never a re-styled copy. |
-| **Code** | The import line; props with defaults and doc comments; union types; the tokens it needs with their light and dark values; Storybook's own props table, embedded. | The component's types and source, `required_tokens`, `build/css/tokens.css` and `tokens-dark.css`, the Storybook docs page. |
-| **Design** | The Figma node embedded; the variant matrix with every matrix story linked; both themes; every value Figma never bound; the design gaps recorded against it. | `figma.json`, `index.json`, `docs/<name>-prop-names.md`. |
+| **Usage** | When to use; where it goes; when not to, with each alternative; best practice; what each variant is for; accessibility facts, each linked to its source line; composition (what it composes, what composes it); what this version promises. | `<Name>.intent.json` (`component-intent` skill), carried over entry by entry. An entry whose `source` is in the repo (`src/…`) shows it as a linked "Source:" line. An entry whose `source` is Figma shows **no** source line (owner, 2026-10-20). The text is still transposed from Figma, and the intent file keeps the source. Composition from the imports. |
+| **Examples** | The README usage example only. **No Stories section** (owner, 2026-10-20): stories are not embedded here; each one is linked from the Design tab's variant matrix. | README. |
+| **Code** | The import line; props with defaults and doc comments; union types; the tokens it needs with their light and dark values. | The component's types and source, `required_tokens`, `build/css/tokens.css` and `tokens-dark.css`. |
+| **Design** | The Figma node embedded; **Storybook's props table, embedded** (owner, 2026-10-20); the variant matrix with every matrix story linked; both themes; every value Figma never bound; the design gaps recorded against it. | `figma.json`, `index.json`, `docs/<name>-prop-names.md`. The props table is the component's docs entry in the production `index.json` (`<id>--docs`), embedded as `iframe.html?id=<id>--docs&viewMode=docs`. `.storybook/preview.js` sets that page to Title + ArgTypes only (wah-ag/flex-ds#206). With no docs entry, show a notice. |
 | **Changelog** | `git log` for the component's folder and every subcomponent it composes, each commit marked with the version it shipped in. | Git at the pinned commit, tags. |
 
 Which stories are variant-matrix rows is decided by one rule in
@@ -110,7 +110,18 @@ never on both.
 - **All components**: every component with a page (section 3), with its
   status and version, linked to its page.
 - **Tokens**: every semantic token from `build/css/`, with its light and dark
-  value (and back-office where it differs). Names from the build, never typed.
+  value. The semantic scale shows web, mobile and back-office (back-office
+  and mobile marked "same as web" where they match). Names from the build,
+  never typed.
+  - **Mobile** has no CSS (owner, 2026-10-20: "I want semantic scales of
+    mobile in documentation"). Its values come from `build/ios/Tokens.swift`,
+    the one native output that carries sizes. A token is matched on its name
+    with case and separators dropped (`spacing-padding-md` =
+    `spacingPaddingMd`). `generate.mjs` fails if two Swift names flatten to
+    the same key, or if a semantic scale token has no mobile value. Don't fill
+    a missing value: report it as a design gap. The column is labelled
+    "mobile (native only)", and the page says the `--` name doesn't carry
+    mobile values on the web.
 - **Changelog**: the releases, from tags and the commits between them.
 - **Roadmap**: components without a page yet, by name and status from
   `board.json`. A name only: no link, no component page.
@@ -127,9 +138,16 @@ state. A status is not a date; "next" is not a priority.
   the pinned checkout into `docs-site/src/generated/`, and the copy is
   committed on `astro` with the other generated output (Vercel builds only
   `docs-site/` and cannot see `build/`). It is never edited by hand; a wrong
-  value is fixed in Figma and regenerated. Starlight puts
-  `data-theme="dark"` on `<html>`, the same attribute the tokens use, so dark
-  mode comes from the cascade. Never branch on theme in script.
+  value is fixed in Figma and regenerated.
+- **The site is light only** (owner, 2026-10-17: "I want documentation as
+  light mode not dark mode"). `docs-site/src/components/ThemeProvider.astro`
+  overrides Starlight's and pins `data-theme="light"` on `<html>`, whatever
+  the system theme or a stored choice says. `ThemeSelect.astro` is empty, so
+  there is no theme picker. `astro.config.mjs` loads `tokens.css` only, not
+  `tokens-dark.css`. Keep all three as they are on every run. This is the
+  site's own chrome: component pages still show each component on-dark
+  through the Storybook `theme` global (section 5), and tables still list
+  on-dark values. Never branch on theme in script beyond that one pin.
 - Fonts load from the Google Fonts CDN, as `CLAUDE.md` requires: the
   families `--typography-font-family-*` name, Sora and DM Sans. Never
   self-host them or install a font package.
@@ -149,10 +167,12 @@ All green, or nothing is pushed.
    with **zero broken internal links**.
 2. `node scripts/security-check.mjs docs-site/dist` passes (`security-check`
    skill). The board source must carry no IDs.
-3. Open, in the built-in browser, in light and in dark: the home page; one
-   component page, every tab; Tokens. Each renders with a clean console, the
-   fonts measured as loaded (`test` skill, step 3) and the live embeds
-   showing.
+3. Open, in the built-in browser, with the browser set to dark
+   (`prefers-color-scheme: dark`): the home page; one component page, every
+   tab; Tokens. Each one renders light (`data-theme="light"`, no theme
+   picker), with a clean console, the fonts measured as loaded (`test` skill,
+   step 3) and the live embeds showing (the Figma node and the Storybook
+   props table on the Design tab).
 
 Then commit on the `astro` branch and push it.
 
