@@ -108,117 +108,117 @@ The swatch follows this page's theme.
 
 ## Semantic scale
 
-There is no mobile CSS: the mobile scale ships only to iOS and Android.
+One name, three modes. <code>web</code> and <code>back-office</code> ship as CSS. <code>mobile</code> has no CSS: it ships only to native apps, so the <code>--</code> name is not available on a web page at mobile values. Native code uses the same token under its platform name (iOS: <code>spacingPaddingMd</code> for <code>--spacing-padding-md</code>).
 
-| Token | web | back-office |
-| --- | --- | --- |
-| <code>--font-size-headline-sm</code> | <code>24px</code> | <code>18px</code> |
-| <code>--font-size-headline-md</code> | <code>32px</code> | <code>20px</code> |
-| <code>--font-size-headline-lg</code> | <code>48px</code> | <code>24px</code> |
-| <code>--font-size-headline-xl</code> | <code>64px</code> | <code>32px</code> |
-| <code>--font-size-title-xs</code> | <code>12px</code> | <code>10px</code> |
-| <code>--font-size-title-sm</code> | <code>14px</code> | <code>12px</code> |
-| <code>--font-size-title-md</code> | <code>16px</code> | <code>14px</code> |
-| <code>--font-size-title-lg</code> | <code>20px</code> | <code>16px</code> |
-| <code>--font-size-body-sm</code> | <code>12px</code> | <em>same as web</em> |
-| <code>--font-size-body-md</code> | <code>14px</code> | <em>same as web</em> |
-| <code>--font-size-body-lg</code> | <code>16px</code> | <em>same as web</em> |
-| <code>--font-size-body-xl</code> | <code>20px</code> | <code>18px</code> |
-| <code>--font-size-body-sm-underlined</code> | <code>12px</code> | <em>same as web</em> |
-| <code>--font-size-body-md-underlined</code> | <code>14px</code> | <em>same as web</em> |
-| <code>--font-size-label-sm</code> | <code>10px</code> | <em>same as web</em> |
-| <code>--font-size-label-md</code> | <code>12px</code> | <em>same as web</em> |
-| <code>--font-size-label-lg</code> | <code>14px</code> | <em>same as web</em> |
-| <code>--grid-margin-sm</code> | <code>64px</code> | <code>48px</code> |
-| <code>--grid-margin-md</code> | <code>80px</code> | <code>52px</code> |
-| <code>--spacing-padding-xxs</code> | <code>2px</code> | <em>same as web</em> |
-| <code>--grid-margin-lg</code> | <code>120px</code> | <code>64px</code> |
-| <code>--spacing-padding-xs</code> | <code>4px</code> | <em>same as web</em> |
-| <code>--spacing-padding-sm</code> | <code>8px</code> | <code>6px</code> |
-| <code>--spacing-padding-md</code> | <code>12px</code> | <code>8px</code> |
-| <code>--spacing-padding-lg</code> | <code>16px</code> | <code>12px</code> |
-| <code>--spacing-padding-xl</code> | <code>24px</code> | <code>16px</code> |
-| <code>--spacing-padding-2xl</code> | <code>32px</code> | <code>20px</code> |
-| <code>--spacing-padding-3xl</code> | <code>44px</code> | <code>32px</code> |
-| <code>--spacing-padding-control-sm</code> | <code>64px</code> | <code>48px</code> |
-| <code>--spacing-padding-control-md</code> | <code>80px</code> | <code>52px</code> |
-| <code>--spacing-padding-control-lg</code> | <code>120px</code> | <code>64px</code> |
-| <code>--spacing-gap-xxs</code> | <code>2px</code> | <em>same as web</em> |
-| <code>--spacing-gap-xs</code> | <code>4px</code> | <em>same as web</em> |
-| <code>--spacing-gap-sm</code> | <code>8px</code> | <code>6px</code> |
-| <code>--spacing-gap-md</code> | <code>12px</code> | <code>8px</code> |
-| <code>--spacing-gap-lg</code> | <code>16px</code> | <code>10px</code> |
-| <code>--spacing-gap-xl</code> | <code>24px</code> | <code>16px</code> |
-| <code>--spacing-gap-2xl</code> | <code>32px</code> | <code>18px</code> |
-| <code>--spacing-gap-3xl</code> | <code>48px</code> | <code>24px</code> |
-| <code>--line-height-headline-sm</code> | <code>32px</code> | <code>20px</code> |
-| <code>--line-height-headline-md</code> | <code>40px</code> | <code>24px</code> |
-| <code>--line-height-headline-lg</code> | <code>56px</code> | <code>32px</code> |
-| <code>--line-height-headline-xl</code> | <code>72px</code> | <code>40px</code> |
-| <code>--line-height-title-sm</code> | <code>20px</code> | <code>18px</code> |
-| <code>--line-height-body-sm</code> | <code>16px</code> | <em>same as web</em> |
-| <code>--line-height-label-sm</code> | <code>16px</code> | <code>14px</code> |
-| <code>--line-height-label-md</code> | <code>20px</code> | <code>16px</code> |
-| <code>--line-height-body-md</code> | <code>20px</code> | <code>18px</code> |
-| <code>--line-height-body-lg</code> | <code>24px</code> | <code>20px</code> |
-| <code>--line-height-body-xl</code> | <code>32px</code> | <code>24px</code> |
-| <code>--line-height-body-sm-underlined</code> | <code>16px</code> | <em>same as web</em> |
-| <code>--line-height-body-md-underlined</code> | <code>20px</code> | <code>18px</code> |
-| <code>--line-height-title-md</code> | <code>24px</code> | <code>20px</code> |
-| <code>--line-height-title-lg</code> | <code>32px</code> | <code>24px</code> |
-| <code>--size-dots-sm</code> | <code>6px</code> | <code>4px</code> |
-| <code>--size-dots-md</code> | <code>8px</code> | <code>6px</code> |
-| <code>--size-avatar-xs</code> | <code>20px</code> | <code>16px</code> |
-| <code>--size-avatar-sm</code> | <code>24px</code> | <code>20px</code> |
-| <code>--size-avatar-md</code> | <code>32px</code> | <code>24px</code> |
-| <code>--size-avatar-lg</code> | <code>40px</code> | <code>32px</code> |
-| <code>--size-avatar-xl</code> | <code>48px</code> | <code>40px</code> |
-| <code>--size-avatar-2xl</code> | <code>56px</code> | <code>48px</code> |
-| <code>--size-control-sm</code> | <code>32px</code> | <em>same as web</em> |
-| <code>--size-control-md</code> | <code>40px</code> | <em>same as web</em> |
-| <code>--size-control-lg</code> | <code>48px</code> | <code>44px</code> |
-| <code>--size-control-xl</code> | <code>56px</code> | <code>48px</code> |
-| <code>--size-row-sm</code> | <code>40px</code> | <code>32px</code> |
-| <code>--size-icon-xs</code> | <code>12px</code> | <em>same as web</em> |
-| <code>--size-icon-sm</code> | <code>16px</code> | <em>same as web</em> |
-| <code>--size-icon-md</code> | <code>20px</code> | <code>18px</code> |
-| <code>--size-icon-lg</code> | <code>24px</code> | <code>20px</code> |
-| <code>--size-icon-xl</code> | <code>32px</code> | <code>24px</code> |
-| <code>--size-icon-xxl</code> | <code>40px</code> | <code>32px</code> |
-| <code>--size-row-md</code> | <code>48px</code> | <code>40px</code> |
-| <code>--size-row-lg</code> | <code>56px</code> | <code>48px</code> |
-| <code>--line-height-title-xs</code> | <code>16px</code> | <code>14px</code> |
-| <code>--line-height-label-lg</code> | <code>20px</code> | <code>18px</code> |
-| <code>--elevation-level-1-key-offset-y</code> | <code>1px</code> | <em>same as web</em> |
-| <code>--elevation-level-1-key-blur</code> | <code>2px</code> | <em>same as web</em> |
-| <code>--elevation-level-1-ambient-offset-y</code> | <code>2px</code> | <em>same as web</em> |
-| <code>--elevation-level-1-ambient-blur</code> | <code>8px</code> | <em>same as web</em> |
-| <code>--elevation-level-2-key-offset-y</code> | <code>2px</code> | <em>same as web</em> |
-| <code>--elevation-level-2-key-blur</code> | <code>4px</code> | <em>same as web</em> |
-| <code>--elevation-level-2-ambient-offset-y</code> | <code>8px</code> | <em>same as web</em> |
-| <code>--elevation-level-2-ambient-blur</code> | <code>16px</code> | <em>same as web</em> |
-| <code>--elevation-level-3-key-offset-y</code> | <code>4px</code> | <em>same as web</em> |
-| <code>--elevation-level-3-key-blur</code> | <code>8px</code> | <em>same as web</em> |
-| <code>--elevation-level-3-ambient-offset-y</code> | <code>16px</code> | <em>same as web</em> |
-| <code>--elevation-level-3-ambient-blur</code> | <code>32px</code> | <em>same as web</em> |
-| <code>--elevation-offset-x</code> | <code>0px</code> | <em>same as web</em> |
-| <code>--elevation-spread</code> | <code>0px</code> | <em>same as web</em> |
-| <code>--border-width-divider</code> | <code>1px</code> | <em>same as web</em> |
-| <code>--border-width-default</code> | <code>1px</code> | <em>same as web</em> |
-| <code>--border-width-selected</code> | <code>2px</code> | <em>same as web</em> |
-| <code>--border-width-icon-bold</code> | <code>2px</code> | <em>same as web</em> |
-| <code>--border-width-icon-default</code> | <code>1px</code> | <em>same as web</em> |
-| <code>--border-width-focus</code> | <code>2px</code> | <em>same as web</em> |
-| <code>--border-radius-control-2xs</code> | <code>4px</code> | <em>same as web</em> |
-| <code>--border-radius-control-xs</code> | <code>8px</code> | <em>same as web</em> |
-| <code>--border-radius-control-sm</code> | <code>12px</code> | <em>same as web</em> |
-| <code>--border-radius-rounded</code> | <code>1000px</code> | <em>same as web</em> |
-| <code>--border-radius-card</code> | <code>16px</code> | <code>12px</code> |
-| <code>--border-radius-container</code> | <code>20px</code> | <code>16px</code> |
-| <code>--border-radius-modal</code> | <code>24px</code> | <code>20px</code> |
-| <code>--grid-gutter-sm</code> | <code>16px</code> | <code>12px</code> |
-| <code>--grid-gutter-md</code> | <code>20px</code> | <code>16px</code> |
-| <code>--grid-gutter-lg</code> | <code>24px</code> | <code>20px</code> |
-| <code>--grid-columns-default</code> | <code>12</code> | <em>same as web</em> |
+| Token | web | mobile (native only) | back-office |
+| --- | --- | --- | --- |
+| <code>--font-size-headline-sm</code> | <code>24px</code> | <code>20px</code> | <code>18px</code> |
+| <code>--font-size-headline-md</code> | <code>32px</code> | <code>24px</code> | <code>20px</code> |
+| <code>--font-size-headline-lg</code> | <code>48px</code> | <code>32px</code> | <code>24px</code> |
+| <code>--font-size-headline-xl</code> | <code>64px</code> | <code>40px</code> | <code>32px</code> |
+| <code>--font-size-title-xs</code> | <code>12px</code> | <em>same as web</em> | <code>10px</code> |
+| <code>--font-size-title-sm</code> | <code>14px</code> | <em>same as web</em> | <code>12px</code> |
+| <code>--font-size-title-md</code> | <code>16px</code> | <em>same as web</em> | <code>14px</code> |
+| <code>--font-size-title-lg</code> | <code>20px</code> | <em>same as web</em> | <code>16px</code> |
+| <code>--font-size-body-sm</code> | <code>12px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--font-size-body-md</code> | <code>14px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--font-size-body-lg</code> | <code>16px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--font-size-body-xl</code> | <code>20px</code> | <em>same as web</em> | <code>18px</code> |
+| <code>--font-size-body-sm-underlined</code> | <code>12px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--font-size-body-md-underlined</code> | <code>14px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--font-size-label-sm</code> | <code>10px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--font-size-label-md</code> | <code>12px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--font-size-label-lg</code> | <code>14px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--grid-margin-sm</code> | <code>64px</code> | <code>16px</code> | <code>48px</code> |
+| <code>--grid-margin-md</code> | <code>80px</code> | <code>20px</code> | <code>52px</code> |
+| <code>--spacing-padding-xxs</code> | <code>2px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--grid-margin-lg</code> | <code>120px</code> | <code>24px</code> | <code>64px</code> |
+| <code>--spacing-padding-xs</code> | <code>4px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--spacing-padding-sm</code> | <code>8px</code> | <em>same as web</em> | <code>6px</code> |
+| <code>--spacing-padding-md</code> | <code>12px</code> | <em>same as web</em> | <code>8px</code> |
+| <code>--spacing-padding-lg</code> | <code>16px</code> | <em>same as web</em> | <code>12px</code> |
+| <code>--spacing-padding-xl</code> | <code>24px</code> | <code>20px</code> | <code>16px</code> |
+| <code>--spacing-padding-2xl</code> | <code>32px</code> | <code>24px</code> | <code>20px</code> |
+| <code>--spacing-padding-3xl</code> | <code>44px</code> | <code>40px</code> | <code>32px</code> |
+| <code>--spacing-padding-control-sm</code> | <code>64px</code> | <code>16px</code> | <code>48px</code> |
+| <code>--spacing-padding-control-md</code> | <code>80px</code> | <code>20px</code> | <code>52px</code> |
+| <code>--spacing-padding-control-lg</code> | <code>120px</code> | <code>24px</code> | <code>64px</code> |
+| <code>--spacing-gap-xxs</code> | <code>2px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--spacing-gap-xs</code> | <code>4px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--spacing-gap-sm</code> | <code>8px</code> | <em>same as web</em> | <code>6px</code> |
+| <code>--spacing-gap-md</code> | <code>12px</code> | <em>same as web</em> | <code>8px</code> |
+| <code>--spacing-gap-lg</code> | <code>16px</code> | <em>same as web</em> | <code>10px</code> |
+| <code>--spacing-gap-xl</code> | <code>24px</code> | <code>20px</code> | <code>16px</code> |
+| <code>--spacing-gap-2xl</code> | <code>32px</code> | <code>24px</code> | <code>18px</code> |
+| <code>--spacing-gap-3xl</code> | <code>48px</code> | <code>32px</code> | <code>24px</code> |
+| <code>--line-height-headline-sm</code> | <code>32px</code> | <em>same as web</em> | <code>20px</code> |
+| <code>--line-height-headline-md</code> | <code>40px</code> | <em>same as web</em> | <code>24px</code> |
+| <code>--line-height-headline-lg</code> | <code>56px</code> | <code>40px</code> | <code>32px</code> |
+| <code>--line-height-headline-xl</code> | <code>72px</code> | <code>48px</code> | <code>40px</code> |
+| <code>--line-height-title-sm</code> | <code>20px</code> | <em>same as web</em> | <code>18px</code> |
+| <code>--line-height-body-sm</code> | <code>16px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--line-height-label-sm</code> | <code>16px</code> | <em>same as web</em> | <code>14px</code> |
+| <code>--line-height-label-md</code> | <code>20px</code> | <em>same as web</em> | <code>16px</code> |
+| <code>--line-height-body-md</code> | <code>20px</code> | <em>same as web</em> | <code>18px</code> |
+| <code>--line-height-body-lg</code> | <code>24px</code> | <em>same as web</em> | <code>20px</code> |
+| <code>--line-height-body-xl</code> | <code>32px</code> | <em>same as web</em> | <code>24px</code> |
+| <code>--line-height-body-sm-underlined</code> | <code>16px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--line-height-body-md-underlined</code> | <code>20px</code> | <em>same as web</em> | <code>18px</code> |
+| <code>--line-height-title-md</code> | <code>24px</code> | <em>same as web</em> | <code>20px</code> |
+| <code>--line-height-title-lg</code> | <code>32px</code> | <em>same as web</em> | <code>24px</code> |
+| <code>--size-dots-sm</code> | <code>6px</code> | <em>same as web</em> | <code>4px</code> |
+| <code>--size-dots-md</code> | <code>8px</code> | <em>same as web</em> | <code>6px</code> |
+| <code>--size-avatar-xs</code> | <code>20px</code> | <em>same as web</em> | <code>16px</code> |
+| <code>--size-avatar-sm</code> | <code>24px</code> | <em>same as web</em> | <code>20px</code> |
+| <code>--size-avatar-md</code> | <code>32px</code> | <code>40px</code> | <code>24px</code> |
+| <code>--size-avatar-lg</code> | <code>40px</code> | <code>48px</code> | <code>32px</code> |
+| <code>--size-avatar-xl</code> | <code>48px</code> | <code>64px</code> | <code>40px</code> |
+| <code>--size-avatar-2xl</code> | <code>56px</code> | <code>52px</code> | <code>48px</code> |
+| <code>--size-control-sm</code> | <code>32px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--size-control-md</code> | <code>40px</code> | <code>44px</code> | <em>same as web</em> |
+| <code>--size-control-lg</code> | <code>48px</code> | <code>52px</code> | <code>44px</code> |
+| <code>--size-control-xl</code> | <code>56px</code> | <code>64px</code> | <code>48px</code> |
+| <code>--size-row-sm</code> | <code>40px</code> | <code>48px</code> | <code>32px</code> |
+| <code>--size-icon-xs</code> | <code>12px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--size-icon-sm</code> | <code>16px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--size-icon-md</code> | <code>20px</code> | <code>24px</code> | <code>18px</code> |
+| <code>--size-icon-lg</code> | <code>24px</code> | <code>32px</code> | <code>20px</code> |
+| <code>--size-icon-xl</code> | <code>32px</code> | <code>40px</code> | <code>24px</code> |
+| <code>--size-icon-xxl</code> | <code>40px</code> | <code>44px</code> | <code>32px</code> |
+| <code>--size-row-md</code> | <code>48px</code> | <code>56px</code> | <code>40px</code> |
+| <code>--size-row-lg</code> | <code>56px</code> | <code>64px</code> | <code>48px</code> |
+| <code>--line-height-title-xs</code> | <code>16px</code> | <em>same as web</em> | <code>14px</code> |
+| <code>--line-height-label-lg</code> | <code>20px</code> | <em>same as web</em> | <code>18px</code> |
+| <code>--elevation-level-1-key-offset-y</code> | <code>1px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--elevation-level-1-key-blur</code> | <code>2px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--elevation-level-1-ambient-offset-y</code> | <code>2px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--elevation-level-1-ambient-blur</code> | <code>8px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--elevation-level-2-key-offset-y</code> | <code>2px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--elevation-level-2-key-blur</code> | <code>4px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--elevation-level-2-ambient-offset-y</code> | <code>8px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--elevation-level-2-ambient-blur</code> | <code>16px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--elevation-level-3-key-offset-y</code> | <code>4px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--elevation-level-3-key-blur</code> | <code>8px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--elevation-level-3-ambient-offset-y</code> | <code>16px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--elevation-level-3-ambient-blur</code> | <code>32px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--elevation-offset-x</code> | <code>0px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--elevation-spread</code> | <code>0px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--border-width-divider</code> | <code>1px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--border-width-default</code> | <code>1px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--border-width-selected</code> | <code>2px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--border-width-icon-bold</code> | <code>2px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--border-width-icon-default</code> | <code>1px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--border-width-focus</code> | <code>2px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--border-radius-control-2xs</code> | <code>4px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--border-radius-control-xs</code> | <code>8px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--border-radius-control-sm</code> | <code>12px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--border-radius-rounded</code> | <code>1000px</code> | <em>same as web</em> | <em>same as web</em> |
+| <code>--border-radius-card</code> | <code>16px</code> | <em>same as web</em> | <code>12px</code> |
+| <code>--border-radius-container</code> | <code>20px</code> | <code>24px</code> | <code>16px</code> |
+| <code>--border-radius-modal</code> | <code>24px</code> | <em>same as web</em> | <code>20px</code> |
+| <code>--grid-gutter-sm</code> | <code>16px</code> | <code>8px</code> | <code>12px</code> |
+| <code>--grid-gutter-md</code> | <code>20px</code> | <code>12px</code> | <code>16px</code> |
+| <code>--grid-gutter-lg</code> | <code>24px</code> | <code>16px</code> | <code>20px</code> |
+| <code>--grid-columns-default</code> | <code>12</code> | <code>4</code> | <em>same as web</em> |
 
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/tokens/semantic-color.on-light.tokens.json">tokens/semantic-color.on-light.tokens.json</a>, <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/tokens/semantic-scale.web.tokens.json">tokens/semantic-scale.web.tokens.json</a> (names); <code>build/css/tokens.css</code>, <code>tokens-dark.css</code>, <code>tokens-back-office.css</code> (values).</small>
+<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/tokens/semantic-color.on-light.tokens.json">tokens/semantic-color.on-light.tokens.json</a>, <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/tokens/semantic-scale.web.tokens.json">tokens/semantic-scale.web.tokens.json</a> (names); <code>build/css/tokens.css</code>, <code>tokens-dark.css</code>, <code>tokens-back-office.css</code>, <code>build/ios/Tokens.swift</code> (values; mobile in px as Figma exports them, 1px = 1pt on iOS).</small>

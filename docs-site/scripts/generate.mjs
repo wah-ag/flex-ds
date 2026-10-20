@@ -38,7 +38,7 @@ const read = (rel) => fs.readFileSync(path.join(REPO, rel), 'utf8').replace(/\r\
 const exists = (rel) => fs.existsSync(path.join(REPO, rel));
 const git = (...args) => execFileSync('git', ['-C', REPO, ...args], { encoding: 'utf8' }).trim();
 
-for (const need of ['build/css/tokens.css', 'build/css/tokens-dark.css', 'build/css/tokens-back-office.css', 'dist/index.d.ts', 'src/index.ts', 'README.md', 'tools.md', 'package.json']) {
+for (const need of ['build/css/tokens.css', 'build/css/tokens-dark.css', 'build/css/tokens-back-office.css', 'build/ios/Tokens.swift', 'dist/index.d.ts', 'src/index.ts', 'README.md', 'tools.md', 'package.json']) {
   if (!exists(need)) fail(`${need} is missing from the checkout (run npm ci, build:tokens and build:lib there)`);
 }
 if (git('status', '--porcelain', '--untracked-files=no')) fail('the checkout has tracked changes: it must be clean');
@@ -140,6 +140,22 @@ function leaves(file) {
 const SEM_COLOR = leaves('tokens/semantic-color.on-light.tokens.json');
 const SEM_SCALE = leaves('tokens/semantic-scale.web.tokens.json');
 for (const n of [...SEM_COLOR, ...SEM_SCALE]) if (!LIGHT.has(n)) fail(`semantic token ${n} is not in build/css/tokens.css`);
+
+// The mobile scale has no CSS: the build ships it only to native, and
+// build/ios/Tokens.swift is the one native output that carries sizes
+// (build/android has colours only). Swift names are camelCase, so a token is
+// matched on its name with case and separators dropped
+// (spacing-padding-md = spacingPaddingMd). Values are the build's numbers:
+// px as Figma exports them, read 1:1 as pt on iOS; a unitless number (a
+// column count) stays unitless.
+const flat = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+const MOBILE = new Map();
+for (const m of read('build/ios/Tokens.swift').matchAll(/static let (\w+) = (?:CGFloat\(([\d.]+)\)|([\d.]+)\b)/g)) {
+  const k = flat(m[1]);
+  if (MOBILE.has(k)) fail(`build/ios/Tokens.swift: two tokens flatten to ${k}`);
+  MOBILE.set(k, m[2] !== undefined ? `${parseFloat(m[2])}px` : String(parseFloat(m[3])));
+}
+const mobile = (n) => MOBILE.get(flat(n)) ?? fail(`semantic scale token ${n} has no mobile value in build/ios/Tokens.swift`);
 
 // Google Fonts: the families --typography-font-family-* name, at the
 // weights the composite typography tokens use.
@@ -537,7 +553,8 @@ const swatch = (n) => `<span class="flex-swatch" style="background: var(--${n})"
 const colorRows = SEM_COLOR.map((n) => `| ${swatch(n)} ${code(`--${n}`)} | ${code(light(n))} | ${code(dark(n))} |`);
 const scaleRows = SEM_SCALE.map((n) => {
   const b = backOffice(n);
-  return `| ${code(`--${n}`)} | ${code(light(n))} | ${b !== light(n) ? code(b) : '<em>same as web</em>'} |`;
+  const m = mobile(n);
+  return `| ${code(`--${n}`)} | ${code(light(n))} | ${m !== light(n) ? code(m) : '<em>same as web</em>'} | ${b !== light(n) ? code(b) : '<em>same as web</em>'} |`;
 });
 write(path.join(DOCS, 'tokens.mdx'), `${frontmatter({ title: 'Tokens', description: `Every semantic token in the Flex DS build at ${SHORT}.` })}
 ${BANNER}
@@ -554,13 +571,13 @@ ${colorRows.join('\n')}
 
 ## Semantic scale
 
-There is no mobile CSS: the mobile scale ships only to iOS and Android.
+One name, three modes. ${code('web')} and ${code('back-office')} ship as CSS. ${code('mobile')} has no CSS: it ships only to native apps, so the ${code('--')} name is not available on a web page at mobile values. Native code uses the same token under its platform name (iOS: ${code('spacingPaddingMd')} for ${code('--spacing-padding-md')}).
 
-| Token | web | back-office |
-| --- | --- | --- |
+| Token | web | mobile (native only) | back-office |
+| --- | --- | --- | --- |
 ${scaleRows.join('\n')}
 
-<small class="flex-source">Source: <a href="${attr(blob('tokens/semantic-color.on-light.tokens.json'))}">tokens/semantic-color.on-light.tokens.json</a>, <a href="${attr(blob('tokens/semantic-scale.web.tokens.json'))}">tokens/semantic-scale.web.tokens.json</a> (names); ${code('build/css/tokens.css')}, ${code('tokens-dark.css')}, ${code('tokens-back-office.css')} (values).</small>
+<small class="flex-source">Source: <a href="${attr(blob('tokens/semantic-color.on-light.tokens.json'))}">tokens/semantic-color.on-light.tokens.json</a>, <a href="${attr(blob('tokens/semantic-scale.web.tokens.json'))}">tokens/semantic-scale.web.tokens.json</a> (names); ${code('build/css/tokens.css')}, ${code('tokens-dark.css')}, ${code('tokens-back-office.css')}, ${code('build/ios/Tokens.swift')} (values; mobile in px as Figma exports them, 1px = 1pt on iOS).</small>
 `);
 
 // ---------------------------------------------------------------- changelog, news, roadmap
