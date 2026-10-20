@@ -110,7 +110,18 @@ never on both.
 - **All components**: every component with a page (section 3), with its
   status and version, linked to its page.
 - **Tokens**: every semantic token from `build/css/`, with its light and dark
-  value (and back-office where it differs). Names from the build, never typed.
+  value. The semantic scale shows web, mobile and back-office (back-office
+  and mobile marked "same as web" where they match). Names from the build,
+  never typed.
+  - **Mobile** has no CSS (owner, 2026-10-20: "I want semantic scales of
+    mobile in documentation"). Its values come from `build/ios/Tokens.swift`,
+    the one native output that carries sizes. A token is matched on its name
+    with case and separators dropped (`spacing-padding-md` =
+    `spacingPaddingMd`). `generate.mjs` fails if two Swift names flatten to
+    the same key, or if a semantic scale token has no mobile value. Don't fill
+    a missing value: report it as a design gap. The column is labelled
+    "mobile (native only)", and the page says the `--` name doesn't carry
+    mobile values on the web.
 - **Changelog**: the releases, from tags and the commits between them.
 - **Roadmap**: components without a page yet, by name and status from
   `board.json`. A name only: no link, no component page.
