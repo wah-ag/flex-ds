@@ -274,8 +274,6 @@ function stories(folder) {
   return { file, title, entries, docs, options, cellParams: params };
 }
 const storyUrl = (id, theme) => `${STORYBOOK}/?path=/story/${id}${theme === 'dark' ? '&globals=theme:dark' : ''}`;
-const iframeUrl = (id, theme) => `${STORYBOOK}/iframe.html?id=${id}&viewMode=story&globals=theme:${theme}`;
-const embed = (id, name, theme) => `<iframe class="flex-embed" src="${attr(iframeUrl(id, theme))}" title="${attr(`${name} (${theme === 'dark' ? 'on-dark' : 'on-light'})`)}" loading="lazy"></iframe>`;
 
 function propNamesDoc(folder) {
   const docs = fs.readdirSync(path.join(REPO, 'docs')).filter((f) => f.endsWith('-prop-names.md'));
@@ -310,7 +308,6 @@ for (const c of paged) {
   const exportLine = indexTs.split('\n').findIndex((l) => l.includes(`export { ${folder} }`)) + 1;
   const composes = importsOf(folder);
   const into = composedInto(folder);
-  const examples = st.entries.filter((e) => !e.cell);
   const matrix = st.entries.filter((e) => e.cell);
   const figmaBase = c.figma;
   // Owner, 2026-10-20: no "Source: Figma …" line under an intent entry. The
@@ -366,13 +363,8 @@ for (const c of paged) {
     ex.push(`\`\`\`${use[1]}\n${use[2].replace('<Component>', folder)}\`\`\``);
     ex.push(`<small class="flex-source">Source: <a href="${attr(blob('README.md'))}">README.md</a>, Use, with ${code('<Component>')} read as ${code(folder)}</small>`);
   } else ex.push(notice(`The README has no ${code('## Use')} code block.`));
-  ex.push('### Stories');
-  if (!examples.length) ex.push(notice(`Every story in ${code(st.file)} is a variant-matrix row; they are listed on the Design tab.`));
-  for (const e of examples) {
-    ex.push(`#### ${esc(e.name)}\n`);
-    ex.push(`<div class="flex-embed-pair">\n${embed(e.id, e.name, 'light')}\n${embed(e.id, e.name, 'dark')}\n</div>\n`);
-    ex.push(`<small class="flex-source">Storybook: <a href="${attr(storyUrl(e.id))}">on-light</a> · <a href="${attr(storyUrl(e.id, 'dark'))}">on-dark</a> · Source: <a href="${attr(blob(st.file))}">${esc(st.file)}</a> (${code(e.exportName)})</small>`);
-  }
+  // Owner, 2026-10-20: no Stories section. Every story is still linked from
+  // the Design tab's variant matrix and from Storybook itself.
 
   // Code
   const cd = [];
@@ -403,15 +395,19 @@ for (const c of paged) {
   if (!intent) cd.push(notice(`No intent file, so no ${code('required_tokens')} list.`));
   else if (!intent.required_tokens.length) cd.push(notice(`${code(intentFile)} lists no ${code('required_tokens')}: ${esc(folder)}'s own source references no token. Tokens of the components it composes are on their own pages.`));
   else cd.push(tokenTable(intent.required_tokens) + `\n\n<small class="flex-source">Source: <a href="${attr(blob(intentFile))}">${esc(intentFile)}</a> ${code('required_tokens')}; values resolved from ${code('build/css/tokens.css')} and ${code('tokens-dark.css')} at ${code(SHORT)}</small>`);
-  cd.push('### Storybook props table');
-  if (st.docs.length) cd.push(`<iframe class="flex-embed flex-embed--docs" src="${attr(`${STORYBOOK}/iframe.html?id=${st.docs[0].id}&viewMode=docs`)}" title="${attr(`${folder} Storybook docs`)}" loading="lazy"></iframe>`);
-  else cd.push(notice(`No Storybook docs page: the production Storybook ${code('index.json')} has no docs entry for ${code(st.title)} (autodocs is not enabled), so there is no props table to embed.`));
 
   // Design
   const ds = [];
   ds.push('### Figma node');
   ds.push(`<iframe class="flex-embed flex-embed--figma" src="${attr(`https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(c.figma)}`)}" title="${attr(`${folder} in Figma`)}" loading="lazy" allowfullscreen></iframe>`);
   ds.push(`<small class="flex-source">Figma ${esc(fig.node)} (${esc(fig.figmaName)}), read ${esc(figma.readAt)}. The file may ask you to sign in.</small>`);
+  // Owner, 2026-10-20: the Storybook props table sits on the Design tab. The
+  // Storybook docs page is the props table only (.storybook/preview.js).
+  ds.push('### Storybook props table');
+  if (st.docs.length) {
+    ds.push(`<iframe class="flex-embed flex-embed--docs" src="${attr(`${STORYBOOK}/iframe.html?id=${st.docs[0].id}&viewMode=docs`)}" title="${attr(`${folder} Storybook props table`)}" loading="lazy"></iframe>`);
+    ds.push(`<small class="flex-source">Storybook: <a href="${attr(`${STORYBOOK}/?path=/docs/${st.docs[0].id}`)}">${esc(st.docs[0].id)}</a></small>`);
+  } else ds.push(notice(`No Storybook docs page: the production Storybook ${code('index.json')} has no docs entry for ${code(st.title)}, so there is no props table to embed.`));
   ds.push('### Variant matrix');
   const axisNames = Object.keys(axes);
   if (!fig.variants.length) ds.push(notice(`Figma ${esc(fig.node)} is a single component with no variant property; there is no matrix.`));
