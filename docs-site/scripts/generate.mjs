@@ -313,8 +313,11 @@ for (const c of paged) {
   const examples = st.entries.filter((e) => !e.cell);
   const matrix = st.entries.filter((e) => e.cell);
   const figmaBase = c.figma;
-  const src = (s) => `<small class="flex-source">Source: ${sourceLink(s, figmaBase)}</small>`;
-  const list = (entries) => entries.map((e) => `- ${esc(e.text)} ${src(e.source)}`).join('\n');
+  // Owner, 2026-10-20: no "Source: Figma …" line under an intent entry. The
+  // text is still transposed from Figma, and the intent file keeps the
+  // source. Code sources (a11y from src/…) are still shown.
+  const src = (s) => (/^Figma /.test(s) ? '' : `<small class="flex-source">Source: ${sourceLink(s, figmaBase)}</small>`);
+  const list = (entries) => entries.map((e) => `- ${[esc(e.text), src(e.source)].filter(Boolean).join(' ')}`).join('\n');
 
   // Usage
   const usage = [];
@@ -334,7 +337,7 @@ for (const c of paged) {
     if (!vi.length) usage.push(notice('The intent file names no variant prop.'));
     for (const [prop, values] of vi) {
       usage.push(`**${code(prop)}**\n`);
-      usage.push(Object.entries(values).map(([v, e]) => (e ? `- ${code(v)}: ${esc(e.text)} ${src(e.source)}` : `- ${code(v)}: <em>Figma states no intent for this value.</em>`)).join('\n'));
+      usage.push(Object.entries(values).map(([v, e]) => (e ? `- ${code(v)}: ${[esc(e.text), src(e.source)].filter(Boolean).join(' ')}` : `- ${code(v)}: <em>Figma states no intent for this value.</em>`)).join('\n'));
     }
     usage.push('### Accessibility');
     usage.push(intent.a11y.length ? list(intent.a11y) : notice('The intent file has no accessibility entry.'));
