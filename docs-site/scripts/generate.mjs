@@ -383,10 +383,7 @@ for (const c of paged) {
   const rest = sig.props.find((p) => p.rest);
   if (rest) cd.push(`Every other prop is collected as ${code(`...${rest.rest}`)} and passed on. <small class="flex-source">Source: <a href="${attr(blob(sig.file, sig.line))}">${esc(sig.file)}:${sig.line}</a></small>`);
   cd.push(`Published type is the declaration in ${code('dist/index.d.ts')} as ${code('npm run build:lib')} writes it at ${code(SHORT)}. A member without ${code('?')} is required by that declaration.`);
-  cd.push('### Doc comments');
-  if (sig.comment.length) cd.push(`> ${sig.comment.map(esc).join('\n> ')}\n\n<small class="flex-source">Source: <a href="${attr(blob(sig.file, sig.commentStart))}">${esc(sig.file)}:${sig.commentStart}</a></small>`);
-  else cd.push(notice(`No comment above ${code(`export function ${folder}`)} in ${code(sig.file)}.`));
-  cd.push(notice(`No per-prop doc comment: ${code(sig.file)} documents no prop with JSDoc.`));
+  // Owner, 2026-10-20: no Doc comments section on the Code tab.
   cd.push('### Union types');
   const unions = Object.keys(axes).filter((a) => decl?.has(a));
   if (unions.length) cd.push(`The declaration types ${unions.map(code).join(', ')} as ${code('string')}. Their values are the Figma variant values in the Values column; the published type does not enforce them.`);

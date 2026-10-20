@@ -110,22 +110,6 @@ Every other prop is collected as <code>...rest</code> and passed on. <small clas
 
 Published type is the declaration in <code>dist/index.d.ts</code> as <code>npm run build:lib</code> writes it at <code>b133157</code>. A member without <code>?</code> is required by that declaration.
 
-### Doc comments
-
-> Figma: IconButton, node 45:324 (rebuilt 2026-10-13).
-> Props are named as Figma names its component properties:
->   category  variant: stroke (default) &#124; default-fill &#124; error-fill
->   state     variant: idle (default) &#124; hover &#124; press &#124; disable
->   swapIcon  instance swap on the icon (default: the ringing bell)
-> 
-> `hover` and `press` happen through real input; passing them as `state`
-> only pins the look, for docs. `disable` is a held state: it sets the native
-> disabled attribute, so the button takes no pointer or keyboard input.
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/IconButton/IconButton.jsx#L3">src/components/IconButton/IconButton.jsx:3</a></small>
-
-<p class="flex-notice"><strong>Missing source.</strong> No per-prop doc comment: <code>src/components/IconButton/IconButton.jsx</code> documents no prop with JSDoc.</p>
-
 ### Union types
 
 The declaration types <code>state</code>, <code>category</code> as <code>string</code>. Their values are the Figma variant values in the Values column; the published type does not enforce them.
