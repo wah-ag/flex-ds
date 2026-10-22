@@ -56,12 +56,24 @@
       "active": null,
       "typing": null,
       "focus": null,
-      "error": null,
-      "disable": null
+      "error": {
+        "text": "the value failed validation. Always show an error message with it.",
+        "source": "Figma 64:556 (InputField/TextField component-set description › state, line \"error\")"
+      },
+      "disable": {
+        "text": "the field can’t be edited right now.",
+        "source": "Figma 64:556 (InputField/TextField component-set description › state, line \"disable\")"
+      }
     },
     "size": {
-      "lg": null,
-      "sm": null
+      "lg": {
+        "text": "standard forms.",
+        "source": "Figma 64:556 (InputField/TextField component-set description › size, line \"lg\")"
+      },
+      "sm": {
+        "text": "compact places such as filters, table toolbars and back-office screens.",
+        "source": "Figma 64:556 (InputField/TextField component-set description › size, line \"sm\")"
+      }
     }
   },
   "placement": [],

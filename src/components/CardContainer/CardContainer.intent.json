@@ -65,7 +65,10 @@
     "state": {
       "idle": null,
       "hover": null,
-      "active": null
+      "active": {
+        "text": "the card that is currently selected or clicked to open.",
+        "source": "Figma 36:158 (CardContainer component set › variant 36:169 description)"
+      }
     }
   },
   "placement": [],
