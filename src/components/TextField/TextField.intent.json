@@ -51,11 +51,26 @@
   ],
   "variant_intent": {
     "state": {
-      "idle": null,
-      "hover": null,
-      "active": null,
-      "typing": null,
-      "focus": null,
+      "idle": {
+        "text": "default state",
+        "source": "Figma 64:556 (InputField/TextField component-set description › state, line \"idle\")"
+      },
+      "hover": {
+        "text": "action hover is applied",
+        "source": "Figma 64:556 (InputField/TextField component-set description › state, line \"hover\")"
+      },
+      "active": {
+        "text": "selected, ready to fill input",
+        "source": "Figma 64:556 (InputField/TextField component-set description › state, line \"active\")"
+      },
+      "typing": {
+        "text": "input is filled by user",
+        "source": "Figma 64:556 (InputField/TextField component-set description › state, line \"typing\")"
+      },
+      "focus": {
+        "text": "focused by keyboard",
+        "source": "Figma 64:556 (InputField/TextField component-set description › state, line \"focus\")"
+      },
       "error": {
         "text": "the value failed validation. Always show an error message with it.",
         "source": "Figma 64:556 (InputField/TextField component-set description › state, line \"error\")"
