@@ -377,10 +377,11 @@ for (const c of paged) {
   if (rest) cd.push(`Every other prop is collected as ${code(`...${rest.rest}`)} and passed on.`);
   cd.push(`Published type is the declaration in ${code('dist/index.d.ts')} as ${code('npm run build:lib')} writes it at ${code(SHORT)}. A member without ${code('?')} is required by that declaration.`);
   // Owner, 2026-10-20: no Doc comments section on the Code tab.
-  cd.push('### Union types');
+  // Owner, 2026-10-23: a component with no Figma variant property shows no
+  // Union types section and no Variant matrix (EmployerProfile, JobPosition).
   const unions = Object.keys(axes).filter((a) => decl?.has(a));
+  if (unions.length) cd.push('### Union types');
   if (unions.length) cd.push(`The declaration types ${unions.map(code).join(', ')} as ${code('string')}. Their values are the Figma variant values in the Values column; the published type does not enforce them.`);
-  else cd.push(notice(`${esc(folder)} has no Figma variant property, so no prop has a fixed set of values.`));
   cd.push('### Tokens it needs');
   if (!intent) cd.push(notice(`No intent file, so no ${code('required_tokens')} list.`));
   else if (!intent.required_tokens.length) cd.push(notice(`${code(intentFile)} lists no ${code('required_tokens')}: ${esc(folder)}'s own source references no token. Tokens of the components it composes are on their own pages.`));
@@ -398,10 +399,9 @@ for (const c of paged) {
     ds.push(`<iframe class="flex-embed flex-embed--docs" src="${attr(`${STORYBOOK}/iframe.html?id=${st.docs[0].id}&viewMode=docs`)}" title="${attr(`${folder} Storybook props table`)}" loading="lazy"></iframe>`);
     ds.push(`<small class="flex-source">Storybook: <a href="${attr(`${STORYBOOK}/?path=/docs/${st.docs[0].id}`)}">${esc(st.docs[0].id)}</a></small>`);
   } else ds.push(notice(`No Storybook docs page: the production Storybook ${code('index.json')} has no docs entry for ${code(st.title)}, so there is no props table to embed.`));
-  ds.push('### Variant matrix');
   const axisNames = Object.keys(axes);
-  if (!fig.variants.length) ds.push(notice(`Figma ${esc(fig.node)} is a single component with no variant property; there is no matrix.`));
-  else {
+  if (fig.variants.length) {
+    ds.push('### Variant matrix');
     const order = (a, v) => (st.options.get(a)?.values ?? axes[a]).indexOf(v);
     const sorted = [...fig.variants].sort((x, y) => { for (const a of axisNames) { const d = order(a, x.props[a]) - order(a, y.props[a]); if (d) return d; } return 0; });
     const rowsM = sorted.map((v) => {
