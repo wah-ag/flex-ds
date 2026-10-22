@@ -67,7 +67,16 @@
       "icon": null
     }
   },
-  "placement": [],
+  "placement": [
+    {
+      "text": "EmployerProfile mounts an xl rectangle-image Avatar as its first child, before the employer title and the optional helper line.",
+      "source": "src/components/EmployerProfile/EmployerProfile.stories.jsx:44"
+    },
+    {
+      "text": "NavItems mounts an xl circle-image Avatar as its last child, after NavLabel and the two IconButtons (bell and mail).",
+      "source": "src/components/NavItems/NavItems.stories.jsx:40"
+    }
+  ],
   "pairs_with": [
     {
       "component": "EmployerProfile",
