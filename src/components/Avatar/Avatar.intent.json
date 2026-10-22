@@ -110,15 +110,15 @@
   "a11y": [
     {
       "text": "Renders a <span> with no role or aria attributes of its own.",
-      "source": "src/components/Avatar/Avatar.jsx:31"
+      "source": "src/components/Avatar/Avatar.jsx:30"
     },
     {
       "text": "The image categories render a native <img> with the `alt` prop, which defaults to an empty string.",
-      "source": "src/components/Avatar/Avatar.jsx:37"
+      "source": "src/components/Avatar/Avatar.jsx:36"
     },
     {
       "text": "The icon category’s icon is aria-hidden=\"true\" and focusable=\"false\".",
-      "source": "src/components/Avatar/Avatar.jsx:39"
+      "source": "src/components/Avatar/Avatar.jsx:38"
     }
   ]
 }
