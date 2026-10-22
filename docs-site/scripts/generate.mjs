@@ -326,9 +326,9 @@ for (const c of paged) {
     usage.push(intent.placement.length ? list(intent.placement) : notice(`The intent file has no ${code('placement')} entry: no story places ${esc(folder)} inside another component.`));
     usage.push('### When not to use');
     usage.push(intent.dont_use_when.length ? list(intent.dont_use_when) : notice(`The intent file has no ${code('dont_use_when')} entry: the Figma usage region states none.`));
-    usage.push('### Best practice');
-    const extra = fig.docFrame?.unmappedNotes ?? [];
-    usage.push(notice(`The intent file has no best-practice field: its schema carries best practice only through ${code('use_when')}, ${code('dont_use_when')} and ${code('variant_intent')}.${extra.length ? ` The Figma documentation frame ${esc(fig.docFrame.node)} has ${extra.length === 1 ? 'a note' : 'notes'} the intent file does not carry (${extra.map((n) => esc(n.section)).join(', ')}); it is on the gap list for the next intent refresh.` : ''}`));
+    // Owner, 2026-10-22: no "Best practice" section. The intent schema has no
+    // such field; best-practice bullets already land in use_when,
+    // dont_use_when and variant_intent above and below.
     usage.push('### What each variant is for');
     const vi = Object.entries(intent.variant_intent ?? {});
     if (!vi.length) usage.push(notice('The intent file names no variant prop.'));
