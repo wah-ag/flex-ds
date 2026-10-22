@@ -310,8 +310,8 @@ for (const c of paged) {
   else {
     usage.push('### When to use');
     usage.push(intent.use_when.length ? list(intent.use_when) : notice(`The intent file has no ${code('use_when')} entry: no usage region on the Figma page.`));
-    usage.push('### Where it goes');
-    usage.push(intent.placement.length ? list(intent.placement) : notice(`The intent file has no ${code('placement')} entry: no story places ${esc(folder)} inside another component.`));
+    // Owner, 2026-10-22: no "Where it goes" section. Composition (below)
+    // already says what composes the component.
     usage.push('### When not to use');
     usage.push(intent.dont_use_when.length ? list(intent.dont_use_when) : notice(`The intent file has no ${code('dont_use_when')} entry: the Figma usage region states none.`));
     // Owner, 2026-10-22: no "Best practice" section. The intent schema has no
