@@ -43,8 +43,14 @@
       "hover": null,
       "typing": null,
       "focus": null,
-      "error": null,
-      "disable": null
+      "error": {
+        "text": "the search can’t run, for example because the query is invalid. Show a message saying why.",
+        "source": "Figma 199:102 (SearchBarItem/SearchField component-set description › state, item 1 \"error\")"
+      },
+      "disable": {
+        "text": "search isn’t available in the current context.",
+        "source": "Figma 199:102 (SearchBarItem/SearchField component-set description › state, item 2 \"disable\")"
+      }
     }
   },
   "placement": [],

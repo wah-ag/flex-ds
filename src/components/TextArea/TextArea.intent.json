@@ -43,7 +43,10 @@
       "hover": null,
       "press": null,
       "active": null,
-      "disable": null
+      "disable": {
+        "text": "the field can’t be edited right now.",
+        "source": "Figma 110:1364 (InputField/TextArea component-set description › state, item 1 \"disable\")"
+      }
     }
   },
   "placement": [],

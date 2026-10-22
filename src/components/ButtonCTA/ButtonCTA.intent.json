@@ -73,17 +73,32 @@
       }
     },
     "size": {
-      "lg": null,
-      "md": null,
-      "sm": null
+      "lg": {
+        "text": "the main action of a page or form, such as Submit at the end of a form.",
+        "source": "Figma 16:438 (ButtonCTA component set › variant 16:442 description, repeated on every size=lg variant)"
+      },
+      "md": {
+        "text": "the default size, for actions inside cards, dialogs and sections.",
+        "source": "Figma 16:438 (ButtonCTA component set › variant 16:401 description, repeated on every size=md variant)"
+      },
+      "sm": {
+        "text": "compact areas such as card footers, table rows and toolbars.",
+        "source": "Figma 16:438 (ButtonCTA component set › variant 16:426 description, repeated on every size=sm variant)"
+      }
     },
     "state": {
       "idle": null,
       "hover": null,
       "press": null,
       "focus": null,
-      "disable": null,
-      "error": null
+      "disable": {
+        "text": "the action isn’t available yet, for example while a required field is empty. Explain nearby why it’s disabled.",
+        "source": "Figma 16:438 (ButtonCTA component-set description › States, line \"disable\")"
+      },
+      "error": {
+        "text": "destructive actions such as Delete or Withdraw application.",
+        "source": "Figma 16:438 (ButtonCTA component-set description › States, line \"error\")"
+      }
     }
   },
   "placement": [
