@@ -411,9 +411,8 @@ for (const c of paged) {
   ds.push('### Bound variables');
   const bound = Object.entries(fig.boundVariables ?? {});
   if (!bound.length) ds.push(notice(`get_variable_defs returned no bound variable for Figma ${esc(fig.node)}.`));
-  else ds.push(['| Figma variable | Value in Figma |', '| --- | --- |', ...bound.sort(([a], [b]) => a.localeCompare(b)).map(([k, v]) => `| ${code(k)} | ${code(v)} |`)].join('\n') + `\n\n`);
-  ds.push('### Values Figma never bound');
-  ds.push(fig.unboundValues ? fig.unboundValues.map((u) => `- ${esc(u)}`).join('\n') : notice(esc(fig.unboundValuesNote ?? 'No unbound-value read in sources/figma.json.')));
+  else ds.push(['| Figma variable | Value in Figma |', '| --- | --- |', ...bound.sort(([a], [b]) => a.localeCompare(b)).map(([k, v]) => `| ${code(k)} | ${code(v)} |`)].join('\n'));
+  // Owner, 2026-10-22: no "Values Figma never bound" section.
   ds.push('### Design gaps recorded against it');
   const gapDoc = propNamesDoc(folder);
   if (!gapDoc) ds.push(notice(`No ${code(`docs/*-prop-names.md`)} file is headed ${code(`# ${folder} —`)}.`));
