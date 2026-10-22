@@ -1,12 +1,12 @@
 {
-  "readAt": "2026-10-22T17:36:27Z",
-  "pinnedCommit": "72ebd95dc6df56143d34db0d12b97496762f1b52",
+  "readAt": "2026-10-22T17:56:15Z",
+  "pinnedCommit": "1e0c77a74e5e34ce492321a74ca3e05679a24cba",
   "fileKey": "de4EKsCcP28lQPV2upHdAN",
   "tools": [
     "get_metadata",
     "get_variable_defs"
   ],
-  "note": "Read-only. Layer names in get_metadata are not the rendered text. Component nodes and documentation frames were re-read in this run; every variant, layer and bound variable matched the previous read.",
+  "note": "Read-only. Layer names in get_metadata are not the rendered text. Component nodes, bound variables and documentation frames were re-read live in this run; every variant, layer and bound variable matched the previous read.",
   "components": {
     "Avatar": {
       "node": "32:315",

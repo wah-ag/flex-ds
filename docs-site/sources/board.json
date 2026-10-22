@@ -1,6 +1,6 @@
 {
-  "readAt": "2026-10-22T17:36:27Z",
-  "pinnedCommit": "72ebd95dc6df56143d34db0d12b97496762f1b52",
+  "readAt": "2026-10-22T17:56:15Z",
+  "pinnedCommit": "1e0c77a74e5e34ce492321a74ca3e05679a24cba",
   "source": "Registry, Components table: component name, Development, Figma, Production Storybook, Release Verdict. No record, base, table or field IDs.",
   "components": [
     {"name": "Avatar", "development": "Released", "releaseVerdict": "Cleared", "figma": "https://www.figma.com/design/de4EKsCcP28lQPV2upHdAN/Flex.Global.Component.V1.0.In-Progress?node-id=32-315&t=P9nf0cN4DYviAobk-1", "productionStorybook": "https://flex-ds-sigma.vercel.app/?path=/story/components-avatar--size-2-xl-rectangle-image"},

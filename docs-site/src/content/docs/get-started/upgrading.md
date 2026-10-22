@@ -3,7 +3,7 @@ title: Upgrading
 description: Moving between Flex DS versions.
 ---
 
-<p class="flex-notice"><strong>Missing source.</strong> There is nothing to upgrade from yet: <code>v0.1.0</code> is the only release tag at the pinned commit (72ebd95), so no upgrade notes exist. They will come from the changelog between two tags.</p>
+<p class="flex-notice"><strong>Missing source.</strong> There is nothing to upgrade from yet: <code>v0.1.0</code> is the only release tag at the pinned commit (1e0c77a), so no upgrade notes exist. They will come from the changelog between two tags.</p>
 
 ## Install the current release
 
