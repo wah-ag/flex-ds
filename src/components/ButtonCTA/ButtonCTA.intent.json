@@ -87,10 +87,22 @@
       }
     },
     "state": {
-      "idle": null,
-      "hover": null,
-      "press": null,
-      "focus": null,
+      "idle": {
+        "text": "no action started - default state",
+        "source": "Figma 16:438 (ButtonCTA component-set description › States, line \"idle\")"
+      },
+      "hover": {
+        "text": "the action hover is applied",
+        "source": "Figma 16:438 (ButtonCTA component-set description › States, line \"hover\")"
+      },
+      "press": {
+        "text": "the button is pressed",
+        "source": "Figma 16:438 (ButtonCTA component-set description › States, line \"press\")"
+      },
+      "focus": {
+        "text": "the action focused with keyboard",
+        "source": "Figma 16:438 (ButtonCTA component-set description › States, line \"focus\")"
+      },
       "disable": {
         "text": "the action isn’t available yet, for example while a required field is empty. Explain nearby why it’s disabled.",
         "source": "Figma 16:438 (ButtonCTA component-set description › States, line \"disable\")"
