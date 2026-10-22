@@ -1,27 +1,65 @@
 {
-  "name": "flex-ds",
-  "version": "1.0.0",
+  "name": "@design-rules-the-world/flex-ds",
+  "version": "0.1.0",
+  "private": true,
   "description": "",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./styles.css": "./dist/styles.css",
+    "./tokens.css": "./dist/tokens.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build:tokens": "node build-tokens.js",
     "check:tokens": "node scripts/check-tokens.js",
     "storybook": "npm run build:tokens && storybook dev -p 6006",
-    "build-storybook": "npm run build:tokens && storybook build"
+    "build-storybook": "npm run build:tokens && storybook build",
+    "build:lib": "tsup",
+    "build:css": "node scripts/build-css.mjs",
+    "build:package": "npm run build:tokens && npm run build:lib && npm run build:css",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "npm run typecheck && node scripts/test-package.mjs",
+    "prepublishOnly": "npm run build:package && npm test",
+    "release:publish": "node scripts/release.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
-  "devDependencies": {
-    "@storybook/react-vite": "^10.6.0",
-    "@vitejs/plugin-react": "^6.1.1",
-    "storybook": "^10.6.0",
-    "style-dictionary": "^5.5.5",
-    "vite": "^8.3.1"
-  },
-  "dependencies": {
-    "lucide-react": "^1.48.0",
+  "peerDependencies": {
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
+  },
+  "dependencies": {
+    "lucide-react": "^1.48.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/react-vite": "^10.6.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "storybook": "^10.6.0",
+    "style-dictionary": "^5.5.5",
+    "tsup": "^8.5.1",
+    "typescript": "~5.9.3",
+    "vite": "^8.3.1"
   }
 }
