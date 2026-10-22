@@ -5,7 +5,7 @@ description: Where to ask for something new in Flex DS.
 
 Open an issue on the repository: [github.com/wah-ag/flex-ds/issues](https://github.com/wah-ag/flex-ds/issues).
 
-<p class="flex-notice"><strong>Missing source.</strong> The repo at b133157 has no feature-request template or written intake process, so this page names only where to ask.</p>
+<p class="flex-notice"><strong>Missing source.</strong> The repo at 72ebd95 has no feature-request template or written intake process, so this page names only where to ask.</p>
 
 How a request becomes a component, as the repo describes it:
 

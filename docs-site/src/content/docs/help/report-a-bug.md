@@ -5,7 +5,7 @@ description: Where to report a problem with Flex DS.
 
 Open an issue on the repository: [github.com/wah-ag/flex-ds/issues](https://github.com/wah-ag/flex-ds/issues).
 
-<p class="flex-notice"><strong>Missing source.</strong> The repo at b133157 has no issue template and no written bug-report process, so this page names only where to report.</p>
+<p class="flex-notice"><strong>Missing source.</strong> The repo at 72ebd95 has no issue template and no written bug-report process, so this page names only where to report.</p>
 
 What helps, from how the repo describes a component:
 

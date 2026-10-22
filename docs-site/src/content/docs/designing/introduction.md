@@ -39,4 +39,4 @@ A token that exists in one mode and not another is a design gap, and is reported
 
 ## What each component is for
 
-Each component page's **Usage** tab carries the Designer's own words from the component's Figma documentation frame: when to use it, when not to, and what each variant is for.
+Each component page's **Usage** tab carries the Designer's own words from Figma: when to use it and when not to, from the component's documentation frame, and what each variant is for, from that frame and from the descriptions on the component and its variants. A variant value Figma states no intent for says so.

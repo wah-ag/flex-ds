@@ -230,7 +230,8 @@ function signature(folder) {
 
 // The published declaration for a component, member by member.
 function declaration(folder) {
-  const m = dts.match(new RegExp(`declare function ${folder}\\([^)]*\\}: \\{([\\s\\S]*?)\\n\\}\\): any;`));
+  // Any return type: `any` before @types/react reached the lib build, `react.JSX.Element` after.
+  const m = dts.match(new RegExp(`declare function ${folder}\\([^)]*\\}: \\{([\\s\\S]*?)\\n\\}\\): [^;\\n]+;`));
   if (!m) return null;
   const types = new Map();
   for (const line of m[1].split('\n')) {
@@ -294,6 +295,7 @@ for (const c of paged) {
   const fig = figma.components[folder];
   const sig = signature(folder);
   const decl = declaration(folder);
+  if (!decl) fail(`dist/index.d.ts: no declaration found for ${folder}; the Code tab would read "not in the declaration" for every prop`);
   const st = stories(folder);
   const version = shippedIn(folder);
   const exportLine = indexTs.split('\n').findIndex((l) => l.includes(`export { ${folder} }`)) + 1;

@@ -3,7 +3,7 @@ title: Knowledge skill
 description: What Flex DS gives an agent to read.
 ---
 
-<p class="flex-notice"><strong>Missing source.</strong> The repo at b133157 ships no knowledge skill for consumers. The skills under <code>.claude/skills/</code> are for the agents that build and release Flex DS, not for the apps that use it.</p>
+<p class="flex-notice"><strong>Missing source.</strong> The repo at 72ebd95 ships no knowledge skill for consumers. The skills under <code>.claude/skills/</code> are for the agents that build and release Flex DS, not for the apps that use it.</p>
 
 What exists today:
 

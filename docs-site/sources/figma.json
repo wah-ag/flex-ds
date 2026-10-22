@@ -1,13 +1,12 @@
 {
-  "readAt": "2026-10-17T16:20:00Z/2026-10-17T16:35:00Z",
-  "pinnedCommit": "b1331577568ee489ba0ad1bd58392e73ee9d700d",
+  "readAt": "2026-10-22T17:36:27Z",
+  "pinnedCommit": "72ebd95dc6df56143d34db0d12b97496762f1b52",
   "fileKey": "de4EKsCcP28lQPV2upHdAN",
   "tools": [
     "get_metadata",
-    "get_variable_defs",
-    "get_screenshot"
+    "get_variable_defs"
   ],
-  "note": "Read-only. Layer names in get_metadata are not the rendered text; the usage text was checked against get_screenshot of each documentation frame.",
+  "note": "Read-only. Layer names in get_metadata are not the rendered text. Component nodes and documentation frames were re-read in this run; every variant, layer and bound variable matched the previous read.",
   "components": {
     "Avatar": {
       "node": "32:315",
@@ -167,8 +166,8 @@
         "node": "69:2101",
         "title": "Avatar",
         "usageRegion": "Do and Don't sections",
-        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
-        "matchesIntentFile": true
+        "readWith": "get_metadata (structure)",
+        "intentCheck": "Not re-run in this run. The intent files at the pinned commit were transposed from Figma by doc-generator Job A and merged by a human."
       }
     },
     "ButtonCTA": {
@@ -542,8 +541,8 @@
         "node": "17:826",
         "title": "Buttons",
         "usageRegion": "Do and Don't sections",
-        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
-        "matchesIntentFile": true
+        "readWith": "get_metadata (structure)",
+        "intentCheck": "Not re-run in this run. The intent files at the pinned commit were transposed from Figma by doc-generator Job A and merged by a human."
       }
     },
     "CardContainer": {
@@ -604,14 +603,8 @@
         "node": "69:1498",
         "title": "Cards",
         "usageRegion": "Do and Don't sections",
-        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
-        "matchesIntentFile": true,
-        "unmappedNotes": [
-          {
-            "section": "Best Practise",
-            "text": "Combine card items (CardText, CardLayout and CardImage) with CardContainer to perform as a card."
-          }
-        ]
+        "readWith": "get_metadata (structure)",
+        "intentCheck": "Not re-run in this run. The intent files at the pinned commit were transposed from Figma by doc-generator Job A and merged by a human."
       }
     },
     "EmployerProfile": {
@@ -1187,8 +1180,8 @@
         "node": "71:2279",
         "title": "Label",
         "usageRegion": "Do and Don't sections",
-        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
-        "matchesIntentFile": true
+        "readWith": "get_metadata (structure)",
+        "intentCheck": "Not re-run in this run. The intent files at the pinned commit were transposed from Figma by doc-generator Job A and merged by a human."
       }
     },
     "PasswordField": {
@@ -1316,8 +1309,8 @@
         "node": "348:391",
         "title": "Password Field",
         "usageRegion": "Do and Don't sections",
-        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
-        "matchesIntentFile": true
+        "readWith": "get_metadata (structure)",
+        "intentCheck": "Not re-run in this run. The intent files at the pinned commit were transposed from Figma by doc-generator Job A and merged by a human."
       }
     },
     "SearchField": {
@@ -1413,8 +1406,8 @@
         "node": "224:2304",
         "title": "Search Field",
         "usageRegion": "Do and Don't sections",
-        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
-        "matchesIntentFile": true
+        "readWith": "get_metadata (structure)",
+        "intentCheck": "Not re-run in this run. The intent files at the pinned commit were transposed from Figma by doc-generator Job A and merged by a human."
       }
     },
     "TextArea": {
@@ -1498,8 +1491,8 @@
         "node": "349:493",
         "title": "Text Area",
         "usageRegion": "Do and Don't sections",
-        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
-        "matchesIntentFile": true
+        "readWith": "get_metadata (structure)",
+        "intentCheck": "Not re-run in this run. The intent files at the pinned commit were transposed from Figma by doc-generator Job A and merged by a human."
       }
     },
     "TextField": {
@@ -1671,8 +1664,8 @@
         "node": "71:2194",
         "title": "Text Field",
         "usageRegion": "Do and Don't sections",
-        "readWith": "get_metadata (structure) and get_screenshot (rendered text)",
-        "matchesIntentFile": true
+        "readWith": "get_metadata (structure)",
+        "intentCheck": "Not re-run in this run. The intent files at the pinned commit were transposed from Figma by doc-generator Job A and merged by a human."
       }
     }
   }
