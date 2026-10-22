@@ -24,9 +24,18 @@
       }
     },
     "state": {
-      "idle": null,
-      "hover": null,
-      "press": null,
+      "idle": {
+        "text": "default state",
+        "source": "Figma 45:324 (IconButton component-set description › paragraph 3, line \"idle\")"
+      },
+      "hover": {
+        "text": "action hover is applied",
+        "source": "Figma 45:324 (IconButton component-set description › paragraph 3, line \"hover\")"
+      },
+      "press": {
+        "text": "when button is pressed",
+        "source": "Figma 45:324 (IconButton component-set description › paragraph 3, line \"press\")"
+      },
       "disable": {
         "text": "the action isn’t available for that item.",
         "source": "Figma 45:324 (IconButton component-set description › paragraph 3, line \"disable state\")"

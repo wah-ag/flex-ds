@@ -39,10 +39,22 @@
   ],
   "variant_intent": {
     "state": {
-      "idle": null,
-      "hover": null,
-      "press": null,
-      "active": null,
+      "idle": {
+        "text": "default state",
+        "source": "Figma 110:1364 (InputField/TextArea component-set description › state, item 2 \"idle\")"
+      },
+      "hover": {
+        "text": "hover action is applied",
+        "source": "Figma 110:1364 (InputField/TextArea component-set description › state, item 3 \"hover\")"
+      },
+      "press": {
+        "text": "press action is applied",
+        "source": "Figma 110:1364 (InputField/TextArea component-set description › state, item 4 \"press\")"
+      },
+      "active": {
+        "text": "selected, ready to fill input",
+        "source": "Figma 110:1364 (InputField/TextArea component-set description › state, item 5 \"active\")"
+      },
       "disable": {
         "text": "the field can’t be edited right now.",
         "source": "Figma 110:1364 (InputField/TextArea component-set description › state, item 1 \"disable\")"

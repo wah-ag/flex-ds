@@ -63,8 +63,14 @@
   ],
   "variant_intent": {
     "state": {
-      "idle": null,
-      "hover": null,
+      "idle": {
+        "text": "default state",
+        "source": "Figma 36:158 (CardContainer component set › variant 36:157 description)"
+      },
+      "hover": {
+        "text": "hovering on card container",
+        "source": "Figma 36:158 (CardContainer component set › variant 36:159 description)"
+      },
       "active": {
         "text": "the card that is currently selected or clicked to open.",
         "source": "Figma 36:158 (CardContainer component set › variant 36:169 description)"
