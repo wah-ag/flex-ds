@@ -315,9 +315,10 @@ for (const c of paged) {
     // Owner, 2026-10-22: no "Where it goes" section. Composition (below)
     // already says what composes the component.
     // Owner, 2026-10-23: EmployerProfile and JobPosition show neither "When
-    // not to use" nor "What each variant is for".
+    // not to use" nor "What each variant is for"; IconButton shows no "When
+    // not to use".
     const trimmed = ['EmployerProfile', 'JobPosition'].includes(folder);
-    if (!trimmed) {
+    if (!trimmed && folder !== 'IconButton') {
       usage.push('### When not to use');
       usage.push(intent.dont_use_when.length ? list(intent.dont_use_when) : notice(`The intent file has no ${code('dont_use_when')} entry: the Figma usage region states none.`));
     }
