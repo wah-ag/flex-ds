@@ -382,10 +382,15 @@ for (const c of paged) {
   const unions = Object.keys(axes).filter((a) => decl?.has(a));
   if (unions.length) cd.push('### Union types');
   if (unions.length) cd.push(`The declaration types ${unions.map(code).join(', ')} as ${code('string')}. Their values are the Figma variant values in the Values column; the published type does not enforce them.`);
-  cd.push('### Tokens it needs');
-  if (!intent) cd.push(notice(`No intent file, so no ${code('required_tokens')} list.`));
-  else if (!intent.required_tokens.length) cd.push(notice(`${code(intentFile)} lists no ${code('required_tokens')}: ${esc(folder)}'s own source references no token. Tokens of the components it composes are on their own pages.`));
-  else cd.push(tokenTable(intent.required_tokens) + `\n\n`);
+  // Owner, 2026-10-23: no "Tokens it needs" section when the intent file
+  // lists no required_tokens (SearchField).
+  if (!intent) {
+    cd.push('### Tokens it needs');
+    cd.push(notice(`No intent file, so no ${code('required_tokens')} list.`));
+  } else if (intent.required_tokens.length) {
+    cd.push('### Tokens it needs');
+    cd.push(tokenTable(intent.required_tokens));
+  }
 
   // Design
   const ds = [];
