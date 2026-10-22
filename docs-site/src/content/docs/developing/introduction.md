@@ -53,5 +53,3 @@ Set an attribute on an ancestor and the tokens follow through the cascade:
 ```
 
 The attribute is the only switch: components never read the theme in JavaScript. See [Theming](/styling/theming/).
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/README.md">README.md</a>; <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/package.json">package.json</a> (exports, dependencies, peerDependencies); <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts">src/index.ts</a>; <code>dist/index.d.ts</code> as <code>npm run build:lib</code> writes it at b133157.</small>

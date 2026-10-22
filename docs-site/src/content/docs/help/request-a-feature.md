@@ -14,5 +14,3 @@ How a request becomes a component, as the repo describes it:
 3. It ships once it passes QA, and is exported from the package once its release review clears.
 
 A component that needs an icon Lucide does not have, or a token that does not exist, is reported as a gap rather than invented.
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/tools.md">tools.md</a>; <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/CLAUDE.md">CLAUDE.md</a> (Roles, Common failures, Icon); <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/.claude/skills/registry/SKILL.md">.claude/skills/registry/SKILL.md</a> (Development formula); <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts">src/index.ts</a>.</small>

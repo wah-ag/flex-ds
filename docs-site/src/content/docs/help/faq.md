@@ -30,5 +30,3 @@ Lucide, through `lucide-react`, and no other.
 ## Why do the TypeScript types accept any string for `size` or `state`?
 
 The declarations are generated from the components' JavaScript source, so variant props are typed `string`. The accepted values are listed on each component's **Code** tab.
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/README.md">README.md</a>; <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts">src/index.ts</a>; <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/CLAUDE.md">CLAUDE.md</a>; <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/docs/versioning.md">docs/versioning.md</a>; <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/tsconfig.json">tsconfig.json</a> and <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/tsup.config.js">tsup.config.js</a>.</small>

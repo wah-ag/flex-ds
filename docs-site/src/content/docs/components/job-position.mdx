@@ -36,25 +36,23 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 ### Accessibility
 
-- The job title is a &lt;p&gt; whose title attribute carries the full title. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/JobPosition/JobPosition.jsx#L49">src/components/JobPosition/JobPosition.jsx:49</a></small>
+- The job title is a &lt;p&gt; whose title attribute carries the full title.
 
 ### Composition
 
-- Composes: <a href="/components/label/">Label</a>. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/JobPosition/JobPosition.jsx">src/components/JobPosition/JobPosition.jsx</a> imports</small>
+- Composes: <a href="/components/label/">Label</a>.
 
-- Composed into: CardHeader. <small class="flex-source">Source: imports under <a href="https://github.com/wah-ag/flex-ds/tree/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components">src/components/</a></small>
+- Composed into: CardHeader.
 
 ### What this version promises
 
-- JobPosition is exported from the package entry in v0.1.0. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts#L20">src/index.ts:20</a></small>
+- JobPosition is exported from the package entry in v0.1.0.
 
 What is versioned, as <code>docs/versioning.md</code> states it (the file is marked as a draft for the owner's review):
 
 - Component props, their types and defaults: the documented API.
 - The exported names in `src/index.ts`.
 - Semantic token names in the shipped CSS. Core primitives are not part of
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/docs/versioning.md">docs/versioning.md</a></small>
 
 </TabItem>
 <TabItem label="Examples">
@@ -65,8 +63,6 @@ What is versioned, as <code>docs/versioning.md</code> states it (the file is mar
 import { JobPosition } from '@design-rules-the-world/flex-ds';
 ```
 
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/README.md">README.md</a>, Use, with <code>&lt;Component&gt;</code> read as <code>JobPosition</code></small>
-
 </TabItem>
 <TabItem label="Code">
 
@@ -75,8 +71,6 @@ import { JobPosition } from '@design-rules-the-world/flex-ds';
 ```js
 import { JobPosition } from '@design-rules-the-world/flex-ds';
 ```
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/package.json">package.json</a> name, <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts#L20">src/index.ts:20</a></small>
 
 ### Props
 
@@ -88,7 +82,7 @@ import { JobPosition } from '@design-rules-the-world/flex-ds';
 | <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/JobPosition/JobPosition.jsx#L43"><code>genderLabel</code></a> | <em>none</em> | <code>: any</code> |  |
 | <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/JobPosition/JobPosition.jsx#L44"><code>className</code></a> | <em>none</em> | <code>: any</code> |  |
 
-Every other prop is collected as <code>...rest</code> and passed on. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/JobPosition/JobPosition.jsx#L39">src/components/JobPosition/JobPosition.jsx:39</a></small>
+Every other prop is collected as <code>...rest</code> and passed on.
 
 Published type is the declaration in <code>dist/index.d.ts</code> as <code>npm run build:lib</code> writes it at <code>b133157</code>. A member without <code>?</code> is required by that declaration.
 
@@ -104,8 +98,6 @@ Published type is the declaration in <code>dist/index.d.ts</code> as <code>npm r
 | <code>--spacing-gap-xxs</code> | <code>2px</code> | <code>2px</code> |
 | <code>--text-neutral-bold</code> | <code>#2a313a</code> | <code>#ffffff</code> |
 | <code>--title-md</code> | <code>600 16px/24px Sora</code> | <code>600 16px/24px Sora</code> |
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/JobPosition/JobPosition.intent.json">src/components/JobPosition/JobPosition.intent.json</a> <code>required_tokens</code>; values resolved from <code>build/css/tokens.css</code> and <code>tokens-dark.css</code> at <code>b133157</code></small>
 
 </TabItem>
 <TabItem label="Design">
@@ -158,8 +150,6 @@ Every story above opens in on-light, and in on-dark through the Storybook <code>
 | <code>typography/font-weight/semibold-600</code> | <code>SemiBold</code> |
 | <code>var(--border-radius-rounded)</code> | <code>1000</code> |
 | <code>var(--border-width-default)</code> | <code>1</code> |
-
-<small class="flex-source">Source: get_variable_defs on Figma 32:258, in <code>sources/figma.json</code></small>
 
 ### Values Figma never bound
 
@@ -331,8 +321,6 @@ automatic optical sizing uses 12 for 12px text. The owner accepted this.
 Label's variables are resolved in Label's own CSS.
 
 </details>
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/docs/job-position-prop-names.md">docs/job-position-prop-names.md</a>, verbatim</small>
 
 </TabItem>
 <TabItem label="Changelog">

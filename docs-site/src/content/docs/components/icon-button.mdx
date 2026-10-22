@@ -24,7 +24,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 ### Where it goes
 
-- CardHeader’s slot stories render it in CardHeader’s header slot (`children`), with aria-label "Save job". <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/CardHeader/CardHeader.stories.jsx#L62">src/components/CardHeader/CardHeader.stories.jsx:62</a></small>
+- CardHeader’s slot stories render it in CardHeader’s header slot (`children`), with aria-label "Save job".
 
 ### When not to use
 
@@ -47,27 +47,25 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 ### Accessibility
 
-- Renders a native &lt;button&gt;, with type="button" by default. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/IconButton/IconButton.jsx#L23">src/components/IconButton/IconButton.jsx:23</a></small>
-- state="disable" sets the native disabled attribute. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/IconButton/IconButton.jsx#L29">src/components/IconButton/IconButton.jsx:29</a></small>
-- The icon is aria-hidden="true" and focusable="false", and the button renders no text; other attributes, such as aria-label, pass through to the &lt;button&gt;. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/IconButton/IconButton.jsx#L31">src/components/IconButton/IconButton.jsx:31</a></small>
+- Renders a native &lt;button&gt;, with type="button" by default.
+- state="disable" sets the native disabled attribute.
+- The icon is aria-hidden="true" and focusable="false", and the button renders no text; other attributes, such as aria-label, pass through to the &lt;button&gt;.
 
 ### Composition
 
-- Composes: no other Flex DS component. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/IconButton/IconButton.jsx">src/components/IconButton/IconButton.jsx</a> imports</small>
+- Composes: no other Flex DS component.
 
-- Composed into: NavItems. <small class="flex-source">Source: imports under <a href="https://github.com/wah-ag/flex-ds/tree/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components">src/components/</a></small>
+- Composed into: NavItems.
 
 ### What this version promises
 
-- IconButton is exported from the package entry in v0.1.0. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts#L19">src/index.ts:19</a></small>
+- IconButton is exported from the package entry in v0.1.0.
 
 What is versioned, as <code>docs/versioning.md</code> states it (the file is marked as a draft for the owner's review):
 
 - Component props, their types and defaults: the documented API.
 - The exported names in `src/index.ts`.
 - Semantic token names in the shipped CSS. Core primitives are not part of
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/docs/versioning.md">docs/versioning.md</a></small>
 
 </TabItem>
 <TabItem label="Examples">
@@ -78,8 +76,6 @@ What is versioned, as <code>docs/versioning.md</code> states it (the file is mar
 import { IconButton } from '@design-rules-the-world/flex-ds';
 ```
 
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/README.md">README.md</a>, Use, with <code>&lt;Component&gt;</code> read as <code>IconButton</code></small>
-
 </TabItem>
 <TabItem label="Code">
 
@@ -88,8 +84,6 @@ import { IconButton } from '@design-rules-the-world/flex-ds';
 ```js
 import { IconButton } from '@design-rules-the-world/flex-ds';
 ```
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/package.json">package.json</a> name, <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts#L19">src/index.ts:19</a></small>
 
 ### Props
 
@@ -102,7 +96,7 @@ import { IconButton } from '@design-rules-the-world/flex-ds';
 | <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/IconButton/IconButton.jsx#L17"><code>disabled</code></a> | <em>none</em> | <code>: any</code> |  |
 | <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/IconButton/IconButton.jsx#L18"><code>className</code></a> | <em>none</em> | <code>: any</code> |  |
 
-Every other prop is collected as <code>...rest</code> and passed on. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/IconButton/IconButton.jsx#L12">src/components/IconButton/IconButton.jsx:12</a></small>
+Every other prop is collected as <code>...rest</code> and passed on.
 
 Published type is the declaration in <code>dist/index.d.ts</code> as <code>npm run build:lib</code> writes it at <code>b133157</code>. A member without <code>?</code> is required by that declaration.
 
@@ -135,8 +129,6 @@ The declaration types <code>state</code>, <code>category</code> as <code>string<
 | <code>--size-icon-md</code> | <code>20px</code> | <code>20px</code> |
 | <code>--spacing-gap-xs</code> | <code>4px</code> | <code>4px</code> |
 | <code>--spacing-padding-md</code> | <code>12px</code> | <code>12px</code> |
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/IconButton/IconButton.intent.json">src/components/IconButton/IconButton.intent.json</a> <code>required_tokens</code>; values resolved from <code>build/css/tokens.css</code> and <code>tokens-dark.css</code> at <code>b133157</code></small>
 
 </TabItem>
 <TabItem label="Design">
@@ -199,8 +191,6 @@ Every story above opens in on-light, and in on-dark through the Storybook <code>
 | <code>var(--border-radius-control-xs)</code> | <code>8</code> |
 | <code>var(--border-width-default)</code> | <code>1</code> |
 | <code>var(--border-width-icon-bold)</code> | <code>2</code> |
-
-<small class="flex-source">Source: get_variable_defs on Figma 45:324, in <code>sources/figma.json</code></small>
 
 ### Values Figma never bound
 
@@ -268,8 +258,6 @@ is the native `aria-label` attribute, passed straight to the element, not a
 new prop. The stories pass `aria-label="Notifications"` for the bell.
 
 </details>
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/docs/icon-button-prop-names.md">docs/icon-button-prop-names.md</a>, verbatim</small>
 
 </TabItem>
 <TabItem label="Changelog">

@@ -40,5 +40,3 @@ A token that exists in one mode and not another is a design gap, and is reported
 ## What each component is for
 
 Each component page's **Usage** tab carries the Designer's own words from the component's Figma documentation frame: when to use it, when not to, and what each variant is for.
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/README.md">README.md</a>; <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/CLAUDE.md">CLAUDE.md</a> (The system, Naming, Typography, Icon); <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/tools.md">tools.md</a> (token pipeline).</small>

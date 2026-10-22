@@ -18,5 +18,3 @@ Components in the registry that do not have a page yet. A page needs Development
 | CardContent/Target | Completed | <em>none</em> |
 | Header/NavItems | Completed | <em>none</em> |
 | Header/NavLabel | Completed | <em>none</em> |
-
-<small class="flex-source">Source: <code>sources/board.json</code>, read 2026-10-17T16:53:30Z.</small>

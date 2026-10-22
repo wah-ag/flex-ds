@@ -33,5 +33,3 @@ description: How work reaches Flex DS.
 | `npm run check:tokens` | Reports mode gaps and opaque `a`-suffixed tokens. |
 | `npm run storybook` | Rebuilds tokens, then runs Storybook on port 6006. |
 | `node scripts/security-check.mjs` | The security gate for build output. |
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/CLAUDE.md">CLAUDE.md</a>; <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/tools.md">tools.md</a> (Commands).</small>

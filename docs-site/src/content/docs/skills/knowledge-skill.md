@@ -9,5 +9,3 @@ What exists today:
 
 - **Intent files.** Each component has `src/components/<Name>/<Name>.intent.json` beside it: when to use it, when not to, what each variant is for, where it sits, what it pairs with, the tokens it needs and its accessibility facts. Every entry carries the source it was taken from, a Figma node or a file and line. The **Usage** tab of each component page is generated from it.
 - The intent files are in the repo, not in the npm package: the package publishes `dist` only.
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/tree/b1331577568ee489ba0ad1bd58392e73ee9d700d/.claude/skills">.claude/skills/</a>; <a href="https://github.com/wah-ag/flex-ds/tree/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components">src/components/</a>; <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/package.json">package.json</a> (<code>files</code>).</small>

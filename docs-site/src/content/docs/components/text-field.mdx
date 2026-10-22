@@ -58,29 +58,27 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 ### Accessibility
 
-- The label is a native &lt;label&gt; tied to the input’s id. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/TextField/TextField.jsx#L55">src/components/TextField/TextField.jsx:55</a></small>
-- The field is a native &lt;input&gt;; state="disable" sets disabled. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/FieldControl/FieldControl.jsx#L116">src/components/FieldControl/FieldControl.jsx:116</a></small>
-- state="error" sets aria-invalid on the input. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/FieldControl/FieldControl.jsx#L117">src/components/FieldControl/FieldControl.jsx:117</a></small>
-- The clear button’s aria-label is "Clear &lt;labelText&gt;". <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/TextField/TextField.jsx#L68">src/components/TextField/TextField.jsx:68</a></small>
-- The clear button is out of the tab order (tabIndex -1). <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/FieldControl/FieldControl.jsx#L142">src/components/FieldControl/FieldControl.jsx:142</a></small>
+- The label is a native &lt;label&gt; tied to the input’s id.
+- The field is a native &lt;input&gt;; state="disable" sets disabled.
+- state="error" sets aria-invalid on the input.
+- The clear button’s aria-label is "Clear &lt;labelText&gt;".
+- The clear button is out of the tab order (tabIndex -1).
 
 ### Composition
 
-- Composes: FieldControl, FieldLabel. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/TextField/TextField.jsx">src/components/TextField/TextField.jsx</a> imports</small>
+- Composes: FieldControl, FieldLabel.
 
-- Composed into: no other Flex DS component. <small class="flex-source">Source: imports under <a href="https://github.com/wah-ag/flex-ds/tree/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components">src/components/</a></small>
+- Composed into: no other Flex DS component.
 
 ### What this version promises
 
-- TextField is exported from the package entry in v0.1.0. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts#L25">src/index.ts:25</a></small>
+- TextField is exported from the package entry in v0.1.0.
 
 What is versioned, as <code>docs/versioning.md</code> states it (the file is marked as a draft for the owner's review):
 
 - Component props, their types and defaults: the documented API.
 - The exported names in `src/index.ts`.
 - Semantic token names in the shipped CSS. Core primitives are not part of
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/docs/versioning.md">docs/versioning.md</a></small>
 
 </TabItem>
 <TabItem label="Examples">
@@ -91,8 +89,6 @@ What is versioned, as <code>docs/versioning.md</code> states it (the file is mar
 import { TextField } from '@design-rules-the-world/flex-ds';
 ```
 
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/README.md">README.md</a>, Use, with <code>&lt;Component&gt;</code> read as <code>TextField</code></small>
-
 </TabItem>
 <TabItem label="Code">
 
@@ -101,8 +97,6 @@ import { TextField } from '@design-rules-the-world/flex-ds';
 ```js
 import { TextField } from '@design-rules-the-world/flex-ds';
 ```
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/package.json">package.json</a> name, <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts#L25">src/index.ts:25</a></small>
 
 ### Props
 
@@ -120,7 +114,7 @@ import { TextField } from '@design-rules-the-world/flex-ds';
 | <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/TextField/TextField.jsx#L46"><code>id</code></a> | <em>none</em> | <code>: any</code> |  |
 | <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/TextField/TextField.jsx#L47"><code>className</code></a> | <em>none</em> | <code>: any</code> |  |
 
-Every other prop is collected as <code>...rest</code> and passed on. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/TextField/TextField.jsx#L36">src/components/TextField/TextField.jsx:36</a></small>
+Every other prop is collected as <code>...rest</code> and passed on.
 
 Published type is the declaration in <code>dist/index.d.ts</code> as <code>npm run build:lib</code> writes it at <code>b133157</code>. A member without <code>?</code> is required by that declaration.
 
@@ -133,8 +127,6 @@ The declaration types <code>state</code>, <code>size</code> as <code>string</cod
 | Token | on-light | on-dark |
 | --- | --- | --- |
 | <code>--spacing-gap-sm</code> | <code>8px</code> | <code>8px</code> |
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/TextField/TextField.intent.json">src/components/TextField/TextField.intent.json</a> <code>required_tokens</code>; values resolved from <code>build/css/tokens.css</code> and <code>tokens-dark.css</code> at <code>b133157</code></small>
 
 </TabItem>
 <TabItem label="Design">
@@ -219,8 +211,6 @@ Every story above opens in on-light, and in on-dark through the Storybook <code>
 | <code>var(--border-width-default)</code> | <code>1</code> |
 | <code>var(--border-width-focus)</code> | <code>2</code> |
 | <code>var(--border-width-icon-bold)</code> | <code>2</code> |
-
-<small class="flex-source">Source: get_variable_defs on Figma 64:556, in <code>sources/figma.json</code></small>
 
 ### Values Figma never bound
 
@@ -341,8 +331,6 @@ The label moved the same way, into the shared subcomponent `FieldLabel`
 is unchanged.
 
 </details>
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/docs/textfield-prop-names.md">docs/textfield-prop-names.md</a>, verbatim</small>
 
 </TabItem>
 <TabItem label="Changelog">

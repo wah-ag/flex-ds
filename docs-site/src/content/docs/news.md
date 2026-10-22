@@ -8,5 +8,3 @@ description: "Releases and shipped components."
 ## v0.1.0
 
 <code>@design-rules-the-world/flex-ds@0.1.0</code> was tagged on 2026-10-17. It is the first release to export <a href="/components/avatar/">Avatar</a>, <a href="/components/button-cta/">ButtonCTA</a>, <a href="/components/card-container/">CardContainer</a>, <a href="/components/employer-profile/">EmployerProfile</a>, <a href="/components/icon-button/">IconButton</a>, <a href="/components/job-position/">JobPosition</a>, <a href="/components/label/">Label</a>, <a href="/components/password-field/">PasswordField</a>, <a href="/components/search-field/">SearchField</a>, <a href="/components/text-area/">TextArea</a>, <a href="/components/text-field/">TextField</a>.
-
-<small class="flex-source">Source: <code>v*</code> tags at <code>b133157</code>, <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts">src/index.ts</a> at each tag, and <code>sources/board.json</code>.</small>

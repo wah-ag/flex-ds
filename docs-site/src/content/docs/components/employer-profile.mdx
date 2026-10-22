@@ -36,25 +36,23 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 ### Accessibility
 
-- The employer title is a &lt;p&gt; whose title attribute carries the full title. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/EmployerProfile/EmployerProfile.jsx#L32">src/components/EmployerProfile/EmployerProfile.jsx:32</a></small>
+- The employer title is a &lt;p&gt; whose title attribute carries the full title.
 
 ### Composition
 
-- Composes: <a href="/components/avatar/">Avatar</a>. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/EmployerProfile/EmployerProfile.jsx">src/components/EmployerProfile/EmployerProfile.jsx</a> imports</small>
+- Composes: <a href="/components/avatar/">Avatar</a>.
 
-- Composed into: CardHeader. <small class="flex-source">Source: imports under <a href="https://github.com/wah-ag/flex-ds/tree/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components">src/components/</a></small>
+- Composed into: CardHeader.
 
 ### What this version promises
 
-- EmployerProfile is exported from the package entry in v0.1.0. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts#L18">src/index.ts:18</a></small>
+- EmployerProfile is exported from the package entry in v0.1.0.
 
 What is versioned, as <code>docs/versioning.md</code> states it (the file is marked as a draft for the owner's review):
 
 - Component props, their types and defaults: the documented API.
 - The exported names in `src/index.ts`.
 - Semantic token names in the shipped CSS. Core primitives are not part of
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/docs/versioning.md">docs/versioning.md</a></small>
 
 </TabItem>
 <TabItem label="Examples">
@@ -65,8 +63,6 @@ What is versioned, as <code>docs/versioning.md</code> states it (the file is mar
 import { EmployerProfile } from '@design-rules-the-world/flex-ds';
 ```
 
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/README.md">README.md</a>, Use, with <code>&lt;Component&gt;</code> read as <code>EmployerProfile</code></small>
-
 </TabItem>
 <TabItem label="Code">
 
@@ -75,8 +71,6 @@ import { EmployerProfile } from '@design-rules-the-world/flex-ds';
 ```js
 import { EmployerProfile } from '@design-rules-the-world/flex-ds';
 ```
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/package.json">package.json</a> name, <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts#L18">src/index.ts:18</a></small>
 
 ### Props
 
@@ -88,7 +82,7 @@ import { EmployerProfile } from '@design-rules-the-world/flex-ds';
 | <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/EmployerProfile/EmployerProfile.jsx#L23"><code>avatarProps</code></a> | <em>none</em> | <code>: any</code> |  |
 | <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/EmployerProfile/EmployerProfile.jsx#L24"><code>className</code></a> | <em>none</em> | <code>: any</code> |  |
 
-Every other prop is collected as <code>...rest</code> and passed on. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/EmployerProfile/EmployerProfile.jsx#L19">src/components/EmployerProfile/EmployerProfile.jsx:19</a></small>
+Every other prop is collected as <code>...rest</code> and passed on.
 
 Published type is the declaration in <code>dist/index.d.ts</code> as <code>npm run build:lib</code> writes it at <code>b133157</code>. A member without <code>?</code> is required by that declaration.
 
@@ -106,8 +100,6 @@ Published type is the declaration in <code>dist/index.d.ts</code> as <code>npm r
 | <code>--text-neutral-bold</code> | <code>#2a313a</code> | <code>#ffffff</code> |
 | <code>--text-neutral-secondary</code> | <code>#64748b</code> | <code>#cfd4db</code> |
 | <code>--title-sm</code> | <code>600 14px/20px Sora</code> | <code>600 14px/20px Sora</code> |
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/EmployerProfile/EmployerProfile.intent.json">src/components/EmployerProfile/EmployerProfile.intent.json</a> <code>required_tokens</code>; values resolved from <code>build/css/tokens.css</code> and <code>tokens-dark.css</code> at <code>b133157</code></small>
 
 </TabItem>
 <TabItem label="Design">
@@ -156,8 +148,6 @@ Every story above opens in on-light, and in on-dark through the Storybook <code>
 | <code>typography/font-weight/semibold-600</code> | <code>SemiBold</code> |
 | <code>var(--border-radius-control-xs)</code> | <code>8</code> |
 | <code>var(--border-width-default)</code> | <code>1</code> |
-
-<small class="flex-source">Source: get_variable_defs on Figma 32:337, in <code>sources/figma.json</code></small>
 
 ### Values Figma never bound
 
@@ -242,8 +232,6 @@ automatic optical sizing uses 12 for 12px text, and Label renders `label-md`
 the same way. The difference is small, but it may show next to Figma.
 
 </details>
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/docs/employer-profile-prop-names.md">docs/employer-profile-prop-names.md</a>, verbatim</small>
 
 </TabItem>
 <TabItem label="Changelog">

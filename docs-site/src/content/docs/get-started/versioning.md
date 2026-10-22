@@ -31,5 +31,3 @@ A prop or component is marked deprecated in one release, with its replacement na
 ## Tags
 
 Each published version is tagged `v<version>` by `npm run release:publish`. The [Changelog](/changelog/) is generated from those tags.
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/docs/versioning.md">docs/versioning.md</a> at b133157.</small>

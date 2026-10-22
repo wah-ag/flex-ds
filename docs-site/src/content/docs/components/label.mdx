@@ -65,26 +65,24 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 ### Accessibility
 
-- Renders a &lt;span&gt; with no role or aria attributes of its own. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/Label/Label.jsx#L26">src/components/Label/Label.jsx:26</a></small>
-- The icon is aria-hidden="true" and focusable="false". <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/Label/Label.jsx#L34">src/components/Label/Label.jsx:34</a></small>
+- Renders a &lt;span&gt; with no role or aria attributes of its own.
+- The icon is aria-hidden="true" and focusable="false".
 
 ### Composition
 
-- Composes: no other Flex DS component. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/Label/Label.jsx">src/components/Label/Label.jsx</a> imports</small>
+- Composes: no other Flex DS component.
 
-- Composed into: DescriptionItem, <a href="/components/job-position/">JobPosition</a>. <small class="flex-source">Source: imports under <a href="https://github.com/wah-ag/flex-ds/tree/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components">src/components/</a></small>
+- Composed into: DescriptionItem, <a href="/components/job-position/">JobPosition</a>.
 
 ### What this version promises
 
-- Label is exported from the package entry in v0.1.0. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts#L21">src/index.ts:21</a></small>
+- Label is exported from the package entry in v0.1.0.
 
 What is versioned, as <code>docs/versioning.md</code> states it (the file is marked as a draft for the owner's review):
 
 - Component props, their types and defaults: the documented API.
 - The exported names in `src/index.ts`.
 - Semantic token names in the shipped CSS. Core primitives are not part of
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/docs/versioning.md">docs/versioning.md</a></small>
 
 </TabItem>
 <TabItem label="Examples">
@@ -95,8 +93,6 @@ What is versioned, as <code>docs/versioning.md</code> states it (the file is mar
 import { Label } from '@design-rules-the-world/flex-ds';
 ```
 
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/README.md">README.md</a>, Use, with <code>&lt;Component&gt;</code> read as <code>Label</code></small>
-
 </TabItem>
 <TabItem label="Code">
 
@@ -105,8 +101,6 @@ import { Label } from '@design-rules-the-world/flex-ds';
 ```js
 import { Label } from '@design-rules-the-world/flex-ds';
 ```
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/package.json">package.json</a> name, <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/index.ts#L21">src/index.ts:21</a></small>
 
 ### Props
 
@@ -120,7 +114,7 @@ import { Label } from '@design-rules-the-world/flex-ds';
 | <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/Label/Label.jsx#L21"><code>swapIcon</code></a> | <code>Circle</code> | <code>?: any</code> |  |
 | <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/Label/Label.jsx#L22"><code>className</code></a> | <em>none</em> | <code>: any</code> |  |
 
-Every other prop is collected as <code>...rest</code> and passed on. <small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/Label/Label.jsx#L15">src/components/Label/Label.jsx:15</a></small>
+Every other prop is collected as <code>...rest</code> and passed on.
 
 Published type is the declaration in <code>dist/index.d.ts</code> as <code>npm run build:lib</code> writes it at <code>b133157</code>. A member without <code>?</code> is required by that declaration.
 
@@ -168,8 +162,6 @@ The declaration types <code>size</code>, <code>state</code>, <code>category</cod
 | <code>--text-interactive-success</code> | <code>#16a34a</code> | <code>#149443</code> |
 | <code>--text-interactive-warning</code> | <code>#f0a202</code> | <code>#da9302</code> |
 | <code>--text-neutral-primary</code> | <code>#5b6a7e</code> | <code>#b8bfca</code> |
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/src/components/Label/Label.intent.json">src/components/Label/Label.intent.json</a> <code>required_tokens</code>; values resolved from <code>build/css/tokens.css</code> and <code>tokens-dark.css</code> at <code>b133157</code></small>
 
 </TabItem>
 <TabItem label="Design">
@@ -280,8 +272,6 @@ Every story above opens in on-light, and in on-dark through the Storybook <code>
 | <code>var(--border-width-icon-bold)</code> | <code>2</code> |
 | <code>var(--border-width-icon-default)</code> | <code>1</code> |
 
-<small class="flex-source">Source: get_variable_defs on Figma 31:228, in <code>sources/figma.json</code></small>
-
 ### Values Figma never bound
 
 <p class="flex-notice"><strong>Missing source.</strong> Not read in this run: get_metadata and get_variable_defs list layers and bound variables only, and get_design_context was not used.</p>
@@ -334,8 +324,6 @@ Figma's default icon is a layer named "circle". It is mapped to Lucide
 confirm that `brand` → `secondary` is intended.
 
 </details>
-
-<small class="flex-source">Source: <a href="https://github.com/wah-ag/flex-ds/blob/b1331577568ee489ba0ad1bd58392e73ee9d700d/docs/label-prop-names.md">docs/label-prop-names.md</a>, verbatim</small>
 
 </TabItem>
 <TabItem label="Changelog">
