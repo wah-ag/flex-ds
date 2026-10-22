@@ -25,6 +25,10 @@
     {
       "text": "Maintain consistent spacing, padding, and alignment across similar cards.",
       "source": "Figma 69:1498 (Cards Doc Frame › Do, text I69:1498;2406:461;69:1495)"
+    },
+    {
+      "text": "Combine card items (CardText, CardLayout and CardImage) with CardContainer to perform as a card.",
+      "source": "Figma 69:1498 (Cards Doc Frame › Sub Component › Best Practise, text I69:1498;2406:490)"
     }
   ],
   "dont_use_when": [
@@ -61,7 +65,10 @@
     "state": {
       "idle": null,
       "hover": null,
-      "active": null
+      "active": {
+        "text": "the card that is currently selected or clicked to open.",
+        "source": "Figma 36:158 (CardContainer component set › variant 36:169 description)"
+      }
     }
   },
   "placement": [],

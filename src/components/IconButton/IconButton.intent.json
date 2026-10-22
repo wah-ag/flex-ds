@@ -11,23 +11,26 @@
   "variant_intent": {
     "category": {
       "stroke": {
-        "text": "it serves as three category, stroke icon button is to be used in header and fill icon button for table rows actions.",
-        "source": "Figma 45:324 (IconButton component description, paragraph 2)"
+        "text": "actions in the app header, such as notifications and mail.",
+        "source": "Figma 45:324 (IconButton component set › variant 45:323 description, repeated on every category=stroke variant)"
       },
       "default-fill": {
-        "text": "it serves as three category, stroke icon button is to be used in header and fill icon button for table rows actions.",
-        "source": "Figma 45:324 (IconButton component description, paragraph 2)"
+        "text": "row actions in back-office tables, such as View or Edit.",
+        "source": "Figma 45:324 (IconButton component set › variant 224:908 description, repeated on every category=default-fill variant)"
       },
       "error-fill": {
-        "text": "it serves as three category, stroke icon button is to be used in header and fill icon button for table rows actions.",
-        "source": "Figma 45:324 (IconButton component description, paragraph 2)"
+        "text": "destructive row actions in tables, such as Delete.",
+        "source": "Figma 45:324 (IconButton component set › variant 224:930 description, repeated on every category=error-fill variant)"
       }
     },
     "state": {
       "idle": null,
       "hover": null,
       "press": null,
-      "disable": null
+      "disable": {
+        "text": "the action isn’t available for that item.",
+        "source": "Figma 45:324 (IconButton component-set description › paragraph 3, line \"disable state\")"
+      }
     }
   },
   "placement": [

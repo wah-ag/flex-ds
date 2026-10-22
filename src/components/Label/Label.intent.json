@@ -59,17 +59,44 @@
   ],
   "variant_intent": {
     "category": {
-      "brand": null,
-      "info": null,
-      "success": null,
-      "error": null,
-      "warning": null,
-      "normal": null
+      "brand": {
+        "text": "highlights key attributes in the brand colour.",
+        "source": "Figma 31:228 (Label component set › variant 31:227 description, repeated on every category=brand variant)"
+      },
+      "info": {
+        "text": "neutral information or updates.",
+        "source": "Figma 31:228 (Label component set › variant 71:2347 description, repeated on every category=info variant)"
+      },
+      "success": {
+        "text": "a positive or finished status, such as Hired or Active.",
+        "source": "Figma 31:228 (Label component set › variant 71:2351 description, repeated on every category=success variant)"
+      },
+      "error": {
+        "text": "a failed or blocked status, such as Rejected or Error.",
+        "source": "Figma 31:228 (Label component set › variant 71:2355 description, repeated on every category=error variant)"
+      },
+      "warning": {
+        "text": "something that needs attention soon, such as Closing soon or Pending.",
+        "source": "Figma 31:228 (Label component set › variant 71:2558 description, repeated on every category=warning variant)"
+      },
+      "normal": {
+        "text": "a plain tag with no status meaning.",
+        "source": "Figma 31:228 (Label component set › variant 274:623 description, repeated on every category=normal variant)"
+      }
     },
     "size": {
-      "lg": null,
-      "md": null,
-      "sm": null
+      "lg": {
+        "text": "standalone on detail pages.",
+        "source": "Figma 31:228 (Label component-set description › size, item 1 \"lg\")"
+      },
+      "md": {
+        "text": "the default size, on cards.",
+        "source": "Figma 31:228 (Label component-set description › size, item 2 \"md\")"
+      },
+      "sm": {
+        "text": "dense tables and lists.",
+        "source": "Figma 31:228 (Label component-set description › size, item 3 \"sm\")"
+      }
     },
     "state": {
       "idle": null,

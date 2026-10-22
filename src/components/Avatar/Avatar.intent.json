@@ -55,19 +55,52 @@
   ],
   "variant_intent": {
     "size": {
-      "2xl": null,
-      "xl": null,
-      "lg": null,
-      "md": null,
-      "sm": null
+      "2xl": {
+        "text": "the largest avatar, for profile and company detail pages where the person or company is the main subject.",
+        "source": "Figma 32:315 (Avatar component set › variant 32:324 description, repeated on every size=2xl variant)"
+      },
+      "xl": {
+        "text": "cards and navigation.",
+        "source": "Figma 32:315 (Avatar component set › variant 32:314 description, repeated on every size=xl variant)"
+      },
+      "lg": {
+        "text": "list rows and comment threads that need a recognisable face.",
+        "source": "Figma 32:315 (Avatar component set › variant 32:313 description, repeated on every size=lg variant)"
+      },
+      "md": {
+        "text": "dense lists and table rows.",
+        "source": "Figma 32:315 (Avatar component set › variant 32:312 description, repeated on every size=md variant)"
+      },
+      "sm": {
+        "text": "inline with text, such as mentions, or stacked avatar groups.",
+        "source": "Figma 32:315 (Avatar component set › variant 32:311 description, repeated on every size=sm variant)"
+      }
     },
     "category": {
-      "rectangle image": null,
-      "circle image": null,
-      "icon": null
+      "rectangle image": {
+        "text": "companies and brands.",
+        "source": "Figma 32:315 (Avatar component-set description › Category, line \"rectangle image\")"
+      },
+      "circle image": {
+        "text": "people.",
+        "source": "Figma 32:315 (Avatar component-set description › Category, line \"circle image\")"
+      },
+      "icon": {
+        "text": "when there is no photo or logo, or for an entity without one, such as a job category.",
+        "source": "Figma 32:315 (Avatar component-set description › Category, line \"icon\")"
+      }
     }
   },
-  "placement": [],
+  "placement": [
+    {
+      "text": "EmployerProfile mounts an xl rectangle-image Avatar as its first child, before the employer title and the optional helper line.",
+      "source": "src/components/EmployerProfile/EmployerProfile.stories.jsx:44"
+    },
+    {
+      "text": "NavItems mounts an xl circle-image Avatar as its last child, after NavLabel and the two IconButtons (bell and mail).",
+      "source": "src/components/NavItems/NavItems.stories.jsx:40"
+    }
+  ],
   "pairs_with": [
     {
       "component": "EmployerProfile",
@@ -101,15 +134,15 @@
   "a11y": [
     {
       "text": "Renders a <span> with no role or aria attributes of its own.",
-      "source": "src/components/Avatar/Avatar.jsx:31"
+      "source": "src/components/Avatar/Avatar.jsx:30"
     },
     {
       "text": "The image categories render a native <img> with the `alt` prop, which defaults to an empty string.",
-      "source": "src/components/Avatar/Avatar.jsx:37"
+      "source": "src/components/Avatar/Avatar.jsx:36"
     },
     {
       "text": "The icon category’s icon is aria-hidden=\"true\" and focusable=\"false\".",
-      "source": "src/components/Avatar/Avatar.jsx:39"
+      "source": "src/components/Avatar/Avatar.jsx:38"
     }
   ]
 }
