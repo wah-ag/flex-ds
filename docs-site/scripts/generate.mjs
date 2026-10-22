@@ -314,14 +314,19 @@ for (const c of paged) {
     usage.push(intent.use_when.length ? list(intent.use_when) : notice(`The intent file has no ${code('use_when')} entry: no usage region on the Figma page.`));
     // Owner, 2026-10-22: no "Where it goes" section. Composition (below)
     // already says what composes the component.
-    usage.push('### When not to use');
-    usage.push(intent.dont_use_when.length ? list(intent.dont_use_when) : notice(`The intent file has no ${code('dont_use_when')} entry: the Figma usage region states none.`));
+    // Owner, 2026-10-23: EmployerProfile and JobPosition show neither "When
+    // not to use" nor "What each variant is for".
+    const trimmed = ['EmployerProfile', 'JobPosition'].includes(folder);
+    if (!trimmed) {
+      usage.push('### When not to use');
+      usage.push(intent.dont_use_when.length ? list(intent.dont_use_when) : notice(`The intent file has no ${code('dont_use_when')} entry: the Figma usage region states none.`));
+    }
     // Owner, 2026-10-22: no "Best practice" section. The intent schema has no
     // such field; best-practice bullets already land in use_when,
     // dont_use_when and variant_intent above and below.
-    usage.push('### What each variant is for');
-    const vi = Object.entries(intent.variant_intent ?? {});
-    if (!vi.length) usage.push(notice('The intent file names no variant prop.'));
+    const vi = trimmed ? [] : Object.entries(intent.variant_intent ?? {});
+    if (!trimmed) usage.push('### What each variant is for');
+    if (!trimmed && !vi.length) usage.push(notice('The intent file names no variant prop.'));
     for (const [prop, values] of vi) {
       usage.push(`**${code(prop)}**\n`);
       usage.push(Object.entries(values).map(([v, e]) => (e ? `- ${code(v)}: ${esc(e.text)}` : `- ${code(v)}: <em>Figma states no intent for this value.</em>`)).join('\n'));
